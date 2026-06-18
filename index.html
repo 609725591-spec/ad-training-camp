@@ -3510,6 +3510,11 @@ window.Admin = {
         </div>
       </div>
 
+      <!-- Export button -->
+      ${totalLearners > 0 ? `<div class="flex justify-end">
+        <button onclick="Admin.exportProgress()" class="px-4 py-2 bg-brand-600 text-white rounded-xl text-sm font-medium">导出学习进度 CSV</button>
+      </div>` : ''}
+
       <!-- Learner cards -->
       <div class="space-y-3">
         ${totalLearners === 0 ? '<div class="text-center text-gray-400 py-8">暂无学员数据</div>' : ''}
@@ -3562,6 +3567,23 @@ window.Admin = {
       </div>
       ${courseTags}
     </div>`;
+  },
+
+  exportProgress() {
+    const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+    if (!allUsers.length) return App.toast('暂无学员数据');
+    const totalCourses = (typeof DATA !== 'undefined' && DATA.courses) ? DATA.courses.length : 0;
+    const BOM = '\uFEFF';
+    const header = '服务商,姓名,手机号,角色,已完成课程,课程总数,完成率,测验次数,平均测验分,最近活跃,状态\n';
+    const rows = allUsers.map(u => {
+      const p = u.progress || {};
+      const completed = (p.completedCourses || []).length;
+      const rate = p.completionRate || 0;
+      const status = rate >= 100 ? '已完成' : rate > 0 ? '学习中' : '未开始';
+      const lastActive = p.lastActive ? new Date(p.lastActive).toLocaleString('zh-CN') : '-';
+      return `"${u.company || ''}","${u.name || ''}","${u.phone || ''}","${App.roleName(u.role)}",${completed},${totalCourses},${rate}%,${p.quizAttempts || 0},${p.avgQuizScore || 0}%,"${lastActive}","${status}"`;
+    }).join('\n');
+    this.downloadCSV(BOM + header + rows, '学习进度_' + new Date().toISOString().slice(0, 10) + '.csv');
   },
 
   importProgress(event) {},
