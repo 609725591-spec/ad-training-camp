@@ -222,6 +222,10 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
           <span class="text-xs font-medium">我的</span>
         </button>
+        <button data-tab="admin" class="nav-btn flex flex-col items-center gap-0.5 px-3 py-1 text-gray-400">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span class="text-xs font-medium">管理</span>
+        </button>
       </div>
     </nav>
 
@@ -1262,9 +1266,7 @@ window.App = {
     if (sideAvatar) sideAvatar.textContent = u.name[0];
     if (sideName) sideName.textContent = u.name;
     if (sideCompany) sideCompany.textContent = u.company;
-    // Show/hide admin nav based on role
-    const adminBtn = document.querySelector('.side-nav-admin');
-    if (adminBtn) adminBtn.style.display = (u.role === 'cm' || u.role === 'manager') ? '' : 'none';
+    // Admin nav always visible — access controlled by password gate
   },
 
   // ─── NAVIGATION ─────────────────────────────────────
@@ -3838,14 +3840,62 @@ window.App = {
 /* 广告特训营 - Admin Panel */
 
 window.Admin = {
+  _authenticated: false,
+
   render(container) {
-    const u = App.state.user;
-    if (u.role !== 'cm' && u.role !== 'manager') {
-      container.innerHTML = '<div class="text-center text-gray-400 py-16">无权限访问管理后台</div>';
-      return;
-    }
     App.setActiveTab('admin');
     document.getElementById('page-title').textContent = '管理后台';
+
+    if (!this._authenticated) {
+      container.innerHTML = `
+        <div class="animate-fade-in flex items-center justify-center min-h-[60vh]">
+          <div class="w-full max-w-sm mx-auto">
+            <div class="card text-center !p-8">
+              <div class="w-16 h-16 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              </div>
+              <h3 class="text-lg font-bold text-gray-900 mb-1">管理后台</h3>
+              <p class="text-sm text-gray-400 mb-6">请输入管理密码以继续访问</p>
+              <div id="admin-pwd-error" class="hidden text-sm text-red-500 mb-2">密码错误，请重试</div>
+              <input id="admin-pwd-input" type="password" placeholder="请输入管理密码"
+                class="w-full px-4 py-3 rounded-xl border border-gray-200 text-center text-lg tracking-wider focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none transition-all"
+                onkeydown="if(event.key==='Enter')Admin.checkPassword()">
+              <button onclick="Admin.checkPassword()"
+                class="w-full mt-4 py-3 bg-brand-600 text-white rounded-xl font-medium hover:bg-brand-700 transition-colors">
+                确认进入
+              </button>
+              <button onclick="location.hash='#home'"
+                class="w-full mt-2 py-2 text-sm text-gray-400 hover:text-gray-600">
+                返回首页
+              </button>
+            </div>
+          </div>
+        </div>`;
+      setTimeout(() => { const inp = document.getElementById('admin-pwd-input'); if (inp) inp.focus(); }, 100);
+      return;
+    }
+
+    this._renderPanel(container);
+  },
+
+  checkPassword() {
+    const input = document.getElementById('admin-pwd-input');
+    const errorEl = document.getElementById('admin-pwd-error');
+    if (!input) return;
+    if (input.value === 'gaode2026') {
+      this._authenticated = true;
+      if (errorEl) errorEl.classList.add('hidden');
+      this.render(App.getContentContainer());
+    } else {
+      if (errorEl) errorEl.classList.remove('hidden');
+      input.value = '';
+      input.focus();
+      input.classList.add('border-red-300');
+      setTimeout(() => input.classList.remove('border-red-300'), 1500);
+    }
+  },
+
+  _renderPanel(container) {
 
     const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
     const examHistory = JSON.parse(localStorage.getItem('exam_history') || '[]');
