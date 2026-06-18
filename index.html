@@ -1221,6 +1221,9 @@ window.App = {
   saveState() {
     localStorage.setItem('atc_user', JSON.stringify(this.state.user));
     localStorage.setItem('atc_progress', JSON.stringify(this.state.progress));
+    if (this.state.user && this.state.user.phone) {
+      localStorage.setItem('atc_progress_' + this.state.user.phone, JSON.stringify(this.state.progress));
+    }
   },
   setupLoginForm() {
     const form = document.getElementById('login-form');
@@ -1761,6 +1764,13 @@ window.App = {
     } else {
       this.toast(`正确率 ${pct}%，建议复习后重试（需≥80%）`);
     }
+    // Save quiz result per user for admin tracking
+    if (this.state.user && this.state.user.phone) {
+      const qKey = 'atc_quiz_results_' + this.state.user.phone;
+      const quizResults = JSON.parse(localStorage.getItem(qKey) || '[]');
+      quizResults.push({ courseId, courseName: course.title, score: pct, correct, total: course.quiz.length, date: new Date().toISOString() });
+      localStorage.setItem(qKey, JSON.stringify(quizResults));
+    }
     sessionStorage.removeItem(stateKey);
     location.hash = '#learn/' + courseId;
   },
@@ -2097,9 +2107,12 @@ window.App = {
         <a href="#exam/history" class="flex items-center gap-3 p-4 border-b border-gray-50 hover:bg-gray-50">
           <span class="text-xl">📊</span><span class="flex-1 font-medium">考试记录</span><span class="text-sm text-gray-400">${examHistory.length}次</span><svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
-        <a href="#profile/history" class="flex items-center gap-3 p-4 hover:bg-gray-50">
+        <a href="#profile/history" class="flex items-center gap-3 p-4 border-b border-gray-50 hover:bg-gray-50">
           <span class="text-xl">📈</span><span class="flex-1 font-medium">学习记录</span><svg class="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
         </a>
+        <button onclick="App.exportMyProgress()" class="w-full flex items-center gap-3 p-4 hover:bg-gray-50 text-left">
+          <span class="text-xl">📤</span><span class="flex-1 font-medium">导出学习进度</span><span class="text-sm text-gray-400">发给管理者</span>
+        </button>
       </div>
 
       <!-- Logout -->
@@ -2231,6 +2244,49 @@ window.App = {
   },
   getContentContainer() {
     return document.getElementById('app-content');
+  },
+
+  exportMyProgress() {
+    const u = this.state.user;
+    if (!u) return this.toast('请先登录');
+    const progress = this.state.progress;
+    const quizResults = JSON.parse(localStorage.getItem('atc_quiz_results_' + u.phone) || '[]');
+    const examHistory = JSON.parse(localStorage.getItem('exam_history') || '[]');
+    const practiceHistory = JSON.parse(localStorage.getItem('practice_history') || '[]');
+    const completedCourses = Object.keys(progress).filter(k => progress[k].completed).map(k => {
+      const course = DATA.courses.find(c => c.id === k);
+      return { courseId: k, courseName: course ? course.title : k, completedAt: progress[k].completedAt };
+    });
+    const snapshot = {
+      type: 'atc_progress_report',
+      version: 1,
+      exportDate: new Date().toISOString(),
+      user: { name: u.name, company: u.company, phone: u.phone, role: u.role, createdAt: u.createdAt },
+      summary: {
+        totalCourses: DATA.courses.length,
+        completedCourses: completedCourses.length,
+        completionRate: DATA.courses.length ? Math.round(completedCourses.length / DATA.courses.length * 100) : 0,
+        quizAttempts: quizResults.length,
+        avgQuizScore: quizResults.length ? Math.round(quizResults.reduce((s, q) => s + q.score, 0) / quizResults.length) : 0,
+        examAttempts: examHistory.length,
+        avgExamScore: examHistory.length ? Math.round(examHistory.reduce((s, e) => s + e.score, 0) / examHistory.length) : 0,
+        practiceCount: practiceHistory.length
+      },
+      completedCourses,
+      quizResults,
+      examHistory,
+      practiceHistory
+    };
+    const blob = new Blob([JSON.stringify(snapshot, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `学习进度_${u.name}_${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    this.toast('学习进度已导出，可发送给管理者');
   }
 };
 
@@ -3257,6 +3313,7 @@ window.Admin = {
       <!-- Tabs -->
       <div class="flex gap-2 overflow-x-auto pb-1">
         <button onclick="Admin.showTab('users')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-brand-600 text-white" data-tab="users">用户管理</button>
+        <button onclick="Admin.showTab('progress')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600" data-tab="progress">学习进度</button>
         <button onclick="Admin.showTab('exams')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600" data-tab="exams">考试数据</button>
         <button onclick="Admin.showTab('export')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600" data-tab="export">数据导出</button>
       </div>
@@ -3278,6 +3335,7 @@ window.Admin = {
     const el = document.getElementById('admin-tab-content');
     switch(tab) {
       case 'users': this.renderUsersTab(el); break;
+      case 'progress': this.renderProgressTab(el); break;
       case 'exams': this.renderExamsTab(el); break;
       case 'export': this.renderExportTab(el); break;
     }
@@ -3367,6 +3425,219 @@ window.Admin = {
         <button onclick="document.getElementById('import-file').click()" class="px-6 py-2.5 bg-gray-100 text-gray-700 rounded-xl text-sm font-medium">选择CSV文件</button>
       </div>
     </div>`;
+  },
+
+  renderProgressTab(el) {
+    const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+    const importedReports = JSON.parse(localStorage.getItem('atc_imported_reports') || '[]');
+    const totalCourses = (typeof DATA !== 'undefined' && DATA.courses) ? DATA.courses.length : 0;
+
+    // Build per-user progress from local storage keys
+    const localProgress = [];
+    allUsers.forEach(u => {
+      const key = 'atc_progress_' + u.phone;
+      const prog = JSON.parse(localStorage.getItem(key) || '{}');
+      const quizKey = 'atc_quiz_results_' + u.phone;
+      const quizzes = JSON.parse(localStorage.getItem(quizKey) || '[]');
+      const completed = Object.keys(prog).filter(k => prog[k].completed);
+      const completionRate = totalCourses ? Math.round(completed.length / totalCourses * 100) : 0;
+      const avgQuiz = quizzes.length ? Math.round(quizzes.reduce((s, q) => s + q.score, 0) / quizzes.length) : 0;
+      localProgress.push({
+        user: u,
+        progress: prog,
+        completedCourses: completed,
+        completionRate,
+        quizResults: quizzes,
+        avgQuizScore: avgQuiz
+      });
+    });
+
+    // Merge imported reports (deduplicate by phone)
+    const importedMap = {};
+    importedReports.forEach(r => {
+      if (r.user && r.user.phone) {
+        const existing = importedMap[r.user.phone];
+        if (!existing || new Date(r.exportDate) > new Date(existing.exportDate)) {
+          importedMap[r.user.phone] = r;
+        }
+      }
+    });
+    const importedList = Object.values(importedMap);
+
+    el.innerHTML = `<div class="space-y-4">
+      <!-- Import section -->
+      <div class="card">
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="font-semibold">导入学员学习进度</div>
+            <div class="text-sm text-gray-500 mt-1">学员在个人中心导出学习进度 JSON 文件后，在此导入汇总</div>
+          </div>
+          <div class="flex gap-2">
+            <input type="file" id="import-progress-file" accept=".json" multiple class="hidden" onchange="Admin.importProgress(event)">
+            <button onclick="document.getElementById('import-progress-file').click()" class="px-4 py-2 bg-brand-600 text-white rounded-xl text-sm font-medium">导入进度文件</button>
+            ${importedList.length > 0 ? `<button onclick="Admin.clearImportedProgress()" class="px-4 py-2 bg-gray-100 text-gray-600 rounded-xl text-sm font-medium">清空导入数据</button>` : ''}
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div class="card text-center !p-4">
+          <div class="text-2xl font-bold text-brand-600">${localProgress.length + importedList.filter(r => !localProgress.find(lp => lp.user.phone === r.user.phone)).length}</div>
+          <div class="text-xs text-gray-400 mt-1">学员总数</div>
+        </div>
+        <div class="card text-center !p-4">
+          <div class="text-2xl font-bold text-green-600">${[...localProgress, ...importedList.filter(r => !localProgress.find(lp => lp.user.phone === r.user.phone))].filter(p => (p.completionRate || p.summary?.completionRate || 0) >= 100).length}</div>
+          <div class="text-xs text-gray-400 mt-1">全部完成</div>
+        </div>
+        <div class="card text-center !p-4">
+          <div class="text-2xl font-bold text-orange-600">${importedList.length}</div>
+          <div class="text-xs text-gray-400 mt-1">已导入报告</div>
+        </div>
+        <div class="card text-center !p-4">
+          <div class="text-2xl font-bold text-blue-600">${totalCourses}</div>
+          <div class="text-xs text-gray-400 mt-1">课程总数</div>
+        </div>
+      </div>
+
+      <!-- Learner cards -->
+      <div class="space-y-3">
+        ${localProgress.length > 0 ? `<div class="text-sm font-semibold text-gray-600 mt-2">本机学员进度</div>` : ''}
+        ${localProgress.map(lp => this._renderLearnerCard(lp.user, lp.completedCourses.length, totalCourses, lp.completionRate, lp.avgQuizScore, lp.quizResults.length, lp.progress, 'local')).join('')}
+
+        ${importedList.length > 0 ? `<div class="text-sm font-semibold text-gray-600 mt-4">导入的学员进度</div>` : ''}
+        ${importedList.map(r => {
+          const cr = r.summary?.completionRate || 0;
+          const completed = r.summary?.completedCourses || 0;
+          const avgQ = r.summary?.avgQuizScore || 0;
+          const quizCount = r.summary?.quizAttempts || 0;
+          return this._renderLearnerCard(r.user, completed, totalCourses, cr, avgQ, quizCount, null, 'imported', r.exportDate);
+        }).join('')}
+
+        ${localProgress.length === 0 && importedList.length === 0 ? '<div class="text-center text-gray-400 py-8">暂无学习进度数据<br><span class="text-xs">学员在个人中心导出学习进度后，在此导入查看</span></div>' : ''}
+      </div>
+    </div>`;
+  },
+
+  _renderLearnerCard(user, completedCount, totalCourses, completionRate, avgQuizScore, quizCount, progressObj, source, exportDate) {
+    const barColor = completionRate >= 100 ? 'bg-green-500' : completionRate >= 50 ? 'bg-blue-500' : completionRate > 0 ? 'bg-orange-400' : 'bg-gray-300';
+    const sourceLabel = source === 'imported' ? '<span class="badge badge-blue ml-2">已导入</span>' : '';
+    const dateStr = exportDate ? `<span class="text-xs text-gray-400 ml-2">导出于 ${new Date(exportDate).toLocaleDateString('zh-CN')}</span>` : '';
+
+    // Build completed course list if progressObj available
+    let courseListHtml = '';
+    if (progressObj) {
+      const completed = Object.keys(progressObj).filter(k => progressObj[k].completed);
+      if (completed.length > 0) {
+        const courseNames = completed.map(k => {
+          const c = (typeof DATA !== 'undefined' && DATA.courses) ? DATA.courses.find(cc => cc.id === k) : null;
+          return c ? c.title : k;
+        });
+        courseListHtml = `<div class="mt-3 flex flex-wrap gap-1">${courseNames.map(n => `<span class="inline-block px-2 py-0.5 bg-green-50 text-green-700 text-xs rounded-full">${n}</span>`).join('')}</div>`;
+      }
+    }
+
+    return `<div class="card">
+      <div class="flex items-center gap-3 mb-3">
+        <div class="w-10 h-10 bg-brand-50 rounded-full flex items-center justify-center text-sm font-bold text-brand-700">${user.name ? user.name[0] : '?'}</div>
+        <div class="flex-1">
+          <div class="flex items-center">
+            <span class="font-semibold text-gray-900">${user.name || '未知'}</span>
+            ${sourceLabel}${dateStr}
+          </div>
+          <div class="text-xs text-gray-400">${user.company || ''} · ${user.phone || ''} · ${App.roleName(user.role)}</div>
+        </div>
+        <div class="text-right">
+          <div class="text-lg font-bold ${completionRate >= 100 ? 'text-green-600' : completionRate > 0 ? 'text-brand-600' : 'text-gray-400'}">${completionRate}%</div>
+          <div class="text-xs text-gray-400">完成率</div>
+        </div>
+      </div>
+      <!-- Progress bar -->
+      <div class="w-full bg-gray-100 rounded-full h-2 mb-3">
+        <div class="${barColor} h-2 rounded-full transition-all" style="width: ${Math.min(completionRate, 100)}%"></div>
+      </div>
+      <!-- Stats row -->
+      <div class="grid grid-cols-3 gap-2 text-center">
+        <div class="bg-gray-50 rounded-lg py-2">
+          <div class="text-sm font-bold text-gray-700">${completedCount}<span class="text-gray-400 font-normal">/${totalCourses}</span></div>
+          <div class="text-xs text-gray-400">已完成课程</div>
+        </div>
+        <div class="bg-gray-50 rounded-lg py-2">
+          <div class="text-sm font-bold text-gray-700">${quizCount}</div>
+          <div class="text-xs text-gray-400">测验次数</div>
+        </div>
+        <div class="bg-gray-50 rounded-lg py-2">
+          <div class="text-sm font-bold ${avgQuizScore >= 80 ? 'text-green-600' : avgQuizScore > 0 ? 'text-orange-500' : 'text-gray-400'}">${avgQuizScore > 0 ? avgQuizScore + '%' : '-'}</div>
+          <div class="text-xs text-gray-400">平均测验分</div>
+        </div>
+      </div>
+      ${courseListHtml}
+    </div>`;
+  },
+
+  importProgress(event) {
+    const files = event.target.files;
+    if (!files || files.length === 0) return;
+    const reports = JSON.parse(localStorage.getItem('atc_imported_reports') || '[]');
+    let loaded = 0;
+
+    const processFile = (file) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const data = JSON.parse(e.target.result.replace(/^\uFEFF/, ''));
+          if (data.type === 'atc_progress_report' && data.user) {
+            reports.push(data);
+            loaded++;
+          }
+        } catch (err) {
+          console.warn('Invalid progress file:', file.name, err);
+        }
+      };
+      reader.onloadend = () => {
+        if (loaded === files.length || [...files].every((f, i) => i < files.length - 1 || reader.readyState === 2)) {
+          // All files processed
+          setTimeout(() => {
+            localStorage.setItem('atc_imported_reports', JSON.stringify(reports));
+            App.toast(`成功导入 ${loaded} 份学习进度报告`);
+            this.showTab('progress');
+          }, 100);
+        }
+      };
+      reader.readAsText(file, 'UTF-8');
+    };
+
+    // Process all files
+    let processed = 0;
+    for (const file of files) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const data = JSON.parse(e.target.result.replace(/^\uFEFF/, ''));
+          if (data.type === 'atc_progress_report' && data.user) {
+            reports.push(data);
+            loaded++;
+          }
+        } catch (err) {
+          console.warn('Invalid progress file:', file.name, err);
+        }
+        processed++;
+        if (processed === files.length) {
+          localStorage.setItem('atc_imported_reports', JSON.stringify(reports));
+          App.toast(`成功导入 ${loaded} 份学习进度报告`);
+          this.showTab('progress');
+        }
+      };
+      reader.readAsText(file, 'UTF-8');
+    }
+    event.target.value = '';
+  },
+
+  clearImportedProgress() {
+    if (!confirm('确定清空所有导入的学习进度数据？')) return;
+    localStorage.setItem('atc_imported_reports', '[]');
+    App.toast('已清空导入的进度数据');
+    this.showTab('progress');
   },
 
   addUser() {
