@@ -2092,6 +2092,9 @@ window.App = {
   closeModal() {
     const overlay = document.getElementById('modal-overlay');
     if (overlay) { overlay.classList.remove('show'); overlay.classList.add('hidden'); }
+  },
+  getContentContainer() {
+    return document.getElementById('app-content');
   }
 };
 
