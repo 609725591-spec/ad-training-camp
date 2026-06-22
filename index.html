@@ -226,10 +226,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
           <span class="text-xs font-medium">学习</span>
         </button>
-        <button data-tab="practice" class="nav-btn flex flex-col items-center gap-0.5 px-3 py-1 text-gray-400">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-          <span class="text-xs font-medium">练习</span>
-        </button>
         <button data-tab="exam" class="nav-btn flex flex-col items-center gap-0.5 px-3 py-1 text-gray-400">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
           <span class="text-xs font-medium">考试</span>
@@ -266,10 +262,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
         <button data-tab="learn" class="side-nav-btn w-full flex items-center gap-3 px-5 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
           学习中心
-        </button>
-        <button data-tab="practice" class="side-nav-btn w-full flex items-center gap-3 px-5 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
-          练习场
         </button>
         <button data-tab="exam" class="side-nav-btn w-full flex items-center gap-3 px-5 py-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
@@ -345,7 +337,18 @@ window.DATA = {
         { id: 'cpc-01-q1', type: 'single', question: 'CPC广告的计费方式是什么？', options: ['按展示次数计费', '按点击次数计费', '按转化效果计费', '按投放时长计费'], answer: 1, explanation: 'CPC即Cost Per Click，按点击计费，展现不收费。' },
         { id: 'cpc-01-q2', type: 'single', question: 'CPC广告建议的单次点击出价范围是多少？', options: ['0.5-1元', '1-2元', '3-5元', '5-10元'], answer: 1, explanation: 'CPC广告建议单次点击出价1-2元，性价比最优。' },
         { id: 'cpc-01-q3', type: 'judge', question: 'CPC广告的投放目标是引导用户到店。', options: ['正确', '错误'], answer: 0, explanation: 'CPC广告以目标用户到店为核心投放目标，帮助商户实现线下转化。' }
-      ]
+      ,
+    { id: 'q-cpc-001', type: 'single', question: 'CPC广告的计费方式是什么？', options: ['按展示计费', '按点击计费', '按转化计费', '按时间计费'], answer: 1, explanation: 'CPC即Cost Per Click，按点击计费，展现不收费。' },
+    { id: 'q-cpc-002', type: 'single', question: 'CPC广告建议的单次点击出价范围是多少？', options: ['0.5-1元', '1-2元', '3-5元', '5-10元'], answer: 1, explanation: 'CPC广告建议单次点击出价1-2元，性价比最优。' },
+    { id: 'q-cpc-003', type: 'single', question: 'CPC广告的投放目标是什么？', options: ['提升品牌知名度', '引导用户到店', '增加粉丝数量', '提升搜索排名'], answer: 1, explanation: 'CPC广告以目标用户到店为核心投放目标。' },
+    { id: 'q-cpc-004', type: 'single', question: 'CPC广告整合了哪个平台的流量场景？', options: ['美团', '抖音', '高德', '大众点评'], answer: 2, explanation: 'CPC广告整合高德地图全场景流量，覆盖搜索、导航、附近推荐等。' },
+    { id: 'q-cpc-005', type: 'single', question: 'CPC广告依靠什么能力实现精准地域定向？', options: ['AI算法', 'LBS定位', '用户画像', '社交关系'], answer: 1, explanation: 'CPC广告依托高德LBS（基于位置服务）能力实现精准地域定向。' },
+    { id: 'q-cpc-006', type: 'judge', question: 'CPC广告的展现也需要收费。', options: ['正确', '错误'], answer: 1, explanation: 'CPC按点击计费，展现不收费。' },
+    { id: 'q-cpc-007', type: 'judge', question: 'CPC广告内置了智能反作弊系统，可以过滤异常点击。', options: ['正确', '错误'], answer: 0, explanation: 'CPC广告内置反作弊机制，自动过滤异常点击行为。' },
+    { id: 'q-cpc-008', type: 'single', question: '新建CPC推广计划后，建议给系统多长时间的学习期？', options: ['1天', '3-5天', '2周', '1个月'], answer: 1, explanation: '新建计划建议给系统3-5天学习期，数据稳定后再做优化。' },
+    { id: 'q-cpc-009', type: 'single', question: 'CPC广告新建推广计划时，建议的计划名称格式是？', options: ['随意命名', '门店名-日期-产品', '产品-日期', '日期-金额'], answer: 1, explanation: '建议使用"门店名-日期-产品"的命名格式，方便后续管理和数据分析。' },
+    { id: 'q-cpc-010', type: 'judge', question: 'CPC广告新建计划后应该立即频繁调整出价以优化效果。', options: ['正确', '错误'], answer: 1, explanation: '新建计划不要频繁调整，给系统3-5天学习期后再优化。' }
+  ]
     },
 
     {
@@ -371,7 +374,18 @@ window.DATA = {
         { id: 'cpc-02-q1', type: 'single', question: 'CPC售卖话术中，"帮您多曝光多引流"属于哪个环节？', options: ['破冰环节', '价值传递环节', '异议处理环节', '促成签约环节'], answer: 1, explanation: '"帮您多曝光多引流"是CPC核心价值传递话术，用于向客户展示产品价值。' },
         { id: 'cpc-02-q2', type: 'multi', question: 'CPC广告的核心卖点包括以下哪些？', options: ['精准线上流量', '超成本赔付保障', '按点击计费性价比高', '免费赠送品牌展示'], answer: [0, 1, 2], explanation: 'CPC三大核心卖点为精准线上流量、超成本赔付保障、按点击计费性价比高。CPC不包含免费品牌展示。' },
         { id: 'cpc-02-q3', type: 'judge', question: '中餐案例中，单个到店客户获客成本约为5.3元。', options: ['正确', '错误'], answer: 0, explanation: '案例中日均消耗240元，带来45个到店客户，单个获客成本约240÷45≈5.3元。' }
-      ]
+      ,
+    { id: 'q-cpc-011', type: 'single', question: 'CPC售卖话术"帮您多曝光多引流"属于哪个销售环节？', options: ['破冰', '价值传递', '异议处理', '促成签约'], answer: 1, explanation: '"帮您多曝光多引流"是CPC核心价值传递话术。' },
+    { id: 'q-cpc-012', type: 'multi', question: 'CPC广告的核心售卖话术包括以下哪些要点？', options: ['帮您多曝光多引流', '精准线上流量', '极致性价比', '免费试用30天'], answer: [0, 1, 2], explanation: 'CPC三大话术：多曝光多引流、精准线上流量、极致性价比（含超成本赔付）。' },
+    { id: 'q-cpc-013', type: 'single', question: 'CPC话术中提到的"极致性价比"主要体现在什么方面？', options: ['免费投放', '超成本赔付机制', '赠送品牌广告', '按效果付费'], answer: 1, explanation: '极致性价比主要体现在超成本赔付机制，给投放效果上保险。' },
+    { id: 'q-cpc-014', type: 'single', question: '中餐案例中，投放CPC后曝光量提升了多少？', options: ['+100%', '+150%', '+216.7%', '+300%'], answer: 2, explanation: '中餐案例中曝光量从1200次提升到3800次，提升216.7%。' },
+    { id: 'q-cpc-015', type: 'single', question: '中餐案例中，单个到店客户获客成本约为多少？', options: ['2.5元', '5.3元', '8.6元', '12元'], answer: 1, explanation: '日均消耗240元带来45个到店客户，获客成本约240/45=5.3元。' },
+    { id: 'q-cpc-016', type: 'multi', question: 'CPC广告的反作弊机制包括以下哪些功能？', options: ['同一设备短时间重复点击过滤', '异常IP段识别拦截', '机器刷量实时检测', '自动提高出价'], answer: [0, 1, 2], explanation: '反作弊机制包括重复点击过滤、异常IP识别、刷量检测，不会自动提高出价。' },
+    { id: 'q-cpc-017', type: 'single', question: 'CPC投放策略优化中，应该优先关注哪个指标来调整出价？', options: ['曝光量', '点击率和到店率', '账户余额', '投放天数'], answer: 1, explanation: '根据点击率和到店率调整出价是最科学的优化方式。' },
+    { id: 'q-cpc-018', type: 'judge', question: 'CPC广告竞争激烈区域应适当提高出价以获取更多流量。', options: ['正确', '错误'], answer: 0, explanation: '竞争激烈区域适当提高出价可以提高竞争力，获取更多精准流量。' },
+    { id: 'q-cpc-019', type: 'single', question: '中餐案例中，CPC广告带来的到店转化率是多少？', options: ['8.5%', '12.3%', '18.5%', '25%'], answer: 2, explanation: '案例中到店转化率为18.5%。' },
+    { id: 'q-cpc-020', type: 'multi', question: '讲述CPC案例时的正确逻辑顺序包括哪些环节？', options: ['先讲痛点', '再讲方案', '最后用数据说话', '先讲价格'], answer: [0, 1, 2], explanation: '案例讲述技巧：先讲痛点，再讲方案，最后用数据说话。' }
+  ]
     },
 
     // ----------------------------------------------------------
@@ -406,7 +420,18 @@ window.DATA = {
         { id: 'ocpc-01-q2', type: 'single', question: 'OCPC-GMV建议的首次ROI设置范围是？', options: ['1.0-1.5', '1.5-3', '3-5', '5-10'], answer: 1, explanation: '首次投放建议ROI设置为1.5-3，让计划先获得足够流量。' },
         { id: 'ocpc-01-q3', type: 'multi', question: 'OCPC-GMV赔付条件需要满足以下哪些要求？', options: ['每日展现量>10', '周期累计订单≥3单', '实际ROI低于设定值的120%', '每日消耗>100元'], answer: [0, 1, 2], explanation: '赔付需同时满足：每日展现>10、周期累计订单≥3、实际ROI低于设定ROI的120%。' },
         { id: 'ocpc-01-q4', type: 'judge', question: 'OCPC-GMV准入门槛要求门店30天内至少有10单订单。', options: ['正确', '错误'], answer: 0, explanation: 'OCPC-GMV要求门店近30天内累计订单≥10单才能开通。' }
-      ]
+      ,
+    { id: 'q-gmv-001', type: 'single', question: 'OCPC-GMV广告的出价目标是什么？', options: ['CPC（单次点击成本）', 'CPM（千次展示成本）', 'ROI（投资回报率）', 'CPA（单次转化成本）'], answer: 2, explanation: 'OCPC-GMV按ROI出价，商户设定目标ROI，系统自动优化。' },
+    { id: 'q-gmv-002', type: 'single', question: 'OCPC-GMV的建议首次ROI设置范围是？', options: ['1.0-1.5', '1.5-3', '3-5', '5-10'], answer: 1, explanation: '首次投放建议ROI设置1.5-3，让计划先获得流量。' },
+    { id: 'q-gmv-003', type: 'single', question: 'OCPC-GMV的超成本赔付周期是？', options: ['每天', '每周三至下周二（7天）', '每两周', '每月'], answer: 1, explanation: '赔付周期为每周三至下周二，共7天。' },
+    { id: 'q-gmv-004', type: 'single', question: 'OCPC-GMV准入门槛要求门店30天内至少有多少订单？', options: ['5单', '10单', '20单', '50单'], answer: 1, explanation: '准入门槛要求近30天累计订单≥10单。' },
+    { id: 'q-gmv-005', type: 'single', question: '赔付条件要求每日展现量大于多少？', options: ['5', '10', '50', '100'], answer: 1, explanation: '赔付条件要求每日展现量>10。' },
+    { id: 'q-gmv-006', type: 'judge', question: 'OCPC-GMV赔付条件要求周期累计订单数≥3单。', options: ['正确', '错误'], answer: 0, explanation: '赔付需满足周期内累计订单数≥3单。' },
+    { id: 'q-gmv-007', type: 'judge', question: 'OCPC-GMV赔付触发条件是实际ROI低于设定ROI的120%。', options: ['正确', '错误'], answer: 0, explanation: '当实际ROI低于设定ROI的120%时触发赔付。' },
+    { id: 'q-gmv-008', type: 'single', question: 'OCPC-GMV每日调价次数不应超过多少次？', options: ['1次', '2次', '5次', '不限'], answer: 1, explanation: '不要频繁调价，每日调整次数不超过2次。' },
+    { id: 'q-gmv-009', type: 'single', question: 'OCPC-GMV数据稳定后，每次ROI提升幅度建议为多少？', options: ['0.1', '0.2-0.5', '1.0', '2.0'], answer: 1, explanation: '稳定后每次ROI提升0.2-0.5，逐步提高。' },
+    { id: 'q-gmv-010', type: 'judge', question: 'OCPC-GMV的核心优势是广告投入与实际营收直接挂钩。', options: ['正确', '错误'], answer: 0, explanation: 'OCPC-GMV按ROI出价，让广告投入与营收直接挂钩。' }
+  ]
     },
 
     {
@@ -432,7 +457,18 @@ window.DATA = {
         { id: 'ocpc-02-q1', type: 'single', question: '中餐川菜案例中，投放7天后GMV提升了多少？', options: ['+3.5%', '+6.03%', '+8.06%', '+12.5%'], answer: 2, explanation: '案例数据显示GMV提升了8.06%。' },
         { id: 'ocpc-02-q2', type: 'single', question: 'OCPC-GMV模型学习期一般需要多长时间？', options: ['1-2天', '3-7天', '2周', '1个月'], answer: 1, explanation: 'OCPC-GMV系统需要3-7天的学习期来建立投放模型。' },
         { id: 'ocpc-02-q3', type: 'judge', question: '中餐川菜案例中，到店成本降低了21.8%。', options: ['正确', '错误'], answer: 0, explanation: '案例数据显示到店成本降低了21.8%，获客效率显著提升。' }
-      ]
+      ,
+    { id: 'q-gmv-011', type: 'single', question: '中餐川菜案例中，投放7天后订单量提升了多少？', options: ['+3.5%', '+6.03%', '+8.06%', '+12%'], answer: 1, explanation: '案例数据显示订单量提升了6.03%。' },
+    { id: 'q-gmv-012', type: 'single', question: '中餐川菜案例中，CPM降低了多少？', options: ['-15%', '-25%', '-37.5%', '-50%'], answer: 2, explanation: '案例数据显示CPM降低了37.5%。' },
+    { id: 'q-gmv-013', type: 'single', question: '中餐川菜案例中，点击率提升了多少？', options: ['+10.5%', '+15.3%', '+20.2%', '+30%'], answer: 2, explanation: '案例数据显示点击率提升了20.2%。' },
+    { id: 'q-gmv-014', type: 'multi', question: 'OCPC-GMV赔付公式涉及以下哪些变量？', options: ['消耗金额', '实际GMV', '设定ROI', '点击次数'], answer: [0, 1, 2], explanation: '赔付公式=消耗-1.2x(GMV/ROI)，涉及消耗、GMV和ROI三个变量。' },
+    { id: 'q-gmv-015', type: 'single', question: 'OCPC-GMV投放初期数据波动时，正确的做法是？', options: ['立即调低ROI', '暂停投放', '耐心等待学习期结束', '大幅提高预算'], answer: 2, explanation: '学习期数据波动属正常现象，应耐心等待3-7天学习期结束。' },
+    { id: 'q-gmv-016', type: 'single', question: 'OCPC-GMV计划"不花钱"最可能的原因是？', options: ['预算设置过低', 'ROI设置过高', '门店评分太低', '投放时段不对'], answer: 1, explanation: 'ROI设置过高会导致系统找不到符合条件的流量，计划跑不出量。' },
+    { id: 'q-gmv-017', type: 'multi', question: '门店订单不足10单时，可以通过哪些方式积累订单量？', options: ['投放CPC广告', '门店优惠活动', '关闭门店重开', '完善门店信息'], answer: [0, 1, 3], explanation: '可通过投CPC积累订单、优惠活动提升自然订单、完善门店信息提升搜索排名。' },
+    { id: 'q-gmv-018', type: 'single', question: '赔付金额计算公式正确的是？', options: ['消耗 - GMV/ROI', '消耗 - 1.2x(GMV/ROI)', '1.2x消耗 - GMV/ROI', '消耗x1.2 - GMV'], answer: 1, explanation: '赔付金额=消耗-1.2x(GMV/设定ROI)。' },
+    { id: 'q-gmv-019', type: 'single', question: '中餐川菜案例中，到店成本降低了多少？', options: ['-10.5%', '-15.3%', '-21.8%', '-30%'], answer: 2, explanation: '案例数据显示到店成本降低了21.8%。' },
+    { id: 'q-gmv-020', type: 'judge', question: '频繁调整OCPC-GMV的ROI出价会重置系统学习期。', options: ['正确', '错误'], answer: 0, explanation: '频繁调价会重置学习期，影响模型效果，建议每日调整不超过2次。' }
+  ]
     },
 
     // ----------------------------------------------------------
@@ -461,7 +497,28 @@ window.DATA = {
         { id: 'leads-01-q1', type: 'single', question: 'OCPC-客资广告的优化目标是什么？', options: ['提升曝光量', '提升点击率', '获取客资转化', '提升GMV'], answer: 2, explanation: 'OCPC-客资广告以客资转化（电话、表单、预约等）为优化目标。' },
         { id: 'leads-01-q2', type: 'multi', question: '以下哪些商户适合投放OCPC-客资广告？', options: ['高端宴请餐厅', '婚庆宴会服务', '社区快餐店', '商务宴请场所'], answer: [0, 1, 3], explanation: '高客单门店和客资型商户适合OCPC-客资，社区快餐店更适合CPC或OCPC-GMV。' },
         { id: 'leads-01-q3', type: 'judge', question: 'OCPC-客资广告采用按转化付费的计费方式。', options: ['正确', '错误'], answer: 1, explanation: 'OCPC-客资广告仍然按点击计费，只是系统以客资转化为优化目标进行智能调控。' }
-      ]
+      ,
+    { id: 'q-leads-001', type: 'single', question: 'OCPC-客资广告的优化目标是什么？', options: ['提升曝光量', '提升点击率', '获取客资转化', '提升GMV'], answer: 2, explanation: 'OCPC-客资以客资转化（电话、表单、预约等）为优化目标。' },
+    { id: 'q-leads-002', type: 'single', question: 'OCPC-客资广告的计费方式是什么？', options: ['按展示计费', '按点击计费', '按客资计费', '按时间计费'], answer: 1, explanation: 'OCPC-客资按点击计费，系统以客资转化为优化方向。' },
+    { id: 'q-leads-003', type: 'multi', question: '高德平台支持的客资转化类型包括哪些？', options: ['电话拨打', '在线咨询', '预约到店', '表单提交'], answer: [0, 1, 2, 3], explanation: '平台支持电话、在线咨询、预约到店、表单提交四种客资转化类型。' },
+    { id: 'q-leads-004', type: 'judge', question: 'OCPC-客资广告按客资转化效果付费，没有转化不收费。', options: ['正确', '错误'], answer: 1, explanation: 'OCPC-客资按点击计费，不是按转化效果付费。' },
+    { id: 'q-leads-005', type: 'single', question: '以下哪类商户最适合投放OCPC-客资广告？', options: ['社区快餐店', '高端宴请餐厅', '奶茶外卖店', '便利店'], answer: 1, explanation: '高端宴请餐厅属于高客单门店，客户需要提前预约订座，最适合OCPC-客资。' },
+    { id: 'q-leads-006', type: 'single', question: 'OCPC-客资和OCPC-GMV的核心区别在于什么？', options: ['计费方式不同', '优化目标不同', '投放平台不同', '出价范围不同'], answer: 1, explanation: '核心区别在于优化目标：客资以获取联系方式为目标，GMV以提升交易金额为目标。' },
+    { id: 'q-leads-007', type: 'judge', question: '婚庆宴会服务商适合投放OCPC-客资广告。', options: ['正确', '错误'], answer: 0, explanation: '婚庆宴会属于客资型商户，需要收集客户需求信息，适合OCPC-客资。' },
+    { id: 'q-leads-008', type: 'single', question: '如果客户主要通过电话预约成交，应该推荐哪个产品？', options: ['CPC', 'OCPC-GMV', 'OCPC-客资', '顶展'], answer: 2, explanation: '主要通过电话/预约成交的客户应选择OCPC-客资。' },
+    { id: 'q-leads-009', type: 'judge', question: 'OCPC-客资广告系统会自动识别高转化潜力用户优先展示。', options: ['正确', '错误'], answer: 0, explanation: '系统自动识别高转化潜力用户，实现智能调控和成本可控。' },
+    { id: 'q-leads-010', type: 'single', question: 'OCPC-客资的转化路径是什么？', options: ['广告→下单→到店', '广告→客资→跟进→成交', '广告→曝光→品牌认知', '广告→收藏→复购'], answer: 1, explanation: 'OCPC-客资的转化路径：广告→获取客资→人工跟进→成交。' },
+    { id: 'q-leads-011', type: 'multi', question: '以下哪些场景应选择OCPC-客资而非OCPC-GMV？', options: ['客户需要提前预约订座', '客户主要通过线上直接下单', '商务宴请需要电话沟通', '团购套餐在线购买'], answer: [0, 2], explanation: '需要预约订座和电话沟通的场景选OCPC-客资；在线下单和团购购买选OCPC-GMV。' },
+    { id: 'q-leads-012', type: 'single', question: 'OCPC-客资广告如何实现成本可控？', options: ['固定每次客资成本', '设定目标转化成本由系统优化', '按客资数量计费', '人工控制出价'], answer: 1, explanation: '商户设定目标转化成本，系统在目标范围内自动优化出价。' },
+    { id: 'q-leads-013', type: 'single', question: '向社区快餐店推荐广告时，应该优先推荐哪个产品？', options: ['OCPC-客资', 'CPC或OCPC-GMV', '顶展', '水牌'], answer: 1, explanation: '社区快餐店客单价低、无需预约，更适合CPC或OCPC-GMV。' },
+    { id: 'q-leads-014', type: 'judge', question: '美容美发等需要预约的服务类门店也适合投放OCPC-客资。', options: ['正确', '错误'], answer: 0, explanation: '美容美发等需要预约的本地服务商户适合OCPC-客资广告。' },
+    { id: 'q-leads-015', type: 'single', question: '投放OCPC-客资时，以下哪个操作能提升转化效果？', options: ['降低出价', '完善门店信息和菜品图片', '缩短投放时段', '减少预算'], answer: 1, explanation: '完善门店信息可以提升广告吸引力和转化率。' },
+    { id: 'q-leads-016', type: 'multi', question: 'OCPC-客资广告的智能调控能力包括哪些？', options: ['自动识别高转化潜力用户', '优先展示给目标用户', '自动优化在目标成本范围内', '自动设置出价金额'], answer: [0, 1, 2], explanation: '智能调控包括识别高潜用户、优先展示、成本优化，但出价仍需人工设定范围。' },
+    { id: 'q-leads-017', type: 'single', question: '高客单门店投放OCPC-客资时，核心卖点应该强调什么？', options: ['低价格', '精准获取预约客户', '品牌曝光', '免费试用'], answer: 1, explanation: '高客单门店核心需求是获取精准预约客户，应强调客资质量和预约转化。' },
+    { id: 'q-leads-018', type: 'judge', question: 'OCPC-客资投放中，客资质量会随着投放时间持续优化。', options: ['正确', '错误'], answer: 0, explanation: '系统会根据转化数据持续优化模型，客资质量会越来越好。' },
+    { id: 'q-leads-019', type: 'single', question: '选择OCPC-客资还是OCPC-GMV的核心决策依据是？', options: ['门店规模', '客户成交方式', '预算多少', '门店评分'], answer: 1, explanation: '核心依据是客户成交方式：电话/预约成交选民资，线上直接下单选GMV。' },
+    { id: 'q-leads-020', type: 'multi', question: '以下哪些商户类型属于"客资型商户"适合投放OCPC-客资？', options: ['婚庆宴会', '团建聚餐', '外卖快餐', '商务宴请'], answer: [0, 1, 3], explanation: '婚庆、团建、商务宴请都需要提前沟通需求，属于客资型商户。' }
+  ]
     },
 
     // ----------------------------------------------------------
@@ -496,7 +553,18 @@ window.DATA = {
         { id: 'dual-01-q2', type: 'single', question: '双投模式下，GMV平均增长多少？', options: ['10%-20%', '30%-50%', '50%-80%', '100%以上'], answer: 1, explanation: '双投模式下GMV平均增长30%-50%，效果显著。' },
         { id: 'dual-01-q3', type: 'multi', question: '双投策略的核心价值包括以下哪些？', options: ['订单量+25%', '获客成本-20%', '管理效率+60%', '曝光量+100%'], answer: [0, 1, 2], explanation: '双投三大核心价值：订单量+25%、获客成本-20%、管理效率+60%。' },
         { id: 'dual-01-q4', type: 'judge', question: '双投模式下，CPC建议单店日预算为300-500元。', options: ['正确', '错误'], answer: 1, explanation: 'CPC建议单店日预算为100-200元，OCPC建议为300-500元。' }
-      ]
+      ,
+    { id: 'q-dual-001', type: 'single', question: '双投是指同时投放哪两种广告？', options: ['CPC+CPM', 'CPC+OCPC', 'OCPC+品牌广告', 'CPC+全站推'], answer: 1, explanation: '双投是指CPC+OCPC同时投放，双算法互补。' },
+    { id: 'q-dual-002', type: 'single', question: '双投模式下订单量平均提升多少？', options: ['10%', '25%', '50%', '100%'], answer: 1, explanation: '双投模式下订单量平均提升25%。' },
+    { id: 'q-dual-003', type: 'single', question: '双投模式下GMV平均增长多少？', options: ['10%-20%', '30%-50%', '50%-80%', '100%以上'], answer: 1, explanation: '双投模式下GMV平均增长30%-50%。' },
+    { id: 'q-dual-004', type: 'single', question: 'CPC建议单店日预算范围是？', options: ['50-100元', '100-200元', '300-500元', '500-1000元'], answer: 1, explanation: 'CPC建议单店日预算100-200元。' },
+    { id: 'q-dual-005', type: 'single', question: 'OCPC建议单店日预算范围是？', options: ['100-200元', '200-300元', '300-500元', '500-1000元'], answer: 2, explanation: 'OCPC建议单店日预算300-500元。' },
+    { id: 'q-dual-006', type: 'judge', question: '双投模式下获客成本平均降低20%。', options: ['正确', '错误'], answer: 0, explanation: '双投模式下获客成本平均降低20%，算法互补降低整体成本。' },
+    { id: 'q-dual-007', type: 'judge', question: '双投的管理效率可以提升60%。', options: ['正确', '错误'], answer: 0, explanation: '双投通过系统自动优化，管理效率提升60%。' },
+    { id: 'q-dual-008', type: 'single', question: '双投中CPC算法侧重什么？', options: ['转化率预估', '点击率预估', 'ROI预估', '客单价预估'], answer: 1, explanation: 'CPC算法侧重点击率预估，优先展示给高点击概率用户。' },
+    { id: 'q-dual-009', type: 'single', question: '双投预算分配黄金比例中，CPC约占总预算的多少？', options: ['10%', '30%', '50%', '70%'], answer: 1, explanation: 'CPC约占总预算30%，OCPC约占70%。' },
+    { id: 'q-dual-010', type: 'judge', question: '双投中OCPC应占总预算的主要部分（约70%）。', options: ['正确', '错误'], answer: 0, explanation: '双投预算黄金比例：CPC约30%、OCPC约70%，OCPC承担主要转化任务。' }
+  ]
     },
 
     {
@@ -517,7 +585,18 @@ window.DATA = {
         { id: 'dual-02-q1', type: 'single', question: '双投案例中，CPC和OCPC的预算分配比例约为多少？', options: ['1:1', '1:2', '1:3', '1:5'], answer: 2, explanation: '案例中CPC 150元、OCPC 500元，比例约为1:3。' },
         { id: 'dual-02-q2', type: 'single', question: '双投案例中，综合ROI达到了多少？', options: ['1:2.5', '1:3.6', '1:4.8', '1:6.0'], answer: 2, explanation: '案例中双投综合ROI为1:4.8，远超单独投放效果。' },
         { id: 'dual-02-q3', type: 'judge', question: '双投模式下，OCPC预算应占总预算的主要部分（约70%以上）。', options: ['正确', '错误'], answer: 0, explanation: '双投预算分配黄金比例为CPC约30%、OCPC约70%，让OCPC承担主要转化任务。' }
-      ]
+      ,
+    { id: 'q-dual-011', type: 'single', question: '向客户推荐双投时，最核心的三个数据是？', options: ['曝光+100%、点击+50%、转化+30%', '订单+25%、GMV+30-50%、获客成本-20%', 'ROI+50%、曝光+30%、点击+25%', '客流+40%、营收+60%、成本-10%'], answer: 1, explanation: '双投核心数据：订单量+25%、GMV+30-50%、获客成本-20%。' },
+    { id: 'q-dual-012', type: 'single', question: '双投模式下预算管理思路应如何转变？', options: ['逐个管理每个计划预算', '管理账户整体预算', '不设预算让系统决定', '只管理CPC预算'], answer: 1, explanation: '从管理计划预算转变为管理账户整体预算，系统自动分配。' },
+    { id: 'q-dual-013', type: 'single', question: '双投案例中，CPC和OCPC预算分配比例约为？', options: ['1:1', '1:2', '1:3', '1:5'], answer: 2, explanation: '案例中CPC 150元、OCPC 500元，比例约1:3。' },
+    { id: 'q-dual-014', type: 'single', question: '双投案例中，综合ROI达到了多少？', options: ['1:2.5', '1:3.6', '1:4.8', '1:6.0'], answer: 2, explanation: '双投综合ROI为1:4.8。' },
+    { id: 'q-dual-015', type: 'multi', question: '双投策略的四大价值包括哪些？', options: ['增量价值', '降本价值', '效率价值', '稳定价值'], answer: [0, 1, 2, 3], explanation: '双投四大价值：增量、降本、效率、稳定。' },
+    { id: 'q-dual-016', type: 'single', question: 'CPC和OCPC双投时算法互补的原理是什么？', options: ['使用相同算法覆盖更多用户', '不同算法覆盖不同转化阶段用户', 'CPC负责转化OCPC负责曝光', '两者完全独立互不影响'], answer: 1, explanation: 'CPC侧重高点击概率用户，OCPC侧重高转化概率用户，两种算法覆盖不同类型用户。' },
+    { id: 'q-dual-017', type: 'single', question: '双投案例中3家门店合计日预算是多少？', options: ['950元', '1500元', '1950元', '2500元'], answer: 2, explanation: '3店合计日预算1950元（CPC 450+OCPC 1500）。' },
+    { id: 'q-dual-018', type: 'judge', question: '双投不是简单的"花两份钱"，而是通过算法互补实现1+1>2。', options: ['正确', '错误'], answer: 0, explanation: '双投通过CPC和OCPC算法互补，实现1+1>2的投放效果。' },
+    { id: 'q-dual-019', type: 'multi', question: '双投案例中，CPC广告贡献了以下哪些效果？', options: ['日均曝光8500次', '点击420次', '到店68人', 'GMV 28000元'], answer: [0, 1, 2], explanation: 'CPC贡献日均曝光8500次、点击420次、到店68人。GMV 28000元是OCPC的贡献。' },
+    { id: 'q-dual-020', type: 'single', question: '双投模式下CPC的定位和OCPC的定位分别是？', options: ['CPC转化、OCPC曝光', 'CPC拉新引流、OCPC深度转化', 'CPC品牌建设、OCPC效果投放', '两者定位相同'], answer: 1, explanation: 'CPC负责广泛曝光拉新，OCPC负责精准深度转化。' }
+  ]
     },
 
     // ----------------------------------------------------------
@@ -552,7 +631,18 @@ window.DATA = {
         { id: 'nobid-01-q2', type: 'single', question: 'NoBid的日预算建议设为当前日耗的几倍？', options: ['1倍', '1.5倍', '2倍', '3倍'], answer: 2, explanation: 'NoBid日预算建议设为当前日耗的2倍，且不低于100元。' },
         { id: 'nobid-01-q3', type: 'multi', question: 'NoBid的三大核心优势包括哪些？', options: ['一键托管释放人力', '深度优化客资转化', '突破流量天花板', '完全免费试用'], answer: [0, 1, 2], explanation: 'NoBid三大优势：一键托管释放人力、深度优化客资转化、突破流量天花板。' },
         { id: 'nobid-01-q4', type: 'judge', question: 'NoBid投放建议限制在高峰时段，避免非高峰时段浪费预算。', options: ['正确', '错误'], answer: 1, explanation: 'NoBid建议全天24小时投放，让系统有充足时段寻找最优流量，限制时段会影响优化效果。' }
-      ]
+      ,
+    { id: 'q-nobid-001', type: 'single', question: 'NoBid本质上是什么的升级？', options: ['CPC的智能模式', 'OCPC的智能模式', 'CPM的智能模式', '品牌广告的智能模式'], answer: 1, explanation: 'NoBid是OCPC的智能模式，系统自动完成出价决策。' },
+    { id: 'q-nobid-002', type: 'single', question: 'NoBid用户只需要设置什么参数？', options: ['ROI目标', '单次出价', '日预算上限', '转化成本'], answer: 2, explanation: 'NoBid用户只需设定日预算上限，系统自动出价。' },
+    { id: 'q-nobid-003', type: 'single', question: 'NoBid的预算建议设为当前日耗的几倍？', options: ['1倍', '1.5倍', '2倍', '3倍'], answer: 2, explanation: 'NoBid日预算建议设为当前日耗的2倍。' },
+    { id: 'q-nobid-004', type: 'single', question: 'NoBid建议的最低日预算是多少？', options: ['50元', '不低于100元', '200元', '500元'], answer: 1, explanation: 'NoBid最低日预算不低于100元。' },
+    { id: 'q-nobid-005', type: 'single', question: 'NoBid预算调整幅度应控制在多少以内？', options: ['10%', '20%-30%', '50%', '不限'], answer: 1, explanation: '每次调整幅度不超过20%-30%。' },
+    { id: 'q-nobid-006', type: 'judge', question: 'NoBid是一个全新的广告产品，与OCPC无关。', options: ['正确', '错误'], answer: 1, explanation: 'NoBid不是新产品，而是OCPC的智能升级模式。' },
+    { id: 'q-nobid-007', type: 'judge', question: 'NoBid建议全天24小时投放。', options: ['正确', '错误'], answer: 0, explanation: '建议全天24小时投放，让系统有充足时段寻找最优流量。' },
+    { id: 'q-nobid-008', type: 'single', question: 'NoBid的通俗类比"自己开车→请专业司机"说明了什么？', options: ['NoBid更贵', 'NoBid让专业系统做决策', 'NoBid需要专业司机操作', 'NoBid速度慢'], answer: 1, explanation: '类比说明从手动出价到系统自动出价，让专业的人（系统）做专业的事。' },
+    { id: 'q-nobid-009', type: 'single', question: 'NoBid的三大核心优势不包括哪个？', options: ['一键托管释放人力', '深度优化客资转化', '突破流量天花板', '完全免费试用'], answer: 3, explanation: 'NoBid三大优势：一键托管、深度优化、突破天花板。不包括免费试用。' },
+    { id: 'q-nobid-010', type: 'judge', question: 'NoBid特别适合没有专业投放团队的中小型商户。', options: ['正确', '错误'], answer: 0, explanation: 'NoBid一键托管无需人工盯盘，特别适合没有专业投放团队的中小商户。' }
+  ]
     },
 
     {
@@ -578,7 +668,18 @@ window.DATA = {
         { id: 'nobid-02-q1', type: 'single', question: 'NoBid最适合哪类客户？', options: ['日耗>500元的大客户', '日耗<50元的低消耗客户', '只投品牌广告的客户', '新注册未消费的商户'], answer: 1, explanation: '日耗<50元的低消耗客户手动出价难以获量，切换NoBid提升效果最明显。' },
         { id: 'nobid-02-q2', type: 'multi', question: '以下哪些客户不适合使用NoBid？', options: ['企图长期低于大盘成本', '日耗较低希望提升', '零容忍任何成本波动', '只看单个客资成本'], answer: [0, 2, 3], explanation: '企图长期低于大盘、零容忍成本波动、只看单客资成本的客户不适合NoBid。' },
         { id: 'nobid-02-q3', type: 'judge', question: 'NoBid破冰话术的核心策略是"基于数据诊断"。', options: ['正确', '错误'], answer: 0, explanation: 'NoBid破冰话术基于客户投放数据进行诊断，指出问题后推荐方案，更有说服力。' }
-      ]
+      ,
+    { id: 'q-nobid-011', type: 'single', question: 'NoBid最适合哪类客户？', options: ['日耗>500元的大客户', '日耗<50元的低消耗客户', '只投品牌广告的客户', '新注册未消费商户'], answer: 1, explanation: '日耗<50元的低消耗客户手动出价难以获量，切换NoBid提升效果最明显。' },
+    { id: 'q-nobid-012', type: 'single', question: 'NoBid破冰话术的核心策略是什么？', options: ['强调低价', '基于数据诊断', '赠送积分', '免费试用'], answer: 1, explanation: 'NoBid破冰话术基于客户投放数据进行诊断，指出问题后推荐方案。' },
+    { id: 'q-nobid-013', type: 'single', question: 'NoBid价值传递话术的核心观点是？', options: ['高消耗客户提升最大', '低消耗切换提升最大', '品牌客户专属', '新客户专用'], answer: 1, explanation: '"低消耗切换提升最大"是NoBid价值传递的核心观点。' },
+    { id: 'q-nobid-014', type: 'multi', question: '以下哪些客户特征适合使用NoBid？', options: ['日耗<50元', '有明确预算目标', '信任平台', '运营人员充足'], answer: [0, 1, 2], explanation: '适合NoBid的客户：日耗低、有预算目标、信任平台。运营人员充足不是特征。' },
+    { id: 'q-nobid-015', type: 'single', question: '客户说"没人盯着不放心"时，正确的异议处理是？', options: ['安排专人盯盘', '强调系统7x24小时自动优化', '降低预算', '暂停投放'], answer: 1, explanation: '应强调NoBid系统7x24小时自动优化，比人工盯盘更高效，正是"不用人盯"才推荐。' },
+    { id: 'q-nobid-016', type: 'multi', question: '以下哪些客户不建议使用NoBid？', options: ['企图长期低于大盘成本', '零容忍成本波动', '只看单个客资成本', '日耗低想提升效果'], answer: [0, 1, 2], explanation: '企图低于大盘、零容忍波动、只看单客资成本的客户不适合NoBid。' },
+    { id: 'q-nobid-017', type: 'single', question: '当前日耗80元，NoBid预算应该设为多少？', options: ['80元', '100元', '160元', '240元'], answer: 2, explanation: 'NoBid预算=日耗x2=80x2=160元。' },
+    { id: 'q-nobid-018', type: 'judge', question: 'NoBid投放时应该限制在用餐高峰时段以获得最佳效果。', options: ['正确', '错误'], answer: 1, explanation: 'NoBid建议全天24小时投放，限制时段会影响系统优化效果。' },
+    { id: 'q-nobid-019', type: 'single', question: 'NoBid投放效果与什么因素密切相关？', options: ['出价金额', '门店基础建设', '投放天数', '广告创意'], answer: 1, explanation: 'NoBid投放效果与门店基础建设（信息完整度、图片质量、评价等）密切相关。' },
+    { id: 'q-nobid-020', type: 'multi', question: 'NoBid预算调整应遵循哪些原则？', options: ['每次不超过20%-30%', '调整后观察至少3天', '避免频繁大幅调整', '每天调整一次'], answer: [0, 1, 2], explanation: 'NoBid预算调整原则：幅度不超20-30%、观察至少3天、避免频繁调整。' }
+  ]
     },
 
     // ----------------------------------------------------------
@@ -607,7 +708,28 @@ window.DATA = {
         { id: 'allpush-01-q1', type: 'single', question: '全站推同时优化哪两个目标？', options: ['曝光+点击', '客资+GMV', 'CPC+OCPC', '品牌+效果'], answer: 1, explanation: '全站推同时优化客资转化和GMV两个目标。' },
         { id: 'allpush-01-q2', type: 'single', question: '全站推建议的ROI设置不应高于多少？', options: ['1.5', '2.0', '2.5', '3.0'], answer: 2, explanation: '全站推建议ROI不高于2.5，以保证投放效果和获量能力。' },
         { id: 'allpush-01-q3', type: 'judge', question: '全站推适合客单价很低的商户投放。', options: ['正确', '错误'], answer: 1, explanation: '全站推建议客单价不宜过低，可通过代金券+组合套餐提升客单价后再投放。' }
-      ]
+      ,
+    { id: 'q-allpush-001', type: 'single', question: '全站推同时优化哪两个目标？', options: ['曝光+点击', '客资+GMV', 'CPC+OCPC', '品牌+效果'], answer: 1, explanation: '全站推同时优化客资转化和GMV两个目标。' },
+    { id: 'q-allpush-002', type: 'single', question: '全站推建议的ROI设置不应高于多少？', options: ['1.5', '2.0', '2.5', '3.0'], answer: 2, explanation: '全站推建议ROI不高于2.5，以保证投放效果和获量能力。' },
+    { id: 'q-allpush-003', type: 'single', question: '全站推建议通过什么方式提升客单价？', options: ['提高菜品价格', '代金券+组合套餐', '减少菜品数量', '增加广告预算'], answer: 1, explanation: '建议通过代金券+组合套餐提升线上客单价，不宜直接提价。' },
+    { id: 'q-allpush-004', type: 'judge', question: '全站推适合客单价很低的商户投放。', options: ['正确', '错误'], answer: 1, explanation: '全站推建议客单价不宜过低，可通过代金券+组合套餐提升客单价后再投放。' },
+    { id: 'q-allpush-005', type: 'single', question: '全站推建议的投放时段是？', options: ['仅午餐时段', '仅晚餐时段', '全天投放', '仅周末'], answer: 2, explanation: '全站推建议全天投放，让系统有充足时段寻找最优流量。' },
+    { id: 'q-allpush-006', type: 'single', question: '全站推投放后建议观察多长时间再做优化？', options: ['1天', '3-5天', '2周', '1个月'], answer: 1, explanation: '投放3-5天后根据数据表现逐步优化。' },
+    { id: 'q-allpush-007', type: 'judge', question: '全站推不需要分别设置CPC和OCPC，操作更简便。', options: ['正确', '错误'], answer: 0, explanation: '全站推一个产品覆盖双目标，不需要分别设置CPC和OCPC。' },
+    { id: 'q-allpush-008', type: 'single', question: '全站推特别适合哪类商户？', options: ['大品牌连锁', '预算有限的商户', '只做品牌广告的商户', '线上外卖商户'], answer: 1, explanation: '全站推操作简单、投放门槛低，特别适合预算有限的商户。' },
+    { id: 'q-allpush-009', type: 'single', question: '全站推的ROI初期设置建议为多少？', options: ['0.5-1', '1.5-2', '3-5', '5-10'], answer: 1, explanation: '初期建议设置较低的ROI（如1.5-2），让计划充分获量。' },
+    { id: 'q-allpush-010', type: 'judge', question: '全站推投放时门店信息和团购套餐的完善程度会影响效果。', options: ['正确', '错误'], answer: 0, explanation: '门店信息完整、团购套餐有吸引力可以提升全站推的投放效果。' },
+    { id: 'q-allpush-011', type: 'single', question: '全站推的核心优势是什么？', options: ['最低价格', '一个产品双重效果', '品牌曝光最强', '只投效果广告'], answer: 1, explanation: '全站推核心优势是一个广告计划同时覆盖客资和GMV两个目标。' },
+    { id: 'q-allpush-012', type: 'single', question: '向预算有限的商户推荐产品时，全站推的推荐理由是？', options: ['最便宜', '操作简单效果全面', '品牌效果最好', '只适合大客户'], answer: 1, explanation: '全站推操作简单、效果全面、投放门槛低，是预算有限商户的理想选择。' },
+    { id: 'q-allpush-013', type: 'multi', question: '全站推投放优化建议包括哪些？', options: ['通过代金券提升客单价', '初期设较低ROI', '投放3-5天后优化', '限制投放时段'], answer: [0, 1, 2], explanation: '全站推优化建议：提升客单价、初期低ROI、3-5天后优化。不建议限制时段。' },
+    { id: 'q-allpush-014', type: 'judge', question: '全站推特别适合刚入门广告投放的商户。', options: ['正确', '错误'], answer: 0, explanation: '全站推操作简便，不需要分别管理多个广告产品，适合新手商户。' },
+    { id: 'q-allpush-015', type: 'single', question: '全站推提交审核后，需要等待什么才能开始投放？', options: ['付款确认', '审核通过', '签约完成', '门店认证'], answer: 1, explanation: '提交审核后需等待审核通过才能开始投放。' },
+    { id: 'q-allpush-016', type: 'single', question: '全站推系统在全站流量中寻找最优分配的含义是？', options: ['只在搜索场景投放', '系统自动在所有流量场景优化分配', '只在导航场景投放', '人工选择流量来源'], answer: 1, explanation: '系统自动在全站流量中寻找最优分配，覆盖多种场景。' },
+    { id: 'q-allpush-017', type: 'multi', question: '全站推与双投策略的区别在于？', options: ['全站推一个产品覆盖双目标', '双投需要分别设置CPC和OCPC', '全站推操作更简便', '两者效果完全一样'], answer: [0, 1, 2], explanation: '全站推一个产品覆盖双目标、操作简便；双投需要分别设置CPC和OCPC，灵活度更高。' },
+    { id: 'q-allpush-018', type: 'single', question: '全站推新建推广的正确操作路径是？', options: ['新建推广→全站推→选门店→设ROI→设预算→提交', '新建推广→CPC→全站推→设预算', '新建推广→OCPC→全站推→设ROI', '新建推广→品牌→全站推→设预算'], answer: 0, explanation: '正确路径：新建推广→选择全站推→选门店→设ROI→设预算→提交审核。' },
+    { id: 'q-allpush-019', type: 'judge', question: '全站推可以同时为商户带来客资和交易增长。', options: ['正确', '错误'], answer: 0, explanation: '全站推同时优化客资和GMV双目标，可以同时带来客资和交易增长。' },
+    { id: 'q-allpush-020', type: 'single', question: '以下哪种商户最适合推荐全站推？', options: ['已有成熟投放体系的大客户', '预算有限的新手商户', '只做品牌曝光的商户', '客单价极低的外卖商户'], answer: 1, explanation: '全站推适合预算有限、刚入门广告投放的商户，操作简单效果全面。' }
+  ]
     },
 
     // ----------------------------------------------------------
@@ -642,7 +764,18 @@ window.DATA = {
         { id: 'top-01-q2', type: 'single', question: '顶展单个单元下置顶POIID最多支持多少个？', options: ['100个', '1000个', '1万个', '2万个'], answer: 3, explanation: '顶展单个单元下置顶POIID最多支持2万个。' },
         { id: 'top-01-q3', type: 'multi', question: '顶展签约流程包括以下哪些步骤？', options: ['询量', '占量', '下单签约', '竞价排名'], answer: [0, 1, 2], explanation: '顶展签约流程为：询量→占量→下单→签约→配置。顶展按行业售卖，不涉及竞价排名。' },
         { id: 'top-01-q4', type: 'judge', question: '顶展广告按行业售卖，同一行业同一区域可以有多家商户同时展示。', options: ['正确', '错误'], answer: 1, explanation: '顶展按行业售卖，同一行业同一区域独家展示，竞品无法争抢。' }
-      ]
+      ,
+    { id: 'q-top-001', type: 'single', question: '顶展广告配置修改审核通过后何时生效？', options: ['实时生效', 'T+1生效', 'T+3生效', 'T+7生效'], answer: 1, explanation: '顶展配置修改审核通过后T+1（次日）生效。' },
+    { id: 'q-top-002', type: 'single', question: '顶展单个单元下置顶POIID最多支持多少个？', options: ['100个', '1000个', '1万个', '2万个'], answer: 3, explanation: '顶展单个单元下置顶POIID最多支持2万个。' },
+    { id: 'q-top-003', type: 'single', question: '顶展广告按什么维度投放？', options: ['按时间', '按关键词+城市/行政区', '按用户年龄', '按消费金额'], answer: 1, explanation: '顶展按关键词+城市/行政区进行投放。' },
+    { id: 'q-top-004', type: 'judge', question: '顶展广告按行业售卖，同一行业同一区域独家展示。', options: ['正确', '错误'], answer: 0, explanation: '顶展按行业售卖，同一行业同一区域独家展示，竞品无法争抢。' },
+    { id: 'q-top-005', type: 'single', question: '排查顶展不生效时需要确认的高德APP版本是？', options: ['14.00', '15.21', '16.00', '15.21或16.00'], answer: 3, explanation: '需要确认用户使用的高德APP版本≥15.21或16.00。' },
+    { id: 'q-top-006', type: 'single', question: '虚拟店顶展不出广告的常见原因是？', options: ['预算不足', '关键词设置错误', '经营地址不等于投放城市', '门店评分过低'], answer: 2, explanation: '虚拟店要求经营地址必须等于投放城市，否则顶展不会展示。' },
+    { id: 'q-top-007', type: 'single', question: '门店地址变更后，顶展配置需要怎么处理？', options: ['自动更新', '需要重新发布', '联系客服处理', '等待24小时'], answer: 1, explanation: '门店地址变更后，顶展配置需要重新发布才能正常展示。' },
+    { id: 'q-top-008', type: 'judge', question: '顶展签约流程的第一步是占量。', options: ['正确', '错误'], answer: 1, explanation: '顶展签约流程第一步是询量，不是占量。完整流程：询量→占量→下单→签约→配置。' },
+    { id: 'q-top-009', type: 'single', question: '顶展广告展示在什么位置？', options: ['搜索结果底部', '搜索结果顶部', '导航页面侧边', '首页推荐位'], answer: 1, explanation: '顶展展示在搜索结果页顶部第一位，是最强曝光位置。' },
+    { id: 'q-top-010', type: 'judge', question: '顶展线上加白流程包括创建广告主ID、代运营登录和PID登录三步。', options: ['正确', '错误'], answer: 0, explanation: '加白流程三步：创建广告主ID→代运营登录（轩辕PC端）→PID登录。' }
+  ]
     },
 
     {
@@ -668,7 +801,18 @@ window.DATA = {
         { id: 'top-02-q1', type: 'single', question: '排查顶展不生效时需要确认的高德APP最低版本是？', options: ['14.00', '15.21', '16.00', '15.21或16.00'], answer: 3, explanation: '需要确认用户使用的高德APP版本≥15.21或16.00。' },
         { id: 'top-02-q2', type: 'single', question: '虚拟店顶展不出广告的常见原因是？', options: ['预算不足', '关键词设置错误', '经营地址不等于投放城市', '门店评分过低'], answer: 2, explanation: '虚拟店要求经营地址必须等于投放城市，否则顶展不会展示。' },
         { id: 'top-02-q3', type: 'judge', question: '门店地址变更后，顶展配置会自动更新，无需重新发布。', options: ['正确', '错误'], answer: 1, explanation: '门店地址变更后，顶展配置需要重新发布才能正常展示。' }
-      ]
+      ,
+    { id: 'q-top-011', type: 'single', question: '郴州湘菜13店案例中，曝光量提升了多少？', options: ['+25.4%', '+35.4%', '+55.4%', '+75.4%'], answer: 2, explanation: '案例数据显示曝光量提升了55.4%。' },
+    { id: 'q-top-012', type: 'single', question: '郴州湘菜案例中，预约到店提升了多少？', options: ['+99%', '+150%', '+199%', '+250%'], answer: 2, explanation: '案例数据显示预约到店提升了199%。' },
+    { id: 'q-top-013', type: 'single', question: '郴州湘菜案例中，电话拨打提升了多少？', options: ['+106%', '+156%', '+206%', '+306%'], answer: 2, explanation: '案例数据显示电话拨打提升了206%。' },
+    { id: 'q-top-014', type: 'multi', question: '顶展不生效时需要排查的因素包括哪些？', options: ['配置参数', '词包问题', 'APP版本', '门店评分'], answer: [0, 1, 2], explanation: '排查因素：配置检查、词包问题、版本问题、距离问题、虚拟店问题、门店失效、地址变更。' },
+    { id: 'q-top-015', type: 'single', question: '顶展最适合哪类商户？', options: ['追求低价获客的商户', '追求品牌曝光占据搜索首位的商户', '只做线上外卖的商户', '预算极低的商户'], answer: 1, explanation: '顶展适合追求品牌曝光、希望在搜索结果中占据第一位置的商户。' },
+    { id: 'q-top-016', type: 'single', question: '顶展配置参数中，"距离"参数的作用是？', options: ['限制广告投放城市', '设置用户距门店的展示范围', '设置配送距离', '限制门店数量'], answer: 1, explanation: '"距离"参数设置用户距门店的展示范围，覆盖有效到店距离。' },
+    { id: 'q-top-017', type: 'multi', question: '顶展配置参数包括哪些？', options: ['关键词', '地理定向', 'POIID+距离', '出价金额'], answer: [0, 1, 2], explanation: '顶展配置参数：关键词、地理定向、POIID+距离。顶展按行业售卖，不涉及出价金额。' },
+    { id: 'q-top-018', type: 'judge', question: '顶展代运营登录需要通过轩辕PC端进行。', options: ['正确', '错误'], answer: 0, explanation: '代运营登录需要通过轩辕PC端登录代运营后台。' },
+    { id: 'q-top-019', type: 'single', question: '郴州湘菜案例中，访问量提升了多少？', options: ['+15.9%', '+21.9%', '+31.9%', '+41.9%'], answer: 2, explanation: '案例数据显示访问量提升了31.9%。' },
+    { id: 'q-top-020', type: 'multi', question: '顶展对连锁品牌的价值体现在哪些方面？', options: ['统一品牌曝光', '品牌认知积累', '到店转化提升', '降低人工成本'], answer: [0, 1, 2], explanation: '顶展对连锁品牌价值：统一曝光、品牌认知、到店转化一举三得。' }
+  ]
     },
 
     // ----------------------------------------------------------
@@ -697,7 +841,28 @@ window.DATA = {
         { id: 'water-01-q1', type: 'single', question: '水牌广告的最低售卖周期是？', options: ['1天', '3天', '7天', '30天'], answer: 2, explanation: '水牌按周售卖，最低购买7天，且必须为7天的倍数。' },
         { id: 'water-01-q2', type: 'multi', question: '水牌广告可以展示在以下哪些位置？', options: ['商场tips页', '详情页banner', '搜索结果顶部', '商场楼层导览'], answer: [0, 1, 3], explanation: '水牌展示在商场tips页、详情页banner和商场楼层导览，不包含搜索结果顶部（那是顶展）。' },
         { id: 'water-01-q3', type: 'judge', question: '搜索彩蛋采用一客一议的售卖方式。', options: ['正确', '错误'], answer: 0, explanation: '搜索彩蛋根据客户需求定制方案和报价，采用一客一议的售卖方式。' }
-      ]
+      ,
+    { id: 'q-water-001', type: 'single', question: '水牌广告的最低售卖周期是？', options: ['1天', '3天', '7天', '30天'], answer: 2, explanation: '水牌按周售卖，最低购买7天，且必须为7天的倍数。' },
+    { id: 'q-water-002', type: 'single', question: '水牌广告的展示样式是？', options: ['大图样式', '视频样式', '小图样式', '全屏样式'], answer: 2, explanation: '水牌采用小图样式，适配商场场景。' },
+    { id: 'q-water-003', type: 'multi', question: '水牌广告可以展示在以下哪些位置？', options: ['商场tips页', '详情页banner', '搜索结果顶部', '商场楼层导览'], answer: [0, 1, 3], explanation: '水牌展示在商场tips页、详情页banner和商场楼层导览。搜索结果顶部是顶展。' },
+    { id: 'q-water-004', type: 'single', question: '商场tips页支持哪两种水牌展示形式？', options: ['大图和小图', '静态和动态', '横版和竖版', '文字和图片'], answer: 1, explanation: '商场tips页支持静态和动态两种展示形式。' },
+    { id: 'q-water-005', type: 'judge', question: '搜索彩蛋采用一客一议的售卖方式。', options: ['正确', '错误'], answer: 0, explanation: '搜索彩蛋根据客户需求定制方案和报价，采用一客一议的售卖方式。' },
+    { id: 'q-water-006', type: 'single', question: '搜索彩蛋主要覆盖哪些场景？', options: ['商场和超市', '景区景点和交通POI', '写字楼和社区', '学校和医院'], answer: 1, explanation: '搜索彩蛋主要覆盖景区景点和交通POI（火车站、机场等）场景。' },
+    { id: 'q-water-007', type: 'judge', question: '水牌广告是商场商户的品牌曝光利器。', options: ['正确', '错误'], answer: 0, explanation: '水牌覆盖商场内多个流量触点，是商场商户的品牌曝光利器。' },
+    { id: 'q-water-008', type: 'single', question: '水牌广告最适合哪类商户？', options: ['线上外卖商户', '商场内商户', '街边独立门店', '批发市场商户'], answer: 1, explanation: '水牌覆盖商场场景，最适合商场内的餐饮、零售、娱乐等商户。' },
+    { id: 'q-water-009', type: 'single', question: '搜索彩蛋最适合哪类商户？', options: ['商场内商户', '景区和交通枢纽周边商户', '社区底商', '写字楼商户'], answer: 1, explanation: '搜索彩蛋覆盖景区景点和交通POI场景，适合景区和交通枢纽周边商户。' },
+    { id: 'q-water-010', type: 'judge', question: '水牌购买天数可以是任意天数，不必须是7的倍数。', options: ['正确', '错误'], answer: 1, explanation: '水牌按周售卖，最低7天，且必须为7天的倍数。' },
+    { id: 'q-water-011', type: 'single', question: '水牌在详情页的展示位置是？', options: ['页面底部', '页面顶部banner', '页面中间', '侧边栏'], answer: 1, explanation: '水牌在商场详情页顶部展示品牌banner。' },
+    { id: 'q-water-012', type: 'multi', question: '水牌和顶展的区别在于？', options: ['水牌覆盖商场场景，顶展覆盖搜索场景', '水牌按周售卖，顶展按行业售卖', '水牌是小图样式，顶展是顶部展示', '两者完全相同'], answer: [0, 1, 2], explanation: '水牌覆盖商场场景、按周售卖、小图样式；顶展覆盖搜索场景、按行业售卖、顶部展示。' },
+    { id: 'q-water-013', type: 'single', question: '向景区周边餐厅推荐产品时，除了顶展还可以推荐什么？', options: ['CPC', '搜索彩蛋', 'NoBid', '全站推'], answer: 1, explanation: '景区周边餐厅适合顶展（搜索登顶）+搜索彩蛋（景区POI场景触发）。' },
+    { id: 'q-water-014', type: 'judge', question: '搜索彩蛋的展示形式是用户搜索特定POI时触发品牌互动内容。', options: ['正确', '错误'], answer: 0, explanation: '用户搜索特定POI时触发品牌互动内容，这就是搜索彩蛋的展示形式。' },
+    { id: 'q-water-015', type: 'single', question: '商户想购买14天的水牌广告，是否符合售卖规则？', options: ['符合，14是7的倍数', '不符合，最少30天', '不符合，最多7天', '需要特殊审批'], answer: 0, explanation: '水牌按周售卖，最低7天且必须是7的倍数，14天符合要求。' },
+    { id: 'q-water-016', type: 'multi', question: '水牌广告覆盖的商场场景触点包括？', options: ['商场tips页', '详情页banner', '楼层导览', '搜索结果页'], answer: [0, 1, 2], explanation: '水牌覆盖商场tips页、详情页banner、商场楼层导览，不包含搜索结果页。' },
+    { id: 'q-water-017', type: 'single', question: '搜索彩蛋的售卖方式"一客一议"意味着什么？', options: ['统一定价', '根据客户需求定制方案和报价', '免费试用', '按效果付费'], answer: 1, explanation: '一客一议意味着根据客户的具体需求定制投放方案和报价。' },
+    { id: 'q-water-018', type: 'single', question: '以下哪个场景最适合推荐水牌+搜索彩蛋组合？', options: ['街边奶茶店', '景区内餐厅', '社区便利店', '外卖厨房'], answer: 1, explanation: '景区内餐厅同时适合水牌（商场/景区场景）和搜索彩蛋（景区POI搜索）。' },
+    { id: 'q-water-019', type: 'judge', question: '水牌广告的售卖周期可以是21天。', options: ['正确', '错误'], answer: 0, explanation: '21天是7的倍数，符合水牌按周售卖的规则。' },
+    { id: 'q-water-020', type: 'multi', question: '以下哪些商户适合推荐搜索彩蛋？', options: ['景区周边民宿', '火车站附近餐厅', '商场内快餐', '社区水果店'], answer: [0, 1], explanation: '搜索彩蛋适合景区景点和交通POI场景，景区民宿和火车站附近餐厅适合。' }
+  ]
     },
 
     // ----------------------------------------------------------
@@ -732,7 +897,18 @@ window.DATA = {
         { id: 'agent-01-q2', type: 'multi', question: '品牌智能体C端能力包括以下哪些？', options: ['AI组菜', '菜品推荐', '同行分析', '语音播报'], answer: [0, 1, 3], explanation: 'AI组菜、菜品推荐、语音播报是C端能力，同行分析是B端能力。' },
         { id: 'agent-01-q3', type: 'multi', question: '品牌智能体B端同行分析功能包括哪些维度？', options: ['综合竞争力', '客流分析', '客群画像', '同行对比'], answer: [0, 1, 2, 3], explanation: '同行分析包括综合竞争力、客流、客群画像、职业分布、流量转化、同行对比等维度。' },
         { id: 'agent-01-q4', type: 'judge', question: '品牌智能体覆盖搜索、导航、到店三大用户场景。', options: ['正确', '错误'], answer: 0, explanation: '品牌智能体覆盖搜索、导航、到店三大核心场景，全链路服务用户。' }
-      ]
+      ,
+    { id: 'q-agent-001', type: 'single', question: '品牌智能体1-9店的月费是？', options: ['69元/店/月', '79元/店/月', '89元/店/月', '99元/店/月'], answer: 3, explanation: '1-9店标准价为99元/店/月。' },
+    { id: 'q-agent-002', type: 'single', question: '品牌智能体每月包含多少积分？', options: ['5000积分', '8000积分', '10000积分', '15000积分'], answer: 1, explanation: '每月固定包含8000积分。' },
+    { id: 'q-agent-003', type: 'single', question: '品牌智能体签约最短时长是？', options: ['3个月', '6个月', '9个月', '12个月'], answer: 1, explanation: '购买时长可选6、9、12个月，最短6个月。' },
+    { id: 'q-agent-004', type: 'single', question: '智能体解约退款的保底天数是？', options: ['5天', '7天', '10天', '15天'], answer: 2, explanation: '解约退款保底10天，10天内不退款。' },
+    { id: 'q-agent-005', type: 'single', question: '高德月活用户数约是多少？', options: ['3.5亿', '6.8亿', '9.96亿', '12亿'], answer: 2, explanation: '高德月活用户约9.96亿。' },
+    { id: 'q-agent-006', type: 'single', question: '30秒开场白中，品牌智能体的比喻是？', options: ['AI服务员', 'AI管家', 'AI店长', 'AI客服'], answer: 1, explanation: '30秒开场白中品牌智能体被比喻为"AI管家"。' },
+    { id: 'q-agent-007', type: 'judge', question: '品牌智能体解决的三大痛点是：找不到客、进来了不下单、店开了不会管。', options: ['正确', '错误'], answer: 0, explanation: '品牌智能体解决三大核心痛点：找不到客、进来了不下单、店开了不会管。' },
+    { id: 'q-agent-008', type: 'judge', question: '品牌智能体每月包含100条语音播报。', options: ['正确', '错误'], answer: 0, explanation: '每月包含8000积分+100条语音播报。' },
+    { id: 'q-agent-009', type: 'single', question: '品牌智能体300+店的月费是？', options: ['59元/店/月', '69元/店/月', '79元/店/月', '89元/店/月'], answer: 1, explanation: '300+店月费为69元/店/月，约7折。' },
+    { id: 'q-agent-010', type: 'single', question: '品牌智能体7分钟成交节奏中，方案讲解占多长时间？', options: ['30秒', '1分钟', '2分钟', '3分钟'], answer: 3, explanation: '7分钟成交节奏：破冰30s→挖需2min→方案3min→案例1min→促成30s。' }
+  ]
     },
 
     {
@@ -764,7 +940,18 @@ window.DATA = {
         { id: 'agent-02-q2', type: 'single', question: '品牌智能体每月包含多少积分？', options: ['5000积分', '8000积分', '10000积分', '15000积分'], answer: 1, explanation: '每月固定包含8000积分，用于AI智能体各项功能消耗。' },
         { id: 'agent-02-q3', type: 'multi', question: '品牌智能体的7类甜区客户包括以下哪些？', options: ['连锁品牌客户', '隐藏好店', '社区快餐小店', '景区周边门店'], answer: [0, 1, 3], explanation: '7类甜区客户为：连锁(A)、隐藏好店(B)、网红(C)、新店(D)、商场(E)、景区(F)、高客单(G)。' },
         { id: 'agent-02-q4', type: 'judge', question: '品牌智能体解约退款的保底天数是10天。', options: ['正确', '错误'], answer: 0, explanation: '智能体解约退款保底10天，10天内不退款，超过10天按剩余天数比例退。' }
-      ]
+      ,
+    { id: 'q-agent-011', type: 'single', question: '品牌智能体的三大卖点不包括哪个？', options: ['高德9.96亿月活', 'AI获客40秒搞定', 'AI管店', '免费试用1个月'], answer: 3, explanation: '三大卖点：高德9.96亿月活、AI获客40秒搞定、AI管店。不包括免费试用。' },
+    { id: 'q-agent-012', type: 'multi', question: '品牌智能体的7类甜区客户包括以下哪些？', options: ['连锁品牌(A类)', '隐藏好店(B类)', '社区快餐(C类)', '景区门店(F类)'], answer: [0, 1, 3], explanation: '7类甜区：连锁(A)、隐藏好店(B)、网红(C)、新店(D)、商场(E)、景区(F)、高客单(G)。' },
+    { id: 'q-agent-013', type: 'single', question: '智能体解约退款公式是？', options: ['总金额x(剩余天数/总天数)', '总金额-已用天数x日费', '总金额x50%', '不退款'], answer: 0, explanation: '退款金额=总金额x(剩余天数/总天数)，保底10天。' },
+    { id: 'q-agent-014', type: 'single', question: '商家配置AI智能体的操作路径是？', options: ['轩辕→内容装修→AI智能体', '高德APP→门店管理→智能体', '后台→广告管理→智能体', '轩辕→广告投放→智能体'], answer: 0, explanation: '配置路径：轩辕→内容装修→AI智能体。' },
+    { id: 'q-agent-015', type: 'multi', question: 'AI智能体可配置的内容包括哪些？', options: ['开关和名称', '形象和标语', '问答库和知识库', '语音播报'], answer: [0, 1, 2, 3], explanation: '可配置：开关、名称、形象、标语、问答库、知识库、语音播报。' },
+    { id: 'q-agent-016', type: 'single', question: '品牌智能体10-99店的月费是？', options: ['69元/店/月', '79元/店/月', '89元/店/月', '99元/店/月'], answer: 2, explanation: '10-99店月费为89元/店/月，约9折。' },
+    { id: 'q-agent-017', type: 'single', question: 'AI获客从搜索到到店最快需要多长时间？', options: ['10秒', '20秒', '40秒', '60秒'], answer: 2, explanation: 'AI获客40秒搞定，从搜索到到店最快40秒。' },
+    { id: 'q-agent-018', type: 'judge', question: '品牌智能体尝鲜价活动期为6月1日至7月31日。', options: ['正确', '错误'], answer: 0, explanation: '尝鲜价活动期为6月1日至7月31日。' },
+    { id: 'q-agent-019', type: 'multi', question: '品牌智能体C端能力中的AI预订和AI组菜的共同特点是？', options: ['都是面向消费者的服务', '都帮助用户做决策', '都需要商户额外付费', '都是B端功能'], answer: [0, 1], explanation: 'AI预订和AI组菜都是面向消费者(C端)的服务，都帮助用户做决策。' },
+    { id: 'q-agent-020', type: 'single', question: '品牌智能体签约后最重要的后续动作是？', options: ['立即投放广告', '帮客户做好AI智能体配置', '等待系统自动优化', '联系客户续费'], answer: 1, explanation: '签约后一定要帮客户做好配置，配置越完善，AI智能体效果越好。' }
+  ]
     }
 
   ],
@@ -1417,7 +1604,7 @@ window.App = {
       b.classList.toggle('bg-brand-50', isActive);
       b.classList.toggle('text-gray-600', !isActive);
     });
-    const titles = { home:'首页', learn:'学习中心', practice:'练习场', exam:'考试中心', profile:'个人中心', admin:'管理后台', course:'课程详情', quiz:'随堂小测' };
+    const titles = { home:'首页', learn:'学习中心', exam:'考试中心', profile:'个人中心', admin:'管理后台', course:'课程详情', quiz:'随堂小测' };
     document.getElementById('page-title').textContent = titles[tab] || '广告特训营';
   },
 
@@ -1431,7 +1618,6 @@ window.App = {
     switch(tab) {
       case 'home': this.renderHome(content); break;
       case 'learn': parts[1] ? this.renderCourseDetail(content, parts[1]) : this.renderLearn(content); break;
-      case 'practice': parts[1] === 'drill' ? this.renderDrill(content) : parts[1] === 'scenario' ? this.renderScenarioPractice(content) : this.renderPractice(content); break;
       case 'exam': parts[1] === 'history' ? this.renderExamHistory(content) : (window.Exam ? Exam.renderList(content) : this.renderExamFallback(content)); break;
       case 'profile': parts[1] === 'errors' ? this.renderErrorBook(content) : parts[1] === 'history' ? this.renderHistory(content) : this.renderProfile(content); break;
       case 'admin': window.Admin ? Admin.render(content) : this.renderAdminFallback(content); break;
@@ -1450,7 +1636,6 @@ window.App = {
     const completedCourses = Object.keys(p).filter(k => p[k].completed).length;
     const pct = totalCourses ? Math.round(completedCourses / totalCourses * 100) : 0;
     const examHistory = JSON.parse(localStorage.getItem('exam_history') || '[]');
-    const practiceHistory = JSON.parse(localStorage.getItem('practice_history') || '[]');
     const errorBook = JSON.parse(localStorage.getItem('atc_errors') || '[]');
     const avgScore = examHistory.length ? Math.round(examHistory.reduce((s,e) => s + e.score, 0) / examHistory.length) : 0;
 
@@ -1485,14 +1670,10 @@ window.App = {
         </div>
 
         <!-- Quick Actions -->
-        <div class="grid grid-cols-2 gap-3">
+        <div class="grid grid-cols-3 gap-3">
           <a href="#learn" class="card card-click flex items-center gap-3 !p-4">
             <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
             <div><div class="font-medium text-sm">继续学习</div><div class="text-xs text-gray-400">${completedCourses}/${totalCourses}课程</div></div>
-          </a>
-          <a href="#practice" class="card card-click flex items-center gap-3 !p-4">
-            <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center"><svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg></div>
-            <div><div class="font-medium text-sm">开始练习</div><div class="text-xs text-gray-400">刷题+对练</div></div>
           </a>
           <a href="#exam" class="card card-click flex items-center gap-3 !p-4">
             <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center"><svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div>
@@ -1803,318 +1984,11 @@ window.App = {
     location.hash = '#learn/' + courseId;
   },
 
-  // ─── PRACTICE MODULE ────────────────────────────────
-  renderPractice(el) {
-    el.innerHTML = `<div class="animate-fade-in space-y-4">
-      <div class="text-sm text-gray-500 mb-2">选择练习方式，巩固广告知识</div>
-
-      <a href="#practice/drill" class="card card-click block">
-        <div class="flex items-center gap-4">
-          <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center text-2xl">⚡</div>
-          <div class="flex-1">
-            <div class="font-semibold text-gray-900 text-lg">快速刷题</div>
-            <div class="text-sm text-gray-500 mt-0.5">随机10题限时练习，即时显示答案和解析</div>
-          </div>
-          <svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </div>
-      </a>
-
-      <a href="#practice/scenario" class="card card-click block">
-        <div class="flex items-center gap-4">
-          <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-2xl">🎭</div>
-          <div class="flex-1">
-            <div class="font-semibold text-gray-900 text-lg">场景模拟</div>
-            <div class="text-sm text-gray-500 mt-0.5">销售场景文字模拟，选择最佳应对话术</div>
-          </div>
-          <svg class="w-5 h-5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </div>
-      </a>
-    </div>`;
-  },
-
-  // ─── DRILL (快速刷题) ──────────────────────────────
-  renderDrill(el) {
-    this.setActiveTab('practice');
-    document.getElementById('page-title').textContent = '快速刷题';
-    const stateKey = 'drill_state';
-    let state = JSON.parse(sessionStorage.getItem(stateKey) || 'null');
-    if (!state) {
-      // Pick 10 random questions
-      const pool = [...DATA.questions].sort(() => Math.random() - 0.5).slice(0, 10);
-      state = { questions: pool, current: 0, answers: {}, submitted: {}, startTime: Date.now() };
-      sessionStorage.setItem(stateKey, JSON.stringify(state));
-    }
-    const q = state.questions[state.current];
-    const answered = state.submitted[state.current];
-    const userAns = state.answers[state.current];
-
-    el.innerHTML = `<div class="animate-fade-in">
-      <button onclick="App.exitDrill()" class="flex items-center gap-1 text-sm text-gray-500 hover:text-brand-600 mb-4">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        退出练习
-      </button>
-      <div class="flex items-center justify-between mb-4">
-        <span class="badge badge-blue">${state.current + 1} / ${state.questions.length}</span>
-        <span class="badge badge-gray">${{single:'单选',multi:'多选',judge:'判断'}[q.type]}</span>
-      </div>
-      <div class="card mb-4">
-        <h3 class="font-semibold text-gray-900 mb-4">${q.question}</h3>
-        <div class="space-y-2">
-          ${q.options.map((opt, i) => {
-            let cls = '';
-            if (answered) {
-              const isCorrect = q.type === 'multi' ? q.answer.includes(i) : q.answer === i;
-              const isSelected = q.type === 'multi' ? (userAns||[]).includes(i) : userAns === i;
-              if (isCorrect) cls = 'correct';
-              if (isSelected && !isCorrect) cls = 'wrong';
-            } else {
-              const isSelected = q.type === 'multi' ? (userAns||[]).includes(i) : userAns === i;
-              if (isSelected) cls = 'selected';
-            }
-            return `<div class="quiz-option ${cls}" onclick="App.drillSelect(${i})"><div class="option-marker">${q.type === 'judge' ? (i === 0 ? '对' : '错') : String.fromCharCode(65+i)}</div><div class="option-text">${opt}</div></div>`;
-          }).join('')}
-        </div>
-        ${answered ? `<div class="mt-4 p-3 rounded-xl bg-blue-50 text-blue-800 text-sm"><strong>解析：</strong>${q.explanation || '暂无解析'}</div>` : ''}
-      </div>
-      <div class="flex gap-3">
-        ${state.current > 0 ? `<button onclick="App.drillNav(${state.current - 1})" class="flex-1 py-3 bg-gray-100 text-gray-700 rounded-xl font-medium">上一题</button>` : ''}
-        ${!answered ? `<button onclick="App.drillSubmit()" class="flex-1 py-3 bg-brand-600 text-white rounded-xl font-medium">确认答案</button>` :
-          (state.current < state.questions.length - 1 ? `<button onclick="App.drillNav(${state.current + 1})" class="flex-1 py-3 bg-brand-600 text-white rounded-xl font-medium">下一题</button>` : `<button onclick="App.drillFinish()" class="flex-1 py-3 bg-green-600 text-white rounded-xl font-medium">查看结果</button>`)}
-      </div>
-    </div>`;
-  },
-
-  drillSelect(idx) {
-    const state = JSON.parse(sessionStorage.getItem('drill_state'));
-    if (state.submitted[state.current]) return;
-    const q = state.questions[state.current];
-    if (q.type === 'multi') {
-      let ans = state.answers[state.current] || [];
-      if (ans.includes(idx)) ans = ans.filter(a => a !== idx); else ans.push(idx);
-      state.answers[state.current] = ans;
-    } else {
-      state.answers[state.current] = idx;
-    }
-    sessionStorage.setItem('drill_state', JSON.stringify(state));
-    this.renderDrill(document.getElementById('app-content'));
-  },
-  drillSubmit() {
-    const state = JSON.parse(sessionStorage.getItem('drill_state'));
-    if (state.answers[state.current] === undefined) return this.toast('请先选择答案');
-    state.submitted[state.current] = true;
-    const q = state.questions[state.current];
-    const ans = state.answers[state.current];
-    const isCorrect = q.type === 'multi' ? (Array.isArray(ans) && q.answer.length === ans.length && q.answer.every(a => ans.includes(a))) : (ans === q.answer);
-    if (!isCorrect) this.addError(q, ans, 'drill');
-    sessionStorage.setItem('drill_state', JSON.stringify(state));
-    this.renderDrill(document.getElementById('app-content'));
-  },
-  drillNav(idx) {
-    const state = JSON.parse(sessionStorage.getItem('drill_state'));
-    state.current = idx;
-    sessionStorage.setItem('drill_state', JSON.stringify(state));
-    this.renderDrill(document.getElementById('app-content'));
-  },
-  drillFinish() {
-    const state = JSON.parse(sessionStorage.getItem('drill_state'));
-    let correct = 0;
-    state.questions.forEach((q, i) => {
-      const ans = state.answers[i];
-      const isCorrect = q.type === 'multi' ? (Array.isArray(ans) && q.answer.length === ans.length && q.answer.every(a => ans.includes(a))) : (ans === q.answer);
-      if (isCorrect) correct++;
-    });
-    sessionStorage.removeItem('drill_state');
-    this.showModal(`
-      <div class="p-6 text-center">
-        <div class="text-5xl mb-4">${correct >= 8 ? '🎉' : '💪'}</div>
-        <div class="text-2xl font-bold text-gray-900 mb-1">练习完成</div>
-        <div class="text-lg text-gray-500 mb-4">正确率 ${Math.round(correct / state.questions.length * 100)}%</div>
-        <div class="flex gap-6 justify-center mb-6">
-          <div class="text-center"><div class="text-2xl font-bold text-green-600">${correct}</div><div class="text-xs text-gray-400">正确</div></div>
-          <div class="text-center"><div class="text-2xl font-bold text-red-500">${state.questions.length - correct}</div><div class="text-xs text-gray-400">错误</div></div>
-          <div class="text-center"><div class="text-2xl font-bold text-gray-400">${state.questions.length}</div><div class="text-xs text-gray-400">总计</div></div>
-        </div>
-        <button onclick="App.closeModal(); location.hash='#practice'" class="w-full py-3 bg-brand-600 text-white rounded-xl font-medium">返回首页</button>
-      </div>
-    `);
-  },
-  exitDrill() {
-    if (confirm('确定退出练习？进度将不保存。')) {
-      sessionStorage.removeItem('drill_state');
-      location.hash = '#practice';
-    }
-  },
-
-  // ─── SCENARIO PRACTICE (文字模拟) ───────────────────
-  renderScenarioPractice(el) {
-    this.setActiveTab('practice');
-    document.getElementById('page-title').textContent = '场景模拟';
-    el.innerHTML = `<div class="animate-fade-in space-y-4">
-      <button onclick="location.hash='#practice'" class="flex items-center gap-1 text-sm text-gray-500 hover:text-brand-600 mb-2">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-        返回练习场
-      </button>
-      <div class="text-sm text-gray-500">选择一个销售场景，练习应对话术</div>
-      ${DATA.scenarios.map(s => `
-        <div class="card card-click" onclick="App.startScenario('${s.id}')">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-full bg-${{easy:'green',medium:'orange',hard:'red'}[s.difficulty]}-100 flex items-center justify-center text-xl">${s.merchantProfile.name[0]}</div>
-            <div class="flex-1">
-              <div class="font-semibold">${s.name}</div>
-              <div class="text-sm text-gray-500">${s.merchantProfile.industry} · ${s.merchantProfile.scale} · ${s.merchantProfile.personality}</div>
-            </div>
-            <span class="badge ${{easy:'badge-green',medium:'badge-orange',hard:'badge-red'}[s.difficulty]}">${{easy:'简单',medium:'中等',hard:'困难'}[s.difficulty]}</span>
-          </div>
-        </div>
-      `).join('')}
-    </div>`;
-  },
-
-  startScenario(scenarioId) {
-    const scenario = DATA.scenarios.find(s => s.id === scenarioId);
-    if (!scenario) return;
-    const stateKey = 'scenario_' + scenarioId;
-    sessionStorage.setItem(stateKey, JSON.stringify({ turn: 0, messages: [{role:'merchant', text: scenario.openingLine}], score: 50 }));
-    this.renderScenarioChat(document.getElementById('app-content'), scenarioId);
-  },
-
-  renderScenarioChat(el, scenarioId) {
-    const scenario = DATA.scenarios.find(s => s.id === scenarioId);
-    const state = JSON.parse(sessionStorage.getItem('scenario_' + scenarioId));
-    this.setActiveTab('practice');
-    document.getElementById('page-title').textContent = scenario.name;
-
-    const feedbackMap = {
-      20: { color: '#dcfce7', border: '#22c55e', text: '#15803d', icon: '✓', label: '最佳选择' },
-      10: { color: '#dbeafe', border: '#3b82f6', text: '#1d4ed8', icon: '👍', label: '不错' },
-      5:  { color: '#f1f5f9', border: '#94a3b8', text: '#475569', icon: '—', label: '一般' },
-      '-5': { color: '#fee2e2', border: '#ef4444', text: '#dc2626', icon: '✗', label: '避免' }
-    };
-
-    const showFeedback = state.showFeedback && state.chosenOptions;
-    const isFinished = state.turn >= scenario.responses.length;
-
-    el.innerHTML = `<div class="animate-fade-in">
-      <button onclick="location.hash='#practice/scenario'" class="flex items-center gap-1 text-sm text-gray-500 hover:text-brand-600 mb-4">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-        退出场景
-      </button>
-      <div class="card mb-4 p-3 bg-blue-50 border-blue-100">
-        <div class="text-sm text-blue-800"><strong>商户：</strong>${scenario.merchantProfile.name} · ${scenario.merchantProfile.industry} · ${scenario.merchantProfile.scale}</div>
-        <div class="text-xs text-blue-600 mt-1">目标：${scenario.salesGoal}</div>
-      </div>
-      <div class="flex items-center gap-2 mb-3">
-        <div class="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
-          <div class="h-full bg-brand-500 rounded-full transition-all" style="width:${Math.min(100, Math.round(state.turn / scenario.responses.length * 100))}%"></div>
-        </div>
-        <span class="text-xs text-gray-400">${state.turn}/${scenario.responses.length}轮</span>
-        <span class="text-xs font-medium px-2 py-0.5 rounded-full ${state.score >= 70 ? 'bg-green-100 text-green-700' : state.score >= 40 ? 'bg-yellow-100 text-yellow-700' : 'bg-red-100 text-red-700'}">${state.score}分</span>
-      </div>
-      <div class="space-y-3 mb-4 max-h-[40vh] overflow-y-auto" id="scenario-chat">
-        ${state.messages.map(m => `
-          <div class="flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}">
-            <div class="chat-bubble ${m.role}">${m.text}</div>
-          </div>
-        `).join('')}
-      </div>
-      ${showFeedback ? `
-        <div class="card mb-3">
-          <div class="text-sm font-medium text-gray-700 mb-3">本轮选项点评：</div>
-          ${state.chosenOptions.map((opt, i) => {
-            const fb = feedbackMap[opt.score] || feedbackMap[5];
-            const isChosen = i === state.chosenIndex;
-            return `<div style="background:${fb.color};border:2px solid ${fb.border};border-radius:12px;padding:0.75rem;margin-bottom:0.5rem;display:flex;align-items:flex-start;gap:0.5rem;${isChosen ? 'box-shadow:0 0 0 2px ' + fb.border + '40;' : 'opacity:0.75;'}">
-              <span style="width:22px;height:22px;border-radius:50%;background:${fb.border};color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;">${fb.icon}</span>
-              <div style="flex:1;">
-                <div style="font-size:0.85rem;color:${fb.text};line-height:1.5;">${opt.text}</div>
-                ${opt.feedback ? `<div style="font-size:0.75rem;color:${fb.text};margin-top:4px;opacity:0.8;font-style:italic;">💡 ${opt.feedback}</div>` : ''}
-                <div style="font-size:0.7rem;color:${fb.text};margin-top:2px;font-weight:600;">${fb.label}${isChosen ? ' · 你的选择' : ''}</div>
-              </div>
-            </div>`;
-          }).join('')}
-          <button onclick="App.scenarioContinue('${scenarioId}')" class="w-full mt-2 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-medium rounded-xl text-sm transition">
-            ${isFinished ? '查看结果' : '继续下一轮 →'}
-          </button>
-        </div>
-      ` : isFinished ? `
-        <div class="card text-center p-6">
-          <div class="text-4xl mb-3">${state.score >= 70 ? '🏆' : state.score >= 40 ? '💪' : '📚'}</div>
-          <div class="text-lg font-bold mb-1">${state.score >= 70 ? '表现出色！' : state.score >= 40 ? '还不错，继续加油' : '需要多练习哦'}</div>
-          <div class="text-3xl font-bold ${state.score >= 70 ? 'text-green-600' : state.score >= 40 ? 'text-yellow-600' : 'text-red-500'} my-3">${state.score}<span class="text-base font-normal text-gray-400">/100</span></div>
-          <button onclick="location.hash='#practice/scenario'" class="px-6 py-2 bg-brand-600 text-white rounded-xl text-sm">再来一次</button>
-        </div>
-      ` : `
-        <div class="card">
-          <div class="text-sm font-medium text-gray-700 mb-2">选择你的回应：</div>
-          ${this.getScenarioOptions(scenario, state.turn).map((opt, i) => `
-            <button onclick="App.scenarioRespond('${scenarioId}', ${i})" class="w-full text-left p-3 mb-2 rounded-xl border-2 border-gray-200 hover:border-brand-400 hover:bg-brand-50 text-sm transition active:scale-[0.98]">${opt.text}</button>
-          `).join('')}
-        </div>
-      `}
-    </div>`;
-    const chatEl = document.getElementById('scenario-chat');
-    if (chatEl) chatEl.scrollTop = chatEl.scrollHeight;
-  },
-
-  getScenarioOptions(scenario, turn) {
-    const resp = scenario.responses[turn];
-    // Use per-turn options from data if available
-    if (resp && resp.options && resp.options.length > 0) {
-      // Deterministic shuffle per turn so options aren't always in same position
-      const orders = [[0,1,2,3],[2,0,3,1],[1,3,0,2],[3,2,1,0]];
-      const order = orders[turn % orders.length];
-      const opts = resp.options;
-      return order.filter(i => i < opts.length).map(i => opts[i]);
-    }
-    // Fallback: generic options
-    const good = { text: `推荐${scenario.productLines.map(p => this.getProductName(p)).join('+')}方案`, score: 20 };
-    const ok = { text: '先了解商户的具体需求和顾虑', score: 10 };
-    const neutral = { text: '介绍高德平台的流量优势', score: 5 };
-    const bad = { text: '直接报价格，强调便宜', score: -5 };
-    const orders = [[0,1,2,3],[2,0,3,1],[1,3,0,2],[3,2,1,0]];
-    const order = orders[turn % orders.length];
-    return [good, ok, neutral, bad].map((_, i) => [good, ok, neutral, bad][order[i]]);
-  },
-
-  scenarioRespond(scenarioId, optIdx) {
-    const scenario = DATA.scenarios.find(s => s.id === scenarioId);
-    const state = JSON.parse(sessionStorage.getItem('scenario_' + scenarioId));
-    const options = this.getScenarioOptions(scenario, state.turn);
-    const chosen = options[optIdx];
-    // Record which option was chosen
-    state.chosenIndex = optIdx;
-    state.chosenOptions = options;
-    state.messages.push({ role: 'user', text: chosen.text });
-    state.score = Math.min(100, Math.max(0, state.score + chosen.score));
-    const resp = scenario.responses[state.turn];
-    if (resp) {
-      state.messages.push({ role: 'merchant', text: resp.followUp || resp.reply });
-    }
-    state.turn++;
-    state.showFeedback = true;
-    sessionStorage.setItem('scenario_' + scenarioId, JSON.stringify(state));
-    this.renderScenarioChat(document.getElementById('app-content'), scenarioId);
-  },
-
-  scenarioContinue(scenarioId) {
-    const state = JSON.parse(sessionStorage.getItem('scenario_' + scenarioId));
-    state.showFeedback = false;
-    state.chosenIndex = null;
-    state.chosenOptions = null;
-    sessionStorage.setItem('scenario_' + scenarioId, JSON.stringify(state));
-    this.renderScenarioChat(document.getElementById('app-content'), scenarioId);
-  },
-
-  getProductName(line) {
-    const map = { cpc:'CPC', 'ocpc-gmv':'OCPC-GMV', 'ocpc-leads':'OCPC-客资', dual:'双投', nobid:'NoBid', allpush:'全站推', topdisplay:'顶展', watercard:'水牌', 'ai-agent':'品牌智能体' };
-    return map[line] || line;
-  },
 
   // ─── PROFILE ────────────────────────────────────────
   renderProfile(el) {
     const u = this.state.user;
     const examHistory = JSON.parse(localStorage.getItem('exam_history') || '[]');
-    const practiceHistory = JSON.parse(localStorage.getItem('practice_history') || '[]');
     const errorBook = JSON.parse(localStorage.getItem('atc_errors') || '[]');
     const totalCourses = DATA.courses.length;
     const completedCourses = Object.keys(this.state.progress).filter(k => this.state.progress[k].completed).length;
@@ -2129,10 +2003,9 @@ window.App = {
       </div>
 
       <!-- Stats -->
-      <div class="grid grid-cols-4 gap-2">
+      <div class="grid grid-cols-3 gap-2">
         <div class="card text-center !p-3"><div class="text-xl font-bold text-brand-600">${completedCourses}</div><div class="text-xs text-gray-400">已学课程</div></div>
         <div class="card text-center !p-3"><div class="text-xl font-bold text-green-600">${examHistory.length}</div><div class="text-xs text-gray-400">参加考试</div></div>
-        <div class="card text-center !p-3"><div class="text-xl font-bold text-orange-600">${practiceHistory.length}</div><div class="text-xs text-gray-400">对练次数</div></div>
         <div class="card text-center !p-3"><div class="text-xl font-bold text-red-600">${errorBook.length}</div><div class="text-xs text-gray-400">错题数</div></div>
       </div>
 
@@ -2253,7 +2126,6 @@ window.App = {
   },
 
   // ─── FALLBACKS ──────────────────────────────────────
-  renderAIPracticeFallback(el) { el.innerHTML = '<div class="text-center text-gray-400 py-16">AI对练模块加载中...</div>'; },
   renderExamFallback(el) { el.innerHTML = '<div class="text-center text-gray-400 py-16">考试模块加载中...</div>'; },
   renderAdminFallback(el) { el.innerHTML = '<div class="text-center text-gray-400 py-16">管理后台加载中...</div>'; },
 
@@ -2289,7 +2161,6 @@ window.App = {
     const progress = this.state.progress;
     const quizResults = JSON.parse(localStorage.getItem('atc_quiz_results_' + u.phone) || '[]');
     const examHistory = JSON.parse(localStorage.getItem('exam_history') || '[]');
-    const practiceHistory = JSON.parse(localStorage.getItem('practice_history') || '[]');
     const completedCourses = Object.keys(progress).filter(k => progress[k].completed).map(k => {
       const course = DATA.courses.find(c => c.id === k);
       return { courseId: k, courseName: course ? course.title : k, completedAt: progress[k].completedAt };
@@ -2306,13 +2177,11 @@ window.App = {
         quizAttempts: quizResults.length,
         avgQuizScore: quizResults.length ? Math.round(quizResults.reduce((s, q) => s + q.score, 0) / quizResults.length) : 0,
         examAttempts: examHistory.length,
-        avgExamScore: examHistory.length ? Math.round(examHistory.reduce((s, e) => s + e.score, 0) / examHistory.length) : 0,
-        practiceCount: practiceHistory.length
+        avgExamScore: examHistory.length ? Math.round(examHistory.reduce((s, e) => s + e.score, 0) / examHistory.length) : 0
       },
       completedCourses,
       quizResults,
-      examHistory,
-      practiceHistory
+      examHistory
     };
     const blob = new Blob([JSON.stringify(snapshot, null, 2)], { type: 'application/json' });
     const url = URL.createObjectURL(blob);
@@ -3311,7 +3180,6 @@ window.Admin = {
 
     const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
     const examHistory = JSON.parse(localStorage.getItem('exam_history') || '[]');
-    const practiceHistory = JSON.parse(localStorage.getItem('practice_history') || '[]');
 
     // Compute stats
     const totalUsers = allUsers.length;
