@@ -342,7 +342,206 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
     <div id="toast" class="fixed top-20 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-xl text-sm font-medium shadow-lg z-[70] opacity-0 pointer-events-none transition-opacity duration-300"></div>
   </div>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
   <!-- Scripts -->
+  <script>
+/* Firebase Sync - 跨设备数据同步 */
+window.FirebaseSync = {
+  _db: null,
+  _ready: false,
+
+  init() {
+    try {
+      firebase.initializeApp({
+        apiKey: "AIzaSyB32zq7JIhYGkXtMeYzVcZfpXkeVNNEq54",
+        authDomain: "ad-training-camp.firebaseapp.com",
+        projectId: "ad-training-camp",
+        storageBucket: "ad-training-camp.firebasestorage.app",
+        messagingSenderId: "878001862680",
+        appId: "1:878001862680:web:255700231dcffdfb0feb6d"
+      });
+      this._db = firebase.firestore();
+      this._ready = true;
+      console.log('[Firebase] Initialized');
+    } catch (e) {
+      console.warn('[Firebase] Init failed:', e.message);
+    }
+  },
+
+  // ─── 用户注册/登录同步 ─────────────────────
+  async syncUser(user) {
+    if (!this._ready || !user || !user.phone) return;
+    try {
+      await this._db.collection('users').doc(user.phone).set({
+        ...user,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+    } catch (e) { console.warn('[Firebase] syncUser error:', e.message); }
+  },
+
+  // ─── 课程进度同步 ─────────────────────
+  async syncProgress(phone, progress) {
+    if (!this._ready || !phone) return;
+    try {
+      await this._db.collection('progress').doc(phone).set({
+        phone,
+        data: progress,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+    } catch (e) { console.warn('[Firebase] syncProgress error:', e.message); }
+  },
+
+  // ─── 测验结果同步 ─────────────────────
+  async syncQuizResult(phone, result) {
+    if (!this._ready || !phone) return;
+    try {
+      await this._db.collection('quizzes').doc(phone).collection('results').add({
+        ...result,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    } catch (e) { console.warn('[Firebase] syncQuizResult error:', e.message); }
+  },
+
+  // ─── 考试结果同步 ─────────────────────
+  async syncExamResult(phone, result) {
+    if (!this._ready || !phone) return;
+    try {
+      await this._db.collection('exams').doc(phone).collection('results').add({
+        ...result,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    } catch (e) { console.warn('[Firebase] syncExamResult error:', e.message); }
+  },
+
+  // ─── 课程计划同步 ─────────────────────
+  async syncCoursePlan(phone, coursePlan) {
+    if (!this._ready || !phone) return;
+    try {
+      await this._db.collection('users').doc(phone).set({
+        coursePlan,
+        planUpdatedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+    } catch (e) { console.warn('[Firebase] syncCoursePlan error:', e.message); }
+  },
+
+  // ─── 管理员拉取全部数据 ─────────────────────
+  async fetchAllData(companyFilter) {
+    if (!this._ready) return { users: [], progress: {}, exams: {}, quizzes: {} };
+
+    const result = { users: [], progress: {}, exams: {}, quizzes: {} };
+
+    try {
+      // 1. Fetch all users
+      let usersQuery = this._db.collection('users');
+      if (companyFilter) {
+        usersQuery = usersQuery.where('company', '==', companyFilter);
+      }
+      const usersSnap = await usersQuery.get();
+      usersSnap.forEach(doc => {
+        const data = doc.data();
+        if (data.phone) result.users.push(data);
+      });
+
+      const phones = result.users.map(u => u.phone).filter(Boolean);
+
+      // 2. Fetch progress for each user (batch)
+      const progressPromises = phones.map(async phone => {
+        try {
+          const doc = await this._db.collection('progress').doc(phone).get();
+          if (doc.exists) {
+            result.progress[phone] = doc.data().data || {};
+          }
+        } catch (e) { /* skip */ }
+      });
+      await Promise.all(progressPromises);
+
+      // 3. Fetch exams for each user
+      const examPromises = phones.map(async phone => {
+        try {
+          const snap = await this._db.collection('exams').doc(phone).collection('results').get();
+          result.exams[phone] = [];
+          snap.forEach(doc => result.exams[phone].push(doc.data()));
+        } catch (e) { /* skip */ }
+      });
+      await Promise.all(examPromises);
+
+      // 4. Fetch quizzes for each user
+      const quizPromises = phones.map(async phone => {
+        try {
+          const snap = await this._db.collection('quizzes').doc(phone).collection('results').get();
+          result.quizzes[phone] = [];
+          snap.forEach(doc => result.quizzes[phone].push(doc.data()));
+        } catch (e) { /* skip */ }
+      });
+      await Promise.all(quizPromises);
+
+      console.log(`[Firebase] Fetched ${result.users.length} users, ${Object.keys(result.progress).length} progress, ${Object.values(result.exams).flat().length} exams`);
+    } catch (e) {
+      console.warn('[Firebase] fetchAllData error:', e.message);
+    }
+
+    return result;
+  },
+
+  // ─── 将 Firestore 数据合并到 localStorage ─────────────
+  mergeToLocal(firebaseData) {
+    if (!firebaseData || !firebaseData.users.length) return;
+
+    const localUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+    const localMap = {};
+    localUsers.forEach(u => { localMap[u.phone] = u; });
+
+    // Merge users
+    let added = 0, updated = 0;
+    firebaseData.users.forEach(fu => {
+      if (!fu.phone) return;
+      if (localMap[fu.phone]) {
+        // Merge: Firestore data takes priority for progress/coursePlan
+        const local = localMap[fu.phone];
+        if (fu.coursePlan && fu.coursePlan.length > 0) local.coursePlan = fu.coursePlan;
+        updated++;
+      } else {
+        localUsers.push(fu);
+        localMap[fu.phone] = fu;
+        added++;
+      }
+    });
+
+    // Merge progress into user objects
+    firebaseData.users.forEach(fu => {
+      if (!fu.phone) return;
+      const progress = firebaseData.progress[fu.phone];
+      if (progress && localMap[fu.phone]) {
+        localMap[fu.phone].progress = progress;
+      }
+    });
+
+    localStorage.setItem('atc_all_users', JSON.stringify(localUsers));
+
+    // Merge exams
+    const localExams = JSON.parse(localStorage.getItem('exam_history') || '[]');
+    const localExamSet = new Set(localExams.map(e => e.paperId + '_' + e.date + '_' + (e.userPhone || '')));
+    let examAdded = 0;
+    Object.entries(firebaseData.exams).forEach(([phone, exams]) => {
+      exams.forEach(e => {
+        const key = e.paperId + '_' + e.date + '_' + phone;
+        if (!localExamSet.has(key)) {
+          localExams.push({ ...e, userPhone: phone });
+          localExamSet.add(key);
+          examAdded++;
+        }
+      });
+    });
+    localStorage.setItem('exam_history', JSON.stringify(localExams));
+
+    console.log(`[Firebase] Merged: +${added} users, ${updated} updated, +${examAdded} exams`);
+  }
+};
+
+</script>
   <script>
 // 服务商访问码 (246家)
 const ACCESS_CODES = {
@@ -1875,6 +2074,7 @@ window.App = {
   // ─── INIT ───────────────────────────────────────────
   init() {
     this.loadState();
+    if (typeof FirebaseSync !== 'undefined') FirebaseSync.init();
     this.setupNavigation();
     this.setupLoginForm();
     if (this.state.user) {
@@ -1962,6 +2162,7 @@ window.App = {
         this.state.user = user;
         this.saveState();
         this.saveAllUsers(user);
+        if (typeof FirebaseSync !== 'undefined') FirebaseSync.syncUser(user);
         this.showApp();
         this.toast('欢迎加入特训营，' + name + '！');
         this.route('#home');
@@ -1978,6 +2179,7 @@ window.App = {
         this.state.user = user;
         this.saveState();
         this.saveAllUsers(user);
+        if (typeof FirebaseSync !== 'undefined') FirebaseSync.syncUser(user);
         this.showApp();
         this.toast('管理员登录成功，' + name + '！');
         this.route('#home');
@@ -1990,6 +2192,7 @@ window.App = {
         const user = { id: 'u_' + Date.now(), company: '超级管理', name, phone: '00000000000', role: 'super_admin', loginType: 'super_admin', createdAt: new Date().toISOString() };
         this.state.user = user;
         this.saveState();
+        if (typeof FirebaseSync !== 'undefined') FirebaseSync.syncUser(user);
         this.showApp();
         this.toast('超级管理员登录成功');
         this.route('#home');
@@ -2407,6 +2610,10 @@ window.App = {
     this.state.progress[courseId].completedAt = new Date().toISOString();
     this.saveState();
     this._syncToAllUsers();
+    if (typeof FirebaseSync !== 'undefined') {
+      const phone = this.state.user ? this.state.user.phone : '';
+      FirebaseSync.syncProgress(phone, this.state.progress);
+    }
   },
 
   // ─── QUIZ (随堂小测) ────────────────────────────────
@@ -2539,9 +2746,13 @@ window.App = {
     if (this.state.user && this.state.user.phone) {
       const qKey = 'atc_quiz_results_' + this.state.user.phone;
       const quizResults = JSON.parse(localStorage.getItem(qKey) || '[]');
-      quizResults.push({ courseId, courseName: course.title, score: pct, correct, total: course.quiz.length, date: new Date().toISOString() });
+      const quizResult = { courseId, courseName: course.title, score: pct, correct, total: course.quiz.length, date: new Date().toISOString() };
+      quizResults.push(quizResult);
       localStorage.setItem(qKey, JSON.stringify(quizResults));
       this._syncToAllUsers();
+      if (typeof FirebaseSync !== 'undefined') {
+        FirebaseSync.syncQuizResult(this.state.user.phone, quizResult);
+      }
     }
     sessionStorage.removeItem(stateKey);
     location.hash = '#learn/' + courseId;
@@ -3525,6 +3736,9 @@ window.App = {
     const history = getHistory();
     history.push(result);
     saveHistory(history);
+    if (window.FirebaseSync && result.userPhone) {
+      FirebaseSync.syncExamResult(result.userPhone, result);
+    }
     clearCurrentState();
     examState = null;
 
@@ -3711,6 +3925,29 @@ window.Admin = {
       return;
     }
 
+    // Show loading while fetching from Firestore
+    container.innerHTML = `<div class="animate-fade-in flex items-center justify-center min-h-[40vh]">
+      <div class="text-center">
+        <div class="w-10 h-10 border-4 border-brand-200 border-t-brand-600 rounded-full animate-spin mx-auto mb-3"></div>
+        <div class="text-sm text-gray-500">正在同步数据...</div>
+      </div>
+    </div>`;
+
+    // Fetch from Firestore then render
+    this._fetchAndRender(container);
+  },
+
+  async _fetchAndRender(container) {
+    // Fetch cloud data and merge to localStorage
+    if (typeof FirebaseSync !== 'undefined' && FirebaseSync._ready) {
+      try {
+        const companyFilter = this._isSuperAdmin() ? (this._companyFilter || null) : this._getCompany();
+        const cloudData = await FirebaseSync.fetchAllData(companyFilter);
+        FirebaseSync.mergeToLocal(cloudData);
+      } catch (e) {
+        console.warn('[Admin] Firestore fetch failed:', e.message);
+      }
+    }
     this._renderPanel(container);
   },
 
@@ -3747,10 +3984,13 @@ window.Admin = {
         <div>
           <div class="text-sm text-gray-500">${isSuper ? '超级管理员 · 全局视图' : this._getCompany()}</div>
         </div>
-        ${isSuper ? `<select id="admin-company-filter" onchange="Admin._companyFilter = this.value || null; Admin._renderPanel(App.getContentContainer())" class="px-3 py-1.5 rounded-lg border border-gray-200 text-sm bg-white">
-          <option value="">全部服务商 (${companies.length})</option>
-          ${companies.map(c => `<option value="${c}" ${this._companyFilter === c ? 'selected' : ''}>${c}</option>`).join('')}
-        </select>` : ''}
+        <div class="flex gap-2">
+          <button onclick="Admin._fetchAndRender(App.getContentContainer())" class="px-3 py-1.5 text-xs bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200">刷新数据</button>
+          ${isSuper ? `<select id="admin-company-filter" onchange="Admin._companyFilter = this.value || null; Admin._renderPanel(App.getContentContainer())" class="px-3 py-1.5 rounded-lg border border-gray-200 text-sm bg-white">
+            <option value="">全部服务商 (${companies.length})</option>
+            ${companies.map(c => `<option value="${c}" ${this._companyFilter === c ? 'selected' : ''}>${c}</option>`).join('')}
+          </select>` : ''}
+        </div>
       </div>
 
       <!-- Stats -->
@@ -4025,6 +4265,12 @@ window.Admin = {
     });
 
     localStorage.setItem('atc_all_users', JSON.stringify(allUsers));
+    // Sync course plans to Firebase
+    if (typeof FirebaseSync !== 'undefined') {
+      checkedReps.forEach(cb => {
+        FirebaseSync.syncCoursePlan(cb.value, courseIds);
+      });
+    }
     App.toast(`已为 ${updated} 名小二分配 ${courseIds.length} 门课程`);
   },
 
