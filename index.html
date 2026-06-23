@@ -167,31 +167,83 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
         <p class="text-sm text-gray-500 mt-1">高德本地生活 · 广告销售培训平台</p>
       </div>
       <form id="login-form" class="space-y-4">
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">所属服务商</label>
-          <div class="relative" id="company-autocomplete">
-            <input type="text" id="reg-company" required autocomplete="off" placeholder="输入关键词搜索，或直接填写服务商名称" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition pr-10">
-            <svg id="company-search-icon" class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-            <div id="company-dropdown" class="hidden absolute left-0 right-0 top-full mt-1 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto z-50"></div>
+        <!-- Login Tabs -->
+        <div class="flex gap-1 bg-gray-100 rounded-xl p-1 mb-4">
+          <button type="button" onclick="App.switchLoginTab('rep')" class="login-tab flex-1 py-2 rounded-lg text-sm font-medium bg-white text-gray-900 shadow-sm" data-tab="rep">小二登录</button>
+          <button type="button" onclick="App.switchLoginTab('admin')" class="login-tab flex-1 py-2 rounded-lg text-sm font-medium text-gray-500" data-tab="admin">管理员</button>
+          <button type="button" onclick="App.switchLoginTab('super')" class="login-tab flex-1 py-2 rounded-lg text-sm font-medium text-gray-500" data-tab="super">超级管理</button>
+        </div>
+
+        <!-- Rep Login (default) -->
+        <div id="login-tab-rep">
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">所属服务商</label>
+            <div class="relative" id="company-autocomplete">
+              <input type="text" id="reg-company" autocomplete="off" placeholder="输入关键词搜索，或直接填写服务商名称" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition pr-10">
+              <svg id="company-search-icon" class="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              <div id="company-dropdown" class="hidden absolute left-0 right-0 top-full mt-1 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto z-50"></div>
+            </div>
+            <p id="company-hint" class="text-xs text-gray-400 mt-1 hidden">未找到匹配的服务商？可直接填写您的服务商名称</p>
           </div>
-          <p id="company-hint" class="text-xs text-gray-400 mt-1 hidden">未找到匹配的服务商？可直接填写您的服务商名称</p>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
+            <input type="text" id="reg-name" placeholder="请输入您的姓名" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">手机号</label>
+            <input type="tel" id="reg-phone" placeholder="请输入手机号" maxlength="11" pattern="1[3-9]\d{9}" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">角色</label>
+            <select id="reg-role" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
+              <option value="rep">销售小二</option>
+              <option value="manager">服务商管理者</option>
+              <option value="cm">渠道经理</option>
+            </select>
+          </div>
         </div>
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">姓名</label>
-          <input type="text" id="reg-name" required placeholder="请输入您的姓名" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
+
+        <!-- Admin Login (access code) -->
+        <div id="login-tab-admin" class="hidden">
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">访问码</label>
+            <input type="text" id="admin-code" placeholder="请输入6位访问码" maxlength="6" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-center text-lg tracking-widest uppercase">
+            <p id="admin-code-result" class="text-xs mt-1 hidden"></p>
+          </div>
+          <div id="admin-code-fields" class="hidden">
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700 mb-1">服务商</label>
+              <input type="text" id="admin-company" readonly class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-600 outline-none">
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700 mb-1">管理员姓名</label>
+              <input type="text" id="admin-name" placeholder="请输入您的姓名" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
+            </div>
+            <div class="mb-4">
+              <label class="block text-sm font-medium text-gray-700 mb-1">手机号</label>
+              <input type="tel" id="admin-phone" placeholder="请输入手机号" maxlength="11" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
+            </div>
+          </div>
         </div>
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">手机号</label>
-          <input type="tel" id="reg-phone" required placeholder="请输入手机号" maxlength="11" pattern="1[3-9]\d{9}" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
+
+        <!-- Super Admin Login -->
+        <div id="login-tab-super" class="hidden">
+          <div class="text-center mb-4">
+            <div class="w-14 h-14 bg-red-50 rounded-2xl mx-auto mb-3 flex items-center justify-center">
+              <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            </div>
+            <p class="text-sm text-gray-500">超级管理员可查看全部服务商数据</p>
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">管理密码</label>
+            <input type="password" id="super-password" placeholder="请输入超级管理密码" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition text-center tracking-wider">
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">管理员姓名</label>
+            <input type="text" id="super-name" placeholder="请输入您的姓名" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
+          </div>
         </div>
-        <div>
-          <label class="block text-sm font-medium text-gray-700 mb-1">角色</label>
-          <select id="reg-role" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
-            <option value="rep">销售小二</option>
-            <option value="manager">服务商管理者</option>
-            <option value="cm">渠道经理</option>
-          </select>
-        </div>
+
         <button type="submit" class="w-full py-3 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl transition active:scale-[0.98]">进入特训营</button>
       </form>
       <p class="text-center text-xs text-gray-400 mt-6">首次使用将自动注册 · 数据存储在本地</p>
@@ -299,6 +351,259 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
   </div>
 
   <!-- Scripts -->
+  <script>
+// 服务商访问码 (246家)
+const ACCESS_CODES = {
+  'D94AU7': '徐州云小众信息科技有限公司',
+  'AW9RGU': '山东风声数字科技有限公司',
+  '4ZSC3Q': '河南奇宇科技有限公司',
+  'DJBJ9D': '苏州若妤科技有限公司',
+  'MH7B24': '重庆拓睿坤科技有限公司',
+  '9EAALS': '安徽省声传文化传媒有限公司',
+  'JWV2Y9': '青岛聚英才信息技术有限公司',
+  'JJ3B9M': '河南省优众广告有限公司',
+  '46JWAN': '哈尔滨海上飞互联网科技有限公司',
+  'HBN2K9': '湖南千始科技有限公司',
+  'J46G4Z': '长春青澄科技有限公司',
+  'H2ZW5R': '无锡时义信息科技有限公司',
+  'SJS7GD': '合肥市永道信息科技有限公司',
+  'DUN3BL': '山东甄惠选数字科技有限公司',
+  'J56MLX': '云南魔方网络科技有限公司',
+  'JKQCFM': '天津汉坤文化传播有限公司',
+  'NHGTVM': '杭州飒威时科技有限公司',
+  '3NHTWA': '湖南信勤善电子商务有限责任公司',
+  'Z6ASBZ': '南京众鑫云图网络科技有限公司',
+  'H6U4NX': '漳州市优易网络科技有限公司',
+  'BHFCX3': '东莞市极刻网络科技有限公司',
+  '85N88X': '武汉御冕物流网络有限公司',
+  'D4WZWW': '重庆阿汐里科技有限公司',
+  'SJJHVW': '佛山市洛瑞文化传媒有限公司',
+  'RR6UGH': '重庆凌如云科技有限公司',
+  '5TYZ9Q': '上海轻亭商贸有限公司',
+  'ZD5RXZ': '浙江百诚互连科技有限公司',
+  'A7SRS3': '橙亿景胜（天津）科技有限责任公司',
+  'B8EPT5': '青岛大胖福投资有限公司',
+  '42U7NW': '虎嗅蔷薇传媒网络(沈阳)有限公司',
+  'NHASE8': '南京耀鸿禧科技有限公司',
+  '7EJAZ4': '中数融（山西）科技有限公司',
+  'KQRFEW': '福州淘货甄选传媒有限公司',
+  'RHK7G3': '河北云尧科技有限公司',
+  'AQMQN8': '南京万桦生活服务有限公司',
+  'ZMS85H': '无锡君之恒网络科技有限公司',
+  'AWWSE9': '河南泉贝网络科技有限公司',
+  'V49KYY': '太原逸飞科技服务有限公司',
+  '4Z7YYL': '潍坊玖盛网络科技有限公司',
+  'NJ6USA': '泰州创升信息科技有限公司',
+  'UM4FXF': '河南志瑜科技有限公司',
+  '5XFCUG': '苏州优时利网络科技有限公司',
+  'ZZCJUF': '沈阳易航网络技术有限公司',
+  'H4YLU3': '河南省优众广告有限公司洛阳分公司',
+  'HZAVWM': '沈阳拾薪汇吃网络科技有限公司',
+  'MUE3J9': '宁波享趣电子商务有限公司',
+  '9NV3BD': '广东中泰华晟投资有限公司',
+  '7XMMF6': '南通万众市场营销策划有限公司',
+  '6WGM7B': '大连奥丽弗网络科技有限公司',
+  'JG5M2X': '智链未来（海南）科技有限公司',
+  'T6UKE2': '辽宁拾壹文化传媒有限公司',
+  'QW76UT': '深圳市万豪德立文体产业发展有限公司',
+  '3WHD68': '大连易卡联科技有限公司',
+  '239N5R': '新疆福泽源劳务服务有限公司',
+  'SE38KV': '京通数字信息技术（东莞）有限公司',
+  '3R6UN6': '广西新唐仕文化传播有限公司',
+  'WT6VA5': '郑州东心文化传媒有限公司',
+  '2TU5NF': '惠州市新瞭望文化传媒有限公司',
+  '5D3WNT': '山西扶摇而上科技有限公司',
+  '3PRWQ8': '江苏九昊州网络科技有限公司',
+  'DTCLK7': '贵州蓝鲸云媒网络科技有限公司',
+  'NV8X68': '长沙老羊羔企业管理咨询有限公司',
+  'Z6D8E5': '重庆华骁云科技有限公司',
+  'H9LA39': '黑龙江广正信息服务集团有限公司',
+  '2CXG9B': '淄博三象网络科技有限公司',
+  'VVWDCB': '厦门云数互动网络有限公司',
+  'E93MMG': '宁夏辰达科技有限公司',
+  'W5QA8B': '四川正弘君源商业运营管理有限公司',
+  '2HSDB9': '江西快人科技有限公司',
+  '5N3VS9': '舟山一搏商业管理有限公司',
+  '5PX857': '乐山振芯信息技术有限公司',
+  'MA5X4T': '湖南汇量优创信息科技有限公司',
+  'WUPZ3E': '四川鑫图测绘有限公司',
+  'HEQW8B': '玉田县智跃信息咨询服务有限公司',
+  'J6UYGU': '浙江聚诚创富企业管理有限公司',
+  'BEGFQB': '领券宝科技（佛山）有限公司',
+  'WHSC6U': '内蒙古北方新媒科技有限公司',
+  'TB3D36': '沈阳市人多多人力资源有限公司',
+  'T2FXWW': '泉州加我信息科技有限公司',
+  'PJG6A8': '广西普兴科技有限责任公司',
+  '8WFG26': '河南乐万网络科技有限公司',
+  '3K5ENY': '山西易智慧科技有限公司',
+  'VQA786': '吉林省雨建信息科技有限公司',
+  '2KEXDZ': '保定市蓝果商贸有限公司',
+  'QR4VNW': '武汉天辰宇信息技术有限公司',
+  'T5UBPA': '山东独角仙传媒有限公司',
+  'C89TT8': '大连智威信息科技有限公司',
+  'PEFT4F': '诸暨怀志网络科技有限公司',
+  'HUAV7N': '广西河池恒胜网络科技有限责任公司',
+  'YAAB5N': '长沙合生互动传媒有限公司',
+  'Z9ALJJ': '华杨微众（嘉兴）信息科技有限责任公司',
+  '3D7NWD': '洛阳一诺前景信息科技有限公司',
+  'X4D6RA': '云南海狗不是狗文化产业发展有限公司',
+  '8Q8XVK': '重庆连连爆单信息科技有限公司',
+  'HPFVFG': '浙江欣欣向融网络科技有限公司',
+  'TZ39HX': '安徽星伙伴网络科技有限公司',
+  'N7WKSZ': '米佬大(杭州)网络科技有限责任公司',
+  'D4B6UW': '湖北鸿恩电子商务有限公司',
+  'T263NT': '张家口创鲸文化传媒有限公司',
+  'YSKJMW': '恒鑫通盛商贸（深圳）有限公司',
+  'N75H9G': '上海频远信息科技有限公司',
+  '27RLMQ': '合肥京徽达供应链科技有限责任公司',
+  'X2SH2Q': '台州市启扬拾六文化传媒有限公司',
+  'PAMG7Z': '厚德尚信科技发展（西安）有限公司',
+  'P7R96V': '仙居嗨爆网络科技有限公司',
+  'EVHZHS': '河南立上科技有限公司',
+  '5RRTU3': '淮安聚潮文化传媒有限公司',
+  'HDMW7Y': '三河市坤辉网络科技有限公司',
+  'Z67ZYV': '广州叁木技术服务有限公司',
+  'YX3D5K': '四川巨量赋能科技有限公司',
+  'TXHHRD': '海南奥欣元文旅发展有限责任公司',
+  'ES6YHW': '速捷客(中山)信息技术有限公司',
+  'YK4B3P': '内蒙古优十电科技有限公司',
+  '3RZMXU': '重庆智推通讯服务有限公司',
+  'NNCYDG': '大连市金御蝉蝉网络科技有限公司',
+  'AA4KM6': '唐山嘉尚文化传媒有限公司',
+  'XE7W5B': '长春市伟创信息服务有限公司',
+  'AGNXNW': '广西口口强科技有限公司',
+  'Z7GHV6': '义乌众想网络科技有限公司',
+  'QQHYL4': '昆明森佳科技有限公司',
+  'HWACNU': '西藏美动信息科技有限公司',
+  '5TE3DD': '海南野望数字科技有限公司',
+  '2P6AZL': '沧州尚帝网络科技有限公司',
+  '95DTLU': '云南数流讯达网络科技有限公司',
+  'BX6F9P': '西安星空叮叮网络科技有限责任公司',
+  'DCAA3J': '德州唐风文化传播有限公司',
+  'N3R4AB': '广东省佳润物流有限公司',
+  'LTRSZG': '南阳市峻翔贸易有限责任公司',
+  '5M58MR': '东莞市一橙文化传媒有限公司',
+  'W76ZZE': '云南柠乐传媒有限公司',
+  'CGEQ68': '泰安市泰山区小铭堂商贸有限责任公司',
+  'LLPJ54': '上海广分信息科技有限公司',
+  'TNRVRU': '湖北语恒管理有限公司',
+  'HABNCT': '中山市叁生万物网络科技有限公司',
+  'Q7EZDR': '东莞市正金商务咨询有限公司',
+  'KGTLA4': '南京华体网络科技有限公司',
+  'T67GVL': '大同市辰龙配送服务有限公司',
+  'GTWNKH': '深圳市德凡网络科技有限公司',
+  '4F5DEA': '山东简梦文化传媒有限责任公司',
+  '8CU59D': '安徽吱信科技有限公司',
+  'H7G3ZY': '汕头市星卓越策划有限公司',
+  'YX8UJC': '贵州卡卡乐付信息科技有限公司',
+  'UBKJVX': '推客云（邯郸）科技有限公司',
+  'UD7JP7': '厦门物极上水文化传媒有限公司',
+  'TZD493': '曲靖春铭网络科技有限责任公司',
+  'GT9NQP': '江西予初文化产业有限公司',
+  '8ZEB95': '丽江触手可得网络科技有限公司',
+  'LGKKKK': '青岛壹拍即合科技服务有限公司',
+  '8BW6NJ': '山东有间网络科技有限公司',
+  'VMCGNV': '沈阳腾迅健康科技有限公司',
+  'XGAWW4': '广西心百味品牌管理有限公司',
+  'DCZGWZ': '广东省秒时速信息科技有限公司',
+  '26L43Z': '北海微视文化传播有限公司',
+  'JSPR7Q': '湖北安而达网络科技有限公司',
+  'EMMMBL': '湖州首展团网络科技有限公司',
+  'CTCZCN': '衢州星途生活服务有限公司',
+  'DHSXRM': '济宁市怪电互联网服务有限公司',
+  'WYYJS5': '山西煜雁珩网络科技有限公司',
+  '6ZLZFL': '海南共赢餐饮管理服务有限公司',
+  'VP94WN': '海南星游文化传媒有限公司',
+  'DX8GPV': '赣州锦东信息技术有限公司',
+  'WCAXEU': '海南信客之家网络科技有限公司',
+  'TK6Z9L': '常州当面赋信息科技有限公司',
+  'NGTAJ7': '四川迁渝电子商务有限公司',
+  '5YHNJR': '郴州嘉途网络科技有限公司',
+  '4X95WA': '太原舍予科技有限公司',
+  'XR3V7Z': '潍坊诚投咨询管理有限公司',
+  '3BL58X': '淮安易骑网络科技有限公司',
+  '6ANNXN': '河北玩咖文化传媒有限公司',
+  '24E8Q4': '河北探索客科技有限公司',
+  '5675W6': '新疆熠韬启中信息科技有限公司',
+  'J7H2WD': '天津乾元付科技有限公司',
+  'GKFUC7': '(未知)',
+  '28DZVJ': '山西蓝象文化传媒有限公司',
+  '3TFEH5': '唐山小蓝人网络科技有限公司',
+  '3YDT7C': '亿佰互联（北京）网络技术有限公司',
+  'H4BCJH': '罗城启迪传媒有限公司',
+  '2YBS7H': '宁波小豆熊文化传媒有限公司',
+  'EWJQ86': '杭州高灿科技有限公司',
+  'UX5GJL': '天津易酷科技有限公司',
+  '6TSEZ7': '济南禧悦传媒有限公司',
+  'KG2HK4': '秦皇岛点鲸网络科技有限公司',
+  '36KU7F': '湖北联和商超科技有限公司',
+  'LEZDV8': '泰盈科技集团股份有限公司',
+  '4PVX5K': '实战家（烟台）教育科技发展有限公司',
+  'YHC5MX': '长春市橙团互娱网络科技有限公司',
+  '67JE2B': '辽宁易和网络科技有限公司',
+  'BGW8NW': '天津达润鑫科技有限公司',
+  'RGD5NM': '北京全时分享科技有限公司',
+  'TH4MG5': '亳州文融传媒科技有限公司',
+  'PZKZKC': '南通雅喵文化传媒有限公司',
+  '6RFVRF': '中健美宸科技（成都）有限公司',
+  '53J5H9': '南京餐创功成咨询有限公司',
+  'WPKTUQ': '安徽惠团网络科技有限公司',
+  'T4UZTJ': '佛山市食权网络科技有限公司',
+  'CCXB3E': '佛山金食代品牌策划有限公司',
+  'GWNKHE': '泉州市兴强网络科技有限公司',
+  'ABE8SE': '广州银鑫数字科技有限公司',
+  '2QMAY7': '内蒙古亿佰互联网络技术有限公司',
+  'ST67UM': '湖南惟客科技集团有限公司',
+  'DNZ3PT': '合肥星辰蓝图信息科技有限公司',
+  'G2ZB2X': '河南胜诚电宝互联网科技有限公司',
+  'YQHYY9': '郑州沃泽电子科技有限公司',
+  '9N2PH8': '山西视讯通达科技有限公司',
+  'XJ46VY': '临沂双槐网络科技有限公司',
+  '6DC437': '浙江犇达网络科技有限公司',
+  'NA5AV3': '连云港穹顶科技有限公司',
+  'LJDB2X': '天津市珍珍妍行商贸有限责任公司',
+  '3K3MGN': '肇庆御冕物流网络有限公司',
+  '8AGX3S': '中合优显传媒科技（东莞）有限公司',
+  'HJ9PEG': '山东抖莱美网络科技有限公司',
+  'GG4G4L': '重庆拓拔网络科技有限公司',
+  'MW7L4Y': '广东银迅信息技术有限公司',
+  'Q7EJB6': '沈阳乐辉物流商贸有限公司',
+  '5W6SEN': '绍兴初心财务管理咨询有限公司',
+  'VNRXVT': '宁波鸿霖网络科技有限公司',
+  '24F2QT': '河南豫加满电子科技有限公司',
+  '9F7DPZ': '陕西勤探同行传媒有限责任公司',
+  '3QMEYJ': '盐城复通智能科技有限公司',
+  'ARTBN3': '大城县智拓信息技术有限公司',
+  'DCF5F4': '重庆叁合营销策划有限公司',
+  'MRKMK2': '沈阳木森网络科技有限公司',
+  'K8NEYG': '山东领鹿网络科技有限公司',
+  'XL5P4Z': '四川蜀付通科技有限公司',
+  'NSDGFQ': '济南迪诗妮文化传媒有限公司',
+  'APQ7E8': '宿迁市耀良网络科技有限公司',
+  'FHVD6E': '洛阳直聘人力资源有限公司',
+  'ARKG7J': '湖南省高新特科技有限公司',
+  'HR37QD': '嘉兴泽亨信息科技有限公司',
+  'BGB95E': '深圳市彩虹云宝网络有限公司',
+  '986ZYP': '沈阳益盈科技有限公司',
+  'P547NM': '固安聚创科技有限公司',
+  'CBHRS8': '重庆条条是道文化传媒有限公司',
+  '284K7H': '广东鼎石传媒有限公司',
+  'EXM348': '厦门贵在互联信息科技有限公司',
+  'T3RHM9': '鞍山畅游文化传媒有限公司',
+  'ULWRNT': '无锡淘淘乐科技有限公司',
+  'M7SJZ4': '硬核力量（泉州）文化传媒有限公司',
+  'LCRLS3': '重庆旭鹿网络科技有限公司',
+  '2GGEPB': '仙女文化传媒（江苏）有限公司',
+  'VM4QYS': '东莞市时待传媒有限公司',
+  'MBBRJE': '杭州来团呗网络科技有限公司',
+  'ZXWCUS': '东莞市君鸿信息科技有限公司',
+  'XAY8SQ': '湘潭亿联创新科技有限公司',
+  'DSJA33': '深圳市纯壹科技有限公司',
+  'J6SMM2': '苏州福挚迦信息技术有限公司',
+};
+window.ACCESS_CODES = ACCESS_CODES;
+
+</script>
   <script>
 /**
  * 高德本地生活 · 广告特训营 - 数据文件
@@ -1413,24 +1718,100 @@ window.App = {
       localStorage.setItem('atc_progress_' + this.state.user.phone, JSON.stringify(this.state.progress));
     }
   },
+  _loginTab: 'rep',
+
+  switchLoginTab(tab) {
+    this._loginTab = tab;
+    document.querySelectorAll('.login-tab').forEach(b => {
+      const isActive = b.dataset.tab === tab;
+      b.classList.toggle('bg-white', isActive);
+      b.classList.toggle('text-gray-900', isActive);
+      b.classList.toggle('shadow-sm', isActive);
+      b.classList.toggle('text-gray-500', !isActive);
+    });
+    ['rep', 'admin', 'super'].forEach(t => {
+      const el = document.getElementById('login-tab-' + t);
+      if (el) el.classList.toggle('hidden', t !== tab);
+    });
+  },
+
   setupLoginForm() {
     const form = document.getElementById('login-form');
     if (!form) return;
+
+    // Access code real-time validation
+    const codeInput = document.getElementById('admin-code');
+    if (codeInput) {
+      codeInput.addEventListener('input', () => {
+        const code = codeInput.value.trim().toUpperCase();
+        const resultEl = document.getElementById('admin-code-result');
+        const fieldsEl = document.getElementById('admin-code-fields');
+        const companyEl = document.getElementById('admin-company');
+        if (code.length === 6 && typeof ACCESS_CODES !== 'undefined' && ACCESS_CODES[code]) {
+          resultEl.textContent = '✓ ' + ACCESS_CODES[code];
+          resultEl.className = 'text-xs mt-1 text-green-600';
+          resultEl.classList.remove('hidden');
+          companyEl.value = ACCESS_CODES[code];
+          fieldsEl.classList.remove('hidden');
+        } else if (code.length >= 4) {
+          resultEl.textContent = '访问码未找到，请检查';
+          resultEl.className = 'text-xs mt-1 text-red-500';
+          resultEl.classList.remove('hidden');
+          fieldsEl.classList.add('hidden');
+        } else {
+          resultEl.classList.add('hidden');
+          fieldsEl.classList.add('hidden');
+        }
+      });
+    }
+
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const company = document.getElementById('reg-company').value;
-      const name = document.getElementById('reg-name').value.trim();
-      const phone = document.getElementById('reg-phone').value.trim();
-      const role = document.getElementById('reg-role').value;
-      if (!company || !name || !phone) return this.toast('请填写完整信息');
-      if (!/^1[3-9]\d{9}$/.test(phone)) return this.toast('请输入正确的手机号');
-      const user = { id: 'u_' + Date.now(), company, name, phone, role, createdAt: new Date().toISOString() };
-      this.state.user = user;
-      this.saveState();
-      this.saveAllUsers(user);
-      this.showApp();
-      this.toast('欢迎加入特训营，' + name + '！');
-      this.route('#home');
+      const tab = this._loginTab;
+
+      if (tab === 'rep') {
+        const company = document.getElementById('reg-company').value;
+        const name = document.getElementById('reg-name').value.trim();
+        const phone = document.getElementById('reg-phone').value.trim();
+        const role = document.getElementById('reg-role').value;
+        if (!company || !name || !phone) return this.toast('请填写完整信息');
+        if (!/^1[3-9]\d{9}$/.test(phone)) return this.toast('请输入正确的手机号');
+        const user = { id: 'u_' + Date.now(), company, name, phone, role, loginType: 'normal', createdAt: new Date().toISOString() };
+        this.state.user = user;
+        this.saveState();
+        this.saveAllUsers(user);
+        this.showApp();
+        this.toast('欢迎加入特训营，' + name + '！');
+        this.route('#home');
+
+      } else if (tab === 'admin') {
+        const code = document.getElementById('admin-code').value.trim().toUpperCase();
+        const name = document.getElementById('admin-name').value.trim();
+        const phone = document.getElementById('admin-phone').value.trim();
+        if (!code || !name || !phone) return this.toast('请填写完整信息');
+        if (typeof ACCESS_CODES === 'undefined' || !ACCESS_CODES[code]) return this.toast('访问码无效');
+        if (!/^1[3-9]\d{9}$/.test(phone)) return this.toast('请输入正确的手机号');
+        const company = ACCESS_CODES[code];
+        const user = { id: 'u_' + Date.now(), company, name, phone, role: 'sp_admin', loginType: 'access_code', accessCode: code, createdAt: new Date().toISOString() };
+        this.state.user = user;
+        this.saveState();
+        this.saveAllUsers(user);
+        this.showApp();
+        this.toast('管理员登录成功，' + name + '！');
+        this.route('#home');
+
+      } else if (tab === 'super') {
+        const pwd = document.getElementById('super-password').value;
+        const name = document.getElementById('super-name').value.trim();
+        if (pwd !== 'gaode2026') return this.toast('密码错误');
+        if (!name) return this.toast('请输入管理员姓名');
+        const user = { id: 'u_' + Date.now(), company: '超级管理', name, phone: '00000000000', role: 'super_admin', loginType: 'super_admin', createdAt: new Date().toISOString() };
+        this.state.user = user;
+        this.saveState();
+        this.showApp();
+        this.toast('超级管理员登录成功');
+        this.route('#home');
+      }
     });
   },
   populateCompanyList() {
@@ -1707,7 +2088,7 @@ window.App = {
     if (h < 18) return '下午好';
     return '晚上好';
   },
-  roleName(r) { return { rep:'销售小二', manager:'服务商管理者', cm:'渠道经理' }[r] || '用户'; },
+  roleName(r) { return { rep:'销售小二', manager:'服务商管理者', cm:'渠道经理', sp_admin:'服务商管理员', super_admin:'超级管理员' }[r] || '用户'; },
 
   getProductLineProgress() {
     const lines = {};
@@ -2954,7 +3335,8 @@ window.App = {
       timeUsed: timeUsed,
       screenSwitches: examState.screenSwitches,
       details: details,
-      date: new Date().toISOString()
+      date: new Date().toISOString(),
+      userPhone: (window.App && App.state.user) ? App.state.user.phone : ''
     };
 
     // 保存历史
@@ -3118,83 +3500,77 @@ window.App = {
 
 </script>
   <script>
-/* 广告特训营 - Admin Panel */
+/* 广告特训营 - Admin Panel (权限隔离版) */
 
 window.Admin = {
-  _authenticated: false,
+  _companyFilter: null, // null = all (super_admin), string = specific company
 
   render(container) {
     App.setActiveTab('admin');
     document.getElementById('page-title').textContent = '管理后台';
+    const user = App.state.user;
 
-    if (!this._authenticated) {
+    // Permission check: only sp_admin and super_admin can access
+    if (!user || (user.loginType !== 'access_code' && user.loginType !== 'super_admin')) {
       container.innerHTML = `
         <div class="animate-fade-in flex items-center justify-center min-h-[60vh]">
           <div class="w-full max-w-sm mx-auto">
             <div class="card text-center !p-8">
-              <div class="w-16 h-16 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+              <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
               </div>
-              <h3 class="text-lg font-bold text-gray-900 mb-1">管理后台</h3>
-              <p class="text-sm text-gray-400 mb-6">请输入管理密码以继续访问</p>
-              <div id="admin-pwd-error" class="hidden text-sm text-red-500 mb-2">密码错误，请重试</div>
-              <input id="admin-pwd-input" type="password" placeholder="请输入管理密码"
-                class="w-full px-4 py-3 rounded-xl border border-gray-200 text-center text-lg tracking-wider focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none transition-all"
-                onkeydown="if(event.key==='Enter')Admin.checkPassword()">
-              <button onclick="Admin.checkPassword()"
-                class="w-full mt-4 py-3 bg-brand-600 text-white rounded-xl font-medium hover:bg-brand-700 transition-colors">
-                确认进入
-              </button>
-              <button onclick="location.hash='#home'"
-                class="w-full mt-2 py-2 text-sm text-gray-400 hover:text-gray-600">
-                返回首页
-              </button>
+              <h3 class="text-lg font-bold text-gray-900 mb-1">无访问权限</h3>
+              <p class="text-sm text-gray-400 mb-4">管理后台仅对服务商管理员和超级管理员开放</p>
+              <p class="text-xs text-gray-400 mb-6">请使用管理员访问码或超级管理密码登录</p>
+              <button onclick="location.hash='#home'" class="w-full py-3 bg-brand-600 text-white rounded-xl font-medium hover:bg-brand-700 transition-colors">返回首页</button>
             </div>
           </div>
         </div>`;
-      setTimeout(() => { const inp = document.getElementById('admin-pwd-input'); if (inp) inp.focus(); }, 100);
       return;
     }
 
     this._renderPanel(container);
   },
 
-  checkPassword() {
-    const input = document.getElementById('admin-pwd-input');
-    const errorEl = document.getElementById('admin-pwd-error');
-    if (!input) return;
-    if (input.value === 'gaode2026') {
-      this._authenticated = true;
-      if (errorEl) errorEl.classList.add('hidden');
-      this.render(App.getContentContainer());
-    } else {
-      if (errorEl) errorEl.classList.remove('hidden');
-      input.value = '';
-      input.focus();
-      input.classList.add('border-red-300');
-      setTimeout(() => input.classList.remove('border-red-300'), 1500);
+  _isSuperAdmin() { return App.state.user && App.state.user.loginType === 'super_admin'; },
+  _getCompany() { return App.state.user ? App.state.user.company : ''; },
+
+  _getFilteredUsers() {
+    const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+    if (this._isSuperAdmin()) {
+      if (this._companyFilter) return allUsers.filter(u => u.company === this._companyFilter);
+      return allUsers;
     }
+    // sp_admin: only their company
+    return allUsers.filter(u => u.company === this._getCompany());
   },
 
   _renderPanel(container) {
-
+    const users = this._getFilteredUsers();
+    const isSuper = this._isSuperAdmin();
     const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
     const examHistory = JSON.parse(localStorage.getItem('exam_history') || '[]');
 
-    // Compute stats
-    const totalUsers = allUsers.length;
-    const totalExams = examHistory.length;
-    const avgScore = totalExams ? Math.round(examHistory.reduce((s,e) => s + e.score, 0) / totalExams) : 0;
-    const passRate = totalExams ? Math.round(examHistory.filter(e => e.score >= e.passScore).length / totalExams * 100) : 0;
+    const totalUsers = users.length;
+    const activeUsers = users.filter(u => u.progress && u.progress.lastActive).length;
+    const allDone = users.filter(u => u.progress && u.progress.completionRate >= 100).length;
+    const avgRate = totalUsers ? Math.round(users.reduce((s, u) => s + ((u.progress || {}).completionRate || 0), 0) / totalUsers) : 0;
 
-    // Group users by company
-    const byCompany = {};
-    allUsers.forEach(u => {
-      if (!byCompany[u.company]) byCompany[u.company] = [];
-      byCompany[u.company].push(u);
-    });
+    // Company list for super admin filter
+    const companies = [...new Set(allUsers.map(u => u.company))].sort();
 
     container.innerHTML = `<div class="animate-fade-in space-y-4">
+      <!-- Header -->
+      <div class="flex items-center justify-between">
+        <div>
+          <div class="text-sm text-gray-500">${isSuper ? '超级管理员 · 全局视图' : this._getCompany()}</div>
+        </div>
+        ${isSuper ? `<select id="admin-company-filter" onchange="Admin._companyFilter = this.value || null; Admin._renderPanel(App.getContentContainer())" class="px-3 py-1.5 rounded-lg border border-gray-200 text-sm bg-white">
+          <option value="">全部服务商 (${companies.length})</option>
+          ${companies.map(c => `<option value="${c}" ${this._companyFilter === c ? 'selected' : ''}>${c}</option>`).join('')}
+        </select>` : ''}
+      </div>
+
       <!-- Stats -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
         <div class="card text-center !p-4">
@@ -3202,28 +3578,28 @@ window.Admin = {
           <div class="text-xs text-gray-400 mt-1">注册用户</div>
         </div>
         <div class="card text-center !p-4">
-          <div class="text-3xl font-bold text-green-600">${totalExams}</div>
-          <div class="text-xs text-gray-400 mt-1">考试次数</div>
+          <div class="text-3xl font-bold text-blue-600">${activeUsers}</div>
+          <div class="text-xs text-gray-400 mt-1">已学习</div>
         </div>
         <div class="card text-center !p-4">
-          <div class="text-3xl font-bold text-orange-600">${avgScore}</div>
-          <div class="text-xs text-gray-400 mt-1">平均分</div>
+          <div class="text-3xl font-bold text-green-600">${allDone}</div>
+          <div class="text-xs text-gray-400 mt-1">全部完成</div>
         </div>
         <div class="card text-center !p-4">
-          <div class="text-3xl font-bold ${passRate >= 80 ? 'text-green-600' : 'text-red-500'}">${passRate}%</div>
-          <div class="text-xs text-gray-400 mt-1">通过率</div>
+          <div class="text-3xl font-bold ${avgRate >= 80 ? 'text-green-600' : avgRate >= 50 ? 'text-orange-500' : 'text-gray-500'}">${avgRate}%</div>
+          <div class="text-xs text-gray-400 mt-1">平均完成率</div>
         </div>
       </div>
 
       <!-- Tabs -->
       <div class="flex gap-2 overflow-x-auto pb-1">
-        <button onclick="Admin.showTab('users')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-brand-600 text-white" data-tab="users">用户管理</button>
-        <button onclick="Admin.showTab('progress')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600" data-tab="progress">学习进度</button>
-        <button onclick="Admin.showTab('exams')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600" data-tab="exams">考试数据</button>
-        <button onclick="Admin.showTab('export')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600" data-tab="export">数据导出</button>
+        <button onclick="Admin.showTab('users')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-brand-600 text-white whitespace-nowrap" data-tab="users">小二管理</button>
+        <button onclick="Admin.showTab('plan')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600 whitespace-nowrap" data-tab="plan">课程计划</button>
+        <button onclick="Admin.showTab('progress')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600 whitespace-nowrap" data-tab="progress">学习进度</button>
+        <button onclick="Admin.showTab('exams')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600 whitespace-nowrap" data-tab="exams">考试数据</button>
+        <button onclick="Admin.showTab('export')" class="admin-tab px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-600 whitespace-nowrap" data-tab="export">数据导出</button>
       </div>
 
-      <!-- Tab content -->
       <div id="admin-tab-content"></div>
     </div>`;
 
@@ -3240,121 +3616,172 @@ window.Admin = {
     const el = document.getElementById('admin-tab-content');
     switch(tab) {
       case 'users': this.renderUsersTab(el); break;
+      case 'plan': this.renderPlanTab(el); break;
       case 'progress': this.renderProgressTab(el); break;
       case 'exams': this.renderExamsTab(el); break;
       case 'export': this.renderExportTab(el); break;
     }
   },
 
+  // ─── 小二管理 ─────────────────────────────
   renderUsersTab(el) {
-    const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+    const users = this._getFilteredUsers();
     const byCompany = {};
-    allUsers.forEach(u => {
+    users.forEach(u => {
       if (!byCompany[u.company]) byCompany[u.company] = [];
       byCompany[u.company].push(u);
     });
 
     el.innerHTML = `<div class="space-y-3">
       <div class="flex items-center justify-between">
-        <span class="text-sm text-gray-500">共 ${allUsers.length} 名用户</span>
-        <button onclick="Admin.addUser()" class="px-4 py-1.5 bg-brand-600 text-white text-sm rounded-lg">+ 添加用户</button>
+        <span class="text-sm text-gray-500">共 ${users.length} 名用户</span>
       </div>
-      ${Object.entries(byCompany).map(([company, users]) => `
+      ${Object.entries(byCompany).map(([company, cUsers]) => `
         <div class="card">
           <div class="font-semibold text-gray-900 mb-2">${company}</div>
-          <div class="text-xs text-gray-400 mb-3">${users.length}人</div>
-          ${users.map(u => `
-            <div class="flex items-center gap-3 py-2 border-b border-gray-50 last:border-0">
-              <div class="w-8 h-8 bg-brand-50 rounded-full flex items-center justify-center text-sm font-medium text-brand-700">${u.name[0]}</div>
+          <div class="text-xs text-gray-400 mb-3">${cUsers.length}人</div>
+          ${cUsers.map(u => {
+            const planCount = (u.coursePlan || []).length;
+            const prog = u.progress || {};
+            const rate = prog.completionRate || 0;
+            return `<div class="flex items-center gap-3 py-2 border-b border-gray-50 last:border-0">
+              <div class="w-8 h-8 bg-brand-50 rounded-full flex items-center justify-center text-sm font-medium text-brand-700">${(u.name || '?')[0]}</div>
               <div class="flex-1">
-                <div class="text-sm font-medium">${u.name}</div>
-                <div class="text-xs text-gray-400">${u.phone} · ${App.roleName(u.role)}</div>
+                <div class="text-sm font-medium">${u.name || '未知'}</div>
+                <div class="text-xs text-gray-400">${u.phone || ''} · ${App.roleName(u.role)}${planCount ? ' · 已分配' + planCount + '门课' : ''}</div>
               </div>
-              <button onclick="Admin.removeUser('${u.phone}')" class="text-xs text-red-400 hover:text-red-600">移除</button>
+              <div class="text-right">
+                <div class="text-xs font-bold ${rate >= 100 ? 'text-green-600' : rate > 0 ? 'text-brand-600' : 'text-gray-400'}">${rate}%</div>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
+      `).join('')}
+      ${users.length === 0 ? '<div class="text-center text-gray-400 py-8">暂无用户数据</div>' : ''}
+    </div>`;
+  },
+
+  // ─── 课程计划 ─────────────────────────────
+  renderPlanTab(el) {
+    const users = this._getFilteredUsers().filter(u => u.role === 'rep' || u.role === 'manager' || u.role === 'cm');
+    const courses = (typeof DATA !== 'undefined' && DATA.courses) ? DATA.courses : [];
+
+    // Group courses by product line
+    const byLine = {};
+    courses.forEach(c => {
+      if (!byLine[c.productLine]) byLine[c.productLine] = { name: c.productLineName, courses: [] };
+      byLine[c.productLine].courses.push(c);
+    });
+
+    el.innerHTML = `<div class="space-y-4">
+      <div class="card">
+        <div class="font-semibold mb-1">分配课程计划</div>
+        <div class="text-sm text-gray-500 mb-4">选择小二，勾选需要学习的课程，保存后小二将按此计划学习</div>
+
+        <!-- User selector -->
+        <div class="mb-4">
+          <label class="text-sm font-medium text-gray-700 mb-1 block">选择小二</label>
+          <select id="plan-user-select" onchange="Admin._renderPlanCourses()" class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm">
+            <option value="">-- 请选择 --</option>
+            ${users.map(u => `<option value="${u.phone}">${u.name} (${u.phone}) - ${u.company}</option>`).join('')}
+          </select>
+        </div>
+
+        <!-- Batch select -->
+        <div class="mb-4">
+          <label class="text-sm font-medium text-gray-700 mb-1 block">批量选择（可多选）</label>
+          <div class="flex flex-wrap gap-2 max-h-32 overflow-y-auto" id="plan-batch-users">
+            ${users.map(u => `<label class="inline-flex items-center gap-1 text-xs bg-gray-50 px-2 py-1 rounded-full cursor-pointer hover:bg-brand-50">
+              <input type="checkbox" class="plan-batch-cb" value="${u.phone}" onchange="Admin._renderPlanCourses()">
+              <span>${u.name}</span>
+            </label>`).join('')}
+          </div>
+        </div>
+
+        <!-- Course selection -->
+        <div id="plan-courses-area">
+          ${Object.entries(byLine).map(([line, group]) => `
+            <div class="mb-3">
+              <div class="text-sm font-medium text-gray-700 mb-1">${group.name}</div>
+              <div class="flex flex-wrap gap-2">
+                ${group.courses.map(c => `<label class="inline-flex items-center gap-1 text-xs bg-gray-50 px-2 py-1.5 rounded-lg cursor-pointer hover:bg-brand-50 border border-transparent has-[:checked]:border-brand-400 has-[:checked]:bg-brand-50">
+                  <input type="checkbox" class="plan-course-cb" value="${c.id}">
+                  <span>${c.title}</span>
+                </label>`).join('')}
+              </div>
             </div>
           `).join('')}
         </div>
-      `).join('')}
-      ${allUsers.length === 0 ? '<div class="text-center text-gray-400 py-8">暂无注册用户</div>' : ''}
-    </div>`;
-  },
 
-  renderExamsTab(el) {
-    const history = JSON.parse(localStorage.getItem('exam_history') || '[]');
-    const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
-
-    el.innerHTML = `<div class="space-y-3">
-      <div class="text-sm text-gray-500 mb-2">考试记录（本地数据）</div>
-      ${history.length === 0 ? '<div class="text-center text-gray-400 py-8">暂无考试数据</div>' :
-        `<div class="card !p-0 overflow-hidden">
-          <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-              <thead><tr class="bg-gray-50">
-                <th class="px-3 py-2 text-left font-medium text-gray-600">试卷</th>
-                <th class="px-3 py-2 text-center font-medium text-gray-600">分数</th>
-                <th class="px-3 py-2 text-center font-medium text-gray-600">结果</th>
-                <th class="px-3 py-2 text-right font-medium text-gray-600">时间</th>
-              </tr></thead>
-              <tbody>
-                ${history.map(e => `<tr class="border-t border-gray-50">
-                  <td class="px-3 py-2.5">${e.paperName}</td>
-                  <td class="px-3 py-2.5 text-center font-bold ${e.score >= e.passScore ? 'text-green-600' : 'text-red-500'}">${e.score}</td>
-                  <td class="px-3 py-2.5 text-center"><span class="badge ${e.score >= e.passScore ? 'badge-green' : 'badge-red'}">${e.score >= e.passScore ? '通过' : '未通过'}</span></td>
-                  <td class="px-3 py-2.5 text-right text-gray-400 text-xs">${new Date(e.date).toLocaleDateString('zh-CN')}</td>
-                </tr>`).join('')}
-              </tbody>
-            </table>
-          </div>
+        <!-- Quick actions -->
+        <div class="flex gap-2 mt-4">
+          <button onclick="Admin._selectAllCourses(true)" class="px-3 py-1.5 text-xs bg-gray-100 text-gray-600 rounded-lg">全选课程</button>
+          <button onclick="Admin._selectAllCourses(false)" class="px-3 py-1.5 text-xs bg-gray-100 text-gray-600 rounded-lg">清空选择</button>
         </div>
-        <button onclick="Admin.clearExamHistory()" class="w-full py-2 text-sm text-red-400 hover:text-red-600">清空考试记录</button>`
-      }
-    </div>`;
-  },
 
-  renderExportTab(el) {
-    el.innerHTML = `<div class="space-y-4">
-      <div class="card">
-        <div class="font-semibold mb-2">导出用户数据</div>
-        <div class="text-sm text-gray-500 mb-3">将所有注册用户信息导出为CSV文件</div>
-        <button onclick="Admin.exportUsers()" class="px-6 py-2.5 bg-brand-600 text-white rounded-xl text-sm font-medium">导出用户 CSV</button>
-      </div>
-      <div class="card">
-        <div class="font-semibold mb-2">导出考试数据</div>
-        <div class="text-sm text-gray-500 mb-3">将所有考试记录导出为CSV文件</div>
-        <button onclick="Admin.exportExams()" class="px-6 py-2.5 bg-brand-600 text-white rounded-xl text-sm font-medium">导出考试 CSV</button>
-      </div>
-      <div class="card">
-        <div class="font-semibold mb-2">导入用户数据</div>
-        <div class="text-sm text-gray-500 mb-3">从CSV文件批量导入用户</div>
-        <input type="file" id="import-file" accept=".csv" class="hidden" onchange="Admin.importUsers(event)">
-        <button onclick="document.getElementById('import-file').click()" class="px-6 py-2.5 bg-gray-100 text-gray-700 rounded-xl text-sm font-medium">选择CSV文件</button>
+        <button onclick="Admin.savePlan()" class="w-full mt-4 py-3 bg-brand-600 text-white rounded-xl font-medium">保存课程计划</button>
       </div>
     </div>`;
   },
 
-  renderProgressTab(el) {
+  _renderPlanCourses() {
+    // When user selection changes, check their existing coursePlan and pre-check those courses
+    const selectEl = document.getElementById('plan-user-select');
+    const phone = selectEl ? selectEl.value : '';
+    if (!phone) return;
     const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+    const user = allUsers.find(u => u.phone === phone);
+    if (!user || !user.coursePlan) return;
+    document.querySelectorAll('.plan-course-cb').forEach(cb => {
+      cb.checked = user.coursePlan.includes(cb.value);
+    });
+  },
+
+  _selectAllCourses(checked) {
+    document.querySelectorAll('.plan-course-cb').forEach(cb => { cb.checked = checked; });
+  },
+
+  savePlan() {
+    const selectEl = document.getElementById('plan-user-select');
+    const singlePhone = selectEl ? selectEl.value : '';
+    const batchPhones = [...document.querySelectorAll('.plan-batch-cb:checked')].map(cb => cb.value);
+    const phones = [...new Set([singlePhone, ...batchPhones].filter(Boolean))];
+    const courseIds = [...document.querySelectorAll('.plan-course-cb:checked')].map(cb => cb.value);
+
+    if (phones.length === 0) return App.toast('请选择至少一个小二');
+    if (courseIds.length === 0) return App.toast('请选择至少一门课程');
+
+    const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+    let updated = 0;
+    phones.forEach(phone => {
+      const idx = allUsers.findIndex(u => u.phone === phone);
+      if (idx !== -1) {
+        allUsers[idx].coursePlan = courseIds;
+        updated++;
+      }
+    });
+    localStorage.setItem('atc_all_users', JSON.stringify(allUsers));
+    App.toast(`已为 ${updated} 名小二分配 ${courseIds.length} 门课程`);
+  },
+
+  // ─── 学习进度 ─────────────────────────────
+  renderProgressTab(el) {
+    const users = this._getFilteredUsers();
     const totalCourses = (typeof DATA !== 'undefined' && DATA.courses) ? DATA.courses.length : 0;
 
-    // Build per-user progress from atc_all_users .progress field (auto-synced)
-    const learnerData = allUsers.map(u => {
+    const learnerData = users.map(u => {
       const prog = u.progress || {};
-      const completedCourses = prog.completedCourses || [];
-      const completionRate = prog.completionRate || 0;
-      const avgQuizScore = prog.avgQuizScore || 0;
-      const quizAttempts = prog.quizAttempts || 0;
-      const lastActive = prog.lastActive || null;
       return {
         user: u,
-        completedCourses,
-        completionRate,
-        avgQuizScore,
-        quizAttempts,
-        lastActive
+        completedCourses: prog.completedCourses || [],
+        completionRate: prog.completionRate || 0,
+        avgQuizScore: prog.avgQuizScore || 0,
+        quizAttempts: prog.quizAttempts || 0,
+        lastActive: prog.lastActive || null,
+        coursePlan: u.coursePlan || []
       };
     });
 
-    // Sort: active learners first (by lastActive desc), then by completion rate
     learnerData.sort((a, b) => {
       if (a.lastActive && b.lastActive) return new Date(b.lastActive) - new Date(a.lastActive);
       if (a.lastActive) return -1;
@@ -3368,32 +3795,17 @@ window.Admin = {
     const avgCompletion = totalLearners ? Math.round(learnerData.reduce((s, l) => s + l.completionRate, 0) / totalLearners) : 0;
 
     el.innerHTML = `<div class="space-y-4">
-      <!-- Summary stats -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div class="card text-center !p-4">
-          <div class="text-2xl font-bold text-brand-600">${totalLearners}</div>
-          <div class="text-xs text-gray-400 mt-1">学员总数</div>
-        </div>
-        <div class="card text-center !p-4">
-          <div class="text-2xl font-bold text-blue-600">${activeLearners}</div>
-          <div class="text-xs text-gray-400 mt-1">已学习</div>
-        </div>
-        <div class="card text-center !p-4">
-          <div class="text-2xl font-bold text-green-600">${allDone}</div>
-          <div class="text-xs text-gray-400 mt-1">全部完成</div>
-        </div>
-        <div class="card text-center !p-4">
-          <div class="text-2xl font-bold ${avgCompletion >= 80 ? 'text-green-600' : avgCompletion >= 50 ? 'text-orange-500' : 'text-gray-500'}">${avgCompletion}%</div>
-          <div class="text-xs text-gray-400 mt-1">平均完成率</div>
-        </div>
+        <div class="card text-center !p-4"><div class="text-2xl font-bold text-brand-600">${totalLearners}</div><div class="text-xs text-gray-400 mt-1">学员总数</div></div>
+        <div class="card text-center !p-4"><div class="text-2xl font-bold text-blue-600">${activeLearners}</div><div class="text-xs text-gray-400 mt-1">已学习</div></div>
+        <div class="card text-center !p-4"><div class="text-2xl font-bold text-green-600">${allDone}</div><div class="text-xs text-gray-400 mt-1">全部完成</div></div>
+        <div class="card text-center !p-4"><div class="text-2xl font-bold ${avgCompletion >= 80 ? 'text-green-600' : avgCompletion >= 50 ? 'text-orange-500' : 'text-gray-500'}">${avgCompletion}%</div><div class="text-xs text-gray-400 mt-1">平均完成率</div></div>
       </div>
 
-      <!-- Export button -->
       ${totalLearners > 0 ? `<div class="flex justify-end">
         <button onclick="Admin.exportProgress()" class="px-4 py-2 bg-brand-600 text-white rounded-xl text-sm font-medium">导出学习进度 CSV</button>
       </div>` : ''}
 
-      <!-- Learner cards -->
       <div class="space-y-3">
         ${totalLearners === 0 ? '<div class="text-center text-gray-400 py-8">暂无学员数据</div>' : ''}
         ${learnerData.map(ld => this._renderLearnerCard(ld, totalCourses)).join('')}
@@ -3402,20 +3814,22 @@ window.Admin = {
   },
 
   _renderLearnerCard(ld, totalCourses) {
-    const { user, completedCourses, completionRate, avgQuizScore, quizAttempts, lastActive } = ld;
+    const { user, completedCourses, completionRate, avgQuizScore, quizAttempts, lastActive, coursePlan } = ld;
     const barColor = completionRate >= 100 ? 'bg-green-500' : completionRate >= 50 ? 'bg-blue-500' : completionRate > 0 ? 'bg-orange-400' : 'bg-gray-300';
     const lastActiveStr = lastActive ? new Date(lastActive).toLocaleDateString('zh-CN') + ' ' + new Date(lastActive).toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' }) : '未记录';
+    const planInfo = coursePlan.length > 0 ? `<span class="badge badge-orange ml-1">计划${coursePlan.length}门</span>` : '';
     const courseTags = completedCourses.length > 0
       ? `<div class="mt-3 flex flex-wrap gap-1">${completedCourses.map(c => `<span class="inline-block px-2 py-0.5 bg-green-50 text-green-700 text-xs rounded-full">${c.name || c.id}</span>`).join('')}</div>`
       : '';
 
     return `<div class="card">
       <div class="flex items-center gap-3 mb-3">
-        <div class="w-10 h-10 bg-brand-50 rounded-full flex items-center justify-center text-sm font-bold text-brand-700">${user.name ? user.name[0] : '?'}</div>
+        <div class="w-10 h-10 bg-brand-50 rounded-full flex items-center justify-center text-sm font-bold text-brand-700">${(user.name || '?')[0]}</div>
         <div class="flex-1">
           <div class="flex items-center">
             <span class="font-semibold text-gray-900">${user.name || '未知'}</span>
             ${completionRate >= 100 ? '<span class="badge badge-green ml-2">已完成</span>' : completionRate > 0 ? '<span class="badge badge-blue ml-2">学习中</span>' : '<span class="badge badge-gray ml-2">未开始</span>'}
+            ${planInfo}
           </div>
           <div class="text-xs text-gray-400">${user.company || ''} · ${App.roleName(user.role)} · 最近活跃 ${lastActiveStr}</div>
         </div>
@@ -3424,136 +3838,122 @@ window.Admin = {
           <div class="text-xs text-gray-400">完成率</div>
         </div>
       </div>
-      <!-- Progress bar -->
       <div class="w-full bg-gray-100 rounded-full h-2 mb-3">
         <div class="${barColor} h-2 rounded-full transition-all" style="width: ${Math.min(completionRate, 100)}%"></div>
       </div>
-      <!-- Stats row -->
       <div class="grid grid-cols-3 gap-2 text-center">
-        <div class="bg-gray-50 rounded-lg py-2">
-          <div class="text-sm font-bold text-gray-700">${completedCourses.length}<span class="text-gray-400 font-normal">/${totalCourses}</span></div>
-          <div class="text-xs text-gray-400">已完成课程</div>
-        </div>
-        <div class="bg-gray-50 rounded-lg py-2">
-          <div class="text-sm font-bold text-gray-700">${quizAttempts}</div>
-          <div class="text-xs text-gray-400">测验次数</div>
-        </div>
-        <div class="bg-gray-50 rounded-lg py-2">
-          <div class="text-sm font-bold ${avgQuizScore >= 80 ? 'text-green-600' : avgQuizScore > 0 ? 'text-orange-500' : 'text-gray-400'}">${avgQuizScore > 0 ? avgQuizScore + '%' : '-'}</div>
-          <div class="text-xs text-gray-400">平均测验分</div>
-        </div>
+        <div class="bg-gray-50 rounded-lg py-2"><div class="text-sm font-bold text-gray-700">${completedCourses.length}<span class="text-gray-400 font-normal">/${totalCourses}</span></div><div class="text-xs text-gray-400">已完成</div></div>
+        <div class="bg-gray-50 rounded-lg py-2"><div class="text-sm font-bold text-gray-700">${quizAttempts}</div><div class="text-xs text-gray-400">测验次数</div></div>
+        <div class="bg-gray-50 rounded-lg py-2"><div class="text-sm font-bold ${avgQuizScore >= 80 ? 'text-green-600' : avgQuizScore > 0 ? 'text-orange-500' : 'text-gray-400'}">${avgQuizScore > 0 ? avgQuizScore + '%' : '-'}</div><div class="text-xs text-gray-400">平均测验分</div></div>
       </div>
       ${courseTags}
     </div>`;
   },
 
+  // ─── 考试数据 ─────────────────────────────
+  renderExamsTab(el) {
+    const history = JSON.parse(localStorage.getItem('exam_history') || '[]');
+    const users = this._getFilteredUsers();
+    const phones = users.map(u => u.phone);
+
+    // Filter exams by user phone if available, otherwise show all
+    const filteredHistory = this._isSuperAdmin() && !this._companyFilter
+      ? history
+      : history.filter(e => !e.userPhone || phones.includes(e.userPhone));
+
+    el.innerHTML = `<div class="space-y-3">
+      <div class="text-sm text-gray-500 mb-2">考试记录（${filteredHistory.length}条）</div>
+      ${filteredHistory.length === 0 ? '<div class="text-center text-gray-400 py-8">暂无考试数据</div>' :
+        `<div class="card !p-0 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead><tr class="bg-gray-50">
+                <th class="px-3 py-2 text-left font-medium text-gray-600">学员</th>
+                <th class="px-3 py-2 text-left font-medium text-gray-600">试卷</th>
+                <th class="px-3 py-2 text-center font-medium text-gray-600">分数</th>
+                <th class="px-3 py-2 text-center font-medium text-gray-600">结果</th>
+                <th class="px-3 py-2 text-right font-medium text-gray-600">时间</th>
+              </tr></thead>
+              <tbody>
+                ${filteredHistory.slice().reverse().map(e => {
+                  const allU = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+                  const eu = allU.find(u => u.phone === e.userPhone);
+                  return `<tr class="border-t border-gray-50">
+                    <td class="px-3 py-2.5 text-xs">${eu ? eu.name : (e.userPhone || '-')}</td>
+                    <td class="px-3 py-2.5">${e.paperName}</td>
+                    <td class="px-3 py-2.5 text-center font-bold ${e.score >= e.passScore ? 'text-green-600' : 'text-red-500'}">${e.score}</td>
+                    <td class="px-3 py-2.5 text-center"><span class="badge ${e.score >= e.passScore ? 'badge-green' : 'badge-red'}">${e.score >= e.passScore ? '通过' : '未通过'}</span></td>
+                    <td class="px-3 py-2.5 text-right text-gray-400 text-xs">${new Date(e.date).toLocaleDateString('zh-CN')}</td>
+                  </tr>`;
+                }).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>`
+      }
+    </div>`;
+  },
+
+  // ─── 数据导出 ─────────────────────────────
+  renderExportTab(el) {
+    el.innerHTML = `<div class="space-y-4">
+      <div class="card">
+        <div class="font-semibold mb-2">导出用户数据</div>
+        <div class="text-sm text-gray-500 mb-3">${this._isSuperAdmin() ? '导出所有服务商用户数据' : '导出本公司用户数据'}</div>
+        <button onclick="Admin.exportUsers()" class="px-6 py-2.5 bg-brand-600 text-white rounded-xl text-sm font-medium">导出用户 CSV</button>
+      </div>
+      <div class="card">
+        <div class="font-semibold mb-2">导出学习进度</div>
+        <div class="text-sm text-gray-500 mb-3">导出学员课程完成情况和测验成绩</div>
+        <button onclick="Admin.exportProgress()" class="px-6 py-2.5 bg-brand-600 text-white rounded-xl text-sm font-medium">导出学习进度 CSV</button>
+      </div>
+      <div class="card">
+        <div class="font-semibold mb-2">导出考试数据</div>
+        <div class="text-sm text-gray-500 mb-3">导出所有考试记录</div>
+        <button onclick="Admin.exportExams()" class="px-6 py-2.5 bg-brand-600 text-white rounded-xl text-sm font-medium">导出考试 CSV</button>
+      </div>
+    </div>`;
+  },
+
+  // ─── 导出方法 ─────────────────────────────
   exportProgress() {
-    const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
-    if (!allUsers.length) return App.toast('暂无学员数据');
+    const users = this._getFilteredUsers();
+    if (!users.length) return App.toast('暂无学员数据');
     const totalCourses = (typeof DATA !== 'undefined' && DATA.courses) ? DATA.courses.length : 0;
     const BOM = '\uFEFF';
-    const header = '服务商,姓名,手机号,角色,已完成课程,课程总数,完成率,测验次数,平均测验分,最近活跃,状态\n';
-    const rows = allUsers.map(u => {
+    const header = '服务商,姓名,手机号,角色,已分配课程,已完成课程,课程总数,完成率,测验次数,平均测验分,最近活跃,状态\n';
+    const rows = users.map(u => {
       const p = u.progress || {};
       const completed = (p.completedCourses || []).length;
       const rate = p.completionRate || 0;
+      const planCount = (u.coursePlan || []).length;
       const status = rate >= 100 ? '已完成' : rate > 0 ? '学习中' : '未开始';
       const lastActive = p.lastActive ? new Date(p.lastActive).toLocaleString('zh-CN') : '-';
-      return `"${u.company || ''}","${u.name || ''}","${u.phone || ''}","${App.roleName(u.role)}",${completed},${totalCourses},${rate}%,${p.quizAttempts || 0},${p.avgQuizScore || 0}%,"${lastActive}","${status}"`;
+      return `"${u.company || ''}","${u.name || ''}","${u.phone || ''}","${App.roleName(u.role)}",${planCount},${completed},${totalCourses},${rate}%,${p.quizAttempts || 0},${p.avgQuizScore || 0}%,"${lastActive}","${status}"`;
     }).join('\n');
     this.downloadCSV(BOM + header + rows, '学习进度_' + new Date().toISOString().slice(0, 10) + '.csv');
   },
 
-  importProgress(event) {},
-  clearImportedProgress() {},
-
-  addUser() {
-    App.showModal(`
-      <div class="p-6">
-        <h3 class="text-lg font-bold mb-4">添加用户</h3>
-        <div class="space-y-3">
-          <div><label class="text-sm font-medium text-gray-700">服务商</label><input id="add-company" class="w-full mt-1 px-3 py-2 rounded-lg border border-gray-200" placeholder="服务商名称"></div>
-          <div><label class="text-sm font-medium text-gray-700">姓名</label><input id="add-name" class="w-full mt-1 px-3 py-2 rounded-lg border border-gray-200" placeholder="用户姓名"></div>
-          <div><label class="text-sm font-medium text-gray-700">手机号</label><input id="add-phone" class="w-full mt-1 px-3 py-2 rounded-lg border border-gray-200" placeholder="手机号" maxlength="11"></div>
-          <div><label class="text-sm font-medium text-gray-700">角色</label><select id="add-role" class="w-full mt-1 px-3 py-2 rounded-lg border border-gray-200"><option value="rep">销售小二</option><option value="manager">服务商管理者</option><option value="cm">渠道经理</option></select></div>
-        </div>
-        <div class="flex gap-3 mt-5">
-          <button onclick="App.closeModal()" class="flex-1 py-2.5 bg-gray-100 text-gray-700 rounded-xl">取消</button>
-          <button onclick="Admin.confirmAddUser()" class="flex-1 py-2.5 bg-brand-600 text-white rounded-xl">确认添加</button>
-        </div>
-      </div>
-    `);
-  },
-
-  confirmAddUser() {
-    const company = document.getElementById('add-company').value.trim();
-    const name = document.getElementById('add-name').value.trim();
-    const phone = document.getElementById('add-phone').value.trim();
-    const role = document.getElementById('add-role').value;
-    if (!company || !name || !phone) return App.toast('请填写完整信息');
-    const user = { id: 'u_' + Date.now(), company, name, phone, role, createdAt: new Date().toISOString() };
-    App.saveAllUsers(user);
-    App.closeModal();
-    App.toast('用户已添加');
-    this.showTab('users');
-  },
-
-  removeUser(phone) {
-    if (!confirm('确定移除该用户？')) return;
-    const users = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
-    const filtered = users.filter(u => u.phone !== phone);
-    localStorage.setItem('atc_all_users', JSON.stringify(filtered));
-    App.toast('用户已移除');
-    this.showTab('users');
-  },
-
-  clearExamHistory() {
-    if (!confirm('确定清空所有考试记录？')) return;
-    localStorage.setItem('exam_history', '[]');
-    App.toast('考试记录已清空');
-    this.showTab('exams');
-  },
-
   exportUsers() {
-    const users = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+    const users = this._getFilteredUsers();
     if (!users.length) return App.toast('暂无用户数据');
     const BOM = '\uFEFF';
     const header = '服务商,姓名,手机号,角色,注册时间\n';
     const rows = users.map(u => `"${u.company}","${u.name}","${u.phone}","${App.roleName(u.role)}","${new Date(u.createdAt).toLocaleString('zh-CN')}"`).join('\n');
-    this.downloadCSV(BOM + header + rows, '用户数据_' + new Date().toISOString().slice(0,10) + '.csv');
+    this.downloadCSV(BOM + header + rows, '用户数据_' + new Date().toISOString().slice(0, 10) + '.csv');
   },
 
   exportExams() {
     const history = JSON.parse(localStorage.getItem('exam_history') || '[]');
     if (!history.length) return App.toast('暂无考试数据');
     const BOM = '\uFEFF';
-    const header = '试卷名称,分数,及格线,结果,用时,考试日期\n';
-    const rows = history.map(e => `"${e.paperName}",${e.score},${e.passScore},"${e.score >= e.passScore ? '通过' : '未通过'}","${e.timeUsed || '-'}","${new Date(e.date).toLocaleString('zh-CN')}"`).join('\n');
-    this.downloadCSV(BOM + header + rows, '考试数据_' + new Date().toISOString().slice(0,10) + '.csv');
-  },
-
-  importUsers(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const text = e.target.result.replace(/^\uFEFF/, '');
-      const lines = text.split('\n').filter(l => l.trim());
-      const users = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
-      let added = 0;
-      lines.slice(1).forEach(line => {
-        const cols = line.split(',').map(c => c.replace(/"/g, '').trim());
-        if (cols.length >= 3 && cols[2] && !users.find(u => u.phone === cols[2])) {
-          users.push({ id: 'u_' + Date.now() + '_' + added, company: cols[0], name: cols[1], phone: cols[2], role: cols[3] === '服务商管理者' ? 'manager' : cols[3] === '渠道经理' ? 'cm' : 'rep', createdAt: new Date().toISOString() });
-          added++;
-        }
-      });
-      localStorage.setItem('atc_all_users', JSON.stringify(users));
-      App.toast(`成功导入 ${added} 名用户`);
-      this.showTab('users');
-      event.target.value = '';
-    };
-    reader.readAsText(file, 'UTF-8');
+    const header = '学员,服务商,试卷名称,分数,及格线,结果,用时,考试日期\n';
+    const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+    const rows = history.map(e => {
+      const eu = allUsers.find(u => u.phone === e.userPhone);
+      return `"${eu ? eu.name : '-'}","${eu ? eu.company : '-'}","${e.paperName}",${e.score},${e.passScore},"${e.score >= e.passScore ? '通过' : '未通过'}","${e.timeUsed || '-'}","${new Date(e.date).toLocaleString('zh-CN')}"`;
+    }).join('\n');
+    this.downloadCSV(BOM + header + rows, '考试数据_' + new Date().toISOString().slice(0, 10) + '.csv');
   },
 
   downloadCSV(content, filename) {
