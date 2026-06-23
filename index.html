@@ -3513,6 +3513,39 @@ window.App = {
           </div>
         </div>
 
+        <!-- 课程计划 -->
+        ${(() => {
+          const plan = this._getCoursePlan();
+          if (!plan.length) return '';
+          const planCourses = plan.map(id => DATA.courses.find(c => c.id === id)).filter(Boolean);
+          const planDone = planCourses.filter(c => p[c.id]?.completed).length;
+          const planPct = planCourses.length ? Math.round(planDone / planCourses.length * 100) : 0;
+          const pendingCourses = planCourses.filter(c => !p[c.id]?.completed);
+          return `<div class="card">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-semibold text-gray-900">📋 我的课程计划</span>
+              <span class="text-sm text-brand-600 font-medium">${planDone}/${planCourses.length} 已完成</span>
+            </div>
+            <div class="progress-bar mb-3"><div class="progress-fill" style="width:${planPct}%"></div></div>
+            ${pendingCourses.length === 0
+              ? '<div class="text-center text-green-600 text-sm py-2">🎉 课程计划已全部完成！</div>'
+              : `<div class="space-y-2">
+                  ${pendingCourses.slice(0, 4).map(c => `
+                    <a href="#learn/${c.id}" class="flex items-center gap-3 p-2.5 rounded-xl bg-orange-50 hover:bg-orange-100 transition cursor-pointer border border-orange-100">
+                      <div class="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center text-sm">📖</div>
+                      <div class="flex-1 min-w-0">
+                        <div class="text-sm font-medium text-gray-900 truncate">${c.title}</div>
+                        <div class="text-xs text-gray-400">${c.productLineName} · ${c.lessons.length}节课</div>
+                      </div>
+                      <span class="badge badge-orange">待学习</span>
+                    </a>
+                  `).join('')}
+                  ${pendingCourses.length > 4 ? `<div class="text-center text-xs text-gray-400 pt-1">还有 ${pendingCourses.length - 4} 门课程待学习</div>` : ''}
+                </div>`
+            }
+          </div>`;
+        })()}
+
         <!-- Learning Progress -->
         <div class="card">
           <div class="flex items-center justify-between mb-3">
@@ -3565,6 +3598,13 @@ window.App = {
   },
   roleName(r) { return { rep:'销售小二', manager:'服务商管理者', cm:'渠道经理', sp_admin:'服务商管理员', super_admin:'超级管理员' }[r] || '用户'; },
 
+  _getCoursePlan() {
+    if (!this.state.user || !this.state.user.phone) return [];
+    const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+    const me = allUsers.find(u => u.phone === this.state.user.phone);
+    return (me && me.coursePlan) ? me.coursePlan : [];
+  },
+
   getProductLineProgress() {
     const lines = {};
     DATA.courses.forEach(c => {
@@ -3591,9 +3631,10 @@ window.App = {
     });
     const icons = { cpc:'📊', 'ocpc-gmv':'📈', 'ocpc-leads':'📞', dual:'🔗', nobid:'🤖', allpush:'🌐', topdisplay:'🏆', watercard:'🎨', 'ai-agent':'🧠' };
     const colors = { cpc:'blue', 'ocpc-gmv':'indigo', 'ocpc-leads':'purple', dual:'emerald', nobid:'amber', allpush:'teal', topdisplay:'rose', watercard:'pink', 'ai-agent':'violet' };
+    const coursePlan = this._getCoursePlan();
 
     el.innerHTML = `<div class="animate-fade-in space-y-4">
-      <div class="text-sm text-gray-500">共 ${DATA.courses.length} 门课程 · ${Object.keys(lines).length} 条产品线</div>
+      <div class="text-sm text-gray-500">共 ${DATA.courses.length} 门课程 · ${Object.keys(lines).length} 条产品线${coursePlan.length ? ` · 📋 课程计划 ${coursePlan.length} 门` : ''}</div>
       ${Object.entries(lines).map(([key, group]) => {
         const done = group.courses.filter(c => this.state.progress[c.id]?.completed).length;
         const color = colors[key] || 'blue';
@@ -3609,15 +3650,16 @@ window.App = {
           <div class="space-y-2">
             ${group.courses.map(c => {
               const isDone = this.state.progress[c.id]?.completed;
+              const isPlanned = coursePlan.includes(c.id);
               const diffLabel = {beginner:'初级',intermediate:'进阶',advanced:'高级'}[c.difficulty];
               const diffClass = {beginner:'badge-green',intermediate:'badge-blue',advanced:'badge-orange'}[c.difficulty];
-              return `<a href="#learn/${c.id}" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition cursor-pointer">
-                <div class="w-8 h-8 rounded-lg bg-${color}-50 flex items-center justify-center text-sm">${isDone ? '✅' : '📖'}</div>
+              return `<a href="#learn/${c.id}" class="flex items-center gap-3 p-3 rounded-xl ${isPlanned && !isDone ? 'bg-orange-50 border border-orange-200' : 'hover:bg-gray-50'} transition cursor-pointer">
+                <div class="w-8 h-8 rounded-lg ${isPlanned && !isDone ? 'bg-orange-100' : 'bg-' + color + '-50'} flex items-center justify-center text-sm">${isDone ? '✅' : '📖'}</div>
                 <div class="flex-1 min-w-0">
                   <div class="text-sm font-medium text-gray-900 truncate">${c.title}</div>
                   <div class="text-xs text-gray-400">${c.lessons.length}节课 · ${c.duration}分钟</div>
                 </div>
-                <span class="badge ${diffClass}">${diffLabel}</span>
+                ${isPlanned && !isDone ? '<span class="badge badge-orange">必修</span>' : `<span class="badge ${diffClass}">${diffLabel}</span>`}
               </a>`;
             }).join('')}
           </div>
