@@ -3693,6 +3693,10 @@ window.Admin = {
 
         <!-- Course selection -->
         <div id="plan-courses-area">
+          <div class="flex gap-2 mb-3">
+            <button onclick="Admin._selectAllCourses(true)" class="px-3 py-1.5 text-xs bg-gray-100 text-gray-600 rounded-lg">全选课程</button>
+            <button onclick="Admin._selectAllCourses(false)" class="px-3 py-1.5 text-xs bg-gray-100 text-gray-600 rounded-lg">清空选择</button>
+          </div>
           ${Object.entries(byLine).map(([line, group]) => `
             <div class="mb-3">
               <div class="text-sm font-medium text-gray-700 mb-1">${group.name}</div>
@@ -3704,12 +3708,6 @@ window.Admin = {
               </div>
             </div>
           `).join('')}
-        </div>
-
-        <!-- Quick actions -->
-        <div class="flex gap-2 mt-4">
-          <button onclick="Admin._selectAllCourses(true)" class="px-3 py-1.5 text-xs bg-gray-100 text-gray-600 rounded-lg">全选课程</button>
-          <button onclick="Admin._selectAllCourses(false)" class="px-3 py-1.5 text-xs bg-gray-100 text-gray-600 rounded-lg">清空选择</button>
         </div>
 
         <button onclick="Admin.savePlan()" class="w-full mt-4 py-3 bg-brand-600 text-white rounded-xl font-medium">保存课程计划</button>
