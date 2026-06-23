@@ -597,6 +597,195 @@ window.ACCESS_CODES = ACCESS_CODES;
 
 </script>
   <script>
+// 预置小二名单 (1609人, 183家服务商)
+const PRESET_REPS = {
+  '三河市坤辉网络科技有限公司': [{n:'米坤',e:'undefined'},{n:'叶明宇',e:'undefined'},{n:'王鹏宇',e:'undefined'},{n:'苏楠',e:'undefined'},{n:'李增霞',e:'undefined'},{n:'周盈',e:'undefined'},{n:'杨红芳',e:'undefined'},{n:'郭兴虎',e:'undefined'},{n:'任天晴',e:'undefined'},{n:'双伟',e:'undefined'}],
+  '上海广分信息科技有限公司': [{n:'赵尧义',e:'undefined'},{n:'汪思琪',e:'undefined'}],
+  '上海轻亭商贸有限公司': [{n:'姜浩鹏',e:'undefined'},{n:'郭丹阳',e:'undefined'},{n:'胡国良',e:'undefined'},{n:'葛良伟',e:'undefined'},{n:'张玲燕',e:'undefined'},{n:'何麒',e:'undefined'},{n:'谢琪蒙',e:'undefined'},{n:'丁嘉俊',e:'undefined'},{n:'孙涛',e:'undefined'}],
+  '上海频远信息科技有限公司': [{n:'陈伟',e:'undefined'},{n:'刘云洋',e:'undefined'},{n:'曹柯可',e:'undefined'}],
+  '东莞市一橙文化传媒有限公司': [{n:'刘易诚',e:'undefined'}],
+  '东莞市极刻网络科技有限公司': [{n:'唐坤',e:'undefined'},{n:'周强',e:'undefined'},{n:'叶健鸿',e:'undefined'},{n:'刘元',e:'undefined'},{n:'罗行',e:'undefined'},{n:'鄢江华',e:'undefined'},{n:'刘江',e:'undefined'},{n:'杨俊辉',e:'undefined'},{n:'林城宾',e:'undefined'},{n:'陈俊伟',e:'undefined'},{n:'钟泽龙',e:'undefined'},{n:'吴小东',e:'undefined'},{n:'祝荣周',e:'undefined'},{n:'钟晓豪',e:'undefined'},{n:'高燕',e:'undefined'},{n:'杨夏洁',e:'undefined'},{n:'梁雪莹',e:'undefined'},{n:'郑敏怡',e:'undefined'}],
+  '东莞市正金商务咨询有限公司': [{n:'郑子聪',e:'undefined'},{n:'陈健辉',e:'undefined'},{n:'王玉萍',e:'undefined'}],
+  '中山市叁生万物网络科技有限公司': [{n:'魏超',e:'undefined'},{n:'李慧玲',e:'undefined'},{n:'黄泳茵',e:'undefined'}],
+  '中数融（山西）科技有限公司': [{n:'问荣飞',e:'undefined'},{n:'刘伟',e:'undefined'},{n:'牛金环',e:'undefined'},{n:'乔世强',e:'undefined'},{n:'高欣宇',e:'undefined'}],
+  '丽江触手可得网络科技有限公司': [{n:'刘三齐',e:'undefined'},{n:'蔡凌斌',e:'undefined'},{n:'刘民志',e:'undefined'},{n:'李晓栋',e:'undefined'},{n:'李丽文',e:'undefined'},{n:'吉勇源',e:'undefined'},{n:'陈金宝',e:'undefined'},{n:'梁平',e:'undefined'},{n:'敖红',e:'undefined'}],
+  '义乌众想网络科技有限公司': [{n:'孙经琛',e:'undefined'},{n:'杨蕾',e:'undefined'},{n:'潘一畅',e:'undefined'},{n:'竺子睿',e:'undefined'},{n:'王弋',e:'undefined'},{n:'陈佳欢',e:'undefined'},{n:'李志伟',e:'undefined'},{n:'王慧军',e:'undefined'}],
+  '乐山振芯信息技术有限公司': [{n:'龚磊',e:'undefined'},{n:'季瑞',e:'undefined'},{n:'孙巧润',e:'undefined'},{n:'徐西洋',e:'undefined'},{n:'曾理',e:'undefined'}],
+  '云南数流讯达网络科技有限公司': [{n:'黄明',e:'undefined'},{n:'李雯璐',e:'undefined'},{n:'刘波',e:'undefined'},{n:'温剑平',e:'undefined'},{n:'王晓蓉',e:'undefined'},{n:'安浩',e:'undefined'},{n:'陈爱琴',e:'undefined'},{n:'黄春万',e:'undefined'},{n:'蒋云伟',e:'undefined'},{n:'董蕾蕾',e:'undefined'},{n:'凹天文',e:'undefined'}],
+  '云南柠乐传媒有限公司': [{n:'桂健',e:'undefined'},{n:'魏榕',e:'undefined'}],
+  '云南海狗不是狗文化产业发展有限公司': [{n:'段志强',e:'undefined'},{n:'张泽',e:'undefined'},{n:'陶俊洋',e:'undefined'},{n:'杨晓波',e:'undefined'},{n:'马卓',e:'undefined'},{n:'宋汤琼',e:'undefined'},{n:'罗银',e:'undefined'},{n:'马娘格',e:'undefined'},{n:'孙德鹏',e:'undefined'},{n:'王永生',e:'undefined'}],
+  '云南魔方网络科技有限公司': [{n:'成亮',e:'undefined'},{n:'杨志辉',e:'undefined'},{n:'左冬',e:'undefined'},{n:'朱自成',e:'undefined'},{n:'陈莉',e:'undefined'},{n:'戚飞亮',e:'undefined'},{n:'周萍',e:'undefined'},{n:'杨鑫鹏',e:'undefined'},{n:'张婉佳',e:'undefined'},{n:'付其敏',e:'undefined'}],
+  '京通数字信息技术（东莞）有限公司': [{n:'陆通正',e:'undefined'},{n:'杨植强',e:'undefined'},{n:'郭晓利',e:'undefined'},{n:'范素贞',e:'undefined'}],
+  '佛山市洛瑞文化传媒有限公司': [{n:'刘成伟',e:'undefined'},{n:'欧嘉荣',e:'undefined'},{n:'符志华',e:'undefined'},{n:'谈秀清',e:'undefined'},{n:'丘丽芳',e:'undefined'},{n:'韩睿',e:'undefined'},{n:'周培彦',e:'undefined'},{n:'陈晓晖',e:'undefined'}],
+  '保定市蓝果商贸有限公司': [{n:'董玉',e:'undefined'},{n:'张帆',e:'undefined'}],
+  '内蒙古优十电科技有限公司': [{n:'张宇红',e:'undefined'},{n:'栗晓飞',e:'undefined'},{n:'张政',e:'undefined'},{n:'彭超凡',e:'undefined'},{n:'王玮',e:'undefined'},{n:'岳斯琴',e:'undefined'},{n:'张晓玲',e:'undefined'},{n:'张涛',e:'undefined'},{n:'靳敏',e:'undefined'},{n:'张宏',e:'undefined'},{n:'王磊',e:'undefined'}],
+  '内蒙古北方新媒科技有限公司': [{n:'李晓宁',e:'undefined'},{n:'宋超',e:'undefined'},{n:'陈依芬',e:'undefined'},{n:'高天',e:'undefined'},{n:'段佳倩',e:'undefined'},{n:'卫亚东',e:'undefined'},{n:'杨旭',e:'undefined'},{n:'魏巍',e:'undefined'},{n:'于珊',e:'undefined'},{n:'吕娜',e:'undefined'},{n:'董书岐',e:'undefined'}],
+  '北海微视文化传播有限公司': [{n:'汪颖',e:'undefined'},{n:'张婷钰',e:'undefined'}],
+  '华杨微众（嘉兴）信息科技有限责任公司': [{n:'戈吟格',e:'undefined'},{n:'韩东林',e:'undefined'},{n:'西仁江·奴尔',e:'undefined'},{n:'李诗琦',e:'undefined'},{n:'许国园',e:'undefined'},{n:'陈祺',e:'undefined'},{n:'李岩',e:'undefined'},{n:'唐晶',e:'undefined'},{n:'沈斌',e:'undefined'},{n:'陈佳佳',e:'undefined'},{n:'蒋诗妍',e:'undefined'},{n:'张晋析',e:'undefined'},{n:'沈杰',e:'undefined'},{n:'张旭东',e:'undefined'},{n:'马佳亮',e:'undefined'},{n:'杨敏',e:'undefined'}],
+  '南京万桦生活服务有限公司': [{n:'肖国飞',e:'undefined'},{n:'张建',e:'undefined'},{n:'张建龙',e:'undefined'},{n:'石依平',e:'undefined'}],
+  '南京众鑫云图网络科技有限公司': [{n:'李新标',e:'undefined'},{n:'陈一点',e:'undefined'},{n:'王晚柠',e:'undefined'},{n:'李嘉鑫',e:'undefined'},{n:'杨建凯',e:'undefined'},{n:'张顺凯',e:'undefined'},{n:'孔庆冬',e:'undefined'},{n:'邢文平',e:'undefined'},{n:'张莉',e:'undefined'},{n:'周燚',e:'undefined'},{n:'廖凯杰',e:'undefined'},{n:'高冬冬',e:'undefined'}],
+  '南京耀鸿禧科技有限公司': [{n:'马俊俊',e:'undefined'},{n:'谢发锋',e:'undefined'},{n:'张梦圆',e:'undefined'},{n:'檀冰雨',e:'undefined'},{n:'刘桐',e:'undefined'}],
+  '南通万众市场营销策划有限公司': [{n:'吴泽南',e:'undefined'},{n:'杨彤',e:'undefined'},{n:'刘露',e:'undefined'},{n:'周洋逸',e:'undefined'},{n:'邹玮',e:'undefined'},{n:'李俊',e:'undefined'},{n:'姚旻頔',e:'undefined'},{n:'王成',e:'undefined'},{n:'张仁杰',e:'undefined'},{n:'蒋满灿',e:'undefined'},{n:'闻涛',e:'undefined'},{n:'吴享',e:'undefined'},{n:'范曹俊',e:'undefined'},{n:'刘伟',e:'undefined'},{n:'徐嘉乐',e:'undefined'},{n:'茅海鑫',e:'undefined'},{n:'严伟',e:'undefined'},{n:'王燕根',e:'undefined'},{n:'刘海波',e:'undefined'},{n:'蒋宣',e:'undefined'},{n:'黄海洋',e:'undefined'},{n:'李权',e:'undefined'},{n:'吴峥嵘',e:'undefined'},{n:'龚利健',e:'undefined'},{n:'李秋荣',e:'undefined'},{n:'龚赛男',e:'undefined'},{n:'魏美容',e:'undefined'},{n:'曹梦佳',e:'undefined'},{n:'王晓芳',e:'undefined'},{n:'陈羽伟',e:'undefined'},{n:'姜佳淇',e:'undefined'},{n:'徐欣雨',e:'undefined'},{n:'冯嘉鹏',e:'undefined'},{n:'郑雅',e:'undefined'},{n:'葛枭枭',e:'undefined'},{n:'于欢',e:'undefined'},{n:'杨佳伟',e:'undefined'},{n:'朱彬',e:'undefined'},{n:'李荧',e:'undefined'},{n:'吴泰南',e:'undefined'},{n:'聂波',e:'undefined'},{n:'陈炜炜',e:'undefined'},{n:'吴嘉庆',e:'undefined'}],
+  '南通雅喵文化传媒有限公司': [{n:'陈磊',e:'undefined'},{n:'陈阿龙',e:'undefined'},{n:'田朋飞',e:'undefined'}],
+  '南阳市峻翔贸易有限责任公司': [{n:'吕旭',e:'undefined'},{n:'马壮',e:'undefined'},{n:'王传明',e:'undefined'},{n:'朱元芳',e:'undefined'},{n:'张雯雯',e:'undefined'},{n:'王露',e:'undefined'},{n:'张华',e:'undefined'},{n:'王赛赛',e:'undefined'},{n:'候明奇',e:'undefined'},{n:'李庭俊',e:'undefined'}],
+  '厚德尚信科技发展（西安）有限公司': [{n:'吴增',e:'undefined'},{n:'冯严',e:'undefined'},{n:'张熙铖',e:'undefined'},{n:'邓加伟',e:'undefined'},{n:'马慧慧',e:'undefined'},{n:'赵心茹',e:'undefined'},{n:'韩鹏',e:'undefined'},{n:'葛辉',e:'undefined'},{n:'张娇娇',e:'undefined'},{n:'史洁',e:'undefined'}],
+  '厦门云数互动网络有限公司': [{n:'邱永福',e:'undefined'},{n:'王伟霖',e:'undefined'},{n:'张登炜',e:'undefined'},{n:'黄紫怡',e:'undefined'},{n:'王建国',e:'undefined'},{n:'董欢',e:'undefined'},{n:'杨碧梅',e:'undefined'},{n:'林慧芬',e:'undefined'},{n:'赵会杰',e:'undefined'},{n:'王邦珍',e:'undefined'}],
+  '台州市启扬拾六文化传媒有限公司': [{n:'李林虹',e:'undefined'},{n:'张兴杨',e:'undefined'},{n:'周亚琳',e:'undefined'},{n:'陈培豪',e:'undefined'},{n:'蒋天一',e:'undefined'},{n:'王远俊',e:'undefined'},{n:'赵照林',e:'undefined'},{n:'倪增昊',e:'undefined'},{n:'丁增辉',e:'undefined'},{n:'王欣怡',e:'undefined'},{n:'陈嘉冠',e:'undefined'},{n:'王梦霞',e:'undefined'}],
+  '合肥京徽达供应链科技有限责任公司': [{n:'张金',e:'undefined'},{n:'李波',e:'undefined'},{n:'王旭东',e:'undefined'}],
+  '合肥市永道信息科技有限公司': [{n:'王磊',e:'undefined'},{n:'王文青',e:'undefined'},{n:'项薇',e:'undefined'},{n:'阚孟婷',e:'undefined'},{n:'伍毅',e:'undefined'},{n:'卫疆',e:'undefined'},{n:'尹光宇',e:'undefined'},{n:'杨宝',e:'undefined'},{n:'司德龙',e:'undefined'},{n:'徐平',e:'undefined'},{n:'陆玉剑',e:'undefined'},{n:'袁云杰',e:'undefined'},{n:'陈文文',e:'undefined'}],
+  '吉林省雨建信息科技有限公司': [{n:'曲文贺',e:'undefined'},{n:'杨雪苹',e:'undefined'},{n:'吕文博',e:'undefined'},{n:'李聪',e:'undefined'}],
+  '哈尔滨海上飞互联网科技有限公司': [{n:'王鑫楠',e:'undefined'},{n:'关蕊',e:'undefined'},{n:'孙彩云',e:'undefined'},{n:'李博文',e:'undefined'},{n:'李雨泞',e:'undefined'},{n:'汪连吉',e:'undefined'},{n:'姚启成',e:'undefined'},{n:'张钰',e:'undefined'},{n:'王法依',e:'undefined'},{n:'焦光旭',e:'undefined'},{n:'王宇欣',e:'undefined'}],
+  '唐山嘉尚文化传媒有限公司': [{n:'安宪彬',e:'undefined'},{n:'马荟颜',e:'undefined'}],
+  '唐山小蓝人网络科技有限公司': [{n:'王志鹏',e:'undefined'},{n:'张峻铭',e:'undefined'},{n:'杨婧瑜',e:'undefined'},{n:'晏浩然',e:'undefined'},{n:'黄俊霖',e:'undefined'},{n:'冼珠明',e:'undefined'},{n:'李元英',e:'undefined'}],
+  '四川巨量赋能科技有限公司': [{n:'黄雅馨',e:'undefined'},{n:'顾燕美',e:'undefined'},{n:'周佳',e:'undefined'},{n:'宋丹',e:'undefined'},{n:'张英',e:'undefined'},{n:'何佩珍',e:'undefined'},{n:'张霞',e:'undefined'},{n:'李永军',e:'undefined'},{n:'王平',e:'undefined'},{n:'吕晓娟',e:'undefined'}],
+  '四川正弘君源商业运营管理有限公司': [{n:'陈宇',e:'undefined'},{n:'张继杰',e:'undefined'},{n:'蒋永福',e:'undefined'},{n:'程国翔',e:'undefined'},{n:'黄廷辉',e:'undefined'},{n:'徐炜',e:'undefined'},{n:'向路',e:'undefined'},{n:'李思琦',e:'undefined'},{n:'姚云鹃',e:'undefined'},{n:'张金梅',e:'undefined'},{n:'杜仲',e:'undefined'},{n:'罗佳明',e:'undefined'},{n:'张萍',e:'undefined'},{n:'黄伟',e:'undefined'},{n:'张人中',e:'undefined'},{n:'罗喜洋',e:'undefined'},{n:'徐伟才',e:'undefined'},{n:'秦龙',e:'undefined'},{n:'黄兆县',e:'undefined'},{n:'苏涛',e:'undefined'},{n:'李代检',e:'undefined'},{n:'陈锐',e:'undefined'},{n:'丁敬强',e:'undefined'},{n:'朱琳琳',e:'undefined'}],
+  '四川迁渝电子商务有限公司': [{n:'陈嘉骏',e:'undefined'},{n:'何子剑',e:'undefined'},{n:'聂紫莹',e:'undefined'}],
+  '四川鑫图测绘有限公司': [{n:'王晨晨',e:'undefined'},{n:'侯志远',e:'undefined'},{n:'严浪',e:'undefined'}],
+  '大同市辰龙配送服务有限公司': [{n:'王明君',e:'undefined'},{n:'冀华飞',e:'undefined'},{n:'王志聪',e:'undefined'},{n:'王梓',e:'undefined'},{n:'冀华杰',e:'undefined'},{n:'张甜甜',e:'undefined'},{n:'王晓宇',e:'undefined'},{n:'刘嘉靖',e:'undefined'}],
+  '大连奥丽弗网络科技有限公司': [{n:'杨冬鹏',e:'undefined'},{n:'初晓影',e:'undefined'},{n:'王怀新',e:'undefined'},{n:'付卓禹',e:'undefined'},{n:'肖莹',e:'undefined'},{n:'张洁',e:'undefined'},{n:'周晗瑾',e:'undefined'},{n:'金威',e:'undefined'},{n:'薛冰',e:'undefined'},{n:'毕明军',e:'undefined'},{n:'苏姗姗',e:'undefined'},{n:'唐丹娜',e:'undefined'}],
+  '大连市金御蝉蝉网络科技有限公司': [{n:'王疆',e:'undefined'}],
+  '大连易卡联科技有限公司': [{n:'陆尚文',e:'undefined'},{n:'陈旭',e:'undefined'},{n:'哈斯高娃',e:'undefined'},{n:'王子俊',e:'undefined'},{n:'赵骏宇',e:'undefined'},{n:'张晶',e:'undefined'},{n:'吕鹏',e:'undefined'},{n:'乔淼',e:'undefined'},{n:'郑印红',e:'undefined'},{n:'周峰',e:'undefined'},{n:'王昭新',e:'undefined'},{n:'何佳欢',e:'undefined'},{n:'宁忱',e:'undefined'}],
+  '大连智威信息科技有限公司': [{n:'李春红',e:'undefined'},{n:'孙楠',e:'undefined'},{n:'李冰',e:'undefined'},{n:'季顺南',e:'undefined'},{n:'王世豪',e:'undefined'},{n:'阮翠娟',e:'undefined'},{n:'王清林',e:'undefined'}],
+  '天津乾元付科技有限公司': [{n:'秦昕昕',e:'undefined'}],
+  '天津汉坤文化传播有限公司': [{n:'周燕',e:'undefined'},{n:'周文龙',e:'undefined'},{n:'王晶',e:'undefined'},{n:'吴明杰',e:'undefined'},{n:'张宝杰',e:'undefined'},{n:'袁梦茹',e:'undefined'},{n:'赵子路',e:'undefined'},{n:'刘晔',e:'undefined'},{n:'张震',e:'undefined'}],
+  '天门市天亿文化传媒有限公司': [{n:'陈晓',e:'undefined'},{n:'刘莎',e:'undefined'},{n:'马地',e:'undefined'}],
+  '太原舍予科技有限公司': [{n:'郝玉',e:'undefined'},{n:'张德胜',e:'undefined'},{n:'李晓龙',e:'undefined'},{n:'杨云飞',e:'undefined'},{n:'李明东',e:'undefined'},{n:'莘继开',e:'undefined'}],
+  '太原逸飞科技服务有限公司': [{n:'任信宇',e:'undefined'},{n:'于婷婷',e:'undefined'},{n:'贾育翰',e:'undefined'},{n:'李国庆',e:'undefined'},{n:'薛凯',e:'undefined'},{n:'刘强',e:'undefined'},{n:'张宏伟',e:'undefined'},{n:'袁卓',e:'undefined'},{n:'刘浩宇',e:'undefined'},{n:'王健',e:'undefined'},{n:'李朝',e:'undefined'},{n:'王旋',e:'undefined'},{n:'王帅',e:'undefined'},{n:'万龙龙',e:'undefined'},{n:'卫欣斌',e:'undefined'},{n:'王鑫',e:'undefined'},{n:'卫杰',e:'undefined'},{n:'孟晓莉',e:'undefined'},{n:'李玉华',e:'undefined'},{n:'刘志斌',e:'undefined'},{n:'加嘉',e:'undefined'},{n:'张星星',e:'undefined'},{n:'谷晓宇',e:'undefined'},{n:'侯成樑',e:'undefined'},{n:'刘锦云',e:'undefined'},{n:'卫文雅',e:'undefined'},{n:'范维鹏',e:'undefined'},{n:'赵丰泰',e:'undefined'},{n:'关启勇',e:'undefined'},{n:'郭峥嵘',e:'undefined'}],
+  '宁夏云启扬科技有限公司': [{n:'曹倩',e:'undefined'}],
+  '宁夏辰达科技有限公司': [{n:'马英龙',e:'undefined'},{n:'桂国静',e:'undefined'},{n:'尹智渊',e:'undefined'},{n:'金晶',e:'undefined'},{n:'王俊香',e:'undefined'},{n:'吴毓洋',e:'undefined'},{n:'杨嘉杰',e:'undefined'},{n:'王进鑫',e:'undefined'},{n:'苏浩文',e:'undefined'},{n:'霍雨斌',e:'undefined'},{n:'陈荣芸',e:'undefined'},{n:'骆文杰',e:'undefined'},{n:'朱海福',e:'undefined'},{n:'陈泽江',e:'undefined'},{n:'马树萱',e:'undefined'},{n:'苏琪',e:'undefined'},{n:'刘素汝',e:'undefined'},{n:'保冉',e:'undefined'},{n:'符倩云',e:'undefined'},{n:'王旭',e:'undefined'}],
+  '宁波享趣电子商务有限公司': [{n:'王旭毅',e:'undefined'},{n:'李仁飞',e:'undefined'},{n:'林发超',e:'undefined'},{n:'洪少华',e:'undefined'},{n:'曹明立',e:'undefined'},{n:'祝冬富',e:'undefined'},{n:'黄檬',e:'undefined'},{n:'吴乐怡',e:'undefined'},{n:'史雨婕',e:'undefined'},{n:'王炫懿',e:'undefined'},{n:'陈涵利',e:'undefined'},{n:'王小涛',e:'undefined'},{n:'谢艳飞',e:'undefined'},{n:'李亚楠',e:'undefined'}],
+  '宁波小豆熊文化传媒有限公司': [{n:'毛立勇',e:'undefined'}],
+  '安徽吱信科技有限公司': [{n:'任佳',e:'undefined'},{n:'汪超',e:'undefined'},{n:'王勇',e:'undefined'},{n:'龚婷',e:'undefined'}],
+  '安徽惠团网络科技有限公司': [{n:'唐俊杰',e:'undefined'},{n:'夏勇',e:'undefined'},{n:'刘璐',e:'undefined'},{n:'孙梅',e:'undefined'},{n:'钱冰砚',e:'undefined'},{n:'李艳渝',e:'undefined'},{n:'高敏',e:'undefined'},{n:'贾佳',e:'undefined'},{n:'陈薇',e:'undefined'},{n:'林子豪',e:'undefined'},{n:'周杨杨',e:'undefined'},{n:'李梦婷',e:'undefined'}],
+  '安徽星伙伴网络科技有限公司': [{n:'陈健',e:'undefined'},{n:'吕有志',e:'undefined'},{n:'李超',e:'undefined'},{n:'王超',e:'undefined'},{n:'张文林',e:'undefined'},{n:'郑子琛',e:'undefined'},{n:'张海斌',e:'undefined'},{n:'沈文婷',e:'undefined'},{n:'李娜',e:'undefined'},{n:'郑少波',e:'undefined'}],
+  '安徽省声传文化传媒有限公司': [{n:'谢成',e:'undefined'},{n:'丁兆玄',e:'undefined'},{n:'宁俊',e:'undefined'},{n:'叶建军',e:'undefined'},{n:'刘健',e:'undefined'},{n:'关友青',e:'undefined'},{n:'杨朋红',e:'undefined'},{n:'陈贵武',e:'undefined'},{n:'张虹',e:'undefined'},{n:'陈志',e:'undefined'},{n:'李想',e:'undefined'},{n:'裴燕',e:'undefined'},{n:'刘枫',e:'undefined'}],
+  '山东独角仙传媒有限公司': [{n:'陈海杨',e:'undefined'},{n:'张慧贤',e:'undefined'},{n:'洪慧娴',e:'undefined'},{n:'杨振涵',e:'undefined'},{n:'黄其靖',e:'undefined'},{n:'蔡媛媛',e:'undefined'}],
+  '山东甄惠选数字科技有限公司': [{n:'刁亚宁',e:'undefined'},{n:'田凯强',e:'undefined'},{n:'宋建华',e:'undefined'},{n:'董凯',e:'undefined'},{n:'刘培伟',e:'undefined'},{n:'张金',e:'undefined'},{n:'赵明星',e:'undefined'},{n:'马林',e:'undefined'},{n:'李楠',e:'undefined'},{n:'张瑶',e:'undefined'},{n:'滕亭亭',e:'undefined'},{n:'赵东娟',e:'undefined'},{n:'李晓东',e:'undefined'},{n:'纪晓娟',e:'undefined'},{n:'路建帅',e:'undefined'},{n:'许磊',e:'undefined'},{n:'魏宗辉',e:'undefined'},{n:'丁一凡',e:'undefined'},{n:'陈宪君',e:'undefined'},{n:'卜庆鑫',e:'undefined'},{n:'彭振清',e:'undefined'},{n:'董帅',e:'undefined'},{n:'李兆江',e:'undefined'}],
+  '山东简梦文化传媒有限责任公司': [{n:'李满波',e:'undefined'},{n:'李阳',e:'undefined'},{n:'李清秋',e:'undefined'},{n:'吴天慈',e:'undefined'},{n:'逯文博',e:'undefined'},{n:'郭维平',e:'undefined'},{n:'王冰',e:'undefined'},{n:'胡殿兴',e:'undefined'}],
+  '山东风声数字科技有限公司': [{n:'丛刚滋',e:'undefined'},{n:'徐吉浩',e:'undefined'},{n:'田梦菲',e:'undefined'},{n:'郝庆娟',e:'undefined'},{n:'尹文秀',e:'undefined'},{n:'党成昊',e:'undefined'},{n:'李俊东',e:'undefined'},{n:'于菲',e:'undefined'},{n:'张伟庭',e:'undefined'},{n:'李婷',e:'undefined'},{n:'王成昊',e:'undefined'},{n:'秦香钊',e:'undefined'},{n:'吕文飞',e:'undefined'},{n:'吴可',e:'undefined'},{n:'张心怡',e:'undefined'},{n:'王玙',e:'undefined'},{n:'商艳玲',e:'undefined'},{n:'刁金帅',e:'undefined'}],
+  '山西扶摇而上科技有限公司': [{n:'付强',e:'undefined'},{n:'胡芸',e:'undefined'},{n:'贾慧峰',e:'undefined'},{n:'何栋栋',e:'undefined'},{n:'郭鹏飞',e:'undefined'},{n:'王万凤',e:'undefined'},{n:'侯晓雅',e:'undefined'},{n:'谷瑞',e:'undefined'}],
+  '山西易智慧科技有限公司': [{n:'王晓宝',e:'undefined'},{n:'邓林杰',e:'undefined'},{n:'赵亮',e:'undefined'},{n:'邓晓刚',e:'undefined'},{n:'李明明',e:'undefined'},{n:'李爱国',e:'undefined'}],
+  '山西煜雁珩网络科技有限公司': [{n:'王锐',e:'undefined'}],
+  '山西蓝象文化传媒有限公司': [{n:'张振亚',e:'undefined'},{n:'王宁',e:'undefined'},{n:'樊海俊',e:'undefined'},{n:'李嘉然',e:'undefined'},{n:'牛树影',e:'undefined'}],
+  '广东中泰华晟投资有限公司': [{n:'吴协泰',e:'undefined'},{n:'吴琪纯',e:'undefined'},{n:'温冬盆',e:'undefined'},{n:'陈少玲',e:'undefined'},{n:'吴泽铭',e:'undefined'},{n:'吴锡彪',e:'undefined'},{n:'林锐行',e:'undefined'},{n:'吴锡振',e:'undefined'}],
+  '广东省佳润物流有限公司': [{n:'林庭正',e:'undefined'},{n:'郑博仁',e:'undefined'},{n:'吴文丰',e:'undefined'},{n:'吴灏',e:'undefined'}],
+  '广州叁木技术服务有限公司': [{n:'吴倩莹',e:'undefined'},{n:'罗锦新',e:'undefined'}],
+  '广州银鑫数字科技有限公司': [{n:'吴海锋',e:'undefined'}],
+  '广西口口强科技有限公司': [{n:'吕强',e:'undefined'},{n:'谢润林',e:'undefined'},{n:'周金辉',e:'undefined'},{n:'罗毅',e:'undefined'},{n:'黄波',e:'undefined'},{n:'周家发',e:'undefined'}],
+  '广西心百味品牌管理有限公司': [{n:'黄茂芸',e:'undefined'},{n:'韦锦英',e:'undefined'},{n:'黄流乾',e:'undefined'},{n:'邓家阳',e:'undefined'},{n:'荀开阳',e:'undefined'},{n:'贲能杰',e:'undefined'},{n:'曲昆',e:'undefined'},{n:'苏建海',e:'undefined'},{n:'李先刚',e:'undefined'},{n:'杨茂',e:'undefined'},{n:'阳寅新',e:'undefined'},{n:'刘向前',e:'undefined'}],
+  '广西新唐仕文化传播有限公司': [{n:'黄珍华',e:'undefined'},{n:'黄佳丽',e:'undefined'},{n:'林淼凤',e:'undefined'},{n:'谢金洪',e:'undefined'},{n:'黄昱力',e:'undefined'},{n:'莫宇宁',e:'undefined'},{n:'卢相廷',e:'undefined'},{n:'唐亚宾',e:'undefined'},{n:'黄巍',e:'undefined'},{n:'刘丞希',e:'undefined'}],
+  '广西普兴科技有限责任公司': [{n:'王飞',e:'undefined'},{n:'郑飞',e:'undefined'},{n:'卢伟强',e:'undefined'},{n:'冯伟祺',e:'undefined'},{n:'秦刚',e:'undefined'},{n:'李星璇',e:'undefined'},{n:'卢美龙',e:'undefined'},{n:'欧慧',e:'undefined'},{n:'欧俊宏',e:'undefined'},{n:'曾维',e:'undefined'},{n:'黄剑旭',e:'undefined'},{n:'周阳',e:'undefined'},{n:'卢冬林',e:'undefined'},{n:'陶叙瑜',e:'undefined'},{n:'秦志强',e:'undefined'},{n:'雷敏',e:'undefined'},{n:'刘素容',e:'undefined'},{n:'唐婷婷',e:'undefined'},{n:'韦琴',e:'undefined'},{n:'范宁',e:'undefined'},{n:'凌思倩',e:'undefined'}],
+  '广西河池恒胜网络科技有限责任公司': [{n:'王东',e:'undefined'},{n:'罗坤',e:'undefined'},{n:'陶英',e:'undefined'},{n:'王娟',e:'undefined'},{n:'刘炜',e:'undefined'},{n:'李宏锋',e:'undefined'},{n:'廖聪',e:'undefined'},{n:'董海龙',e:'undefined'}],
+  '广西睿界科技有限公司': [{n:'庞晓钰',e:'undefined'}],
+  '张家口创鲸文化传媒有限公司': [{n:'郑文宇',e:'undefined'},{n:'臧雪峰',e:'undefined'},{n:'黄继萍',e:'undefined'},{n:'张鹏羽',e:'undefined'},{n:'李佳乐',e:'undefined'},{n:'李响',e:'undefined'}],
+  '徐州云小众信息科技有限公司': [{n:'杨敬',e:'undefined'},{n:'郑利阳',e:'undefined'},{n:'佟宇轩',e:'undefined'},{n:'王卫',e:'undefined'},{n:'李楠',e:'undefined'},{n:'吴建峰',e:'undefined'},{n:'韩梅',e:'undefined'},{n:'蔡子建',e:'undefined'},{n:'张越',e:'undefined'},{n:'张瞒瞒',e:'undefined'},{n:'李佳',e:'undefined'},{n:'孟景丽',e:'undefined'},{n:'田梦',e:'undefined'},{n:'葛鑫',e:'undefined'},{n:'郭品品',e:'undefined'},{n:'邱怀亮',e:'undefined'},{n:'吴乐恒',e:'undefined'},{n:'张雅丽',e:'undefined'},{n:'吴苗苗',e:'undefined'},{n:'丁晴晴',e:'undefined'},{n:'刘思毓',e:'undefined'},{n:'李奉港',e:'undefined'},{n:'高兴悦',e:'undefined'},{n:'王秋莹',e:'undefined'},{n:'邢亚辉',e:'undefined'},{n:'王凯',e:'undefined'},{n:'张超',e:'undefined'},{n:'李珍珍',e:'undefined'},{n:'韦涛',e:'undefined'},{n:'赵振龙',e:'undefined'},{n:'徐一凡',e:'undefined'},{n:'罗国明',e:'undefined'},{n:'周乐',e:'undefined'},{n:'李止',e:'undefined'},{n:'李理',e:'undefined'},{n:'杨阳',e:'undefined'},{n:'刘硕',e:'undefined'},{n:'董诗玖',e:'undefined'},{n:'周天智',e:'undefined'},{n:'徐家辉',e:'undefined'},{n:'代云川',e:'undefined'},{n:'唐浩宇',e:'undefined'},{n:'王古荐',e:'undefined'},{n:'葛放',e:'undefined'},{n:'花浩',e:'undefined'},{n:'赵希彤',e:'undefined'},{n:'唐亚方',e:'undefined'},{n:'滕飞',e:'undefined'},{n:'侯凯',e:'undefined'},{n:'佟佳轩',e:'undefined'},{n:'韩朝军',e:'undefined'},{n:'肖国栋',e:'undefined'},{n:'朱硕',e:'undefined'},{n:'朱家楼',e:'undefined'},{n:'周雷',e:'undefined'},{n:'李健豪',e:'undefined'},{n:'汪悦',e:'undefined'},{n:'沈文广',e:'undefined'},{n:'李奡燊',e:'undefined'},{n:'王永泽',e:'undefined'},{n:'刘彬彬',e:'undefined'},{n:'李亮',e:'undefined'},{n:'吕伟伟',e:'undefined'},{n:'宗震',e:'undefined'},{n:'陈玲玲',e:'undefined'},{n:'齐渤焱',e:'undefined'},{n:'董宇宇',e:'undefined'},{n:'张凡',e:'undefined'},{n:'乔术卡',e:'undefined'},{n:'蔡晓玮',e:'undefined'},{n:'嵇华清',e:'undefined'},{n:'陈家豪',e:'undefined'},{n:'邢晨宇',e:'undefined'},{n:'钱志超',e:'undefined'},{n:'鲁琦伟',e:'undefined'},{n:'乔楠',e:'undefined'},{n:'张帅',e:'undefined'},{n:'宋佳欣',e:'undefined'},{n:'王云龙',e:'undefined'},{n:'沈维江',e:'undefined'},{n:'费泳军',e:'undefined'},{n:'陈光耀',e:'undefined'},{n:'钱训',e:'undefined'},{n:'邓恒',e:'undefined'},{n:'蔡文涛',e:'undefined'},{n:'柏相光',e:'undefined'},{n:'刘晴',e:'undefined'},{n:'张宇航',e:'undefined'},{n:'陆泽宇',e:'undefined'},{n:'顾平',e:'undefined'},{n:'侯宵桐',e:'undefined'},{n:'张甜甜',e:'undefined'},{n:'常浩博',e:'undefined'},{n:'王子洋',e:'undefined'},{n:'刘康',e:'undefined'},{n:'王忠艺',e:'undefined'},{n:'徐亚萍',e:'undefined'},{n:'单欧然',e:'undefined'},{n:'孔俊豪',e:'undefined'},{n:'王周婷',e:'undefined'},{n:'管乾坤',e:'undefined'},{n:'杨子豪',e:'undefined'},{n:'李敏',e:'undefined'},{n:'邓永权',e:'undefined'},{n:'陆梦月',e:'undefined'},{n:'石林',e:'undefined'},{n:'王琼燕',e:'undefined'},{n:'刘俊',e:'undefined'},{n:'阚祥',e:'undefined'},{n:'徐伟杰',e:'undefined'},{n:'殷方飞',e:'undefined'},{n:'杨新亚',e:'undefined'},{n:'姚建',e:'undefined'},{n:'支才栋',e:'undefined'},{n:'李晓俊',e:'undefined'},{n:'邓成祥',e:'undefined'}],
+  '德州唐风文化传播有限公司': [{n:'崔艳丽',e:'undefined'},{n:'许明',e:'undefined'},{n:'邢瑞堂',e:'undefined'},{n:'刘有恒',e:'undefined'},{n:'刘家旭',e:'undefined'},{n:'孔德悦',e:'undefined'},{n:'张振凯',e:'undefined'},{n:'姜恒',e:'undefined'},{n:'李琳',e:'undefined'},{n:'徐恩泽',e:'undefined'}],
+  '恒鑫通盛商贸（深圳）有限公司': [{n:'杨家强',e:'undefined'},{n:'翟浩',e:'undefined'},{n:'刘江源',e:'undefined'}],
+  '惠州市新瞭望文化传媒有限公司': [{n:'范春莉',e:'undefined'},{n:'陈伟文',e:'undefined'},{n:'曾昭康',e:'undefined'},{n:'曾志超',e:'undefined'},{n:'张家源',e:'undefined'},{n:'李迎春',e:'undefined'},{n:'娄元宝',e:'undefined'},{n:'王敏琪',e:'undefined'},{n:'聂伟兵',e:'undefined'},{n:'詹志平',e:'undefined'},{n:'郑静文',e:'undefined'}],
+  '推客云（邯郸）科技有限公司': [{n:'马乾龙',e:'undefined'},{n:'石岩磊',e:'undefined'},{n:'潘东',e:'undefined'},{n:'王劲松',e:'undefined'},{n:'高鹏博',e:'undefined'},{n:'李文昊',e:'undefined'},{n:'胡文飞',e:'undefined'},{n:'刘鑫',e:'undefined'},{n:'朱进彪',e:'undefined'}],
+  '新疆熠韬启中信息科技有限公司': [{n:'刘亚西',e:'undefined'}],
+  '新疆福泽源劳务服务有限公司': [{n:'梁志材',e:'undefined'},{n:'高和平',e:'undefined'},{n:'王帆',e:'undefined'},{n:'陈斌',e:'undefined'},{n:'王怡文',e:'undefined'},{n:'雷世豪',e:'undefined'}],
+  '无锡君之恒网络科技有限公司': [{n:'李芳',e:'undefined'},{n:'杜雪玲',e:'undefined'},{n:'候建宇',e:'undefined'},{n:'刘波',e:'undefined'},{n:'于海',e:'undefined'},{n:'毛莹莹',e:'undefined'},{n:'郑权',e:'undefined'},{n:'孙维琪',e:'undefined'},{n:'邢岩鹏',e:'undefined'},{n:'张井楠',e:'undefined'},{n:'张巍',e:'undefined'},{n:'夏淑芬',e:'undefined'},{n:'林清奎',e:'undefined'},{n:'周立超',e:'undefined'},{n:'朱友双',e:'undefined'}],
+  '无锡时义信息科技有限公司': [{n:'梁会腾',e:'undefined'},{n:'顾锦辉',e:'undefined'},{n:'黄梦琰',e:'undefined'},{n:'陶蒙',e:'undefined'},{n:'叶佳成',e:'undefined'},{n:'宋梦灿',e:'undefined'},{n:'陆菁',e:'undefined'},{n:'张冉',e:'undefined'},{n:'华雁冰',e:'undefined'}],
+  '昆明森佳科技有限公司': [{n:'唐宁',e:'undefined'},{n:'陈绍银',e:'undefined'},{n:'罗国辉',e:'undefined'},{n:'闫开莉',e:'undefined'},{n:'宁娟',e:'undefined'},{n:'范宏涛',e:'undefined'},{n:'李海斌',e:'undefined'},{n:'王朝茂',e:'undefined'}],
+  '智链未来（海南）科技有限公司': [{n:'陈中鸿',e:'undefined'},{n:'许慧',e:'undefined'},{n:'符益玮',e:'undefined'},{n:'廖丽萍',e:'undefined'},{n:'廖新妹',e:'undefined'},{n:'李南文',e:'undefined'},{n:'曾祥鹏',e:'undefined'}],
+  '曲靖春铭网络科技有限责任公司': [{n:'李威晗',e:'undefined'},{n:'梁敏',e:'undefined'}],
+  '杭州来团呗网络科技有限公司': [{n:'李东',e:'undefined'},{n:'曹冰赫',e:'undefined'},{n:'王雯庆',e:'undefined'}],
+  '杭州飒威时科技有限公司': [{n:'李晋辉',e:'undefined'},{n:'张卫钟',e:'undefined'},{n:'高翔',e:'undefined'},{n:'颜燕燕',e:'undefined'},{n:'张卫水',e:'undefined'},{n:'龙雁婷',e:'undefined'},{n:'刘星',e:'undefined'},{n:'徐小茗',e:'undefined'}],
+  '橙亿景胜（天津）科技有限责任公司': [{n:'刘巍',e:'undefined'},{n:'张永丽',e:'undefined'},{n:'刘振杰',e:'undefined'},{n:'孙俊晓',e:'undefined'},{n:'刘文华',e:'undefined'},{n:'李冰杰',e:'undefined'}],
+  '武汉天辰宇信息技术有限公司': [{n:'张千里',e:'undefined'},{n:'严复坤',e:'undefined'},{n:'丁国霞',e:'undefined'},{n:'卫红梅',e:'undefined'},{n:'马明非',e:'undefined'},{n:'寇欣德',e:'undefined'}],
+  '武汉御冕物流网络有限公司': [{n:'陈强',e:'undefined'},{n:'程美丽',e:'undefined'},{n:'程艳丽',e:'undefined'},{n:'关莉莉',e:'undefined'},{n:'冯震',e:'undefined'},{n:'刘佳兴',e:'undefined'},{n:'刘彤彤',e:'undefined'},{n:'张颖',e:'undefined'},{n:'林铭燃',e:'undefined'},{n:'王喜仲',e:'undefined'},{n:'徐迪',e:'undefined'},{n:'王威威',e:'undefined'},{n:'金明月',e:'undefined'}],
+  '汕头市星卓越策划有限公司': [{n:'王植涛',e:'undefined'},{n:'纪泽鹏',e:'undefined'},{n:'王婉珠',e:'undefined'}],
+  '江苏九昊州网络科技有限公司': [{n:'周树霞',e:'undefined'},{n:'戴晓飞',e:'undefined'},{n:'邰国强',e:'undefined'},{n:'成兴洲',e:'undefined'},{n:'陆淑娟',e:'undefined'},{n:'王秀萍',e:'undefined'},{n:'陈海兴',e:'undefined'},{n:'栾媛',e:'undefined'},{n:'刁立日',e:'undefined'},{n:'仇晨',e:'undefined'},{n:'薛正香',e:'undefined'},{n:'刘唯一',e:'undefined'},{n:'黄雪萍',e:'undefined'}],
+  '江西予初文化产业有限公司': [{n:'雷斌斌',e:'undefined'},{n:'涂云海',e:'undefined'},{n:'袁欢',e:'undefined'},{n:'黄立强',e:'undefined'}],
+  '江西快人科技有限公司': [{n:'熊青山',e:'undefined'},{n:'李红洋',e:'undefined'},{n:'曾跃奇',e:'undefined'}],
+  '沈阳市人多多人力资源有限公司': [{n:'丛磊',e:'undefined'},{n:'李子阳',e:'undefined'},{n:'秦慧娇',e:'undefined'},{n:'石垚',e:'undefined'},{n:'姜钟贺',e:'undefined'},{n:'刘盛超',e:'undefined'}],
+  '沈阳拾薪汇吃网络科技有限公司': [{n:'彭慧',e:'undefined'},{n:'陈祥',e:'undefined'},{n:'石秋琴',e:'undefined'},{n:'李嘉欣',e:'undefined'},{n:'刘红丹',e:'undefined'},{n:'李诗怡',e:'undefined'}],
+  '沈阳易航网络技术有限公司': [{n:'衣明岩',e:'undefined'},{n:'邢雪雪',e:'undefined'},{n:'张腾',e:'undefined'},{n:'王也青',e:'undefined'},{n:'金欣',e:'undefined'},{n:'苗宇',e:'undefined'},{n:'徐萌',e:'undefined'},{n:'刘渌',e:'undefined'}],
+  '沈阳腾迅健康科技有限公司': [{n:'周杨',e:'undefined'},{n:'张伟',e:'undefined'},{n:'马妮娜',e:'undefined'},{n:'蔡婷婷',e:'undefined'},{n:'郭大炜',e:'undefined'}],
+  '沧州尚帝网络科技有限公司': [{n:'刘金涛',e:'undefined'},{n:'徐亭亭',e:'undefined'},{n:'张一博',e:'undefined'},{n:'闫咏晴',e:'undefined'}],
+  '河北云尧科技有限公司': [{n:'李东宇',e:'undefined'},{n:'田红所',e:'undefined'},{n:'崔冰凝',e:'undefined'},{n:'沈轩',e:'undefined'},{n:'吕梦宇',e:'undefined'},{n:'张佳琦',e:'undefined'}],
+  '河北探索客科技有限公司': [{n:'刘丙阳',e:'undefined'}],
+  '河北玩咖文化传媒有限公司': [{n:'苏晓磊',e:'undefined'}],
+  '河南乐万网络科技有限公司': [{n:'王超',e:'undefined'},{n:'邓孟豪',e:'undefined'}],
+  '河南奇宇科技有限公司': [{n:'河南奇宇科技有限公司',e:'undefined'},{n:'秦雅婷',e:'undefined'},{n:'张舟富',e:'undefined'},{n:'秦志江',e:'undefined'},{n:'郭景天',e:'undefined'},{n:'马顺平',e:'undefined'},{n:'许杨',e:'undefined'},{n:'耿世磊',e:'undefined'},{n:'任卫平',e:'undefined'},{n:'盛浩',e:'undefined'},{n:'王灿',e:'undefined'},{n:'郑鑫瑶',e:'undefined'},{n:'张良',e:'undefined'},{n:'张祎涵',e:'undefined'},{n:'杨建波',e:'undefined'},{n:'徐源嶺',e:'undefined'},{n:'侯朵朵',e:'undefined'}],
+  '河南志瑜科技有限公司': [{n:'金昊志',e:'undefined'},{n:'马崇跃',e:'undefined'},{n:'李爽',e:'undefined'},{n:'杨辉',e:'undefined'},{n:'张西波',e:'undefined'},{n:'耿卫红',e:'undefined'},{n:'潘甜莉',e:'undefined'},{n:'张楚昕',e:'undefined'},{n:'许乐乐',e:'undefined'},{n:'柴杰',e:'undefined'},{n:'杨露露',e:'undefined'}],
+  '河南泉贝网络科技有限公司': [{n:'汪晓艳',e:'undefined'},{n:'徐洪振',e:'undefined'},{n:'张琰琰',e:'undefined'},{n:'张阳',e:'undefined'},{n:'王云龙',e:'undefined'},{n:'巴笑泉',e:'undefined'},{n:'王银琨',e:'undefined'},{n:'刘平安',e:'undefined'},{n:'杨秋仙',e:'undefined'},{n:'毛林霞',e:'undefined'},{n:'韩岑岑',e:'undefined'},{n:'王昱然',e:'undefined'}],
+  '河南省优众广告有限公司': [{n:'刘杰',e:'undefined'},{n:'郑宇鹏',e:'undefined'},{n:'赵菲菲',e:'undefined'},{n:'郭丽',e:'undefined'},{n:'杨帅林',e:'undefined'},{n:'刘静静',e:'undefined'},{n:'赵洪涛',e:'undefined'},{n:'张立新',e:'undefined'},{n:'柳阳',e:'undefined'},{n:'高扬威',e:'undefined'},{n:'张文举',e:'undefined'},{n:'张云鹤',e:'undefined'},{n:'程露益',e:'undefined'},{n:'陈国微',e:'undefined'},{n:'衡润飞',e:'undefined'},{n:'李兰兰',e:'undefined'},{n:'陈威',e:'undefined'},{n:'姜远博',e:'undefined'},{n:'王淼',e:'undefined'},{n:'闫雪凝',e:'undefined'},{n:'梁会永',e:'undefined'},{n:'马君龙',e:'undefined'},{n:'杨林仙',e:'undefined'},{n:'郭亮',e:'undefined'},{n:'毛宇隆',e:'undefined'},{n:'李宇',e:'undefined'},{n:'黄军豪',e:'undefined'},{n:'张燕松',e:'undefined'},{n:'梁卫',e:'undefined'},{n:'张梦蝶',e:'undefined'}],
+  '河南省优众广告有限公司洛阳分公司': [{n:'吴启超',e:'undefined'},{n:'张泽楠',e:'undefined'},{n:'丁现乐',e:'undefined'},{n:'王超',e:'undefined'},{n:'靳东',e:'undefined'},{n:'潘亚玲',e:'undefined'},{n:'张磊',e:'undefined'},{n:'李昊',e:'undefined'},{n:'赵巧燕',e:'undefined'},{n:'吴帆',e:'undefined'},{n:'严彬煜',e:'undefined'},{n:'辛昊卓',e:'undefined'},{n:'孙威威',e:'undefined'},{n:'乔绍博',e:'undefined'}],
+  '河南立上科技有限公司': [{n:'郝佳若',e:'undefined'},{n:'焦好凯',e:'undefined'},{n:'张晓耀',e:'undefined'},{n:'张通',e:'undefined'},{n:'孟帅',e:'undefined'},{n:'恒豪杰',e:'undefined'},{n:'康华东',e:'undefined'},{n:'姜欣利',e:'undefined'},{n:'贾若飞',e:'undefined'},{n:'杨金金',e:'undefined'},{n:'樊昊然',e:'undefined'},{n:'刘展硕',e:'undefined'},{n:'邱晓如',e:'undefined'},{n:'石雨霏',e:'undefined'},{n:'石利成',e:'undefined'},{n:'冯华强',e:'undefined'},{n:'王震',e:'undefined'},{n:'张永贵',e:'undefined'},{n:'郭鑫',e:'undefined'},{n:'张波',e:'undefined'},{n:'李正阳',e:'undefined'},{n:'郝文杰',e:'undefined'}],
+  '河南金熵信息科技有限公司': [{n:'代树德',e:'undefined'},{n:'黄乐',e:'undefined'}],
+  '泉州加我信息科技有限公司': [{n:'林斌斌',e:'undefined'},{n:'游嘉丽',e:'undefined'},{n:'陈培峰',e:'undefined'},{n:'林舒婷',e:'undefined'},{n:'郑文钦',e:'undefined'}],
+  '泉州市兴强网络科技有限公司': [{n:'周永生',e:'undefined'},{n:'许东源',e:'undefined'},{n:'韦雨露',e:'undefined'},{n:'童家宝',e:'undefined'},{n:'蔡洪燕',e:'undefined'}],
+  '泰安市泰山区小铭堂商贸有限责任公司': [{n:'陈卯',e:'undefined'},{n:'刘志洋',e:'undefined'},{n:'张硕',e:'undefined'},{n:'查龙泽',e:'undefined'},{n:'安建建',e:'undefined'},{n:'丁子易',e:'undefined'},{n:'冯彤彤',e:'undefined'}],
+  '泰州创升信息科技有限公司': [{n:'朱范彬',e:'undefined'},{n:'姜琳',e:'undefined'},{n:'陈楠',e:'undefined'},{n:'朱丽瑶',e:'undefined'},{n:'朱丽君',e:'undefined'}],
+  '洛阳一诺前景信息科技有限公司': [{n:'宋国华',e:'undefined'},{n:'李群',e:'undefined'},{n:'霍霖雯',e:'undefined'},{n:'凌霄',e:'undefined'},{n:'张超',e:'undefined'},{n:'冯世佳',e:'undefined'},{n:'李振铎',e:'undefined'},{n:'李延良',e:'undefined'},{n:'陶浩',e:'undefined'}],
+  '济南禧悦传媒有限公司': [{n:'张志同',e:'undefined'},{n:'郭海鹏',e:'undefined'},{n:'袁延龙',e:'undefined'},{n:'赵光宇',e:'undefined'},{n:'关广如',e:'undefined'},{n:'刘蛟',e:'undefined'},{n:'李学刚',e:'undefined'},{n:'邢天洋',e:'undefined'}],
+  '济宁市怪电互联网服务有限公司': [{n:'姚磊',e:'undefined'},{n:'邢运渠',e:'undefined'},{n:'李艳琦',e:'undefined'},{n:'朱庆典',e:'undefined'},{n:'张清强',e:'undefined'},{n:'马璐',e:'undefined'},{n:'黄凯',e:'undefined'}],
+  '浙江欣欣向融网络科技有限公司': [{n:'谢宗建',e:'undefined'},{n:'谢宗金',e:'undefined'},{n:'戴志达',e:'undefined'},{n:'张小生',e:'undefined'},{n:'潘翎烽',e:'undefined'},{n:'叶青红',e:'undefined'},{n:'方仕合',e:'undefined'}],
+  '浙江百诚互连科技有限公司': [{n:'干大伟',e:'undefined'},{n:'干一微',e:'undefined'},{n:'邹婉晴',e:'undefined'},{n:'林建',e:'undefined'},{n:'杜伟建',e:'undefined'},{n:'李秉龙',e:'undefined'},{n:'周磊',e:'undefined'},{n:'徐陈超',e:'undefined'}],
+  '浙江聚诚创富企业管理有限公司': [{n:'李彬',e:'undefined'},{n:'刘明',e:'undefined'},{n:'彭雨晴',e:'undefined'},{n:'姜树娴',e:'undefined'},{n:'陈俐菲',e:'undefined'},{n:'李艳',e:'undefined'},{n:'任昊珊',e:'undefined'},{n:'熊思文',e:'undefined'},{n:'丁利洋',e:'undefined'}],
+  '海南信客之家网络科技有限公司': [{n:'符莉佳',e:'undefined'},{n:'罗诗蕊',e:'undefined'},{n:'李秉原',e:'undefined'},{n:'陈家靖',e:'undefined'},{n:'薛嘉琪',e:'undefined'},{n:'邱靖叶',e:'undefined'},{n:'云海峰',e:'undefined'},{n:'王喆瀚',e:'undefined'},{n:'陈彬喜',e:'undefined'},{n:'黄晓芸',e:'undefined'}],
+  '海南共赢餐饮管理服务有限公司': [{n:'林荣诗',e:'undefined'},{n:'王甲洪',e:'undefined'},{n:'钟敦泽',e:'undefined'},{n:'蔡笃禄',e:'undefined'},{n:'林清虹',e:'undefined'},{n:'李玉伟',e:'undefined'}],
+  '海南奥欣元文旅发展有限责任公司': [{n:'刘杨',e:'undefined'},{n:'余曼琴',e:'undefined'},{n:'陈万宇',e:'undefined'},{n:'樊毅',e:'undefined'},{n:'万鑫',e:'undefined'},{n:'赵寅杰',e:'undefined'},{n:'曾斯莹',e:'undefined'},{n:'张磊',e:'undefined'},{n:'周振兴',e:'undefined'},{n:'张涛',e:'undefined'},{n:'周正',e:'undefined'},{n:'欧宇珊',e:'undefined'},{n:'赵子敬',e:'undefined'},{n:'李明龙',e:'undefined'},{n:'张丽华',e:'undefined'},{n:'刘梦彦',e:'undefined'},{n:'余杰',e:'undefined'},{n:'王海根',e:'undefined'},{n:'李金涛',e:'undefined'},{n:'殷艺宁',e:'undefined'},{n:'张玮杰',e:'undefined'},{n:'李剑',e:'undefined'},{n:'韩敬玉',e:'undefined'},{n:'徐杰',e:'undefined'},{n:'张瀚文',e:'undefined'},{n:'阙鹏宇',e:'undefined'},{n:'兰瑞华',e:'undefined'}],
+  '海南星游文化传媒有限公司': [{n:'王澄钊',e:'undefined'},{n:'陈伟波',e:'undefined'},{n:'林春宝',e:'undefined'},{n:'黄泽禾',e:'undefined'},{n:'江梦雪',e:'undefined'},{n:'胡凯',e:'undefined'}],
+  '海南野望数字科技有限公司': [{n:'马周博',e:'undefined'},{n:'谭雪琳',e:'undefined'},{n:'马海平',e:'undefined'},{n:'韩炜定',e:'undefined'}],
+  '淄博三象网络科技有限公司': [{n:'董振',e:'undefined'},{n:'李虎',e:'undefined'},{n:'孙金',e:'undefined'},{n:'王世玉',e:'undefined'},{n:'许业源',e:'undefined'},{n:'石峰杰',e:'undefined'}],
+  '淮安易骑网络科技有限公司': [{n:'张艳',e:'undefined'},{n:'张磊',e:'undefined'},{n:'周纪呈',e:'undefined'},{n:'胡发凤',e:'undefined'}],
+  '淮安聚潮文化传媒有限公司': [{n:'蒋威',e:'undefined'},{n:'周威',e:'undefined'},{n:'刘杨',e:'undefined'},{n:'张立志',e:'undefined'},{n:'蒋倩',e:'undefined'}],
+  '深圳市万豪德立文体产业发展有限公司': [{n:'欧阳永华',e:'undefined'},{n:'吴必文',e:'undefined'},{n:'邓丽',e:'undefined'},{n:'曾展龙',e:'undefined'},{n:'刘唐宪',e:'undefined'},{n:'韦浩东',e:'undefined'},{n:'孙瑶',e:'undefined'},{n:'沈伟烈',e:'undefined'},{n:'纪卓烽',e:'undefined'},{n:'郑光菊',e:'undefined'},{n:'朱艳',e:'undefined'},{n:'唐炎文',e:'undefined'},{n:'韦国庆',e:'undefined'},{n:'汤艳丹',e:'undefined'},{n:'蔡智照',e:'undefined'},{n:'龙隆',e:'undefined'},{n:'黄楷',e:'undefined'},{n:'赖晓亮',e:'undefined'},{n:'吴雅松',e:'undefined'},{n:'周杨',e:'undefined'},{n:'慈祥',e:'undefined'},{n:'兰彪',e:'undefined'},{n:'韦复忠',e:'undefined'},{n:'尧乐',e:'undefined'},{n:'梁宇',e:'undefined'}],
+  '深圳市德凡网络科技有限公司': [{n:'李德胜',e:'undefined'},{n:'马云松',e:'undefined'},{n:'黄广庆',e:'undefined'}],
+  '湖北光选文化传媒有限公司': [{n:'郑金保',e:'undefined'},{n:'李宇航',e:'undefined'},{n:'方亚',e:'undefined'},{n:'张莉',e:'undefined'},{n:'乐慧敏',e:'undefined'}],
+  '湖北安而达网络科技有限公司': [{n:'赵雅姝',e:'undefined'},{n:'马勇智',e:'undefined'},{n:'黄冬婧',e:'undefined'},{n:'郑海英',e:'undefined'},{n:'张晅',e:'undefined'},{n:'苏玉花',e:'undefined'},{n:'唐世鸿',e:'undefined'}],
+  '湖北联和商超科技有限公司': [{n:'李振东',e:'undefined'},{n:'裴春春',e:'undefined'},{n:'万诚',e:'undefined'},{n:'袁围能',e:'undefined'},{n:'谢小玲',e:'undefined'},{n:'陈晨',e:'undefined'}],
+  '湖北语恒管理有限公司': [{n:'付鹏',e:'undefined'},{n:'宋兴旺',e:'undefined'},{n:'牛林涛',e:'undefined'},{n:'胡斌',e:'undefined'},{n:'王希婷',e:'undefined'},{n:'刘梦源',e:'undefined'},{n:'刘健',e:'undefined'},{n:'彭小文',e:'undefined'},{n:'朱晓',e:'undefined'},{n:'王华',e:'undefined'}],
+  '湖北赤子追梦文化传媒有限公司': [{n:'陶磊',e:'undefined'},{n:'刘浩',e:'undefined'}],
+  '湖北鸿恩电子商务有限公司': [{n:'刘鹏辉',e:'undefined'},{n:'金天山',e:'undefined'},{n:'陈增辉',e:'undefined'},{n:'闻锐',e:'undefined'},{n:'何小东',e:'undefined'},{n:'方振',e:'undefined'}],
+  '湖南信勤善电子商务有限责任公司': [{n:'唐健钧',e:'undefined'},{n:'刘鑫',e:'undefined'},{n:'向超',e:'undefined'},{n:'李振宇',e:'undefined'},{n:'彭翠婷',e:'undefined'},{n:'吴虎男',e:'undefined'},{n:'苏俊豪',e:'undefined'},{n:'李平',e:'undefined'},{n:'刘成龙',e:'undefined'},{n:'陈怡倩',e:'undefined'},{n:'梅瑶',e:'undefined'},{n:'谭素娟',e:'undefined'},{n:'姜佳海',e:'undefined'},{n:'孔俊博',e:'undefined'}],
+  '湖南千始科技有限公司': [{n:'李菀婷',e:'undefined'},{n:'彭艳',e:'undefined'},{n:'夏婕',e:'undefined'},{n:'董柱',e:'undefined'},{n:'吴松松',e:'undefined'},{n:'巴国云',e:'undefined'},{n:'谭莹',e:'undefined'},{n:'郑洁',e:'undefined'},{n:'林慧娟',e:'undefined'},{n:'袁小攀',e:'undefined'},{n:'段美芳',e:'undefined'},{n:'罗沙',e:'undefined'},{n:'彭鑫浪',e:'undefined'}],
+  '湖南汇量优创信息科技有限公司': [{n:'雷茜茜',e:'undefined'},{n:'杨许静',e:'undefined'},{n:'罗鸿均',e:'undefined'}],
+  '湖州首展团网络科技有限公司': [{n:'陆彬彬',e:'undefined'},{n:'赵振业',e:'undefined'},{n:'汤颖凯',e:'undefined'},{n:'俞勇',e:'undefined'}],
+  '漳州市优易网络科技有限公司': [{n:'林春霖',e:'undefined'},{n:'刘晓丹',e:'undefined'},{n:'章贤江',e:'undefined'},{n:'张伟宗',e:'undefined'},{n:'陈慧莲',e:'undefined'},{n:'卓彩云',e:'undefined'},{n:'邓建新',e:'undefined'},{n:'洪烺葆',e:'undefined'},{n:'谢灵杰',e:'undefined'},{n:'陈彬',e:'undefined'},{n:'周意',e:'undefined'},{n:'薛洋',e:'undefined'},{n:'陈忠潮',e:'undefined'},{n:'肖婷',e:'undefined'},{n:'林桂琴',e:'undefined'},{n:'钟晨欢',e:'undefined'}],
+  '潍坊玖盛网络科技有限公司': [{n:'王勇',e:'undefined'},{n:'祝金燕',e:'undefined'},{n:'张银银',e:'undefined'},{n:'张倩男',e:'undefined'},{n:'闫鑫鑫',e:'undefined'},{n:'杨盼盼',e:'undefined'},{n:'秦向东',e:'undefined'},{n:'张玉龙',e:'undefined'},{n:'马梓栋',e:'undefined'},{n:'刘忠法',e:'undefined'},{n:'于万',e:'undefined'},{n:'王凯',e:'undefined'},{n:'齐航',e:'undefined'},{n:'张峻硕',e:'undefined'},{n:'彭法锟',e:'undefined'},{n:'许艳宝',e:'undefined'},{n:'陈煜伦',e:'undefined'}],
+  '潍坊诚投咨询管理有限公司': [{n:'马玉娥',e:'undefined'},{n:'王宇',e:'undefined'},{n:'刘广南',e:'undefined'},{n:'梁开辉',e:'undefined'},{n:'井家鑫',e:'undefined'}],
+  '玉田县智跃信息咨询服务有限公司': [{n:'史晨',e:'undefined'},{n:'刘磊',e:'undefined'},{n:'佟德亮',e:'undefined'},{n:'董永刚',e:'undefined'},{n:'叶庆文',e:'undefined'},{n:'张子烁',e:'undefined'},{n:'杜小刚',e:'undefined'}],
+  '福州淘货甄选传媒有限公司': [{n:'杨金珍',e:'undefined'},{n:'翁益华',e:'undefined'},{n:'黄品参',e:'undefined'},{n:'刘欣怡',e:'undefined'},{n:'林洁莹',e:'undefined'},{n:'高宏程',e:'undefined'},{n:'陈建杉',e:'undefined'},{n:'陈景',e:'undefined'},{n:'卓玲玲',e:'undefined'},{n:'林芷烨',e:'undefined'}],
+  '米佬大(杭州)网络科技有限责任公司': [{n:'孙思彤',e:'undefined'},{n:'张世豪',e:'undefined'}],
+  '肇庆御冕物流网络有限公司': [{n:'迟旭阳',e:'undefined'},{n:'马​宏​韬',e:'undefined'},{n:'伊静',e:'undefined'}],
+  '舟山一搏商业管理有限公司': [{n:'黄傲',e:'undefined'},{n:'陈凌雪',e:'undefined'},{n:'李婉婷',e:'undefined'},{n:'韩晓丽',e:'undefined'},{n:'黄志宏',e:'undefined'}],
+  '苏州优时利网络科技有限公司': [{n:'项南',e:'undefined'},{n:'杨红',e:'undefined'},{n:'刘继磊',e:'undefined'},{n:'鲁全意',e:'undefined'},{n:'包伟球',e:'undefined'},{n:'欧阳佳音',e:'undefined'}],
+  '苏州若妤科技有限公司': [{n:'许瑞',e:'undefined'},{n:'强露',e:'undefined'},{n:'房洁',e:'undefined'},{n:'赵君',e:'undefined'},{n:'何悦',e:'undefined'},{n:'胡会敏',e:'undefined'},{n:'干方刚',e:'undefined'},{n:'钱超',e:'undefined'},{n:'崔璇',e:'undefined'},{n:'吴婷婷',e:'undefined'},{n:'伍柏霖',e:'undefined'},{n:'秦清',e:'undefined'},{n:'滕玉轩',e:'undefined'},{n:'陈舒',e:'undefined'},{n:'李双双',e:'undefined'},{n:'倪慧玲',e:'undefined'},{n:'黄冬冬',e:'undefined'},{n:'支晓飞',e:'undefined'},{n:'张书伟',e:'undefined'},{n:'何梓冉',e:'undefined'},{n:'汤忆之',e:'undefined'},{n:'秦磊',e:'undefined'}],
+  '虎嗅蔷薇传媒网络(沈阳)有限公司': [{n:'魏秀圆',e:'undefined'},{n:'魏秀娇',e:'undefined'},{n:'郭莹',e:'undefined'},{n:'张哲',e:'undefined'},{n:'张璐璐',e:'undefined'},{n:'陈晓艳',e:'undefined'}],
+  '蚌埠市晟天汽车科技有限责任公司': [{n:'邵帅',e:'undefined'},{n:'邵君涛',e:'undefined'},{n:'侯祥威',e:'undefined'},{n:'周芹芹',e:'undefined'},{n:'刘欣瑜',e:'undefined'},{n:'成德萍',e:'undefined'}],
+  '衢州星途生活服务有限公司': [{n:'胡志钢',e:'undefined'},{n:'邹婷',e:'undefined'},{n:'邓旭',e:'undefined'}],
+  '西安星空叮叮网络科技有限责任公司': [{n:'王世田',e:'undefined'},{n:'高飞',e:'undefined'}],
+  '西藏美动信息科技有限公司': [{n:'王嘉威',e:'undefined'},{n:'谢远东',e:'undefined'},{n:'谢小雨',e:'undefined'},{n:'谢江湖',e:'undefined'},{n:'刘越',e:'undefined'}],
+  '诸暨怀志网络科技有限公司': [{n:'余丽伟',e:'undefined'},{n:'林凡博',e:'undefined'},{n:'马谊',e:'undefined'},{n:'舒军锋',e:'undefined'},{n:'许孝明',e:'undefined'},{n:'许雨泽',e:'undefined'},{n:'赵中阳',e:'undefined'},{n:'傅垙道',e:'undefined'}],
+  '贵州蓝鲸云媒网络科技有限公司': [{n:'何林炜',e:'undefined'},{n:'邓宝华',e:'undefined'},{n:'张正红',e:'undefined'},{n:'胡家秀',e:'undefined'},{n:'刘靖',e:'undefined'}],
+  '赣州锦东信息技术有限公司': [{n:'熊远清',e:'undefined'},{n:'陈华维',e:'undefined'},{n:'张林华',e:'undefined'},{n:'谢盛源',e:'undefined'},{n:'单小娜',e:'undefined'},{n:'何理文',e:'undefined'}],
+  '辽宁拾壹文化传媒有限公司': [{n:'袁嘉',e:'undefined'},{n:'黄云平',e:'undefined'},{n:'于长亮',e:'undefined'},{n:'孙焓梦',e:'undefined'}],
+  '连云港穹顶科技有限公司': [{n:'铁小六',e:'undefined'},{n:'闫念文',e:'undefined'},{n:'祁俊杰',e:'undefined'}],
+  '速捷客(中山)信息技术有限公司': [{n:'林明华',e:'undefined'},{n:'梁剑锋',e:'undefined'},{n:'黄凯健',e:'undefined'},{n:'赖义政',e:'undefined'},{n:'黄小东',e:'undefined'},{n:'徐开勤',e:'undefined'},{n:'韦威平',e:'undefined'},{n:'钟燕妮',e:'undefined'},{n:'韦威豪',e:'undefined'},{n:'韦威杰',e:'undefined'},{n:'罗朝颖',e:'undefined'},{n:'罗家颖',e:'undefined'}],
+  '郑州东心文化传媒有限公司': [{n:'郝燕东',e:'undefined'},{n:'袁征',e:'undefined'},{n:'王京奥',e:'undefined'},{n:'梁雅楠',e:'undefined'},{n:'张茗超',e:'undefined'},{n:'寇家平',e:'undefined'},{n:'陈礼晰',e:'undefined'},{n:'张宇航',e:'undefined'},{n:'吕晓玲',e:'undefined'},{n:'侯玉娇',e:'undefined'},{n:'葛艺伟',e:'undefined'},{n:'臧轩豪',e:'undefined'}],
+  '重庆凌如云科技有限公司': [{n:'罗丽娜',e:'undefined'},{n:'罗迪',e:'undefined'},{n:'冯芹',e:'undefined'},{n:'马杰',e:'undefined'},{n:'林宏辉',e:'undefined'},{n:'汤桂聪',e:'undefined'},{n:'韦春苗',e:'undefined'},{n:'孙智林',e:'undefined'},{n:'凌何嘉祎',e:'undefined'},{n:'刘薇',e:'undefined'}],
+  '重庆华骁云科技有限公司': [{n:'秦定垒',e:'undefined'},{n:'李军',e:'undefined'},{n:'李盛',e:'undefined'},{n:'童修龙',e:'undefined'},{n:'扶义杰',e:'undefined'},{n:'张荷芬',e:'undefined'},{n:'秦龙彪',e:'undefined'},{n:'房旭琅',e:'undefined'},{n:'颜广川',e:'undefined'},{n:'康钦垭',e:'undefined'},{n:'胡馨月',e:'undefined'},{n:'蹇荣彬',e:'undefined'},{n:'张思维',e:'undefined'},{n:'杨俊杰',e:'undefined'},{n:'曾坤',e:'undefined'},{n:'胡伟力',e:'undefined'},{n:'李彦',e:'undefined'},{n:'谭霖',e:'undefined'},{n:'朱荛',e:'undefined'},{n:'伍沐媛',e:'undefined'},{n:'练攀',e:'undefined'},{n:'沈诗浩',e:'undefined'},{n:'谢海峰',e:'undefined'},{n:'张晓',e:'undefined'},{n:'周毅',e:'undefined'},{n:'谢鹏',e:'undefined'},{n:'黄帅',e:'undefined'},{n:'左博文',e:'undefined'}],
+  '重庆叁合营销策划有限公司': [{n:'张应林',e:'undefined'}],
+  '重庆拓睿坤科技有限公司': [{n:'温秀峰',e:'undefined'},{n:'杨婷媛',e:'undefined'},{n:'陈艳丽',e:'undefined'},{n:'曾艳',e:'undefined'},{n:'刘清山',e:'undefined'},{n:'张婷',e:'undefined'},{n:'熊圣芳',e:'undefined'},{n:'简永洲',e:'undefined'},{n:'曹胜伍',e:'undefined'},{n:'杨红章',e:'undefined'},{n:'张磊',e:'undefined'},{n:'王玲玲',e:'undefined'},{n:'吴倩',e:'undefined'},{n:'邱家乐',e:'undefined'},{n:'刘家和',e:'undefined'},{n:'杨露',e:'undefined'},{n:'黄冠文',e:'undefined'},{n:'李龙平',e:'undefined'},{n:'何俊鹏',e:'undefined'},{n:'唐聪',e:'undefined'},{n:'王锶译',e:'undefined'},{n:'叶慧',e:'undefined'}],
+  '重庆智推通讯服务有限公司': [{n:'周中勇',e:'undefined'},{n:'杨轻松',e:'undefined'},{n:'田永伟',e:'undefined'},{n:'韦郑伟',e:'undefined'}],
+  '重庆连连爆单信息科技有限公司': [{n:'李常泰',e:'undefined'},{n:'王欣',e:'undefined'}],
+  '重庆阿汐里科技有限公司': [{n:'周斌',e:'undefined'},{n:'干月琴',e:'undefined'},{n:'张鑫',e:'undefined'},{n:'邓雯慧',e:'undefined'},{n:'曹威',e:'undefined'},{n:'胡涛',e:'undefined'},{n:'伍彩林',e:'undefined'},{n:'易思琦',e:'undefined'},{n:'蒋桂英',e:'undefined'},{n:'陈雅琴',e:'undefined'},{n:'沈怀张',e:'undefined'},{n:'彭志鹏',e:'undefined'},{n:'陈敏佳',e:'undefined'}],
+  '长春青澄科技有限公司': [{n:'曾鹤',e:'undefined'},{n:'封佰坤',e:'undefined'},{n:'董振洋',e:'undefined'},{n:'李子宜',e:'undefined'},{n:'许安婧',e:'undefined'},{n:'战蕊欣',e:'undefined'},{n:'任碧莹',e:'undefined'}],
+  '长沙合生互动传媒有限公司': [{n:'唐嘉敏',e:'undefined'}],
+  '长沙老羊羔企业管理咨询有限公司': [{n:'徐轶斌',e:'undefined'},{n:'胡艺',e:'undefined'},{n:'易弹',e:'undefined'},{n:'唐玲芝',e:'undefined'},{n:'张子豪',e:'undefined'},{n:'唐莹',e:'undefined'},{n:'李涛',e:'undefined'},{n:'史华芝',e:'undefined'}],
+  '青岛壹拍即合科技服务有限公司': [{n:'王洪天',e:'undefined'},{n:'郭春媛',e:'undefined'},{n:'王悦',e:'undefined'},{n:'高国栋',e:'undefined'}],
+  '青岛大胖福投资有限公司': [{n:'孙丹丹',e:'undefined'},{n:'王顺',e:'undefined'},{n:'金绍安',e:'undefined'},{n:'张运成',e:'undefined'},{n:'晋腾博',e:'undefined'}],
+  '青岛聚英才信息技术有限公司': [{n:'苗朝辉',e:'undefined'},{n:'陈睿',e:'undefined'},{n:'孙子能',e:'undefined'},{n:'李晓杰',e:'undefined'},{n:'韩涛',e:'undefined'},{n:'王文廷',e:'undefined'},{n:'张日华',e:'undefined'},{n:'李园',e:'undefined'},{n:'时铭一',e:'undefined'},{n:'付鸿雁',e:'undefined'},{n:'尹丹丹',e:'undefined'},{n:'柳嘉鹏',e:'undefined'},{n:'王雅杰',e:'undefined'},{n:'孙伟华',e:'undefined'},{n:'李思影',e:'undefined'},{n:'王英政',e:'undefined'},{n:'栾智茜',e:'undefined'},{n:'孙萍',e:'undefined'},{n:'张丽',e:'undefined'},{n:'刘琳瑜',e:'undefined'}],
+  '领券宝科技（佛山）有限公司': [{n:'宋珂',e:'undefined'},{n:'李皓诗',e:'undefined'},{n:'冯千珹',e:'undefined'},{n:'张婉娜',e:'undefined'}],
+  '黑龙江广正信息服务集团有限公司': [{n:'张飞',e:'undefined'},{n:'刘晓雪',e:'undefined'},{n:'刘影',e:'undefined'},{n:'于鑫',e:'undefined'},{n:'倪欢',e:'undefined'}],
+};
+window.PRESET_REPS = PRESET_REPS;
+</script>
+  <script>
 /**
  * 高德本地生活 · 广告特训营 - 数据文件
  * 定义课程、题库和AI练习场景
@@ -3656,7 +3845,30 @@ window.Admin = {
 
   // ─── 课程计划 ─────────────────────────────
   renderPlanTab(el) {
-    const users = this._getFilteredUsers().filter(u => u.role === 'rep' || u.role === 'manager' || u.role === 'cm');
+    const company = this._isSuperAdmin() ? (this._companyFilter || '') : this._getCompany();
+    const localStorageUsers = this._getFilteredUsers().filter(u => u.role === 'rep' || u.role === 'manager' || u.role === 'cm');
+
+    // Build rep list: merge PRESET_REPS + localStorage users, deduplicate by name
+    const repMap = {};
+    // From PRESET_REPS
+    if (typeof PRESET_REPS !== 'undefined') {
+      const presetCompanies = this._isSuperAdmin() && !this._companyFilter
+        ? Object.keys(PRESET_REPS)
+        : [company].filter(c => PRESET_REPS[c]);
+      presetCompanies.forEach(c => {
+        (PRESET_REPS[c] || []).forEach(r => {
+          const key = c + '|' + r.n;
+          if (!repMap[key]) repMap[key] = { name: r.n, empId: r.e, company: c };
+        });
+      });
+    }
+    // From localStorage
+    localStorageUsers.forEach(u => {
+      const key = u.company + '|' + u.name;
+      if (!repMap[key]) repMap[key] = { name: u.name, phone: u.phone, company: u.company, coursePlan: u.coursePlan };
+    });
+
+    const reps = Object.values(repMap).sort((a, b) => a.company.localeCompare(b.company) || a.name.localeCompare(b.name));
     const courses = (typeof DATA !== 'undefined' && DATA.courses) ? DATA.courses : [];
 
     // Group courses by product line
@@ -3666,29 +3878,47 @@ window.Admin = {
       byLine[c.productLine].courses.push(c);
     });
 
+    // Group reps by company for display
+    const repsByCompany = {};
+    reps.forEach(r => {
+      if (!repsByCompany[r.company]) repsByCompany[r.company] = [];
+      repsByCompany[r.company].push(r);
+    });
+
     el.innerHTML = `<div class="space-y-4">
       <div class="card">
         <div class="font-semibold mb-1">分配课程计划</div>
-        <div class="text-sm text-gray-500 mb-4">选择小二，勾选需要学习的课程，保存后小二将按此计划学习</div>
+        <div class="text-sm text-gray-500 mb-4">选择小二（支持多选），勾选课程，保存后小二将按此计划学习</div>
 
-        <!-- User selector -->
+        <!-- Multi-select user list -->
         <div class="mb-4">
-          <label class="text-sm font-medium text-gray-700 mb-1 block">选择小二</label>
-          <select id="plan-user-select" onchange="Admin._renderPlanCourses()" class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm">
-            <option value="">-- 请选择 --</option>
-            ${users.map(u => `<option value="${u.phone}">${u.name} (${u.phone}) - ${u.company}</option>`).join('')}
-          </select>
-        </div>
-
-        <!-- Batch select -->
-        <div class="mb-4">
-          <label class="text-sm font-medium text-gray-700 mb-1 block">批量选择（可多选）</label>
-          <div class="flex flex-wrap gap-2 max-h-32 overflow-y-auto" id="plan-batch-users">
-            ${users.map(u => `<label class="inline-flex items-center gap-1 text-xs bg-gray-50 px-2 py-1 rounded-full cursor-pointer hover:bg-brand-50">
-              <input type="checkbox" class="plan-batch-cb" value="${u.phone}" onchange="Admin._renderPlanCourses()">
-              <span>${u.name}</span>
-            </label>`).join('')}
+          <div class="flex items-center justify-between mb-2">
+            <label class="text-sm font-medium text-gray-700">选择小二 (${reps.length}人)</label>
+            <div class="flex gap-2">
+              <button onclick="Admin._selectAllReps(true)" class="text-xs text-brand-600 hover:text-brand-800">全选</button>
+              <button onclick="Admin._selectAllReps(false)" class="text-xs text-gray-500 hover:text-gray-700">清空</button>
+            </div>
           </div>
+          <input type="text" id="plan-rep-search" placeholder="搜索姓名..." oninput="Admin._filterRepList()" class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm mb-2">
+          <div id="plan-rep-list" class="max-h-48 overflow-y-auto border border-gray-100 rounded-lg p-2 space-y-1">
+            ${Object.entries(repsByCompany).map(([co, coReps]) => `
+              <div class="rep-company-group">
+                <div class="text-xs font-medium text-gray-500 mb-1 mt-1">${co} (${coReps.length}人)</div>
+                <div class="flex flex-wrap gap-1">
+                  ${coReps.map(r => {
+                    const id = (r.phone || r.empId || r.name);
+                    const hasPlan = r.coursePlan && r.coursePlan.length > 0;
+                    return `<label class="rep-item inline-flex items-center gap-1 text-xs px-2 py-1 rounded-full cursor-pointer border transition ${hasPlan ? 'bg-brand-50 border-brand-300 text-brand-700' : 'bg-gray-50 border-gray-200 text-gray-700 hover:bg-gray-100'}" data-name="${r.name}">
+                      <input type="checkbox" class="plan-rep-cb" value="${id}" data-company="${co}" data-name="${r.name}" onchange="Admin._onRepSelectionChange()">
+                      <span>${r.name}</span>
+                      ${hasPlan ? '<span class="text-[10px] text-brand-500">已分配</span>' : ''}
+                    </label>`;
+                  }).join('')}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+          <div id="plan-rep-count" class="text-xs text-gray-400 mt-1">已选 0 人</div>
         </div>
 
         <!-- Course selection -->
@@ -3715,42 +3945,85 @@ window.Admin = {
     </div>`;
   },
 
-  _renderPlanCourses() {
-    // When user selection changes, check their existing coursePlan and pre-check those courses
-    const selectEl = document.getElementById('plan-user-select');
-    const phone = selectEl ? selectEl.value : '';
-    if (!phone) return;
-    const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
-    const user = allUsers.find(u => u.phone === phone);
-    if (!user || !user.coursePlan) return;
-    document.querySelectorAll('.plan-course-cb').forEach(cb => {
-      cb.checked = user.coursePlan.includes(cb.value);
+  _selectAllReps(checked) {
+    document.querySelectorAll('.plan-rep-cb').forEach(cb => {
+      if (!cb.closest('.rep-item').classList.contains('hidden')) cb.checked = checked;
+    });
+    this._onRepSelectionChange();
+  },
+
+  _filterRepList() {
+    const query = (document.getElementById('plan-rep-search').value || '').trim().toLowerCase();
+    document.querySelectorAll('.rep-item').forEach(el => {
+      const name = (el.dataset.name || '').toLowerCase();
+      el.classList.toggle('hidden', query && !name.includes(query));
     });
   },
+
+  _onRepSelectionChange() {
+    const count = document.querySelectorAll('.plan-rep-cb:checked').length;
+    const countEl = document.getElementById('plan-rep-count');
+    if (countEl) countEl.textContent = '已选 ' + count + ' 人';
+
+    // If exactly one rep is selected, pre-check their existing coursePlan
+    const checked = [...document.querySelectorAll('.plan-rep-cb:checked')];
+    if (checked.length === 1) {
+      const name = checked[0].dataset.name;
+      const company = checked[0].dataset.company;
+      const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+      const user = allUsers.find(u => u.name === name && u.company === company);
+      if (user && user.coursePlan) {
+        document.querySelectorAll('.plan-course-cb').forEach(cb => {
+          cb.checked = user.coursePlan.includes(cb.value);
+        });
+      }
+    } else if (checked.length === 0) {
+      document.querySelectorAll('.plan-course-cb').forEach(cb => { cb.checked = false; });
+    }
+  },
+
+  _renderPlanCourses() {},
 
   _selectAllCourses(checked) {
     document.querySelectorAll('.plan-course-cb').forEach(cb => { cb.checked = checked; });
   },
 
   savePlan() {
-    const selectEl = document.getElementById('plan-user-select');
-    const singlePhone = selectEl ? selectEl.value : '';
-    const batchPhones = [...document.querySelectorAll('.plan-batch-cb:checked')].map(cb => cb.value);
-    const phones = [...new Set([singlePhone, ...batchPhones].filter(Boolean))];
+    const checkedReps = [...document.querySelectorAll('.plan-rep-cb:checked')];
     const courseIds = [...document.querySelectorAll('.plan-course-cb:checked')].map(cb => cb.value);
 
-    if (phones.length === 0) return App.toast('请选择至少一个小二');
+    if (checkedReps.length === 0) return App.toast('请选择至少一个小二');
     if (courseIds.length === 0) return App.toast('请选择至少一门课程');
 
     const allUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
     let updated = 0;
-    phones.forEach(phone => {
-      const idx = allUsers.findIndex(u => u.phone === phone);
-      if (idx !== -1) {
+
+    checkedReps.forEach(cb => {
+      const name = cb.dataset.name;
+      const company = cb.dataset.company;
+      const phone = cb.value;
+
+      // Find existing user or create new one
+      let idx = allUsers.findIndex(u => u.name === name && u.company === company);
+      if (idx === -1) {
+        // Create new user entry from preset data
+        allUsers.push({
+          id: 'u_preset_' + Date.now() + '_' + updated,
+          company: company,
+          name: name,
+          phone: phone,
+          role: 'rep',
+          loginType: 'normal',
+          coursePlan: courseIds,
+          createdAt: new Date().toISOString()
+        });
+        updated++;
+      } else {
         allUsers[idx].coursePlan = courseIds;
         updated++;
       }
     });
+
     localStorage.setItem('atc_all_users', JSON.stringify(allUsers));
     App.toast(`已为 ${updated} 名小二分配 ${courseIds.length} 门课程`);
   },
