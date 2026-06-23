@@ -2298,6 +2298,7 @@ window.App = {
       users[idx] = { ...users[idx], ...user };
     }
     localStorage.setItem('atc_all_users', JSON.stringify(users));
+    if (window.FirebaseSync && user.phone) FirebaseSync.syncUser(user);
   },
   _syncToAllUsers() {
     if (!this.state.user || !this.state.user.phone) return;
@@ -2320,6 +2321,9 @@ window.App = {
       lastActive: new Date().toISOString()
     };
     localStorage.setItem('atc_all_users', JSON.stringify(users));
+    if (window.FirebaseSync) {
+      FirebaseSync.syncProgress(this.state.user.phone, this.state.progress);
+    }
   },
   logout() {
     if (confirm('确定退出登录？')) {
