@@ -170,7 +170,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
         <!-- Login Tabs -->
         <div class="flex gap-1 bg-gray-100 rounded-xl p-1 mb-4">
           <button type="button" onclick="App.switchLoginTab('rep')" class="login-tab flex-1 py-2 rounded-lg text-sm font-medium bg-white text-gray-900 shadow-sm" data-tab="rep">小二登录</button>
-          <button type="button" onclick="App.switchLoginTab('admin')" class="login-tab flex-1 py-2 rounded-lg text-sm font-medium text-gray-500" data-tab="admin">管理员</button>
+          <button type="button" onclick="App.switchLoginTab('admin')" class="login-tab flex-1 py-2 rounded-lg text-sm font-medium text-gray-500" data-tab="admin">服务商管理员</button>
           <button type="button" onclick="App.switchLoginTab('super')" class="login-tab flex-1 py-2 rounded-lg text-sm font-medium text-gray-500" data-tab="super">超级管理</button>
         </div>
 
@@ -192,14 +192,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC"
           <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700 mb-1">手机号</label>
             <input type="tel" id="reg-phone" placeholder="请输入手机号" maxlength="11" pattern="1[3-9]\d{9}" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
-          </div>
-          <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-700 mb-1">角色</label>
-            <select id="reg-role" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
-              <option value="rep">销售小二</option>
-              <option value="manager">服务商管理者</option>
-              <option value="cm">渠道经理</option>
-            </select>
           </div>
         </div>
 
@@ -1773,7 +1765,8 @@ window.App = {
         const company = document.getElementById('reg-company').value;
         const name = document.getElementById('reg-name').value.trim();
         const phone = document.getElementById('reg-phone').value.trim();
-        const role = document.getElementById('reg-role').value;
+        const roleEl = document.getElementById('reg-role');
+        const role = roleEl ? roleEl.value : 'rep';
         if (!company || !name || !phone) return this.toast('请填写完整信息');
         if (!/^1[3-9]\d{9}$/.test(phone)) return this.toast('请输入正确的手机号');
         const user = { id: 'u_' + Date.now(), company, name, phone, role, loginType: 'normal', createdAt: new Date().toISOString() };
