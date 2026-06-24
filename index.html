@@ -4314,10 +4314,10 @@ window.Admin = {
       const phone = cb.value;
 
       // Find existing user or create new one
-      let idx = allUsers.findIndex(u => u.name === name && u.company === company);
+      let idx = allUsers.findIndex(u => (u.phone === phone) || (u.name === name && u.company === company));
       if (idx === -1) {
         // Create new user entry from preset data
-        allUsers.push({
+        const newUser = {
           id: 'u_preset_' + Date.now() + '_' + updated,
           company: company,
           name: name,
@@ -4326,21 +4326,24 @@ window.Admin = {
           loginType: 'normal',
           coursePlan: courseIds,
           createdAt: new Date().toISOString()
-        });
+        };
+        allUsers.push(newUser);
         updated++;
+        // Sync full user data to Supabase
+        if (typeof SupabaseSync !== 'undefined') {
+          SupabaseSync.syncUser(newUser);
+        }
       } else {
         allUsers[idx].coursePlan = courseIds;
         updated++;
+        // Sync updated user to Supabase
+        if (typeof SupabaseSync !== 'undefined') {
+          SupabaseSync.syncUser(allUsers[idx]);
+        }
       }
     });
 
     localStorage.setItem('atc_all_users', JSON.stringify(allUsers));
-    // Sync course plans to Firebase
-    if (typeof SupabaseSync !== 'undefined') {
-      checkedReps.forEach(cb => {
-        SupabaseSync.syncCoursePlan(cb.value, courseIds);
-      });
-    }
     App.toast(`已为 ${updated} 名小二分配 ${courseIds.length} 门课程`);
   },
 
