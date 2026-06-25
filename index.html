@@ -510,7 +510,9 @@ window.SupabaseSync = {
   mergeToLocal(supaData) {
     if (!supaData || !supaData.users.length) return;
 
-    const localUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+    let localUsers = JSON.parse(localStorage.getItem('atc_all_users') || '[]');
+    // Auto-cleanup: remove stale entries with missing/invalid data
+    localUsers = localUsers.filter(u => u.company && u.company !== 'undefined' && u.name && u.name !== '未知');
     const localMap = {};
     localUsers.forEach(u => { localMap[u.phone] = u; });
 
