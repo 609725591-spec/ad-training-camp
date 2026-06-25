@@ -4116,6 +4116,20 @@ window.Admin = {
   },
 
   // ─── 小二管理 ─────────────────────────────
+  _computeRate(prog) {
+    if (!prog || typeof prog !== 'object') return 0;
+    // If pre-computed, return directly
+    if (prog.completionRate !== undefined) return prog.completionRate;
+    // Compute from raw per-course data
+    const totalCourses = (typeof DATA !== 'undefined' && DATA.courses) ? DATA.courses.length : 0;
+    if (!totalCourses) return 0;
+    let completed = 0;
+    for (const [courseId, courseData] of Object.entries(prog)) {
+      if (courseData && courseData.completed) completed++;
+    }
+    return Math.round(completed / totalCourses * 100);
+  },
+
   renderUsersTab(el) {
     const users = this._getFilteredUsers();
     const byCompany = {};
@@ -4134,8 +4148,7 @@ window.Admin = {
           <div class="text-xs text-gray-400 mb-3">${cUsers.length}人</div>
           ${cUsers.map(u => {
             const planCount = (u.coursePlan || []).length;
-            const prog = u.progress || {};
-            const rate = prog.completionRate || 0;
+            const rate = this._computeRate(u.progress);
             return `<div class="flex items-center gap-3 py-2 border-b border-gray-50 last:border-0">
               <div class="w-8 h-8 bg-brand-50 rounded-full flex items-center justify-center text-sm font-medium text-brand-700">${(u.name || '?')[0]}</div>
               <div class="flex-1">
@@ -4354,13 +4367,33 @@ window.Admin = {
 
     const learnerData = users.map(u => {
       const prog = u.progress || {};
+      const completionRate = this._computeRate(prog);
+
+      // Compute completedCourses list from raw or pre-computed data
+      let completedCourses = prog.completedCourses || [];
+      let lastActive = prog.lastActive || null;
+      if (!prog.completedCourses && typeof prog === 'object') {
+        const allCourses = (typeof DATA !== 'undefined' && DATA.courses) ? DATA.courses : [];
+        const rawCompleted = [];
+        for (const [courseId, courseData] of Object.entries(prog)) {
+          if (courseData && courseData.completed) {
+            const course = allCourses.find(c => c.id === courseId);
+            rawCompleted.push({ id: courseId, name: course ? course.title : courseId, completedAt: courseData.completedAt });
+            if (courseData.completedAt && (!lastActive || courseData.completedAt > lastActive)) {
+              lastActive = courseData.completedAt;
+            }
+          }
+        }
+        completedCourses = rawCompleted;
+      }
+
       return {
         user: u,
-        completedCourses: prog.completedCourses || [],
-        completionRate: prog.completionRate || 0,
+        completedCourses,
+        completionRate,
         avgQuizScore: prog.avgQuizScore || 0,
         quizAttempts: prog.quizAttempts || 0,
-        lastActive: prog.lastActive || null,
+        lastActive,
         coursePlan: u.coursePlan || []
       };
     });
