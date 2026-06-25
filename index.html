@@ -4043,9 +4043,14 @@ window.Admin = {
     const examHistory = JSON.parse(localStorage.getItem('exam_history') || '[]');
 
     const totalUsers = users.length;
-    const activeUsers = users.filter(u => u.progress && u.progress.lastActive).length;
-    const allDone = users.filter(u => u.progress && u.progress.completionRate >= 100).length;
-    const avgRate = totalUsers ? Math.round(users.reduce((s, u) => s + ((u.progress || {}).completionRate || 0), 0) / totalUsers) : 0;
+    const activeUsers = users.filter(u => {
+      const p = u.progress || {};
+      if (p.lastActive) return true;
+      // Also check raw progress data for completed courses
+      return Object.values(p).some(v => v && typeof v === 'object' && v.completed);
+    }).length;
+    const allDone = users.filter(u => this._computeRate(u.progress) >= 100).length;
+    const avgRate = totalUsers ? Math.round(users.reduce((s, u) => s + this._computeRate(u.progress), 0) / totalUsers) : 0;
 
     // Company list for super admin filter
     const companies = [...new Set(allUsers.map(u => u.company))].sort();
