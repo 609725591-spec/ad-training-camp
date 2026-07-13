@@ -4547,12 +4547,27 @@ window.Admin = {
     const header = '服务商,姓名,手机号,角色,已分配课程,已完成课程,课程总数,完成率,测验次数,平均测验分,最近活跃,状态\n';
     const rows = users.map(u => {
       const p = u.progress || {};
-      const completed = (p.completedCourses || []).length;
-      const rate = p.completionRate || 0;
+      const rate = this._computeRate(p);
+      // Count completed courses: support both pre-computed and raw per-course formats
+      let completed;
+      let lastActive = p.lastActive || null;
+      if (p.completedCourses) {
+        completed = p.completedCourses.length;
+      } else {
+        completed = 0;
+        for (const [courseId, courseData] of Object.entries(p)) {
+          if (courseData && courseData.completed) {
+            completed++;
+            if (courseData.completedAt && (!lastActive || courseData.completedAt > lastActive)) {
+              lastActive = courseData.completedAt;
+            }
+          }
+        }
+      }
       const planCount = (u.coursePlan || []).length;
       const status = rate >= 100 ? '已完成' : rate > 0 ? '学习中' : '未开始';
-      const lastActive = p.lastActive ? new Date(p.lastActive).toLocaleString('zh-CN') : '-';
-      return `"${u.company || ''}","${u.name || ''}","${u.phone || ''}","${App.roleName(u.role)}",${planCount},${completed},${totalCourses},${rate}%,${p.quizAttempts || 0},${p.avgQuizScore || 0}%,"${lastActive}","${status}"`;
+      const lastActiveStr = lastActive ? new Date(lastActive).toLocaleString('zh-CN') : '-';
+      return `"${u.company || ''}","${u.name || ''}","${u.phone || ''}","${App.roleName(u.role)}",${planCount},${completed},${totalCourses},${rate}%,${p.quizAttempts || 0},${p.avgQuizScore || 0}%,"${lastActiveStr}","${status}"`;
     }).join('\n');
     this.downloadCSV(BOM + header + rows, '学习进度_' + new Date().toISOString().slice(0, 10) + '.csv');
   },
