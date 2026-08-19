@@ -1018,7 +1018,7 @@ window.PRESET_REPS = PRESET_REPS;
 window.DATA = {
 
   // ============================================================
-  // 课程数据 (22门课程，8条产品线)
+  // 课程数据 (24门课程，9条产品线)
   // ============================================================
   courses: [
 
@@ -1494,7 +1494,74 @@ window.DATA = {
     },
 
     // ----------------------------------------------------------
-    // 9. 品牌智能体
+    // 9. 钻展
+    // ----------------------------------------------------------
+    {
+      id: 'diamond-01',
+      productLine: 'diamond',
+      productLineName: '钻展',
+      title: '钻展产品介绍',
+      difficulty: 'beginner',
+      duration: 20,
+      lessons: [
+        {
+          id: 'diamond-01-l1',
+          title: '产品定位与核心价值',
+          content: '<div class="course-content"><h3>钻展是什么</h3><p>钻展是高德地图里的<strong>"临街旗舰店"+同行流量拦截器+唯一排他广告位</strong>。它展示在相似好店上方通栏位，当用户浏览同类目竞品黄页时，你的品牌广告会精准推送到他们眼前。</p><div class="key-point"><p><strong>四大核心价值：</strong></p><ul><li><strong>精准找人：</strong>在同类目竞品黄页触发，主动推送给正在看同行的消费者，纯增量流量</li><li><strong>位置醒目：</strong>出现在指定类目黄页中部，样式更丰富、视觉更强</li><li><strong>刺激行动：</strong>自定义Banner图+限时优惠，刺激用户马上导航或咨询</li><li><strong>资源排他：</strong>单城单类目同一时间只给一家商户，买了就是垄断</li></ul></div><h3>售卖方式</h3><p>钻展采用<strong>CPT（按时段计费）</strong>方式售卖，场站钻展还支持CPM-GT计费。按pid粒度投放，不支持品牌维度，不可跨pid投放。</p><p class="highlight">钻展 = 高德地图里的临街旗舰店，单城单类目唯一排他广告位，买了同行就抢不到。</p></div>'
+        },
+        {
+          id: 'diamond-01-l2',
+          title: '展示逻辑与模板',
+          content: '<div class="course-content"><h3>展示条件</h3><p>钻展展示需要同时满足以下条件：</p><ul><li>购买对应类目并配置上刊，计划、创意均打开投放</li><li>在投放对应的atag下存在黄页门店</li><li>POIID门店状态正常（门店失效则钻展不展示）</li></ul><h3>门店召回规则</h3><ul><li>按"就近优先"原则展现，最大召回距离200KM</li><li>召回距离不影响钻展正常展示，仅影响门店名称、标签、广告组件的展示</li><li>虚拟店不支持召回</li></ul><h3>模板类型</h3><div class="key-point"><p><strong>有门店：</strong>品效合一模板、左文右图模板</p><p><strong>无门店：</strong>品效合一、标题图片（老样式/品宣新样式/货架新样式）</p></div><h3>落地页跳转</h3><ul><li><strong>无门店：</strong>仅跳转配置的schema链接</li><li><strong>有门店未召回：</strong>点击任意位置跳转schema链接</li><li><strong>有门店已召回：</strong>点击"查看详情"跳schema，点击门店区域跳门店详情页，点击广告组件跳IM咨询/电话</li></ul><p class="highlight">钻展与平客互斥：有钻展2.0时不出平客，无钻展时平客正常展示。</p></div>'
+        },
+        {
+          id: 'diamond-01-l3',
+          title: '投放条件与要求',
+          content: '<div class="course-content"><h3>投放基础要求</h3><table><tr><th>项目</th><th>要求</th></tr><tr><td>投放粒度</td><td>pid级别，不支持品牌维度，不可跨pid</td></tr><tr><td>售卖折扣</td><td>最低5折</td></tr><tr><td>提前占量</td><td>最长30天（从签约时间算）</td></tr><tr><td>投放时长</td><td>30天≤x≤90天（拆分时段需下多笔订单）</td></tr><tr><td>年费要求</td><td>年费在约</td></tr><tr><td>五星门店</td><td>至少一个五星门店达标（五星装修+五星货架）</td></tr></table><h3>各行业起投门槛</h3><div class="key-point"><p><strong>休娱-宠物/眼镜：</strong>单次≥3000元或一次购买3个月</p><p><strong>休娱-其他：</strong>无金额门槛，至少购买1个月（按30天倍数）</p><p><strong>生服：</strong>单次≥3000元或一次购买3个月</p><p><strong>美食-重点12城：</strong>单次≥3000元或一次购买3个月</p><p><strong>美食-非重点城市：</strong>无金额门槛，至少购买1个月（按30天倍数）</p></div><h3>美食类目特殊规则</h3><ul><li>商户通年费门店：不展示钻展</li><li>有扫街榜的POI：不展示</li><li>有推荐菜的POI：第二屏展示（推荐菜下方）</li><li>其他正常门店：第一屏核心位置正常展示</li></ul><h3>拒用率/客诉率要求</h3><ul><li><strong>美食：</strong>支付订单≥10笔时拒用率≤1%，<10笔时拒用订单≤2笔</li><li><strong>休娱/生服：</strong>客诉率≤0.05%</li></ul><p class="highlight">钻展为品牌广告，不承诺广告效果，上线后原则上不接受退款。</p></div>'
+        }
+      ],
+      quiz: [
+        { id: 'diamond-01-q1', type: 'single', question: '钻展的售卖方式是什么？', options: ['CPC按点击计费', 'CPT按时段计费', 'CPM按千次展示计费', 'CPA按转化计费'], answer: 1, explanation: '钻展采用CPT（按时段计费）方式售卖，场站钻展还支持CPM-GT。' },
+        { id: 'diamond-01-q2', type: 'multi', question: '钻展的四大核心价值包括哪些？', options: ['精准找人', '位置醒目', '资源排他', '免费试用'], answer: [0, 1, 2], explanation: '钻展四大核心价值：精准找人、位置醒目、刺激行动、资源排他。不包括免费试用。' },
+        { id: 'diamond-01-q3', type: 'judge', question: '钻展与平客是互斥关系，有钻展时不出平客。', options: ['正确', '错误'], answer: 0, explanation: '钻展与平客互斥：有钻展2.0时不出平客，无钻展时平客正常展示。' },
+        { id: 'diamond-01-q4', type: 'single', question: '钻展投放时，门店最大召回距离是多少？', options: ['50KM', '100KM', '200KM', '不限'], answer: 2, explanation: '门店召回最大距离200KM，召回距离仅影响门店名称等信息的展示，不影响钻展正常展示。' }
+      ]
+    },
+
+    {
+      id: 'diamond-02',
+      productLine: 'diamond',
+      productLineName: '钻展',
+      title: '钻展售卖指南',
+      difficulty: 'intermediate',
+      duration: 25,
+      lessons: [
+        {
+          id: 'diamond-02-l1',
+          title: '销售话术',
+          content: '<div class="course-content"><h3>开场破冰——同行已占位</h3><div class="script-box"><p>"X老板您好，我是高德本地生活官方运营顾问，专门负责帮商家在地图上抢流量高地。我刚查了下咱们类目在城市的数据，发现已经有同行把钻展这个黄金坑位锁定了。很多顾客本来是想找您的，结果被他们先截胡了。"</p></div><h3>产品定义——智能追投+排他独占</h3><div class="script-box"><p>"钻展不是普通广告位，它是智能拦截系统。只要有人在高德上看同类别的店铺，系统就会自动把您的品牌广告推到他眼前——而且只推给您一个人。同一个城市、同一个类目、同一时间段，只有您能买这个位置。这不是竞价，这是圈地运动。"</p></div><h3>价值呈现——纯增量流量</h3><div class="script-box"><p>"钻展带来的全是正在比较同行的高意向客户。这些人已经决定要消费了，只是还没选定哪家。您这时候出现，等于临门一脚。"</p></div><h3>价格锚定</h3><div class="script-box"><p>"按最低90天算，每天才33块钱，相当于请个兼职发传单的钱。假设客单价500块，只需成交6单就能回本。这些客户都是主动来找您行业的，比在抖音投千川、在美团买排名成本低得多。"</p></div><p class="highlight">钻展话术核心：同行占位制造焦虑→智能追投+排他→纯增量高意向客户→日均成本稀释总价。</p></div>'
+        },
+        {
+          id: 'diamond-02-l2',
+          title: '异议处理',
+          content: '<div class="course-content"><h3>常见异议应对</h3><div class="script-box"><p><strong>"投了没效果怎么办？"</strong></p><p>"建议先小预算测试一个月，我帮您监控四个关键数据：曝光量、点击率、电话咨询数、导航到店数。如果没动静，一起复盘是图片不吸引人、城市选错了、还是换组合拳。每月提供数据复盘报告。"</p></div><div class="script-box"><p><strong>"我太忙没时间管"</strong></p><p>"您不用操心操作细节，从申请、排期、上线、优化我全程代办。您只需确认海报内容、签合同、付款，每周同步一次数据简报。"</p></div><div class="script-box"><p><strong>"抖音美团都投了，没必要投高德"</strong></p><p>"完全不重复。抖音是种草，美团是交易，高德是临门一脚——客户决定出门消费时最后一步是打开地图查路线。如果前两个平台花了钱引流，最后一步被同行截胡就太亏了。"</p></div><h3>买了不展示怎么办</h3><div class="key-point"><p><strong>钻展展示依赖"非商务通门店"作为载体。</strong>热门城市/景区可用载体少，不是故障而是产品设计。</p><p><strong>解决方案：</strong></p><ul><li>换城市/区域投放（选渗透率低的区域）</li><li>等待新门店入驻或旧门店合约到期</li><li>升级至"顶展+钻展"组合拳</li><li>美食客户避开推荐菜/扫街榜门店区域</li></ul></div><p class="highlight">异议处理核心：小预算测试降风险、全程代办省精力、三平台互补不冲突。</p></div>'
+        },
+        {
+          id: 'diamond-02-l3',
+          title: '签约与上刊',
+          content: '<div class="course-content"><h3>签约注意事项</h3><div class="key-point"><p><strong>签约前必查：</strong></p><ul><li>年费是否在约</li><li>是否有五星门店达标（五星装修+五星货架）</li><li>拒用率/客诉率是否达标</li><li>投放POI和pid的归属关系</li><li>五星门店审核在上刊环节，若不达标上刊申请会被驳回</li></ul></div><h3>下单场景备注</h3><ul><li>休娱宠物眼镜钻展：下单备注【休娱宠物眼镜钻展】</li><li>休娱其他：下单备注【休娱非宠物眼镜钻展】</li><li>美食重点城市：下单备注【美食重点城市钻展】</li><li>美食非重点城市：下单备注【美食非重点城市钻展】</li><li>生服：下单备注【生服钻展】</li></ul><h3>场站钻展（机场/火车站/汽车站）</h3><div class="key-point"><p><strong>场站钻展特殊规则：</strong></p><ul><li>在机场、火车站、汽车站展示，面向精准人群品牌曝光</li><li><strong>必须圈人投放</strong>，通过行业接口人完成人群圈选评估</li><li>有门店起投门槛2W，无门店起投门槛5W</li><li>有门店仅支持左文右图模板</li><li>景区可选周边城市投放，其他类目仅允许同城</li></ul></div><h3>数据查看</h3><p>品牌广告后台支持查看曝光量、点击量、点击率，可下载分日报表。查看入口：投放管理 > 计划/单元/创意TAB页。</p><p class="highlight">签约核心：五星达标+年费在约+拒用率达标+下单备注场景，场站钻展必须圈人。</p></div>'
+        }
+      ],
+      quiz: [
+        { id: 'diamond-02-q1', type: 'single', question: '钻展的排他性体现在哪里？', options: ['按竞价排名', '单城单类目同时只给一家商户', '按点击付费', '按转化付费'], answer: 1, explanation: '钻展的核心排他性：单城单类目同一时间只给一家商户，买了同行就抢不到。' },
+        { id: 'diamond-02-q2', type: 'single', question: '钻展投放的最短时长是？', options: ['7天', '15天', '30天', '90天'], answer: 2, explanation: '钻展一次性投放30天≤x≤90天，最短30天。' },
+        { id: 'diamond-02-q3', type: 'multi', question: '钻展投放前必须满足的条件包括哪些？', options: ['年费在约', '五星门店达标', '拒用率/客诉率达标', '投放CPC广告'], answer: [0, 1, 2], explanation: '钻展投放必须满足：年费在约、五星门店达标、拒用率/客诉率达标。不要求投放CPC。' },
+        { id: 'diamond-02-q4', type: 'judge', question: '场站钻展（机场/火车站）不需要人群圈选即可投放。', options: ['正确', '错误'], answer: 1, explanation: '场站钻展必须圈人投放，需通过行业接口人完成人群圈选评估，人群失效则钻展不展示。' }
+      ]
+    },
+
+    // ----------------------------------------------------------
+    // 10. 品牌智能体
     // ----------------------------------------------------------
     {
       id: 'agent-01',
@@ -1597,7 +1664,7 @@ window.DATA = {
   ],
 
   // ============================================================
-  // 题库数据 (160题，8条产品线 x 20题)
+  // 题库数据 (180题，9条产品线 x 20题)
   // ============================================================
   questions: [
 
@@ -1754,6 +1821,28 @@ window.DATA = {
     { id: 'q-water-018', productLine: 'watercard', knowledgeType: 'case', difficulty: 'advanced', type: 'single', question: '以下哪个场景最适合推荐水牌+搜索彩蛋组合？', options: ['街边奶茶店', '景区内餐厅', '社区便利店', '外卖厨房'], answer: 1, explanation: '景区内餐厅同时适合水牌（商场/景区场景）和搜索彩蛋（景区POI搜索）。' },
     { id: 'q-water-019', productLine: 'watercard', knowledgeType: 'policy', difficulty: 'advanced', type: 'judge', question: '水牌广告的售卖周期可以是21天。', options: ['正确', '错误'], answer: 0, explanation: '21天是7的倍数，符合水牌按周售卖的规则。' },
     { id: 'q-water-020', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'advanced', type: 'multi', question: '以下哪些商户适合推荐搜索彩蛋？', options: ['景区周边民宿', '火车站附近餐厅', '商场内快餐', '社区水果店'], answer: [0, 1], explanation: '搜索彩蛋适合景区景点和交通POI场景，景区民宿和火车站附近餐厅适合。' },
+
+    // --- 钻展 (q-diamond-001 ~ q-diamond-020) ---
+    { id: 'q-diamond-001', productLine: 'diamond', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '钻展的售卖方式是什么？', options: ['CPC按点击计费', 'CPT按时段计费', 'CPM按千次展示计费', 'CPA按转化计费'], answer: 1, explanation: '钻展采用CPT（按时段计费）方式售卖，场站钻展还支持CPM-GT。' },
+    { id: 'q-diamond-002', productLine: 'diamond', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '钻展的排他性体现在哪里？', options: ['按竞价排名', '单城单类目同时只给一家商户', '按点击付费', '按转化付费'], answer: 1, explanation: '钻展核心排他性：单城单类目同一时间只给一家商户，买了同行就抢不到。' },
+    { id: 'q-diamond-003', productLine: 'diamond', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '钻展展示在相似好店上方通栏位。', options: ['正确', '错误'], answer: 0, explanation: '钻展现在相似好店上方通栏位，当用户浏览同类目竞品黄页时展示。' },
+    { id: 'q-diamond-004', productLine: 'diamond', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '钻展投放时门店最大召回距离是多少？', options: ['50KM', '100KM', '200KM', '不限'], answer: 2, explanation: '门店召回最大距离200KM，召回距离仅影响门店名称等信息展示，不影响钻展正常展示。' },
+    { id: 'q-diamond-005', productLine: 'diamond', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '钻展与平客是互斥关系，有钻展时不出平客。', options: ['正确', '错误'], answer: 0, explanation: '钻展与平客互斥：有钻展2.0时不出平客，无钻展时平客正常展示。' },
+    { id: 'q-diamond-006', productLine: 'diamond', knowledgeType: 'policy', difficulty: 'beginner', type: 'single', question: '钻展一次性投放的最短时长是？', options: ['7天', '15天', '30天', '90天'], answer: 2, explanation: '钻展一次性投放30天≤x≤90天，最短30天。' },
+    { id: 'q-diamond-007', productLine: 'diamond', knowledgeType: 'policy', difficulty: 'beginner', type: 'single', question: '钻展最低可以打几折售卖？', options: ['3折', '5折', '7折', '不打折'], answer: 1, explanation: '钻展最低5折售卖，支持超5折的折扣数字。' },
+    { id: 'q-diamond-008', productLine: 'diamond', knowledgeType: 'policy', difficulty: 'beginner', type: 'judge', question: '钻展投放可以按品牌维度投放，支持跨pid投放。', options: ['正确', '错误'], answer: 1, explanation: '钻展按pid粒度投放，不支持品牌维度，不可跨pid投放。' },
+    { id: 'q-diamond-009', productLine: 'diamond', knowledgeType: 'policy', difficulty: 'beginner', type: 'judge', question: '钻展为品牌广告，上线后原则上不接受退款申请。', options: ['正确', '错误'], answer: 0, explanation: '钻展为品牌广告，不承诺广告效果，上线后原则上不接受退款。' },
+    { id: 'q-diamond-010', productLine: 'diamond', knowledgeType: 'product', difficulty: 'beginner', type: 'multi', question: '钻展有门店场景下的模板类型包括哪些？', options: ['品效合一', '左文右图', '标题图片', '货架样式'], answer: [0, 1], explanation: '有门店钻展支持品效合一和左文右图两种模板。标题图片和货架样式为无门店样式。' },
+    { id: 'q-diamond-011', productLine: 'diamond', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '钻展销售开场时，应优先使用什么策略破冰？', options: ['强调低价', '用同行已占位制造焦虑感', '赠送广告位', '免费试用'], answer: 1, explanation: '钻展开场破冰核心策略：用"同行已占位"制造焦虑感，建立专业身份。' },
+    { id: 'q-diamond-012', productLine: 'diamond', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '钻展价值传递中，应强调流量来源是什么类型？', options: ['泛流量', '纯增量高意向流量', '品牌曝光流量', '社交媒体流量'], answer: 1, explanation: '钻展带来的是正在比较同行的高意向客户，属于纯增量流量。' },
+    { id: 'q-diamond-013', productLine: 'diamond', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '客户说"抖音美团都投了，没必要投高德"时，正确的应对是？', options: ['贬低其他平台', '强调三平台互补，高德是临门一脚', '降低价格', '放弃该客户'], answer: 1, explanation: '应强调抖音是种草、美团是交易、高德是临门一脚，三平台互补不冲突。' },
+    { id: 'q-diamond-014', productLine: 'diamond', knowledgeType: 'policy', difficulty: 'intermediate', type: 'multi', question: '钻展投放前必须满足的条件包括哪些？', options: ['年费在约', '五星门店达标', '拒用率/客诉率达标', '必须同时投放CPC'], answer: [0, 1, 2], explanation: '钻展投放必须满足年费在约、五星门店达标、拒用率/客诉率达标，不要求投CPC。' },
+    { id: 'q-diamond-015', productLine: 'diamond', knowledgeType: 'policy', difficulty: 'intermediate', type: 'single', question: '美食类目重点12城的钻展起投门槛是？', options: ['无门槛', '1000元', '3000元或一次购买3个月', '10000元'], answer: 2, explanation: '美食重点12城起投门槛：单次≥3000元或一次购买3个月。' },
+    { id: 'q-diamond-016', productLine: 'diamond', knowledgeType: 'product', difficulty: 'advanced', type: 'single', question: '美食类目中，有扫街榜的POI会怎样影响钻展展示？', options: ['正常展示', '第一屏展示', '不展示钻展', '第二屏展示'], answer: 2, explanation: '有扫街榜的POI不展示钻展，榜单优先级高于钻展。' },
+    { id: 'q-diamond-017', productLine: 'diamond', knowledgeType: 'policy', difficulty: 'advanced', type: 'single', question: '场站钻展（机场/火车站）的有门店起投门槛是？', options: ['3000元', '1万元', '2万元', '5万元'], answer: 2, explanation: '场站钻展有门店起投门槛2W，无门店起投门槛5W。' },
+    { id: 'q-diamond-018', productLine: 'diamond', knowledgeType: 'policy', difficulty: 'advanced', type: 'judge', question: '场站钻展不需要人群圈选即可投放。', options: ['正确', '错误'], answer: 1, explanation: '场站钻展必须圈人投放，需通过行业接口人完成人群圈选评估，人群失效则钻展不展示。' },
+    { id: 'q-diamond-019', productLine: 'diamond', knowledgeType: 'operation', difficulty: 'advanced', type: 'single', question: '钻展数据在品牌广告后台可查看哪些指标？', options: ['曝光量、点击量、点击率', 'ROI、转化率、客单价', 'GMV、订单数、复购率', '粉丝数、评论数、点赞数'], answer: 0, explanation: '品牌广告后台支持查看曝光量、点击量、点击率，可下载分日报表。' },
+    { id: 'q-diamond-020', productLine: 'diamond', knowledgeType: 'sales', difficulty: 'advanced', type: 'single', question: '钻展价格锚定话术中，按90天计算日均成本约多少？', options: ['11元', '22元', '33元', '55元'], answer: 2, explanation: '按3000元/90天计算，每天约33元，相当于请个兼职发传单的钱。' },
 
     // --- 品牌智能体 (q-agent-001 ~ q-agent-020) ---
     { id: 'q-agent-001', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '品牌智能体1-9店的月费是？', options: ['69元/店/月', '79元/店/月', '89元/店/月', '99元/店/月'], answer: 3, explanation: '1-9店标准价为99元/店/月。' },
@@ -2481,8 +2570,8 @@ window.App = {
       if (!lines[c.productLine]) lines[c.productLine] = { name: c.productLineName, courses: [] };
       lines[c.productLine].courses.push(c);
     });
-    const icons = { cpc:'📊', 'ocpc-gmv':'📈', 'ocpc-leads':'📞', dual:'🔗', allpush:'🌐', topdisplay:'🏆', watercard:'🎨', 'ai-agent':'🧠' };
-    const colors = { cpc:'blue', 'ocpc-gmv':'indigo', 'ocpc-leads':'purple', dual:'emerald', allpush:'teal', topdisplay:'rose', watercard:'pink', 'ai-agent':'violet' };
+    const icons = { cpc:'📊', 'ocpc-gmv':'📈', 'ocpc-leads':'📞', dual:'🔗', allpush:'🌐', topdisplay:'🏆', watercard:'🎨', diamond:'💎', 'ai-agent':'🧠' };
+    const colors = { cpc:'blue', 'ocpc-gmv':'indigo', 'ocpc-leads':'purple', dual:'emerald', allpush:'teal', topdisplay:'rose', watercard:'pink', diamond:'orange', 'ai-agent':'violet' };
     const coursePlan = this._getCoursePlan();
 
     el.innerHTML = `<div class="animate-fade-in space-y-4">
@@ -3017,7 +3106,7 @@ window.App = {
       totalScore: 100,
       rules: [
         { productLines: ['cpc', 'ocpc-gmv', 'ocpc-leads', 'dual', 'allpush'], count: 20 },
-        { productLines: ['topdisplay', 'watercard'], count: 15 },
+        { productLines: ['topdisplay', 'watercard', 'diamond'], count: 15 },
         { productLines: ['ai-agent'], count: 15 }
       ]
     },
@@ -3028,7 +3117,7 @@ window.App = {
       passScore: 80,
       totalScore: 100,
       rules: [
-        { productLines: ['cpc', 'ocpc-gmv', 'ocpc-leads', 'dual', 'allpush', 'topdisplay', 'watercard', 'ai-agent'], count: 20 }
+        { productLines: ['cpc', 'ocpc-gmv', 'ocpc-leads', 'dual', 'allpush', 'topdisplay', 'watercard', 'diamond', 'ai-agent'], count: 20 }
       ]
     }
   ];
