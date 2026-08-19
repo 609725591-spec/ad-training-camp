@@ -1260,12 +1260,12 @@ window.DATA = {
         }
       ],
       quiz: [
-        { id: 'dual-01-q1', type: 'single', question: '双投策略是指同时投放哪两种广告？', options: ['CPC+CPM', 'CPC+OCPC', 'OCPC+品牌广告', 'CPC+全站推'], answer: 1, explanation: '双投是指CPC+OCPC同时投放，通过双算法互补实现更好的投放效果。' },
+        { id: 'dual-01-q1', type: 'single', question: '双投策略是指同时投放哪两种广告？', options: ['CPC+CPM', 'CPC+OCPC', 'OCPC+品牌广告', 'CPC+品牌广告'], answer: 1, explanation: '双投是指CPC+OCPC同时投放，通过双算法互补实现更好的投放效果。' },
         { id: 'dual-01-q2', type: 'single', question: '双投模式下，GMV平均增长多少？', options: ['10%-20%', '30%-50%', '50%-80%', '100%以上'], answer: 1, explanation: '双投模式下GMV平均增长30%-50%，效果显著。' },
         { id: 'dual-01-q3', type: 'multi', question: '双投策略的核心价值包括以下哪些？', options: ['订单量+25%', '获客成本-20%', '管理效率+60%', '曝光量+100%'], answer: [0, 1, 2], explanation: '双投三大核心价值：订单量+25%、获客成本-20%、管理效率+60%。' },
         { id: 'dual-01-q4', type: 'judge', question: '双投模式下，CPC建议单店日预算为300-500元。', options: ['正确', '错误'], answer: 1, explanation: 'CPC建议单店日预算为100-200元，OCPC建议为300-500元。' }
       ,
-    { id: 'q-dual-001', type: 'single', question: '双投是指同时投放哪两种广告？', options: ['CPC+CPM', 'CPC+OCPC', 'OCPC+品牌广告', 'CPC+全站推'], answer: 1, explanation: '双投是指CPC+OCPC同时投放，双算法互补。' },
+    { id: 'q-dual-001', type: 'single', question: '双投是指同时投放哪两种广告？', options: ['CPC+CPM', 'CPC+OCPC', 'OCPC+品牌广告', 'CPC+品牌广告'], answer: 1, explanation: '双投是指CPC+OCPC同时投放，双算法互补。' },
     { id: 'q-dual-002', type: 'single', question: '双投模式下订单量平均提升多少？', options: ['10%', '25%', '50%', '100%'], answer: 1, explanation: '双投模式下订单量平均提升25%。' },
     { id: 'q-dual-003', type: 'single', question: '双投模式下GMV平均增长多少？', options: ['10%-20%', '30%-50%', '50%-80%', '100%以上'], answer: 1, explanation: '双投模式下GMV平均增长30%-50%。' },
     { id: 'q-dual-004', type: 'single', question: 'CPC建议单店日预算范围是？', options: ['50-100元', '100-200元', '300-500元', '500-1000元'], answer: 1, explanation: 'CPC建议单店日预算100-200元。' },
@@ -1311,243 +1311,7 @@ window.DATA = {
     },
 
     // ----------------------------------------------------------
-    // 5. 全站推
-    // ----------------------------------------------------------
-    {
-      id: 'allpush-01',
-      productLine: 'allpush',
-      productLineName: '全站推',
-      title: '全站推产品入门',
-      difficulty: 'beginner',
-      duration: 15,
-      lessons: [
-        {
-          id: 'allpush-01-l1',
-          title: '产品介绍',
-          content: '<div class="course-content"><h3>什么是全站推</h3><p>全站推是高德本地生活平台推出的<strong>客资+GMV双目标</strong>广告产品，帮助商户同时实现客户获取和交易增长。</p><div class="key-point"><p><strong>核心特点：</strong></p><ul><li><strong>双目标优化：</strong>同时优化客资转化和GMV，一个产品解决两个需求</li><li><strong>ROI设置：</strong>建议ROI不高于2.5，保证投放效果</li><li><strong>适配商户：</strong>客单价不宜过低，建议通过代金券+组合套餐提升客单价</li><li><strong>预算友好：</strong>适合预算有限的商户，投放门槛较低</li></ul></div><h3>为什么选择全站推</h3><ul><li>一个广告计划同时覆盖客资和GMV两个目标</li><li>不需要分别设置CPC和OCPC，操作更简便</li><li>系统自动在全站流量中寻找最优分配</li><li>特别适合刚入门广告投放的商户</li></ul><p class="highlight">全站推 = 客资+GMV双目标，一个产品、一次投放、双重效果。</p><h3>广告效果展示</h3><p>全站推覆盖高德App全场景流量，系统自动优化客资和GMV双重目标：</p><img src="images/cpc-effect.png" class="course-img" alt="全站推广告效果"><p class="img-caption">全站推广告在搜索结果中的展示</p><h3>配置流程</h3><p>全站推的操作非常简便：</p><div class="step-cards"><div class="step-card"><div class="step-num">1</div><div class="step-body"><div class="step-title">选择推广门店</div><div class="step-desc">进入广告后台 → 在门店列表中选择推广门店（支持搜索和多选）</div></div></div><div class="step-card"><div class="step-num">2</div><div class="step-body"><div class="step-title">选择全站推</div><div class="step-desc">新建推广 → 选择"全站推"投放类型 → 设置ROI（建议≤2.5）</div></div></div><div class="step-card"><div class="step-num">3</div><div class="step-body"><div class="step-title">设置预算</div><div class="step-desc">设置日预算上限 → 建议全天投放 → 出价区间随行业动态调整</div></div></div><div class="step-card"><div class="step-num">4</div><div class="step-body"><div class="step-title">提交与优化</div><div class="step-desc">提交审核 → 通过后自动投放 → 3-5天后根据报表数据优化</div></div></div></div></div>'
-        },
-        {
-          id: 'allpush-01-l2',
-          title: '操作流程',
-          content: '<div class="course-content"><h3>全站推操作路径</h3><div class="key-point"><p><strong>操作步骤：</strong></p><ul><li>第一步：登录高德广告投放平台</li><li>第二步：选择「新建推广」→「全站推」</li><li>第三步：选择投放门店，设置ROI目标（建议≤2.5）</li><li>第四步：设置日预算上限</li><li>第五步：确认投放时段（建议全天投放）</li><li>第六步：提交审核，等待通过后开始投放</li></ul></div><h3>投放优化建议</h3><ul><li><strong>客单价提升：</strong>通过设置代金券和组合套餐，提升线上客单价</li><li><strong>ROI设置：</strong>初期设置较低的ROI（如1.5-2），让计划充分获量</li><li><strong>数据观察：</strong>投放3-5天后根据数据表现逐步优化</li><li><strong>门店配合：</strong>确保门店信息完整、团购套餐设置有吸引力</li></ul><p class="highlight">全站推操作简单、效果全面，是预算有限商户的理想选择。</p></div>'
-        }
-      ],
-      quiz: [
-        { id: 'allpush-01-q1', type: 'single', question: '全站推同时优化哪两个目标？', options: ['曝光+点击', '客资+GMV', 'CPC+OCPC', '品牌+效果'], answer: 1, explanation: '全站推同时优化客资转化和GMV两个目标。' },
-        { id: 'allpush-01-q2', type: 'single', question: '全站推建议的ROI设置不应高于多少？', options: ['1.5', '2.0', '2.5', '3.0'], answer: 2, explanation: '全站推建议ROI不高于2.5，以保证投放效果和获量能力。' },
-        { id: 'allpush-01-q3', type: 'judge', question: '全站推适合客单价很低的商户投放。', options: ['正确', '错误'], answer: 1, explanation: '全站推建议客单价不宜过低，可通过代金券+组合套餐提升客单价后再投放。' }
-      ,
-    { id: 'q-allpush-001', type: 'single', question: '全站推同时优化哪两个目标？', options: ['曝光+点击', '客资+GMV', 'CPC+OCPC', '品牌+效果'], answer: 1, explanation: '全站推同时优化客资转化和GMV两个目标。' },
-    { id: 'q-allpush-002', type: 'single', question: '全站推建议的ROI设置不应高于多少？', options: ['1.5', '2.0', '2.5', '3.0'], answer: 2, explanation: '全站推建议ROI不高于2.5，以保证投放效果和获量能力。' },
-    { id: 'q-allpush-003', type: 'single', question: '全站推建议通过什么方式提升客单价？', options: ['提高菜品价格', '代金券+组合套餐', '减少菜品数量', '增加广告预算'], answer: 1, explanation: '建议通过代金券+组合套餐提升线上客单价，不宜直接提价。' },
-    { id: 'q-allpush-004', type: 'judge', question: '全站推适合客单价很低的商户投放。', options: ['正确', '错误'], answer: 1, explanation: '全站推建议客单价不宜过低，可通过代金券+组合套餐提升客单价后再投放。' },
-    { id: 'q-allpush-005', type: 'single', question: '全站推建议的投放时段是？', options: ['仅午餐时段', '仅晚餐时段', '全天投放', '仅周末'], answer: 2, explanation: '全站推建议全天投放，让系统有充足时段寻找最优流量。' },
-    { id: 'q-allpush-006', type: 'single', question: '全站推投放后建议观察多长时间再做优化？', options: ['1天', '3-5天', '2周', '1个月'], answer: 1, explanation: '投放3-5天后根据数据表现逐步优化。' },
-    { id: 'q-allpush-007', type: 'judge', question: '全站推不需要分别设置CPC和OCPC，操作更简便。', options: ['正确', '错误'], answer: 0, explanation: '全站推一个产品覆盖双目标，不需要分别设置CPC和OCPC。' },
-    { id: 'q-allpush-008', type: 'single', question: '全站推特别适合哪类商户？', options: ['大品牌连锁', '预算有限的商户', '只做品牌广告的商户', '线上外卖商户'], answer: 1, explanation: '全站推操作简单、投放门槛低，特别适合预算有限的商户。' },
-    { id: 'q-allpush-009', type: 'single', question: '全站推的ROI初期设置建议为多少？', options: ['0.5-1', '1.5-2', '3-5', '5-10'], answer: 1, explanation: '初期建议设置较低的ROI（如1.5-2），让计划充分获量。' },
-    { id: 'q-allpush-010', type: 'judge', question: '全站推投放时门店信息和团购套餐的完善程度会影响效果。', options: ['正确', '错误'], answer: 0, explanation: '门店信息完整、团购套餐有吸引力可以提升全站推的投放效果。' },
-    { id: 'q-allpush-011', type: 'single', question: '全站推的核心优势是什么？', options: ['最低价格', '一个产品双重效果', '品牌曝光最强', '只投效果广告'], answer: 1, explanation: '全站推核心优势是一个广告计划同时覆盖客资和GMV两个目标。' },
-    { id: 'q-allpush-012', type: 'single', question: '向预算有限的商户推荐产品时，全站推的推荐理由是？', options: ['最便宜', '操作简单效果全面', '品牌效果最好', '只适合大客户'], answer: 1, explanation: '全站推操作简单、效果全面、投放门槛低，是预算有限商户的理想选择。' },
-    { id: 'q-allpush-013', type: 'multi', question: '全站推投放优化建议包括哪些？', options: ['通过代金券提升客单价', '初期设较低ROI', '投放3-5天后优化', '限制投放时段'], answer: [0, 1, 2], explanation: '全站推优化建议：提升客单价、初期低ROI、3-5天后优化。不建议限制时段。' },
-    { id: 'q-allpush-014', type: 'judge', question: '全站推特别适合刚入门广告投放的商户。', options: ['正确', '错误'], answer: 0, explanation: '全站推操作简便，不需要分别管理多个广告产品，适合新手商户。' },
-    { id: 'q-allpush-015', type: 'single', question: '全站推提交审核后，需要等待什么才能开始投放？', options: ['付款确认', '审核通过', '签约完成', '门店认证'], answer: 1, explanation: '提交审核后需等待审核通过才能开始投放。' },
-    { id: 'q-allpush-016', type: 'single', question: '全站推系统在全站流量中寻找最优分配的含义是？', options: ['只在搜索场景投放', '系统自动在所有流量场景优化分配', '只在导航场景投放', '人工选择流量来源'], answer: 1, explanation: '系统自动在全站流量中寻找最优分配，覆盖多种场景。' },
-    { id: 'q-allpush-017', type: 'multi', question: '全站推与双投策略的区别在于？', options: ['全站推一个产品覆盖双目标', '双投需要分别设置CPC和OCPC', '全站推操作更简便', '两者效果完全一样'], answer: [0, 1, 2], explanation: '全站推一个产品覆盖双目标、操作简便；双投需要分别设置CPC和OCPC，灵活度更高。' },
-    { id: 'q-allpush-018', type: 'single', question: '全站推新建推广的正确操作路径是？', options: ['新建推广→全站推→选门店→设ROI→设预算→提交', '新建推广→CPC→全站推→设预算', '新建推广→OCPC→全站推→设ROI', '新建推广→品牌→全站推→设预算'], answer: 0, explanation: '正确路径：新建推广→选择全站推→选门店→设ROI→设预算→提交审核。' },
-    { id: 'q-allpush-019', type: 'judge', question: '全站推可以同时为商户带来客资和交易增长。', options: ['正确', '错误'], answer: 0, explanation: '全站推同时优化客资和GMV双目标，可以同时带来客资和交易增长。' },
-    { id: 'q-allpush-020', type: 'single', question: '以下哪种商户最适合推荐全站推？', options: ['已有成熟投放体系的大客户', '预算有限的新手商户', '只做品牌曝光的商户', '客单价极低的外卖商户'], answer: 1, explanation: '全站推适合预算有限、刚入门广告投放的商户，操作简单效果全面。' }
-  ]
-    },
-
-    // ----------------------------------------------------------
-    // 7. 品牌广告-顶展
-    // ----------------------------------------------------------
-    {
-      id: 'top-01',
-      productLine: 'topdisplay',
-      productLineName: '品牌广告-顶展',
-      title: '顶展产品与签约流程',
-      difficulty: 'beginner',
-      duration: 25,
-      lessons: [
-        {
-          id: 'top-01-l1',
-          title: '顶展产品介绍',
-          content: '<div class="course-content"><h3>什么是顶展广告</h3><p>顶展是高德地图的<strong>搜索登顶展示</strong>品牌广告产品，当用户搜索相关关键词时，商户信息展示在搜索结果的最顶部位置。</p><div class="key-point"><p><strong>核心特点：</strong></p><ul><li><strong>展示位置：</strong>搜索结果页顶部第一位，最强曝光位置</li><li><strong>投放维度：</strong>按关键词+城市/行政区进行投放</li><li><strong>生效时间：</strong>配置修改审核通过后<strong>T+1生效</strong></li><li><strong>售卖方式：</strong>按行业售卖，同一行业同一区域独家展示</li></ul></div><h3>顶展的核心价值</h3><ul><li><strong>品牌曝光：</strong>搜索结果第一位置，最大化品牌曝光</li><li><strong>行业独占：</strong>同行业同区域唯一展示，竞品无法争抢</li><li><strong>精准触达：</strong>用户主动搜索触发，意图明确，转化率高</li><li><strong>长期效果：</strong>品牌认知积累，提升门店整体搜索量</li></ul><p class="highlight">顶展适合追求品牌曝光、希望在搜索结果中占据第一位置的商户。</p><h3>广告效果展示</h3><p>顶展广告展示在搜索结果最顶部，带"免费咨询"入口，行业独占：</p><img src="images/topdisplay-effect.png" class="course-img" alt="顶展广告效果"><p class="img-caption">顶展广告在搜索结果顶部展示（带免费咨询入口）</p><p>此外，顶展还可以搭配开屏广告进行品牌曝光：</p><img src="images/topdisplay-splash.png" class="course-img" alt="开屏广告效果"><p class="img-caption">品牌开屏广告效果展示</p><h3>签约流程</h3><p>顶展的签约配置步骤：</p><div class="step-cards"><div class="step-card"><div class="step-num">1</div><div class="step-body"><div class="step-title">询量</div><div class="step-desc">选择产品、行业、时段、地域 → 查询可用库存</div></div></div><div class="step-card"><div class="step-num">2</div><div class="step-body"><div class="step-title">占量与下单</div><div class="step-desc">确认投放方案 → 锁定广告位库存 → 生成合同</div></div></div><div class="step-card"><div class="step-num">3</div><div class="step-body"><div class="step-title">签约付款</div><div class="step-desc">完成合同签署和付款</div></div></div><div class="step-card"><div class="step-num">4</div><div class="step-body"><div class="step-title">配置上线</div><div class="step-desc">设置关键词+地理定向+POIID+距离 → 审核通过后T+1生效</div></div></div></div></div>'
-        },
-        {
-          id: 'top-01-l2',
-          title: '询量占量下单',
-          content: '<div class="course-content"><h3>顶展签约流程</h3><div class="key-point"><p><strong>完整签约五步走：</strong></p><ul><li><strong>第一步·询量：</strong>选择产品、行业、时段、地域，查询可用库存</li><li><strong>第二步·占量：</strong>确认投放方案后，锁定广告位库存</li><li><strong>第三步·下单：</strong>确认订单详情，生成合同</li><li><strong>第四步·签约：</strong>完成合同签署和付款</li><li><strong>第五步·配置：</strong>设置关键词、地理定向、POIID+距离等参数</li></ul></div><h3>配置参数说明</h3><table><tr><th>参数</th><th>说明</th><th>注意事项</th></tr><tr><td>关键词</td><td>触发顶展展示的搜索词</td><td>选择与门店业务相关的核心关键词</td></tr><tr><td>地理定向</td><td>投放的城市或行政区</td><td>覆盖门店所在区域及周边</td></tr><tr><td>POIID</td><td>门店的唯一标识</td><td>单个单元最多支持2万个POIID</td></tr><tr><td>距离</td><td>用户距门店的展示范围</td><td>合理设置，覆盖有效到店距离</td></tr></table><p class="highlight">签约流程核心：询量确认有库存 → 占量锁位 → 下单签约 → 配置上线。</p></div>'
-        },
-        {
-          id: 'top-01-l3',
-          title: '线上加白流程',
-          content: '<div class="course-content"><h3>线上加白操作步骤</h3><div class="key-point"><p><strong>加白流程三步：</strong></p><ul><li><strong>第一步：创建广告主ID</strong>——在广告投放平台为商户创建独立的广告主账户，填写商户基本信息和资质材料</li><li><strong>第二步：代运营登录</strong>——通过轩辕PC端登录代运营后台，关联广告主ID，获取管理权限</li><li><strong>第三步：PID登录</strong>——使用PID（项目标识）完成系统对接，验证配置参数，确保投放正常</li></ul></div><h3>注意事项</h3><ul><li>加白流程需在签约完成后进行</li><li>确保广告主ID信息准确，避免后续排查问题</li><li>配置修改后T+1生效，注意时间安排</li></ul><p class="highlight">加白流程是顶展投放的技术准备环节，确保广告主账户和系统配置就绪。</p></div>'
-        }
-      ],
-      quiz: [
-        { id: 'top-01-q1', type: 'single', question: '顶展广告配置修改审核通过后何时生效？', options: ['实时生效', 'T+1生效', 'T+3生效', 'T+7生效'], answer: 1, explanation: '顶展配置修改审核通过后T+1（次日）生效。' },
-        { id: 'top-01-q2', type: 'single', question: '顶展单个单元下置顶POIID最多支持多少个？', options: ['100个', '1000个', '1万个', '2万个'], answer: 3, explanation: '顶展单个单元下置顶POIID最多支持2万个。' },
-        { id: 'top-01-q3', type: 'multi', question: '顶展签约流程包括以下哪些步骤？', options: ['询量', '占量', '下单签约', '竞价排名'], answer: [0, 1, 2], explanation: '顶展签约流程为：询量→占量→下单→签约→配置。顶展按行业售卖，不涉及竞价排名。' },
-        { id: 'top-01-q4', type: 'judge', question: '顶展广告按行业售卖，同一行业同一区域可以有多家商户同时展示。', options: ['正确', '错误'], answer: 1, explanation: '顶展按行业售卖，同一行业同一区域独家展示，竞品无法争抢。' }
-      ,
-    { id: 'q-top-001', type: 'single', question: '顶展广告配置修改审核通过后何时生效？', options: ['实时生效', 'T+1生效', 'T+3生效', 'T+7生效'], answer: 1, explanation: '顶展配置修改审核通过后T+1（次日）生效。' },
-    { id: 'q-top-002', type: 'single', question: '顶展单个单元下置顶POIID最多支持多少个？', options: ['100个', '1000个', '1万个', '2万个'], answer: 3, explanation: '顶展单个单元下置顶POIID最多支持2万个。' },
-    { id: 'q-top-003', type: 'single', question: '顶展广告按什么维度投放？', options: ['按时间', '按关键词+城市/行政区', '按用户年龄', '按消费金额'], answer: 1, explanation: '顶展按关键词+城市/行政区进行投放。' },
-    { id: 'q-top-004', type: 'judge', question: '顶展广告按行业售卖，同一行业同一区域独家展示。', options: ['正确', '错误'], answer: 0, explanation: '顶展按行业售卖，同一行业同一区域独家展示，竞品无法争抢。' },
-    { id: 'q-top-005', type: 'single', question: '排查顶展不生效时需要确认的高德APP版本是？', options: ['14.00', '15.21', '16.00', '15.21或16.00'], answer: 3, explanation: '需要确认用户使用的高德APP版本≥15.21或16.00。' },
-    { id: 'q-top-006', type: 'single', question: '虚拟店顶展不出广告的常见原因是？', options: ['预算不足', '关键词设置错误', '经营地址不等于投放城市', '门店评分过低'], answer: 2, explanation: '虚拟店要求经营地址必须等于投放城市，否则顶展不会展示。' },
-    { id: 'q-top-007', type: 'single', question: '门店地址变更后，顶展配置需要怎么处理？', options: ['自动更新', '需要重新发布', '联系客服处理', '等待24小时'], answer: 1, explanation: '门店地址变更后，顶展配置需要重新发布才能正常展示。' },
-    { id: 'q-top-008', type: 'judge', question: '顶展签约流程的第一步是占量。', options: ['正确', '错误'], answer: 1, explanation: '顶展签约流程第一步是询量，不是占量。完整流程：询量→占量→下单→签约→配置。' },
-    { id: 'q-top-009', type: 'single', question: '顶展广告展示在什么位置？', options: ['搜索结果底部', '搜索结果顶部', '导航页面侧边', '首页推荐位'], answer: 1, explanation: '顶展展示在搜索结果页顶部第一位，是最强曝光位置。' },
-    { id: 'q-top-010', type: 'judge', question: '顶展线上加白流程包括创建广告主ID、代运营登录和PID登录三步。', options: ['正确', '错误'], answer: 0, explanation: '加白流程三步：创建广告主ID→代运营登录（轩辕PC端）→PID登录。' }
-  ]
-    },
-
-    {
-      id: 'top-02',
-      productLine: 'topdisplay',
-      productLineName: '品牌广告-顶展',
-      title: '顶展排查与案例',
-      difficulty: 'intermediate',
-      duration: 20,
-      lessons: [
-        {
-          id: 'top-02-l1',
-          title: '常见问题排查',
-          content: '<div class="course-content"><h3>顶展不生效排查清单</h3><div class="key-point"><p><strong>排查步骤（按顺序逐一检查）：</strong></p><ul><li><strong>1. 配置检查：</strong>确认关键词、地理定向、POIID等参数配置正确</li><li><strong>2. 词包问题：</strong>检查关键词词包是否已生效，是否有拼写错误</li><li><strong>3. 版本问题：</strong>确认用户使用的高德APP版本≥15.21或16.00</li><li><strong>4. 距离问题：</strong>检查用户是否在设定的展示距离范围内</li><li><strong>5. 虚拟店问题：</strong>虚拟店要求经营地址必须等于投放城市</li><li><strong>6. 门店失效：</strong>确认门店在平台上处于有效状态</li><li><strong>7. 地址变更：</strong>如门店地址发生变更，需要重新发布配置</li></ul></div><h3>高频问题详解</h3><table><tr><th>问题</th><th>原因</th><th>解决方案</th></tr><tr><td>APP版本过低</td><td>用户APP版本&lt;15.21</td><td>提示用户升级至15.21或16.00以上</td></tr><tr><td>虚拟店不出广告</td><td>经营地址≠投放城市</td><td>确保经营地址设置为投放城市</td></tr><tr><td>地址变更后失效</td><td>配置未重新发布</td><td>地址变更后需重新发布顶展配置</td></tr></table><p class="highlight">排查口诀：一查配置二查词，三看版本四看距，虚拟店查地址，变更后要重发。</p></div>'
-        },
-        {
-          id: 'top-02-l2',
-          title: '投放案例',
-          content: '<div class="course-content"><h3>郴州湘菜13店投放案例</h3><p>以下是郴州湘菜连锁13家门店投放顶展广告的真实效果数据：</p><table><tr><th>指标</th><th>投放前</th><th>投放后</th><th>提升幅度</th></tr><tr><td>曝光量</td><td>基准值</td><td>大幅提升</td><td><strong>+55.4%</strong></td></tr><tr><td>访问量</td><td>基准值</td><td>明显增长</td><td><strong>+31.9%</strong></td></tr><tr><td>预约到店</td><td>基准值</td><td>显著增长</td><td><strong>+199%</strong></td></tr><tr><td>电话拨打</td><td>基准值</td><td>爆发式增长</td><td><strong>+206%</strong></td></tr></table><div class="key-point"><p><strong>案例亮点：</strong></p><ul><li>曝光量提升55.4%，品牌曝光效果显著</li><li>预约到店提升199%，直接带来线下客流</li><li>电话拨打提升206%，客资获取效果极佳</li><li>13家门店统一投放，品牌效应叠加</li></ul></div><p class="highlight">顶展对连锁品牌的价值尤为突出——统一曝光、品牌认知、到店转化一举三得。</p></div>'
-        }
-      ],
-      quiz: [
-        { id: 'top-02-q1', type: 'single', question: '排查顶展不生效时需要确认的高德APP最低版本是？', options: ['14.00', '15.21', '16.00', '15.21或16.00'], answer: 3, explanation: '需要确认用户使用的高德APP版本≥15.21或16.00。' },
-        { id: 'top-02-q2', type: 'single', question: '虚拟店顶展不出广告的常见原因是？', options: ['预算不足', '关键词设置错误', '经营地址不等于投放城市', '门店评分过低'], answer: 2, explanation: '虚拟店要求经营地址必须等于投放城市，否则顶展不会展示。' },
-        { id: 'top-02-q3', type: 'judge', question: '门店地址变更后，顶展配置会自动更新，无需重新发布。', options: ['正确', '错误'], answer: 1, explanation: '门店地址变更后，顶展配置需要重新发布才能正常展示。' }
-      ,
-    { id: 'q-top-011', type: 'single', question: '郴州湘菜13店案例中，曝光量提升了多少？', options: ['+25.4%', '+35.4%', '+55.4%', '+75.4%'], answer: 2, explanation: '案例数据显示曝光量提升了55.4%。' },
-    { id: 'q-top-012', type: 'single', question: '郴州湘菜案例中，预约到店提升了多少？', options: ['+99%', '+150%', '+199%', '+250%'], answer: 2, explanation: '案例数据显示预约到店提升了199%。' },
-    { id: 'q-top-013', type: 'single', question: '郴州湘菜案例中，电话拨打提升了多少？', options: ['+106%', '+156%', '+206%', '+306%'], answer: 2, explanation: '案例数据显示电话拨打提升了206%。' },
-    { id: 'q-top-014', type: 'multi', question: '顶展不生效时需要排查的因素包括哪些？', options: ['配置参数', '词包问题', 'APP版本', '门店评分'], answer: [0, 1, 2], explanation: '排查因素：配置检查、词包问题、版本问题、距离问题、虚拟店问题、门店失效、地址变更。' },
-    { id: 'q-top-015', type: 'single', question: '顶展最适合哪类商户？', options: ['追求低价获客的商户', '追求品牌曝光占据搜索首位的商户', '只做线上外卖的商户', '预算极低的商户'], answer: 1, explanation: '顶展适合追求品牌曝光、希望在搜索结果中占据第一位置的商户。' },
-    { id: 'q-top-016', type: 'single', question: '顶展配置参数中，"距离"参数的作用是？', options: ['限制广告投放城市', '设置用户距门店的展示范围', '设置配送距离', '限制门店数量'], answer: 1, explanation: '"距离"参数设置用户距门店的展示范围，覆盖有效到店距离。' },
-    { id: 'q-top-017', type: 'multi', question: '顶展配置参数包括哪些？', options: ['关键词', '地理定向', 'POIID+距离', '出价金额'], answer: [0, 1, 2], explanation: '顶展配置参数：关键词、地理定向、POIID+距离。顶展按行业售卖，不涉及出价金额。' },
-    { id: 'q-top-018', type: 'judge', question: '顶展代运营登录需要通过轩辕PC端进行。', options: ['正确', '错误'], answer: 0, explanation: '代运营登录需要通过轩辕PC端登录代运营后台。' },
-    { id: 'q-top-019', type: 'single', question: '郴州湘菜案例中，访问量提升了多少？', options: ['+15.9%', '+21.9%', '+31.9%', '+41.9%'], answer: 2, explanation: '案例数据显示访问量提升了31.9%。' },
-    { id: 'q-top-020', type: 'multi', question: '顶展对连锁品牌的价值体现在哪些方面？', options: ['统一品牌曝光', '品牌认知积累', '到店转化提升', '降低人工成本'], answer: [0, 1, 2], explanation: '顶展对连锁品牌价值：统一曝光、品牌认知、到店转化一举三得。' }
-  ]
-    },
-
-    // ----------------------------------------------------------
-    // 8. 水牌
-    // ----------------------------------------------------------
-    {
-      id: 'water-01',
-      productLine: 'watercard',
-      productLineName: '水牌',
-      title: '水牌产品介绍与售卖指南',
-      difficulty: 'beginner',
-      duration: 20,
-      lessons: [
-        {
-          id: 'water-01-l1',
-          title: '水牌产品概述',
-          content: '<div class="course-content"><h3>什么是水牌广告</h3><p>水牌是高德地图场景化的品牌展示广告，覆盖商场、超市、会展中心三大场景，帮助商户在特定线下场景中获取品牌曝光与到店转化。</p><div class="key-point"><p><strong>三大水牌类型：</strong></p><ul><li><strong>商场水牌：</strong>覆盖商场tips页与详情页banner，面向商场内餐饮、零售、娱乐等商户</li><li><strong>超市水牌：</strong>覆盖超市tips页与详情页banner，面向超市内有商品销售的快消品牌</li><li><strong>会展中心水牌：</strong>覆盖会展中心tips页（静态+动态），面向展会期间的品牌主与参展商</li></ul></div><h3>水牌核心优势</h3><ul><li><strong>独占排他：</strong>同一场景同一时间只服务一家品牌主，竞品无法同时投放，形成品牌独占</li><li><strong>LBS精准：</strong>基于高德LBS能力，精准触达线下场景周边用户，到店转化路径短</li><li><strong>门槛低：</strong>商场水牌最短1个月(4周)起售，10+点位可1周起投，适合不同预算规模的客户</li><li><strong>支持外跳：</strong>支持跳转品牌H5落地页或小程序，实现品牌深度互动与转化</li></ul><h3>平台升级</h3><p>水牌产品已全面升级至<strong>品广平台</strong>，客户可在品广平台自助下单、上传素材、查看投放数据，实现投放全流程线上化。</p><p class="highlight">水牌 = 线下场景品牌独占广告，三大场景覆盖商场、超市、会展中心，品广平台自助下单。</p></div>'
-        },
-        {
-          id: 'water-01-l2',
-          title: '商场水牌',
-          content: '<div class="course-content"><h3>商场水牌展示位</h3><p>商场水牌主要展示在商场详情页banner位，以<strong>静态banner</strong>形式呈现，覆盖商场场景的核心流量入口。</p><div class="key-point"><p><strong>素材规范：</strong></p><ul><li><strong>尺寸：</strong>718 x 172px</li><li><strong>文件大小：</strong>不超过500KB</li><li><strong>格式：</strong>JPG/PNG静态图片</li></ul></div><h3>售卖规则</h3><table><tr><th>项目</th><th>规则</th></tr><tr><td>最短购买时长</td><td>1个月(4周)起售</td></tr><tr><td>10+点位</td><td>可1周起投</td></tr><tr><td>最长购买时长</td><td>3个月(12周)</td></tr><tr><td>计费方式</td><td>按周计费</td></tr></table><h3>客户准入条件</h3><p>投放商场水牌的商户需满足以下条件：</p><ul><li><strong>有店铺：</strong>在该商场内有实体门店</li><li><strong>有活动：</strong>有明确的品牌推广活动或促销信息</li><li><strong>有指定品牌：</strong>投放内容须关联到指定品牌</li></ul><h3>多区域商场投放规范</h3><p>当客户需要在同一商场的多个区域（如A区、B区、C区）同时投放水牌时，需按区域分别提交素材和订单，每个区域独立计费和排期。</p><h3>跳转规则</h3><ul><li><strong>一跳禁唤端：</strong>水牌首跳（一跳）禁止唤端跳转至第三方APP</li><li>支持跳转品牌H5落地页或高德内小程序</li><li>如需跳转H5页面，需提前T-3日提交加白申请</li></ul><p class="highlight">商场水牌：718x172px静态banner，最短1个月起售，需有店铺/有活动/有指定品牌。</p></div>'
-        },
-        {
-          id: 'water-01-l3',
-          title: '超市水牌与会展中心水牌',
-          content: '<div class="course-content"><h3>超市水牌</h3><p>超市水牌采用<strong>tips页+详情页banner组合售卖</strong>模式，同时覆盖超市tips页与详情页两个核心流量位。</p><div class="key-point"><p><strong>超市水牌要求：</strong></p><ul><li>品牌需在超市内有商品销售（需提供商品销售证明）</li><li>投放形式为tips页与详情页banner组合，不可单独购买</li><li>素材规范与商场水牌一致：718 x 172px，500KB以内</li></ul></div><h3>会展中心水牌</h3><p>会展中心水牌覆盖会展中心tips页，支持<strong>静态+动态</strong>两种展示形式，适合展会期间的品牌曝光需求。</p><div class="key-point"><p><strong>会展中心售卖规则：</strong></p><ul><li><strong>起投方式：</strong>按周起投，以周一至周日为一个完整投放周期</li><li><strong>预热期：</strong>支持展前预热投放，不满一周按整周计费</li><li><strong>外跳支持：</strong>支持跳转H5落地页或小程序，实现品牌深度互动</li><li><strong>主体一致性：</strong>投放主体须与展会参展主体一致</li></ul></div><h3>投放案例数据</h3><table><tr><th>场景</th><th>消耗</th><th>曝光量</th><th>CTR</th><th>CPM</th></tr><tr><td>中餐水牌</td><td>7万元</td><td>270万</td><td>0.14%</td><td>-</td></tr><tr><td>会展中心水牌</td><td>-</td><td>-</td><td>0.38%</td><td>116元</td></tr></table><h3>跳转规则（通用）</h3><ul><li><strong>一跳禁唤端：</strong>所有水牌产品首跳禁止唤端跳转至第三方APP</li><li>H5落地页需提前<strong>T-3日</strong>提交加白申请</li><li>小程序跳转需提前完成小程序绑定与审核</li></ul><p class="highlight">超市水牌=tips+banner组合；会展中心水牌按周起投，预热不满一周按整周计；一跳禁唤端，H5需T-3日加白。</p></div>'
-        }
-      ],
-      quiz: [
-        { id: 'water-01-q1', type: 'single', question: '水牌产品覆盖哪三大场景？', options: ['商场、超市、会展中心', '商场、景区、机场', '超市、写字楼、社区', '商场、景区、超市'], answer: 0, explanation: '水牌覆盖商场、超市、会展中心三大线下场景。' },
-        { id: 'water-01-q2', type: 'single', question: '商场水牌的最短购买时长是？', options: ['1周', '1个月(4周)', '3个月', '7天'], answer: 1, explanation: '商场水牌最短1个月(4周)起售，10+点位可1周起投。' },
-        { id: 'water-01-q3', type: 'multi', question: '商场水牌的客户准入条件包括哪些？', options: ['有店铺', '有活动', '有指定品牌', '有五星门店'], answer: [0, 1, 2], explanation: '商场水牌准入条件：有店铺、有活动、有指定品牌，不包含五星门店要求。' },
-        { id: 'water-01-q4', type: 'judge', question: '水牌在同一场景同一时间只服务一家品牌主，具有独占排他性。', options: ['正确', '错误'], answer: 0, explanation: '水牌核心优势之一是独占排他，同一场景同一时间只服务一家品牌主，竞品无法同时投放。' },
-        { id: 'water-01-q5', type: 'single', question: '会展中心水牌的起投方式是？', options: ['按天起投', '按周起投(周一至周日)', '按月起投', '按展期起投'], answer: 1, explanation: '会展中心水牌按周起投，以周一至周日为一个完整投放周期。' }
-      ]
-    },
-
-    // ----------------------------------------------------------
-    // 9. 钻展
-    // ----------------------------------------------------------
-    {
-      id: 'diamond-01',
-      productLine: 'diamond',
-      productLineName: '钻展',
-      title: '钻展产品介绍',
-      difficulty: 'beginner',
-      duration: 20,
-      lessons: [
-        {
-          id: 'diamond-01-l1',
-          title: '产品定位与核心价值',
-          content: '<div class="course-content"><h3>钻展是什么</h3><p>钻展是高德地图里的<strong>"临街旗舰店"+同行流量拦截器+唯一排他广告位</strong>。它展示在相似好店上方通栏位，当用户浏览同类目竞品黄页时，你的品牌广告会精准推送到他们眼前。</p><div class="key-point"><p><strong>四大核心价值：</strong></p><ul><li><strong>精准找人：</strong>在同类目竞品黄页触发，主动推送给正在看同行的消费者，纯增量流量</li><li><strong>位置醒目：</strong>出现在指定类目黄页中部，样式更丰富、视觉更强</li><li><strong>刺激行动：</strong>自定义Banner图+限时优惠，刺激用户马上导航或咨询</li><li><strong>资源排他：</strong>单城单类目同一时间只给一家商户，买了就是垄断</li></ul></div><h3>售卖方式</h3><p>钻展采用<strong>CPT（按时段计费）</strong>方式售卖，场站钻展还支持CPM-GT计费。按pid粒度投放，不支持品牌维度，不可跨pid投放。</p><p class="highlight">钻展 = 高德地图里的临街旗舰店，单城单类目唯一排他广告位，买了同行就抢不到。</p></div>'
-        },
-        {
-          id: 'diamond-01-l2',
-          title: '展示逻辑与模板',
-          content: '<div class="course-content"><h3>展示条件</h3><p>钻展展示需要同时满足以下条件：</p><ul><li>购买对应类目并配置上刊，计划、创意均打开投放</li><li>在投放对应的atag下存在黄页门店</li><li>POIID门店状态正常（门店失效则钻展不展示）</li></ul><h3>门店召回规则</h3><ul><li>按"就近优先"原则展现，最大召回距离200KM</li><li>召回距离不影响钻展正常展示，仅影响门店名称、标签、广告组件的展示</li><li>虚拟店不支持召回</li></ul><h3>模板类型</h3><div class="key-point"><p><strong>有门店：</strong>品效合一模板、左文右图模板</p><p><strong>无门店：</strong>品效合一、标题图片（老样式/品宣新样式/货架新样式）</p></div><h3>落地页跳转</h3><ul><li><strong>无门店：</strong>仅跳转配置的schema链接</li><li><strong>有门店未召回：</strong>点击任意位置跳转schema链接</li><li><strong>有门店已召回：</strong>点击"查看详情"跳schema，点击门店区域跳门店详情页，点击广告组件跳IM咨询/电话</li></ul><p class="highlight">钻展与平客互斥：有钻展2.0时不出平客，无钻展时平客正常展示。</p></div>'
-        },
-        {
-          id: 'diamond-01-l3',
-          title: '投放条件与要求',
-          content: '<div class="course-content"><h3>投放基础要求</h3><table><tr><th>项目</th><th>要求</th></tr><tr><td>投放粒度</td><td>pid级别，不支持品牌维度，不可跨pid</td></tr><tr><td>售卖折扣</td><td>最低5折</td></tr><tr><td>提前占量</td><td>最长30天（从签约时间算）</td></tr><tr><td>投放时长</td><td>30天≤x≤90天（拆分时段需下多笔订单）</td></tr><tr><td>年费要求</td><td>年费在约</td></tr><tr><td>五星门店</td><td>至少一个五星门店达标（五星装修+五星货架）</td></tr></table><h3>各行业起投门槛</h3><div class="key-point"><p><strong>休娱-宠物/眼镜：</strong>单次≥3000元或一次购买3个月</p><p><strong>休娱-其他：</strong>无金额门槛，至少购买1个月（按30天倍数）</p><p><strong>生服：</strong>单次≥3000元或一次购买3个月</p><p><strong>美食-重点12城：</strong>单次≥3000元或一次购买3个月</p><p><strong>美食-非重点城市：</strong>无金额门槛，至少购买1个月（按30天倍数）</p></div><h3>美食类目特殊规则</h3><ul><li>商户通年费门店：不展示钻展</li><li>有扫街榜的POI：不展示</li><li>有推荐菜的POI：第二屏展示（推荐菜下方）</li><li>其他正常门店：第一屏核心位置正常展示</li></ul><h3>拒用率/客诉率要求</h3><ul><li><strong>美食：</strong>支付订单≥10笔时拒用率≤1%，<10笔时拒用订单≤2笔</li><li><strong>休娱/生服：</strong>客诉率≤0.05%</li></ul><p class="highlight">钻展为品牌广告，不承诺广告效果，上线后原则上不接受退款。</p></div>'
-        }
-      ],
-      quiz: [
-        { id: 'diamond-01-q1', type: 'single', question: '钻展的售卖方式是什么？', options: ['CPC按点击计费', 'CPT按时段计费', 'CPM按千次展示计费', 'CPA按转化计费'], answer: 1, explanation: '钻展采用CPT（按时段计费）方式售卖，场站钻展还支持CPM-GT。' },
-        { id: 'diamond-01-q2', type: 'multi', question: '钻展的四大核心价值包括哪些？', options: ['精准找人', '位置醒目', '资源排他', '免费试用'], answer: [0, 1, 2], explanation: '钻展四大核心价值：精准找人、位置醒目、刺激行动、资源排他。不包括免费试用。' },
-        { id: 'diamond-01-q3', type: 'judge', question: '钻展与平客是互斥关系，有钻展时不出平客。', options: ['正确', '错误'], answer: 0, explanation: '钻展与平客互斥：有钻展2.0时不出平客，无钻展时平客正常展示。' },
-        { id: 'diamond-01-q4', type: 'single', question: '钻展投放时，门店最大召回距离是多少？', options: ['50KM', '100KM', '200KM', '不限'], answer: 2, explanation: '门店召回最大距离200KM，召回距离仅影响门店名称等信息的展示，不影响钻展正常展示。' }
-      ]
-    },
-
-    {
-      id: 'diamond-02',
-      productLine: 'diamond',
-      productLineName: '钻展',
-      title: '钻展售卖指南',
-      difficulty: 'intermediate',
-      duration: 25,
-      lessons: [
-        {
-          id: 'diamond-02-l1',
-          title: '销售话术',
-          content: '<div class="course-content"><h3>开场破冰——同行已占位</h3><div class="script-box"><p>"X老板您好，我是高德本地生活官方运营顾问，专门负责帮商家在地图上抢流量高地。我刚查了下咱们类目在城市的数据，发现已经有同行把钻展这个黄金坑位锁定了。很多顾客本来是想找您的，结果被他们先截胡了。"</p></div><h3>产品定义——智能追投+排他独占</h3><div class="script-box"><p>"钻展不是普通广告位，它是智能拦截系统。只要有人在高德上看同类别的店铺，系统就会自动把您的品牌广告推到他眼前——而且只推给您一个人。同一个城市、同一个类目、同一时间段，只有您能买这个位置。这不是竞价，这是圈地运动。"</p></div><h3>价值呈现——纯增量流量</h3><div class="script-box"><p>"钻展带来的全是正在比较同行的高意向客户。这些人已经决定要消费了，只是还没选定哪家。您这时候出现，等于临门一脚。"</p></div><h3>价格锚定</h3><div class="script-box"><p>"按最低90天算，每天才33块钱，相当于请个兼职发传单的钱。假设客单价500块，只需成交6单就能回本。这些客户都是主动来找您行业的，比在抖音投千川、在美团买排名成本低得多。"</p></div><p class="highlight">钻展话术核心：同行占位制造焦虑→智能追投+排他→纯增量高意向客户→日均成本稀释总价。</p></div>'
-        },
-        {
-          id: 'diamond-02-l2',
-          title: '异议处理',
-          content: '<div class="course-content"><h3>常见异议应对</h3><div class="script-box"><p><strong>"投了没效果怎么办？"</strong></p><p>"建议先小预算测试一个月，我帮您监控四个关键数据：曝光量、点击率、电话咨询数、导航到店数。如果没动静，一起复盘是图片不吸引人、城市选错了、还是换组合拳。每月提供数据复盘报告。"</p></div><div class="script-box"><p><strong>"我太忙没时间管"</strong></p><p>"您不用操心操作细节，从申请、排期、上线、优化我全程代办。您只需确认海报内容、签合同、付款，每周同步一次数据简报。"</p></div><div class="script-box"><p><strong>"抖音美团都投了，没必要投高德"</strong></p><p>"完全不重复。抖音是种草，美团是交易，高德是临门一脚——客户决定出门消费时最后一步是打开地图查路线。如果前两个平台花了钱引流，最后一步被同行截胡就太亏了。"</p></div><h3>买了不展示怎么办</h3><div class="key-point"><p><strong>钻展展示依赖"非商务通门店"作为载体。</strong>热门城市/景区可用载体少，不是故障而是产品设计。</p><p><strong>解决方案：</strong></p><ul><li>换城市/区域投放（选渗透率低的区域）</li><li>等待新门店入驻或旧门店合约到期</li><li>升级至"顶展+钻展"组合拳</li><li>美食客户避开推荐菜/扫街榜门店区域</li></ul></div><p class="highlight">异议处理核心：小预算测试降风险、全程代办省精力、三平台互补不冲突。</p></div>'
-        },
-        {
-          id: 'diamond-02-l3',
-          title: '签约与上刊',
-          content: '<div class="course-content"><h3>签约注意事项</h3><div class="key-point"><p><strong>签约前必查：</strong></p><ul><li>年费是否在约</li><li>是否有五星门店达标（五星装修+五星货架）</li><li>拒用率/客诉率是否达标</li><li>投放POI和pid的归属关系</li><li>五星门店审核在上刊环节，若不达标上刊申请会被驳回</li></ul></div><h3>下单场景备注</h3><ul><li>休娱宠物眼镜钻展：下单备注【休娱宠物眼镜钻展】</li><li>休娱其他：下单备注【休娱非宠物眼镜钻展】</li><li>美食重点城市：下单备注【美食重点城市钻展】</li><li>美食非重点城市：下单备注【美食非重点城市钻展】</li><li>生服：下单备注【生服钻展】</li></ul><h3>场站钻展（机场/火车站/汽车站）</h3><div class="key-point"><p><strong>场站钻展特殊规则：</strong></p><ul><li>在机场、火车站、汽车站展示，面向精准人群品牌曝光</li><li><strong>必须圈人投放</strong>，通过行业接口人完成人群圈选评估</li><li>有门店起投门槛2W，无门店起投门槛5W</li><li>有门店仅支持左文右图模板</li><li>景区可选周边城市投放，其他类目仅允许同城</li></ul></div><h3>数据查看</h3><p>品牌广告后台支持查看曝光量、点击量、点击率，可下载分日报表。查看入口：投放管理 > 计划/单元/创意TAB页。</p><p class="highlight">签约核心：五星达标+年费在约+拒用率达标+下单备注场景，场站钻展必须圈人。</p></div>'
-        }
-      ],
-      quiz: [
-        { id: 'diamond-02-q1', type: 'single', question: '钻展的排他性体现在哪里？', options: ['按竞价排名', '单城单类目同时只给一家商户', '按点击付费', '按转化付费'], answer: 1, explanation: '钻展的核心排他性：单城单类目同一时间只给一家商户，买了同行就抢不到。' },
-        { id: 'diamond-02-q2', type: 'single', question: '钻展投放的最短时长是？', options: ['7天', '15天', '30天', '90天'], answer: 2, explanation: '钻展一次性投放30天≤x≤90天，最短30天。' },
-        { id: 'diamond-02-q3', type: 'multi', question: '钻展投放前必须满足的条件包括哪些？', options: ['年费在约', '五星门店达标', '拒用率/客诉率达标', '投放CPC广告'], answer: [0, 1, 2], explanation: '钻展投放必须满足：年费在约、五星门店达标、拒用率/客诉率达标。不要求投放CPC。' },
-        { id: 'diamond-02-q4', type: 'judge', question: '场站钻展（机场/火车站）不需要人群圈选即可投放。', options: ['正确', '错误'], answer: 1, explanation: '场站钻展必须圈人投放，需通过行业接口人完成人群圈选评估，人群失效则钻展不展示。' }
-      ]
-    },
-
-    // ----------------------------------------------------------
-    // 10. 品牌智能体
+    // 5. 品牌智能体
     // ----------------------------------------------------------
     {
       id: 'agent-01',
@@ -1648,7 +1412,193 @@ window.DATA = {
     },
 
     // ----------------------------------------------------------
-    // 10. 导航结束页
+    // 6. 品牌广告-顶展
+    // ----------------------------------------------------------
+    {
+      id: 'top-01',
+      productLine: 'topdisplay',
+      productLineName: '品牌广告-顶展',
+      title: '顶展产品与签约流程',
+      difficulty: 'beginner',
+      duration: 25,
+      lessons: [
+        {
+          id: 'top-01-l1',
+          title: '顶展产品介绍',
+          content: '<div class="course-content"><h3>什么是顶展广告</h3><p>顶展是高德地图的<strong>搜索登顶展示</strong>品牌广告产品，当用户搜索相关关键词时，商户信息展示在搜索结果的最顶部位置。</p><div class="key-point"><p><strong>核心特点：</strong></p><ul><li><strong>展示位置：</strong>搜索结果页顶部第一位，最强曝光位置</li><li><strong>投放维度：</strong>按关键词+城市/行政区进行投放</li><li><strong>生效时间：</strong>配置修改审核通过后<strong>T+1生效</strong></li><li><strong>售卖方式：</strong>按行业售卖，同一行业同一区域独家展示</li></ul></div><h3>顶展的核心价值</h3><ul><li><strong>品牌曝光：</strong>搜索结果第一位置，最大化品牌曝光</li><li><strong>行业独占：</strong>同行业同区域唯一展示，竞品无法争抢</li><li><strong>精准触达：</strong>用户主动搜索触发，意图明确，转化率高</li><li><strong>长期效果：</strong>品牌认知积累，提升门店整体搜索量</li></ul><p class="highlight">顶展适合追求品牌曝光、希望在搜索结果中占据第一位置的商户。</p><h3>广告效果展示</h3><p>顶展广告展示在搜索结果最顶部，带"免费咨询"入口，行业独占：</p><img src="images/topdisplay-effect.png" class="course-img" alt="顶展广告效果"><p class="img-caption">顶展广告在搜索结果顶部展示（带免费咨询入口）</p><p>此外，顶展还可以搭配开屏广告进行品牌曝光：</p><img src="images/topdisplay-splash.png" class="course-img" alt="开屏广告效果"><p class="img-caption">品牌开屏广告效果展示</p><h3>签约流程</h3><p>顶展的签约配置步骤：</p><div class="step-cards"><div class="step-card"><div class="step-num">1</div><div class="step-body"><div class="step-title">询量</div><div class="step-desc">选择产品、行业、时段、地域 → 查询可用库存</div></div></div><div class="step-card"><div class="step-num">2</div><div class="step-body"><div class="step-title">占量与下单</div><div class="step-desc">确认投放方案 → 锁定广告位库存 → 生成合同</div></div></div><div class="step-card"><div class="step-num">3</div><div class="step-body"><div class="step-title">签约付款</div><div class="step-desc">完成合同签署和付款</div></div></div><div class="step-card"><div class="step-num">4</div><div class="step-body"><div class="step-title">配置上线</div><div class="step-desc">设置关键词+地理定向+POIID+距离 → 审核通过后T+1生效</div></div></div></div></div>'
+        },
+        {
+          id: 'top-01-l2',
+          title: '询量占量下单',
+          content: '<div class="course-content"><h3>顶展签约流程</h3><div class="key-point"><p><strong>完整签约五步走：</strong></p><ul><li><strong>第一步·询量：</strong>选择产品、行业、时段、地域，查询可用库存</li><li><strong>第二步·占量：</strong>确认投放方案后，锁定广告位库存</li><li><strong>第三步·下单：</strong>确认订单详情，生成合同</li><li><strong>第四步·签约：</strong>完成合同签署和付款</li><li><strong>第五步·配置：</strong>设置关键词、地理定向、POIID+距离等参数</li></ul></div><h3>配置参数说明</h3><table><tr><th>参数</th><th>说明</th><th>注意事项</th></tr><tr><td>关键词</td><td>触发顶展展示的搜索词</td><td>选择与门店业务相关的核心关键词</td></tr><tr><td>地理定向</td><td>投放的城市或行政区</td><td>覆盖门店所在区域及周边</td></tr><tr><td>POIID</td><td>门店的唯一标识</td><td>单个单元最多支持2万个POIID</td></tr><tr><td>距离</td><td>用户距门店的展示范围</td><td>合理设置，覆盖有效到店距离</td></tr></table><p class="highlight">签约流程核心：询量确认有库存 → 占量锁位 → 下单签约 → 配置上线。</p></div>'
+        },
+        {
+          id: 'top-01-l3',
+          title: '线上加白流程',
+          content: '<div class="course-content"><h3>线上加白操作步骤</h3><div class="key-point"><p><strong>加白流程三步：</strong></p><ul><li><strong>第一步：创建广告主ID</strong>——在广告投放平台为商户创建独立的广告主账户，填写商户基本信息和资质材料</li><li><strong>第二步：代运营登录</strong>——通过轩辕PC端登录代运营后台，关联广告主ID，获取管理权限</li><li><strong>第三步：PID登录</strong>——使用PID（项目标识）完成系统对接，验证配置参数，确保投放正常</li></ul></div><h3>注意事项</h3><ul><li>加白流程需在签约完成后进行</li><li>确保广告主ID信息准确，避免后续排查问题</li><li>配置修改后T+1生效，注意时间安排</li></ul><p class="highlight">加白流程是顶展投放的技术准备环节，确保广告主账户和系统配置就绪。</p></div>'
+        }
+      ],
+      quiz: [
+        { id: 'top-01-q1', type: 'single', question: '顶展广告配置修改审核通过后何时生效？', options: ['实时生效', 'T+1生效', 'T+3生效', 'T+7生效'], answer: 1, explanation: '顶展配置修改审核通过后T+1（次日）生效。' },
+        { id: 'top-01-q2', type: 'single', question: '顶展单个单元下置顶POIID最多支持多少个？', options: ['100个', '1000个', '1万个', '2万个'], answer: 3, explanation: '顶展单个单元下置顶POIID最多支持2万个。' },
+        { id: 'top-01-q3', type: 'multi', question: '顶展签约流程包括以下哪些步骤？', options: ['询量', '占量', '下单签约', '竞价排名'], answer: [0, 1, 2], explanation: '顶展签约流程为：询量→占量→下单→签约→配置。顶展按行业售卖，不涉及竞价排名。' },
+        { id: 'top-01-q4', type: 'judge', question: '顶展广告按行业售卖，同一行业同一区域可以有多家商户同时展示。', options: ['正确', '错误'], answer: 1, explanation: '顶展按行业售卖，同一行业同一区域独家展示，竞品无法争抢。' }
+      ,
+    { id: 'q-top-001', type: 'single', question: '顶展广告配置修改审核通过后何时生效？', options: ['实时生效', 'T+1生效', 'T+3生效', 'T+7生效'], answer: 1, explanation: '顶展配置修改审核通过后T+1（次日）生效。' },
+    { id: 'q-top-002', type: 'single', question: '顶展单个单元下置顶POIID最多支持多少个？', options: ['100个', '1000个', '1万个', '2万个'], answer: 3, explanation: '顶展单个单元下置顶POIID最多支持2万个。' },
+    { id: 'q-top-003', type: 'single', question: '顶展广告按什么维度投放？', options: ['按时间', '按关键词+城市/行政区', '按用户年龄', '按消费金额'], answer: 1, explanation: '顶展按关键词+城市/行政区进行投放。' },
+    { id: 'q-top-004', type: 'judge', question: '顶展广告按行业售卖，同一行业同一区域独家展示。', options: ['正确', '错误'], answer: 0, explanation: '顶展按行业售卖，同一行业同一区域独家展示，竞品无法争抢。' },
+    { id: 'q-top-005', type: 'single', question: '排查顶展不生效时需要确认的高德APP版本是？', options: ['14.00', '15.21', '16.00', '15.21或16.00'], answer: 3, explanation: '需要确认用户使用的高德APP版本≥15.21或16.00。' },
+    { id: 'q-top-006', type: 'single', question: '虚拟店顶展不出广告的常见原因是？', options: ['预算不足', '关键词设置错误', '经营地址不等于投放城市', '门店评分过低'], answer: 2, explanation: '虚拟店要求经营地址必须等于投放城市，否则顶展不会展示。' },
+    { id: 'q-top-007', type: 'single', question: '门店地址变更后，顶展配置需要怎么处理？', options: ['自动更新', '需要重新发布', '联系客服处理', '等待24小时'], answer: 1, explanation: '门店地址变更后，顶展配置需要重新发布才能正常展示。' },
+    { id: 'q-top-008', type: 'judge', question: '顶展签约流程的第一步是占量。', options: ['正确', '错误'], answer: 1, explanation: '顶展签约流程第一步是询量，不是占量。完整流程：询量→占量→下单→签约→配置。' },
+    { id: 'q-top-009', type: 'single', question: '顶展广告展示在什么位置？', options: ['搜索结果底部', '搜索结果顶部', '导航页面侧边', '首页推荐位'], answer: 1, explanation: '顶展展示在搜索结果页顶部第一位，是最强曝光位置。' },
+    { id: 'q-top-010', type: 'judge', question: '顶展线上加白流程包括创建广告主ID、代运营登录和PID登录三步。', options: ['正确', '错误'], answer: 0, explanation: '加白流程三步：创建广告主ID→代运营登录（轩辕PC端）→PID登录。' }
+  ]
+    },
+
+    {
+      id: 'top-02',
+      productLine: 'topdisplay',
+      productLineName: '品牌广告-顶展',
+      title: '顶展排查与案例',
+      difficulty: 'intermediate',
+      duration: 20,
+      lessons: [
+        {
+          id: 'top-02-l1',
+          title: '常见问题排查',
+          content: '<div class="course-content"><h3>顶展不生效排查清单</h3><div class="key-point"><p><strong>排查步骤（按顺序逐一检查）：</strong></p><ul><li><strong>1. 配置检查：</strong>确认关键词、地理定向、POIID等参数配置正确</li><li><strong>2. 词包问题：</strong>检查关键词词包是否已生效，是否有拼写错误</li><li><strong>3. 版本问题：</strong>确认用户使用的高德APP版本≥15.21或16.00</li><li><strong>4. 距离问题：</strong>检查用户是否在设定的展示距离范围内</li><li><strong>5. 虚拟店问题：</strong>虚拟店要求经营地址必须等于投放城市</li><li><strong>6. 门店失效：</strong>确认门店在平台上处于有效状态</li><li><strong>7. 地址变更：</strong>如门店地址发生变更，需要重新发布配置</li></ul></div><h3>高频问题详解</h3><table><tr><th>问题</th><th>原因</th><th>解决方案</th></tr><tr><td>APP版本过低</td><td>用户APP版本&lt;15.21</td><td>提示用户升级至15.21或16.00以上</td></tr><tr><td>虚拟店不出广告</td><td>经营地址≠投放城市</td><td>确保经营地址设置为投放城市</td></tr><tr><td>地址变更后失效</td><td>配置未重新发布</td><td>地址变更后需重新发布顶展配置</td></tr></table><p class="highlight">排查口诀：一查配置二查词，三看版本四看距，虚拟店查地址，变更后要重发。</p></div>'
+        },
+        {
+          id: 'top-02-l2',
+          title: '投放案例',
+          content: '<div class="course-content"><h3>郴州湘菜13店投放案例</h3><p>以下是郴州湘菜连锁13家门店投放顶展广告的真实效果数据：</p><table><tr><th>指标</th><th>投放前</th><th>投放后</th><th>提升幅度</th></tr><tr><td>曝光量</td><td>基准值</td><td>大幅提升</td><td><strong>+55.4%</strong></td></tr><tr><td>访问量</td><td>基准值</td><td>明显增长</td><td><strong>+31.9%</strong></td></tr><tr><td>预约到店</td><td>基准值</td><td>显著增长</td><td><strong>+199%</strong></td></tr><tr><td>电话拨打</td><td>基准值</td><td>爆发式增长</td><td><strong>+206%</strong></td></tr></table><div class="key-point"><p><strong>案例亮点：</strong></p><ul><li>曝光量提升55.4%，品牌曝光效果显著</li><li>预约到店提升199%，直接带来线下客流</li><li>电话拨打提升206%，客资获取效果极佳</li><li>13家门店统一投放，品牌效应叠加</li></ul></div><p class="highlight">顶展对连锁品牌的价值尤为突出——统一曝光、品牌认知、到店转化一举三得。</p></div>'
+        }
+      ],
+      quiz: [
+        { id: 'top-02-q1', type: 'single', question: '排查顶展不生效时需要确认的高德APP最低版本是？', options: ['14.00', '15.21', '16.00', '15.21或16.00'], answer: 3, explanation: '需要确认用户使用的高德APP版本≥15.21或16.00。' },
+        { id: 'top-02-q2', type: 'single', question: '虚拟店顶展不出广告的常见原因是？', options: ['预算不足', '关键词设置错误', '经营地址不等于投放城市', '门店评分过低'], answer: 2, explanation: '虚拟店要求经营地址必须等于投放城市，否则顶展不会展示。' },
+        { id: 'top-02-q3', type: 'judge', question: '门店地址变更后，顶展配置会自动更新，无需重新发布。', options: ['正确', '错误'], answer: 1, explanation: '门店地址变更后，顶展配置需要重新发布才能正常展示。' }
+      ,
+    { id: 'q-top-011', type: 'single', question: '郴州湘菜13店案例中，曝光量提升了多少？', options: ['+25.4%', '+35.4%', '+55.4%', '+75.4%'], answer: 2, explanation: '案例数据显示曝光量提升了55.4%。' },
+    { id: 'q-top-012', type: 'single', question: '郴州湘菜案例中，预约到店提升了多少？', options: ['+99%', '+150%', '+199%', '+250%'], answer: 2, explanation: '案例数据显示预约到店提升了199%。' },
+    { id: 'q-top-013', type: 'single', question: '郴州湘菜案例中，电话拨打提升了多少？', options: ['+106%', '+156%', '+206%', '+306%'], answer: 2, explanation: '案例数据显示电话拨打提升了206%。' },
+    { id: 'q-top-014', type: 'multi', question: '顶展不生效时需要排查的因素包括哪些？', options: ['配置参数', '词包问题', 'APP版本', '门店评分'], answer: [0, 1, 2], explanation: '排查因素：配置检查、词包问题、版本问题、距离问题、虚拟店问题、门店失效、地址变更。' },
+    { id: 'q-top-015', type: 'single', question: '顶展最适合哪类商户？', options: ['追求低价获客的商户', '追求品牌曝光占据搜索首位的商户', '只做线上外卖的商户', '预算极低的商户'], answer: 1, explanation: '顶展适合追求品牌曝光、希望在搜索结果中占据第一位置的商户。' },
+    { id: 'q-top-016', type: 'single', question: '顶展配置参数中，"距离"参数的作用是？', options: ['限制广告投放城市', '设置用户距门店的展示范围', '设置配送距离', '限制门店数量'], answer: 1, explanation: '"距离"参数设置用户距门店的展示范围，覆盖有效到店距离。' },
+    { id: 'q-top-017', type: 'multi', question: '顶展配置参数包括哪些？', options: ['关键词', '地理定向', 'POIID+距离', '出价金额'], answer: [0, 1, 2], explanation: '顶展配置参数：关键词、地理定向、POIID+距离。顶展按行业售卖，不涉及出价金额。' },
+    { id: 'q-top-018', type: 'judge', question: '顶展代运营登录需要通过轩辕PC端进行。', options: ['正确', '错误'], answer: 0, explanation: '代运营登录需要通过轩辕PC端登录代运营后台。' },
+    { id: 'q-top-019', type: 'single', question: '郴州湘菜案例中，访问量提升了多少？', options: ['+15.9%', '+21.9%', '+31.9%', '+41.9%'], answer: 2, explanation: '案例数据显示访问量提升了31.9%。' },
+    { id: 'q-top-020', type: 'multi', question: '顶展对连锁品牌的价值体现在哪些方面？', options: ['统一品牌曝光', '品牌认知积累', '到店转化提升', '降低人工成本'], answer: [0, 1, 2], explanation: '顶展对连锁品牌价值：统一曝光、品牌认知、到店转化一举三得。' }
+  ]
+    },
+
+    // ----------------------------------------------------------
+    // 7. 钻展
+    // ----------------------------------------------------------
+    {
+      id: 'diamond-01',
+      productLine: 'diamond',
+      productLineName: '钻展',
+      title: '钻展产品介绍',
+      difficulty: 'beginner',
+      duration: 20,
+      lessons: [
+        {
+          id: 'diamond-01-l1',
+          title: '产品定位与核心价值',
+          content: '<div class="course-content"><h3>钻展是什么</h3><p>钻展是高德地图里的<strong>"临街旗舰店"+同行流量拦截器+唯一排他广告位</strong>。它展示在相似好店上方通栏位，当用户浏览同类目竞品黄页时，你的品牌广告会精准推送到他们眼前。</p><div class="key-point"><p><strong>四大核心价值：</strong></p><ul><li><strong>精准找人：</strong>在同类目竞品黄页触发，主动推送给正在看同行的消费者，纯增量流量</li><li><strong>位置醒目：</strong>出现在指定类目黄页中部，样式更丰富、视觉更强</li><li><strong>刺激行动：</strong>自定义Banner图+限时优惠，刺激用户马上导航或咨询</li><li><strong>资源排他：</strong>单城单类目同一时间只给一家商户，买了就是垄断</li></ul></div><h3>售卖方式</h3><p>钻展采用<strong>CPT（按时段计费）</strong>方式售卖，场站钻展还支持CPM-GT计费。按pid粒度投放，不支持品牌维度，不可跨pid投放。</p><p class="highlight">钻展 = 高德地图里的临街旗舰店，单城单类目唯一排他广告位，买了同行就抢不到。</p></div>'
+        },
+        {
+          id: 'diamond-01-l2',
+          title: '展示逻辑与模板',
+          content: '<div class="course-content"><h3>展示条件</h3><p>钻展展示需要同时满足以下条件：</p><ul><li>购买对应类目并配置上刊，计划、创意均打开投放</li><li>在投放对应的atag下存在黄页门店</li><li>POIID门店状态正常（门店失效则钻展不展示）</li></ul><h3>门店召回规则</h3><ul><li>按"就近优先"原则展现，最大召回距离200KM</li><li>召回距离不影响钻展正常展示，仅影响门店名称、标签、广告组件的展示</li><li>虚拟店不支持召回</li></ul><h3>模板类型</h3><div class="key-point"><p><strong>有门店：</strong>品效合一模板、左文右图模板</p><p><strong>无门店：</strong>品效合一、标题图片（老样式/品宣新样式/货架新样式）</p></div><h3>落地页跳转</h3><ul><li><strong>无门店：</strong>仅跳转配置的schema链接</li><li><strong>有门店未召回：</strong>点击任意位置跳转schema链接</li><li><strong>有门店已召回：</strong>点击"查看详情"跳schema，点击门店区域跳门店详情页，点击广告组件跳IM咨询/电话</li></ul><p class="highlight">钻展与平客互斥：有钻展2.0时不出平客，无钻展时平客正常展示。</p></div>'
+        },
+        {
+          id: 'diamond-01-l3',
+          title: '投放条件与要求',
+          content: '<div class="course-content"><h3>投放基础要求</h3><table><tr><th>项目</th><th>要求</th></tr><tr><td>投放粒度</td><td>pid级别，不支持品牌维度，不可跨pid</td></tr><tr><td>售卖折扣</td><td>最低5折</td></tr><tr><td>提前占量</td><td>最长30天（从签约时间算）</td></tr><tr><td>投放时长</td><td>30天≤x≤90天（拆分时段需下多笔订单）</td></tr><tr><td>年费要求</td><td>年费在约</td></tr><tr><td>五星门店</td><td>至少一个五星门店达标（五星装修+五星货架）</td></tr></table><h3>各行业起投门槛</h3><div class="key-point"><p><strong>休娱-宠物/眼镜：</strong>单次≥3000元或一次购买3个月</p><p><strong>休娱-其他：</strong>无金额门槛，至少购买1个月（按30天倍数）</p><p><strong>生服：</strong>单次≥3000元或一次购买3个月</p><p><strong>美食-重点12城：</strong>单次≥3000元或一次购买3个月</p><p><strong>美食-非重点城市：</strong>无金额门槛，至少购买1个月（按30天倍数）</p></div><h3>美食类目特殊规则</h3><ul><li>商户通年费门店：不展示钻展</li><li>有扫街榜的POI：不展示</li><li>有推荐菜的POI：第二屏展示（推荐菜下方）</li><li>其他正常门店：第一屏核心位置正常展示</li></ul><h3>拒用率/客诉率要求</h3><ul><li><strong>美食：</strong>支付订单≥10笔时拒用率≤1%，<10笔时拒用订单≤2笔</li><li><strong>休娱/生服：</strong>客诉率≤0.05%</li></ul><p class="highlight">钻展为品牌广告，不承诺广告效果，上线后原则上不接受退款。</p></div>'
+        }
+      ],
+      quiz: [
+        { id: 'diamond-01-q1', type: 'single', question: '钻展的售卖方式是什么？', options: ['CPC按点击计费', 'CPT按时段计费', 'CPM按千次展示计费', 'CPA按转化计费'], answer: 1, explanation: '钻展采用CPT（按时段计费）方式售卖，场站钻展还支持CPM-GT。' },
+        { id: 'diamond-01-q2', type: 'multi', question: '钻展的四大核心价值包括哪些？', options: ['精准找人', '位置醒目', '资源排他', '免费试用'], answer: [0, 1, 2], explanation: '钻展四大核心价值：精准找人、位置醒目、刺激行动、资源排他。不包括免费试用。' },
+        { id: 'diamond-01-q3', type: 'judge', question: '钻展与平客是互斥关系，有钻展时不出平客。', options: ['正确', '错误'], answer: 0, explanation: '钻展与平客互斥：有钻展2.0时不出平客，无钻展时平客正常展示。' },
+        { id: 'diamond-01-q4', type: 'single', question: '钻展投放时，门店最大召回距离是多少？', options: ['50KM', '100KM', '200KM', '不限'], answer: 2, explanation: '门店召回最大距离200KM，召回距离仅影响门店名称等信息的展示，不影响钻展正常展示。' }
+      ]
+    },
+
+    {
+      id: 'diamond-02',
+      productLine: 'diamond',
+      productLineName: '钻展',
+      title: '钻展售卖指南',
+      difficulty: 'intermediate',
+      duration: 25,
+      lessons: [
+        {
+          id: 'diamond-02-l1',
+          title: '销售话术',
+          content: '<div class="course-content"><h3>开场破冰——同行已占位</h3><div class="script-box"><p>"X老板您好，我是高德本地生活官方运营顾问，专门负责帮商家在地图上抢流量高地。我刚查了下咱们类目在城市的数据，发现已经有同行把钻展这个黄金坑位锁定了。很多顾客本来是想找您的，结果被他们先截胡了。"</p></div><h3>产品定义——智能追投+排他独占</h3><div class="script-box"><p>"钻展不是普通广告位，它是智能拦截系统。只要有人在高德上看同类别的店铺，系统就会自动把您的品牌广告推到他眼前——而且只推给您一个人。同一个城市、同一个类目、同一时间段，只有您能买这个位置。这不是竞价，这是圈地运动。"</p></div><h3>价值呈现——纯增量流量</h3><div class="script-box"><p>"钻展带来的全是正在比较同行的高意向客户。这些人已经决定要消费了，只是还没选定哪家。您这时候出现，等于临门一脚。"</p></div><h3>价格锚定</h3><div class="script-box"><p>"按最低90天算，每天才33块钱，相当于请个兼职发传单的钱。假设客单价500块，只需成交6单就能回本。这些客户都是主动来找您行业的，比在抖音投千川、在美团买排名成本低得多。"</p></div><p class="highlight">钻展话术核心：同行占位制造焦虑→智能追投+排他→纯增量高意向客户→日均成本稀释总价。</p></div>'
+        },
+        {
+          id: 'diamond-02-l2',
+          title: '异议处理',
+          content: '<div class="course-content"><h3>常见异议应对</h3><div class="script-box"><p><strong>"投了没效果怎么办？"</strong></p><p>"建议先小预算测试一个月，我帮您监控四个关键数据：曝光量、点击率、电话咨询数、导航到店数。如果没动静，一起复盘是图片不吸引人、城市选错了、还是换组合拳。每月提供数据复盘报告。"</p></div><div class="script-box"><p><strong>"我太忙没时间管"</strong></p><p>"您不用操心操作细节，从申请、排期、上线、优化我全程代办。您只需确认海报内容、签合同、付款，每周同步一次数据简报。"</p></div><div class="script-box"><p><strong>"抖音美团都投了，没必要投高德"</strong></p><p>"完全不重复。抖音是种草，美团是交易，高德是临门一脚——客户决定出门消费时最后一步是打开地图查路线。如果前两个平台花了钱引流，最后一步被同行截胡就太亏了。"</p></div><h3>买了不展示怎么办</h3><div class="key-point"><p><strong>钻展展示依赖"非商务通门店"作为载体。</strong>热门城市/景区可用载体少，不是故障而是产品设计。</p><p><strong>解决方案：</strong></p><ul><li>换城市/区域投放（选渗透率低的区域）</li><li>等待新门店入驻或旧门店合约到期</li><li>升级至"顶展+钻展"组合拳</li><li>美食客户避开推荐菜/扫街榜门店区域</li></ul></div><p class="highlight">异议处理核心：小预算测试降风险、全程代办省精力、三平台互补不冲突。</p></div>'
+        },
+        {
+          id: 'diamond-02-l3',
+          title: '签约与上刊',
+          content: '<div class="course-content"><h3>签约注意事项</h3><div class="key-point"><p><strong>签约前必查：</strong></p><ul><li>年费是否在约</li><li>是否有五星门店达标（五星装修+五星货架）</li><li>拒用率/客诉率是否达标</li><li>投放POI和pid的归属关系</li><li>五星门店审核在上刊环节，若不达标上刊申请会被驳回</li></ul></div><h3>下单场景备注</h3><ul><li>休娱宠物眼镜钻展：下单备注【休娱宠物眼镜钻展】</li><li>休娱其他：下单备注【休娱非宠物眼镜钻展】</li><li>美食重点城市：下单备注【美食重点城市钻展】</li><li>美食非重点城市：下单备注【美食非重点城市钻展】</li><li>生服：下单备注【生服钻展】</li></ul><h3>场站钻展（机场/火车站/汽车站）</h3><div class="key-point"><p><strong>场站钻展特殊规则：</strong></p><ul><li>在机场、火车站、汽车站展示，面向精准人群品牌曝光</li><li><strong>必须圈人投放</strong>，通过行业接口人完成人群圈选评估</li><li>有门店起投门槛2W，无门店起投门槛5W</li><li>有门店仅支持左文右图模板</li><li>景区可选周边城市投放，其他类目仅允许同城</li></ul></div><h3>数据查看</h3><p>品牌广告后台支持查看曝光量、点击量、点击率，可下载分日报表。查看入口：投放管理 > 计划/单元/创意TAB页。</p><p class="highlight">签约核心：五星达标+年费在约+拒用率达标+下单备注场景，场站钻展必须圈人。</p></div>'
+        }
+      ],
+      quiz: [
+        { id: 'diamond-02-q1', type: 'single', question: '钻展的排他性体现在哪里？', options: ['按竞价排名', '单城单类目同时只给一家商户', '按点击付费', '按转化付费'], answer: 1, explanation: '钻展的核心排他性：单城单类目同一时间只给一家商户，买了同行就抢不到。' },
+        { id: 'diamond-02-q2', type: 'single', question: '钻展投放的最短时长是？', options: ['7天', '15天', '30天', '90天'], answer: 2, explanation: '钻展一次性投放30天≤x≤90天，最短30天。' },
+        { id: 'diamond-02-q3', type: 'multi', question: '钻展投放前必须满足的条件包括哪些？', options: ['年费在约', '五星门店达标', '拒用率/客诉率达标', '投放CPC广告'], answer: [0, 1, 2], explanation: '钻展投放必须满足：年费在约、五星门店达标、拒用率/客诉率达标。不要求投放CPC。' },
+        { id: 'diamond-02-q4', type: 'judge', question: '场站钻展（机场/火车站）不需要人群圈选即可投放。', options: ['正确', '错误'], answer: 1, explanation: '场站钻展必须圈人投放，需通过行业接口人完成人群圈选评估，人群失效则钻展不展示。' }
+      ]
+    },
+
+    // ----------------------------------------------------------
+    // 8. 水牌
+    // ----------------------------------------------------------
+    {
+      id: 'water-01',
+      productLine: 'watercard',
+      productLineName: '水牌',
+      title: '水牌产品介绍与售卖指南',
+      difficulty: 'beginner',
+      duration: 20,
+      lessons: [
+        {
+          id: 'water-01-l1',
+          title: '水牌产品概述',
+          content: '<div class="course-content"><h3>什么是水牌广告</h3><p>水牌是高德地图场景化的品牌展示广告，覆盖商场、超市、会展中心三大场景，帮助商户在特定线下场景中获取品牌曝光与到店转化。</p><div class="key-point"><p><strong>三大水牌类型：</strong></p><ul><li><strong>商场水牌：</strong>覆盖商场tips页与详情页banner，面向商场内餐饮、零售、娱乐等商户</li><li><strong>超市水牌：</strong>覆盖超市tips页与详情页banner，面向超市内有商品销售的快消品牌</li><li><strong>会展中心水牌：</strong>覆盖会展中心tips页（静态+动态），面向展会期间的品牌主与参展商</li></ul></div><h3>水牌核心优势</h3><ul><li><strong>独占排他：</strong>同一场景同一时间只服务一家品牌主，竞品无法同时投放，形成品牌独占</li><li><strong>LBS精准：</strong>基于高德LBS能力，精准触达线下场景周边用户，到店转化路径短</li><li><strong>门槛低：</strong>商场水牌最短1个月(4周)起售，10+点位可1周起投，适合不同预算规模的客户</li><li><strong>支持外跳：</strong>支持跳转品牌H5落地页或小程序，实现品牌深度互动与转化</li></ul><h3>平台升级</h3><p>水牌产品已全面升级至<strong>品广平台</strong>，客户可在品广平台自助下单、上传素材、查看投放数据，实现投放全流程线上化。</p><p class="highlight">水牌 = 线下场景品牌独占广告，三大场景覆盖商场、超市、会展中心，品广平台自助下单。</p></div>'
+        },
+        {
+          id: 'water-01-l2',
+          title: '商场水牌',
+          content: '<div class="course-content"><h3>商场水牌展示位</h3><p>商场水牌主要展示在商场详情页banner位，以<strong>静态banner</strong>形式呈现，覆盖商场场景的核心流量入口。</p><div class="key-point"><p><strong>素材规范：</strong></p><ul><li><strong>尺寸：</strong>718 x 172px</li><li><strong>文件大小：</strong>不超过500KB</li><li><strong>格式：</strong>JPG/PNG静态图片</li></ul></div><h3>售卖规则</h3><table><tr><th>项目</th><th>规则</th></tr><tr><td>最短购买时长</td><td>1个月(4周)起售</td></tr><tr><td>10+点位</td><td>可1周起投</td></tr><tr><td>最长购买时长</td><td>3个月(12周)</td></tr><tr><td>计费方式</td><td>按周计费</td></tr></table><h3>客户准入条件</h3><p>投放商场水牌的商户需满足以下条件：</p><ul><li><strong>有店铺：</strong>在该商场内有实体门店</li><li><strong>有活动：</strong>有明确的品牌推广活动或促销信息</li><li><strong>有指定品牌：</strong>投放内容须关联到指定品牌</li></ul><h3>多区域商场投放规范</h3><p>当客户需要在同一商场的多个区域（如A区、B区、C区）同时投放水牌时，需按区域分别提交素材和订单，每个区域独立计费和排期。</p><h3>跳转规则</h3><ul><li><strong>一跳禁唤端：</strong>水牌首跳（一跳）禁止唤端跳转至第三方APP</li><li>支持跳转品牌H5落地页或高德内小程序</li><li>如需跳转H5页面，需提前T-3日提交加白申请</li></ul><p class="highlight">商场水牌：718x172px静态banner，最短1个月起售，需有店铺/有活动/有指定品牌。</p></div>'
+        },
+        {
+          id: 'water-01-l3',
+          title: '超市水牌与会展中心水牌',
+          content: '<div class="course-content"><h3>超市水牌</h3><p>超市水牌采用<strong>tips页+详情页banner组合售卖</strong>模式，同时覆盖超市tips页与详情页两个核心流量位。</p><div class="key-point"><p><strong>超市水牌要求：</strong></p><ul><li>品牌需在超市内有商品销售（需提供商品销售证明）</li><li>投放形式为tips页与详情页banner组合，不可单独购买</li><li>素材规范与商场水牌一致：718 x 172px，500KB以内</li></ul></div><h3>会展中心水牌</h3><p>会展中心水牌覆盖会展中心tips页，支持<strong>静态+动态</strong>两种展示形式，适合展会期间的品牌曝光需求。</p><div class="key-point"><p><strong>会展中心售卖规则：</strong></p><ul><li><strong>起投方式：</strong>按周起投，以周一至周日为一个完整投放周期</li><li><strong>预热期：</strong>支持展前预热投放，不满一周按整周计费</li><li><strong>外跳支持：</strong>支持跳转H5落地页或小程序，实现品牌深度互动</li><li><strong>主体一致性：</strong>投放主体须与展会参展主体一致</li></ul></div><h3>投放案例数据</h3><table><tr><th>场景</th><th>消耗</th><th>曝光量</th><th>CTR</th><th>CPM</th></tr><tr><td>中餐水牌</td><td>7万元</td><td>270万</td><td>0.14%</td><td>-</td></tr><tr><td>会展中心水牌</td><td>-</td><td>-</td><td>0.38%</td><td>116元</td></tr></table><h3>跳转规则（通用）</h3><ul><li><strong>一跳禁唤端：</strong>所有水牌产品首跳禁止唤端跳转至第三方APP</li><li>H5落地页需提前<strong>T-3日</strong>提交加白申请</li><li>小程序跳转需提前完成小程序绑定与审核</li></ul><p class="highlight">超市水牌=tips+banner组合；会展中心水牌按周起投，预热不满一周按整周计；一跳禁唤端，H5需T-3日加白。</p></div>'
+        }
+      ],
+      quiz: [
+        { id: 'water-01-q1', type: 'single', question: '水牌产品覆盖哪三大场景？', options: ['商场、超市、会展中心', '商场、景区、机场', '超市、写字楼、社区', '商场、景区、超市'], answer: 0, explanation: '水牌覆盖商场、超市、会展中心三大线下场景。' },
+        { id: 'water-01-q2', type: 'single', question: '商场水牌的最短购买时长是？', options: ['1周', '1个月(4周)', '3个月', '7天'], answer: 1, explanation: '商场水牌最短1个月(4周)起售，10+点位可1周起投。' },
+        { id: 'water-01-q3', type: 'multi', question: '商场水牌的客户准入条件包括哪些？', options: ['有店铺', '有活动', '有指定品牌', '有五星门店'], answer: [0, 1, 2], explanation: '商场水牌准入条件：有店铺、有活动、有指定品牌，不包含五星门店要求。' },
+        { id: 'water-01-q4', type: 'judge', question: '水牌在同一场景同一时间只服务一家品牌主，具有独占排他性。', options: ['正确', '错误'], answer: 0, explanation: '水牌核心优势之一是独占排他，同一场景同一时间只服务一家品牌主，竞品无法同时投放。' },
+        { id: 'water-01-q5', type: 'single', question: '会展中心水牌的起投方式是？', options: ['按天起投', '按周起投(周一至周日)', '按月起投', '按展期起投'], answer: 1, explanation: '会展中心水牌按周起投，以周一至周日为一个完整投放周期。' }
+      ]
+    },
+
+    // ----------------------------------------------------------
+    // 9. 导航结束页
     // ----------------------------------------------------------
     {
       id: 'navend-01',
@@ -1717,7 +1667,7 @@ window.DATA = {
     },
 
     // ----------------------------------------------------------
-    // 11. 品牌专区
+    // 10. 品牌专区
     // ----------------------------------------------------------
     {
       id: 'brandzone-01',
@@ -1859,7 +1809,7 @@ window.DATA = {
     { id: 'q-leads-020', productLine: 'ocpc-leads', knowledgeType: 'case', difficulty: 'advanced', type: 'multi', question: '以下哪些商户类型属于"客资型商户"适合投放OCPC-客资？', options: ['婚庆宴会', '团建聚餐', '外卖快餐', '商务宴请'], answer: [0, 1, 3], explanation: '婚庆、团建、商务宴请都需要提前沟通需求，属于客资型商户。' },
 
     // --- 双投策略 (q-dual-001 ~ q-dual-020) ---
-    { id: 'q-dual-001', productLine: 'dual', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '双投是指同时投放哪两种广告？', options: ['CPC+CPM', 'CPC+OCPC', 'OCPC+品牌广告', 'CPC+全站推'], answer: 1, explanation: '双投是指CPC+OCPC同时投放，双算法互补。' },
+    { id: 'q-dual-001', productLine: 'dual', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '双投是指同时投放哪两种广告？', options: ['CPC+CPM', 'CPC+OCPC', 'OCPC+品牌广告', 'CPC+品牌广告'], answer: 1, explanation: '双投是指CPC+OCPC同时投放，双算法互补。' },
     { id: 'q-dual-002', productLine: 'dual', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '双投模式下订单量平均提升多少？', options: ['10%', '25%', '50%', '100%'], answer: 1, explanation: '双投模式下订单量平均提升25%。' },
     { id: 'q-dual-003', productLine: 'dual', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '双投模式下GMV平均增长多少？', options: ['10%-20%', '30%-50%', '50%-80%', '100%以上'], answer: 1, explanation: '双投模式下GMV平均增长30%-50%。' },
     { id: 'q-dual-004', productLine: 'dual', knowledgeType: 'operation', difficulty: 'beginner', type: 'single', question: 'CPC建议单店日预算范围是？', options: ['50-100元', '100-200元', '300-500元', '500-1000元'], answer: 1, explanation: 'CPC建议单店日预算100-200元。' },
@@ -1880,27 +1830,32 @@ window.DATA = {
     { id: 'q-dual-019', productLine: 'dual', knowledgeType: 'case', difficulty: 'advanced', type: 'multi', question: '双投案例中，CPC广告贡献了以下哪些效果？', options: ['日均曝光8500次', '点击420次', '到店68人', 'GMV 28000元'], answer: [0, 1, 2], explanation: 'CPC贡献日均曝光8500次、点击420次、到店68人。GMV 28000元是OCPC的贡献。' },
     { id: 'q-dual-020', productLine: 'dual', knowledgeType: 'policy', difficulty: 'advanced', type: 'single', question: '双投模式下CPC的定位和OCPC的定位分别是？', options: ['CPC转化、OCPC曝光', 'CPC拉新引流、OCPC深度转化', 'CPC品牌建设、OCPC效果投放', '两者定位相同'], answer: 1, explanation: 'CPC负责广泛曝光拉新，OCPC负责精准深度转化。' },
 
-    // --- 全站推 (q-allpush-001 ~ q-allpush-020) ---
-    { id: 'q-allpush-001', productLine: 'allpush', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '全站推同时优化哪两个目标？', options: ['曝光+点击', '客资+GMV', 'CPC+OCPC', '品牌+效果'], answer: 1, explanation: '全站推同时优化客资转化和GMV两个目标。' },
-    { id: 'q-allpush-002', productLine: 'allpush', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '全站推建议的ROI设置不应高于多少？', options: ['1.5', '2.0', '2.5', '3.0'], answer: 2, explanation: '全站推建议ROI不高于2.5，以保证投放效果和获量能力。' },
-    { id: 'q-allpush-003', productLine: 'allpush', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '全站推建议通过什么方式提升客单价？', options: ['提高菜品价格', '代金券+组合套餐', '减少菜品数量', '增加广告预算'], answer: 1, explanation: '建议通过代金券+组合套餐提升线上客单价，不宜直接提价。' },
-    { id: 'q-allpush-004', productLine: 'allpush', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '全站推适合客单价很低的商户投放。', options: ['正确', '错误'], answer: 1, explanation: '全站推建议客单价不宜过低，可通过代金券+组合套餐提升客单价后再投放。' },
-    { id: 'q-allpush-005', productLine: 'allpush', knowledgeType: 'operation', difficulty: 'beginner', type: 'single', question: '全站推建议的投放时段是？', options: ['仅午餐时段', '仅晚餐时段', '全天投放', '仅周末'], answer: 2, explanation: '全站推建议全天投放，让系统有充足时段寻找最优流量。' },
-    { id: 'q-allpush-006', productLine: 'allpush', knowledgeType: 'operation', difficulty: 'beginner', type: 'single', question: '全站推投放后建议观察多长时间再做优化？', options: ['1天', '3-5天', '2周', '1个月'], answer: 1, explanation: '投放3-5天后根据数据表现逐步优化。' },
-    { id: 'q-allpush-007', productLine: 'allpush', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '全站推不需要分别设置CPC和OCPC，操作更简便。', options: ['正确', '错误'], answer: 0, explanation: '全站推一个产品覆盖双目标，不需要分别设置CPC和OCPC。' },
-    { id: 'q-allpush-008', productLine: 'allpush', knowledgeType: 'sales', difficulty: 'beginner', type: 'single', question: '全站推特别适合哪类商户？', options: ['大品牌连锁', '预算有限的商户', '只做品牌广告的商户', '线上外卖商户'], answer: 1, explanation: '全站推操作简单、投放门槛低，特别适合预算有限的商户。' },
-    { id: 'q-allpush-009', productLine: 'allpush', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '全站推的ROI初期设置建议为多少？', options: ['0.5-1', '1.5-2', '3-5', '5-10'], answer: 1, explanation: '初期建议设置较低的ROI（如1.5-2），让计划充分获量。' },
-    { id: 'q-allpush-010', productLine: 'allpush', knowledgeType: 'operation', difficulty: 'beginner', type: 'judge', question: '全站推投放时门店信息和团购套餐的完善程度会影响效果。', options: ['正确', '错误'], answer: 0, explanation: '门店信息完整、团购套餐有吸引力可以提升全站推的投放效果。' },
-    { id: 'q-allpush-011', productLine: 'allpush', knowledgeType: 'product', difficulty: 'intermediate', type: 'single', question: '全站推的核心优势是什么？', options: ['最低价格', '一个产品双重效果', '品牌曝光最强', '只投效果广告'], answer: 1, explanation: '全站推核心优势是一个广告计划同时覆盖客资和GMV两个目标。' },
-    { id: 'q-allpush-012', productLine: 'allpush', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '向预算有限的商户推荐产品时，全站推的推荐理由是？', options: ['最便宜', '操作简单效果全面', '品牌效果最好', '只适合大客户'], answer: 1, explanation: '全站推操作简单、效果全面、投放门槛低，是预算有限商户的理想选择。' },
-    { id: 'q-allpush-013', productLine: 'allpush', knowledgeType: 'operation', difficulty: 'intermediate', type: 'multi', question: '全站推投放优化建议包括哪些？', options: ['通过代金券提升客单价', '初期设较低ROI', '投放3-5天后优化', '限制投放时段'], answer: [0, 1, 2], explanation: '全站推优化建议：提升客单价、初期低ROI、3-5天后优化。不建议限制时段。' },
-    { id: 'q-allpush-014', productLine: 'allpush', knowledgeType: 'product', difficulty: 'intermediate', type: 'judge', question: '全站推特别适合刚入门广告投放的商户。', options: ['正确', '错误'], answer: 0, explanation: '全站推操作简便，不需要分别管理多个广告产品，适合新手商户。' },
-    { id: 'q-allpush-015', productLine: 'allpush', knowledgeType: 'policy', difficulty: 'intermediate', type: 'single', question: '全站推提交审核后，需要等待什么才能开始投放？', options: ['付款确认', '审核通过', '签约完成', '门店认证'], answer: 1, explanation: '提交审核后需等待审核通过才能开始投放。' },
-    { id: 'q-allpush-016', productLine: 'allpush', knowledgeType: 'product', difficulty: 'advanced', type: 'single', question: '全站推系统在全站流量中寻找最优分配的含义是？', options: ['只在搜索场景投放', '系统自动在所有流量场景优化分配', '只在导航场景投放', '人工选择流量来源'], answer: 1, explanation: '系统自动在全站流量中寻找最优分配，覆盖多种场景。' },
-    { id: 'q-allpush-017', productLine: 'allpush', knowledgeType: 'sales', difficulty: 'advanced', type: 'multi', question: '全站推与双投策略的区别在于？', options: ['全站推一个产品覆盖双目标', '双投需要分别设置CPC和OCPC', '全站推操作更简便', '两者效果完全一样'], answer: [0, 1, 2], explanation: '全站推一个产品覆盖双目标、操作简便；双投需要分别设置CPC和OCPC，灵活度更高。' },
-    { id: 'q-allpush-018', productLine: 'allpush', knowledgeType: 'operation', difficulty: 'advanced', type: 'single', question: '全站推新建推广的正确操作路径是？', options: ['新建推广→全站推→选门店→设ROI→设预算→提交', '新建推广→CPC→全站推→设预算', '新建推广→OCPC→全站推→设ROI', '新建推广→品牌→全站推→设预算'], answer: 0, explanation: '正确路径：新建推广→选择全站推→选门店→设ROI→设预算→提交审核。' },
-    { id: 'q-allpush-019', productLine: 'allpush', knowledgeType: 'case', difficulty: 'advanced', type: 'judge', question: '全站推可以同时为商户带来客资和交易增长。', options: ['正确', '错误'], answer: 0, explanation: '全站推同时优化客资和GMV双目标，可以同时带来客资和交易增长。' },
-    { id: 'q-allpush-020', productLine: 'allpush', knowledgeType: 'policy', difficulty: 'advanced', type: 'single', question: '以下哪种商户最适合推荐全站推？', options: ['已有成熟投放体系的大客户', '预算有限的新手商户', '只做品牌曝光的商户', '客单价极低的外卖商户'], answer: 1, explanation: '全站推适合预算有限、刚入门广告投放的商户，操作简单效果全面。' },
+    // --- 品牌智能体 (q-agent-001 ~ q-agent-020) ---
+    { id: 'q-agent-001', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '品牌智能体1-9店的月费是？', options: ['69元/店/月', '79元/店/月', '89元/店/月', '99元/店/月'], answer: 3, explanation: '1-9店标准价为99元/店/月。' },
+    { id: 'q-agent-002', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '品牌智能体每月包含多少积分？', options: ['5000积分', '8000积分', '10000积分', '15000积分'], answer: 1, explanation: '每月固定包含8000积分。' },
+    { id: 'q-agent-003', productLine: 'ai-agent', knowledgeType: 'policy', difficulty: 'beginner', type: 'single', question: '品牌智能体签约最短时长是？', options: ['3个月', '6个月', '9个月', '12个月'], answer: 1, explanation: '购买时长可选6、9、12个月，最短6个月。' },
+    { id: 'q-agent-004', productLine: 'ai-agent', knowledgeType: 'policy', difficulty: 'beginner', type: 'single', question: '智能体解约退款的保底天数是？', options: ['5天', '7天', '10天', '15天'], answer: 2, explanation: '解约退款保底10天，10天内不退款。' },
+    { id: 'q-agent-005', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '高德月活用户数约是多少？', options: ['3.5亿', '6.8亿', '9.96亿', '12亿'], answer: 2, explanation: '高德月活用户约9.96亿。' },
+    { id: 'q-agent-006', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'beginner', type: 'single', question: '30秒开场白中，品牌智能体的比喻是？', options: ['AI服务员', 'AI管家', 'AI店长', 'AI客服'], answer: 1, explanation: '30秒开场白中品牌智能体被比喻为"AI管家"。' },
+    { id: 'q-agent-007', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '品牌智能体解决的三大痛点是：找不到客、进来了不下单、店开了不会管。', options: ['正确', '错误'], answer: 0, explanation: '品牌智能体解决三大核心痛点：找不到客、进来了不下单、店开了不会管。' },
+    { id: 'q-agent-008', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '品牌智能体每月包含100条语音播报。', options: ['正确', '错误'], answer: 0, explanation: '每月包含8000积分+100条语音播报。' },
+    { id: 'q-agent-009', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '品牌智能体300+店的月费是？', options: ['59元/店/月', '69元/店/月', '79元/店/月', '89元/店/月'], answer: 1, explanation: '300+店月费为69元/店/月，约7折。' },
+    { id: 'q-agent-010', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'beginner', type: 'single', question: '品牌智能体7分钟成交节奏中，方案讲解占多长时间？', options: ['30秒', '1分钟', '2分钟', '3分钟'], answer: 3, explanation: '7分钟成交节奏：破冰30s→挖需2min→方案3min→案例1min→促成30s。' },
+    { id: 'q-agent-011', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '品牌智能体的三大卖点不包括哪个？', options: ['高德9.96亿月活', 'AI获客40秒搞定', 'AI管店', '免费试用1个月'], answer: 3, explanation: '三大卖点：高德9.96亿月活、AI获客40秒搞定、AI管店。不包括免费试用。' },
+    { id: 'q-agent-012', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'intermediate', type: 'multi', question: '品牌智能体的7类甜区客户包括以下哪些？', options: ['连锁品牌(A类)', '隐藏好店(B类)', '社区快餐(C类)', '景区门店(F类)'], answer: [0, 1, 3], explanation: '7类甜区：连锁(A)、隐藏好店(B)、网红(C)、新店(D)、商场(E)、景区(F)、高客单(G)。' },
+    { id: 'q-agent-013', productLine: 'ai-agent', knowledgeType: 'policy', difficulty: 'intermediate', type: 'single', question: '智能体解约退款公式是？', options: ['总金额x(剩余天数/总天数)', '总金额-已用天数x日费', '总金额x50%', '不退款'], answer: 0, explanation: '退款金额=总金额x(剩余天数/总天数)，保底10天。' },
+    { id: 'q-agent-014', productLine: 'ai-agent', knowledgeType: 'operation', difficulty: 'intermediate', type: 'single', question: '商家配置AI智能体的操作路径是？', options: ['轩辕→内容装修→AI智能体', '高德APP→门店管理→智能体', '后台→广告管理→智能体', '轩辕→广告投放→智能体'], answer: 0, explanation: '配置路径：轩辕→内容装修→AI智能体。' },
+    { id: 'q-agent-015', productLine: 'ai-agent', knowledgeType: 'operation', difficulty: 'intermediate', type: 'multi', question: 'AI智能体可配置的内容包括哪些？', options: ['开关和名称', '形象和标语', '问答库和知识库', '语音播报'], answer: [0, 1, 2, 3], explanation: '可配置：开关、名称、形象、标语、问答库、知识库、语音播报。' },
+    { id: 'q-agent-016', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'advanced', type: 'single', question: '品牌智能体10-99店的月费是？', options: ['69元/店/月', '79元/店/月', '89元/店/月', '99元/店/月'], answer: 2, explanation: '10-99店月费为89元/店/月，约9折。' },
+    { id: 'q-agent-017', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'advanced', type: 'single', question: 'AI获客从搜索到到店最快需要多长时间？', options: ['10秒', '20秒', '40秒', '60秒'], answer: 2, explanation: 'AI获客40秒搞定，从搜索到到店最快40秒。' },
+    { id: 'q-agent-018', productLine: 'ai-agent', knowledgeType: 'policy', difficulty: 'advanced', type: 'judge', question: '品牌智能体尝鲜价活动期为6月1日至7月31日。', options: ['正确', '错误'], answer: 0, explanation: '尝鲜价活动期为6月1日至7月31日。' },
+    { id: 'q-agent-019', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'advanced', type: 'multi', question: '品牌智能体C端能力中的AI预订和AI组菜的共同特点是？', options: ['都是面向消费者的服务', '都帮助用户做决策', '都需要商户额外付费', '都是B端功能'], answer: [0, 1], explanation: 'AI预订和AI组菜都是面向消费者(C端)的服务，都帮助用户做决策。' },
+    { id: 'q-agent-020', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'advanced', type: 'single', question: '品牌智能体签约后最重要的后续动作是？', options: ['立即投放广告', '帮客户做好AI智能体配置', '等待系统自动优化', '联系客户续费'], answer: 1, explanation: '签约后一定要帮客户做好配置，配置越完善，AI智能体效果越好。' },
+    { id: 'q-agent-021', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'multi', question: '品牌智能体品专版包含以下哪些权益？', options: ['品牌智能体', 'mini品专', '图面广告', '免费品牌广告位'], answer: [0, 1, 2], explanation: '品专版包含三大权益：品牌智能体、mini品专（搜索首位品专卡片）、图面广告（POI详情页气泡入口）。' },
+    { id: 'q-agent-022', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: 'mini品专在什么条件下会展示？', options: ['用户搜索任意关键词时', '用户搜索品牌词且投放门店为搜索结果第一位时', '用户打开高德APP时', '用户导航到店时'], answer: 1, explanation: 'mini品专展示条件：用户搜索品牌词后，投放门店为搜索结果第一位且智能体在线时展示。' },
+    { id: 'q-agent-023', productLine: 'ai-agent', knowledgeType: 'policy', difficulty: 'intermediate', type: 'single', question: '品专版签约时，建议提前留出几天品专审核和上刊时间？', options: ['3天', '5天', '7天', '14天'], answer: 2, explanation: '品专版签约建议提前留出7天品专审核和上刊时间，确保智能体与品专同步上线。' },
+    { id: 'q-agent-024', productLine: 'ai-agent', knowledgeType: 'policy', difficulty: 'intermediate', type: 'judge', question: '品专版的品牌词包可以使用任意关键词，不限制必须是品牌相关词。', options: ['正确', '错误'], answer: 1, explanation: '品牌词包只能用品牌词或品牌词+产品/服务词，且须以营业执照上的品牌词为准，日PV建议≥50。' },
+    { id: 'q-agent-025', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'advanced', type: 'single', question: '客户问"品专要额外花钱吗"，正确的回答是？', options: ['品专需要单独购买', '品专版是打包售卖的，三个权益一个价格', '品专只免费试用1个月', '品专按点击计费'], answer: 1, explanation: '品专版是打包售卖的，智能体+mini品专+图面广告三个权益一个价格，不需要单独购买品专。' },
 
     // --- 顶展 (q-top-001 ~ q-top-020) ---
     { id: 'q-top-001', productLine: 'topdisplay', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '顶展广告配置修改审核通过后何时生效？', options: ['实时生效', 'T+1生效', 'T+3生效', 'T+7生效'], answer: 1, explanation: '顶展配置修改审核通过后T+1（次日）生效。' },
@@ -1924,28 +1879,6 @@ window.DATA = {
     { id: 'q-top-019', productLine: 'topdisplay', knowledgeType: 'case', difficulty: 'advanced', type: 'single', question: '郴州湘菜案例中，访问量提升了多少？', options: ['+15.9%', '+21.9%', '+31.9%', '+41.9%'], answer: 2, explanation: '案例数据显示访问量提升了31.9%。' },
     { id: 'q-top-020', productLine: 'topdisplay', knowledgeType: 'sales', difficulty: 'advanced', type: 'multi', question: '顶展对连锁品牌的价值体现在哪些方面？', options: ['统一品牌曝光', '品牌认知积累', '到店转化提升', '降低人工成本'], answer: [0, 1, 2], explanation: '顶展对连锁品牌价值：统一曝光、品牌认知、到店转化一举三得。' },
 
-    // --- 水牌 (q-water-001 ~ q-water-020) ---
-    { id: 'q-water-001', productLine: 'watercard', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '水牌产品覆盖哪三大场景？', options: ['商场、超市、会展中心', '商场、景区、机场', '超市、写字楼、社区', '商场、景区、超市'], answer: 0, explanation: '水牌覆盖商场、超市、会展中心三大线下场景。' },
-    { id: 'q-water-002', productLine: 'watercard', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '水牌在同一场景同一时间只服务一家品牌主，具有独占排他性。', options: ['正确', '错误'], answer: 0, explanation: '水牌核心优势之一是独占排他，同一场景同一时间只服务一家品牌主，竞品无法同时投放。' },
-    { id: 'q-water-003', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'beginner', type: 'single', question: '商场水牌的最短购买时长是？', options: ['1周', '1个月(4周)', '3个月', '7天'], answer: 1, explanation: '商场水牌最短1个月(4周)起售，10+点位可1周起投。' },
-    { id: 'q-water-004', productLine: 'watercard', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '商场水牌的素材尺寸要求是？', options: ['1080 x 720px', '718 x 172px', '750 x 1334px', '1920 x 1080px'], answer: 1, explanation: '商场水牌详情页banner素材尺寸为718 x 172px，文件大小不超过500KB。' },
-    { id: 'q-water-005', productLine: 'watercard', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '水牌产品可以在品广平台上自助下单和查看投放数据。', options: ['正确', '错误'], answer: 0, explanation: '水牌已升级至品广平台，客户可在品广平台自助下单、上传素材、查看投放数据。' },
-    { id: 'q-water-006', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'intermediate', type: 'multi', question: '商场水牌的客户准入条件包括哪些？', options: ['有店铺', '有活动', '有指定品牌', '有五星门店'], answer: [0, 1, 2], explanation: '商场水牌准入条件：有店铺、有活动、有指定品牌，不包含五星门店要求。' },
-    { id: 'q-water-007', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '超市水牌的售卖形式是？', options: ['仅tips页单独售卖', '仅详情页banner单独售卖', 'tips页+详情页banner组合售卖', '仅楼层导览单独售卖'], answer: 2, explanation: '超市水牌采用tips页+详情页banner组合售卖模式，不可单独购买。' },
-    { id: 'q-water-008', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '投放超市水牌的品牌需要满足什么条件？', options: ['需在超市内有商品销售', '需在超市内有实体门店', '需为超市自营品牌', '无需额外条件'], answer: 0, explanation: '品牌需在超市内有商品销售，并需提供商品销售证明。' },
-    { id: 'q-water-009', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '会展中心水牌的起投方式是？', options: ['按天起投', '按周起投(周一至周日)', '按月起投', '按展期起投'], answer: 1, explanation: '会展中心水牌按周起投，以周一至周日为一个完整投放周期。' },
-    { id: 'q-water-010', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'intermediate', type: 'judge', question: '会展中心水牌支持展前预热投放，预热期不满一周按整周计费。', options: ['正确', '错误'], answer: 0, explanation: '会展中心水牌支持展前预热投放，不满一周按整周计费。' },
-    { id: 'q-water-011', productLine: 'watercard', knowledgeType: 'policy', difficulty: 'advanced', type: 'single', question: '水牌的一跳跳转规则是？', options: ['可直接唤端跳转第三方APP', '一跳禁止唤端跳转第三方APP', '仅支持跳转微信', '无跳转限制'], answer: 1, explanation: '所有水牌产品首跳（一跳）禁止唤端跳转至第三方APP，支持跳转H5落地页或高德内小程序。' },
-    { id: 'q-water-012', productLine: 'watercard', knowledgeType: 'case', difficulty: 'advanced', type: 'single', question: '中餐水牌案例中，CTR(点击率)是多少？', options: ['0.08%', '0.14%', '0.22%', '0.38%'], answer: 1, explanation: '中餐水牌案例数据：消耗7万元，曝光量270万，CTR为0.14%。' },
-    { id: 'q-water-013', productLine: 'watercard', knowledgeType: 'case', difficulty: 'advanced', type: 'single', question: '会展中心水牌案例中，CTR和CPM分别是多少？', options: ['CTR 0.14%, CPM 116元', 'CTR 0.38%, CPM 116元', 'CTR 0.38%, CPM 80元', 'CTR 0.14%, CPM 80元'], answer: 1, explanation: '会展中心水牌案例数据：CTR为0.38%，CPM为116元。' },
-    { id: 'q-water-014', productLine: 'watercard', knowledgeType: 'policy', difficulty: 'advanced', type: 'single', question: '水牌跳转H5落地页需提前多少天提交加白申请？', options: ['T-1日', 'T-3日', 'T-5日', 'T-7日'], answer: 1, explanation: 'H5落地页需提前T-3日提交加白申请。' },
-    { id: 'q-water-015', productLine: 'watercard', knowledgeType: 'policy', difficulty: 'advanced', type: 'multi', question: '客户在同一商场的A区和B区同时投放水牌，需要如何处理？', options: ['只需提交一份素材和订单', '按区域分别提交素材和订单', '每个区域独立计费和排期', '只需一个区域的准入即可'], answer: [1, 2], explanation: '多区域商场投放时，需按区域分别提交素材和订单，每个区域独立计费和排期。' },
-    { id: 'q-water-016', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'beginner', type: 'single', question: '商场水牌10个以上点位时可以多久起投？', options: ['1天起投', '1周起投', '2周起投', '仍需1个月起投'], answer: 1, explanation: '商场水牌10+点位可1周起投，降低投放门槛。' },
-    { id: 'q-water-017', productLine: 'watercard', knowledgeType: 'product', difficulty: 'beginner', type: 'multi', question: '水牌的核心优势包括哪些？', options: ['独占排他', 'LBS精准', '门槛低', '按效果付费'], answer: [0, 1, 2], explanation: '水牌四大核心优势：独占排他、LBS精准、门槛低、支持外跳。不包括按效果付费。' },
-    { id: 'q-water-018', productLine: 'watercard', knowledgeType: 'product', difficulty: 'intermediate', type: 'judge', question: '会展中心水牌的投放主体须与展会参展主体一致。', options: ['正确', '错误'], answer: 0, explanation: '会展中心水牌遵循主体一致性原则，投放主体须与展会参展主体一致。' },
-    { id: 'q-water-019', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '商场水牌的最长购买时长是？', options: ['1个月', '2个月', '3个月(12周)', '6个月'], answer: 2, explanation: '商场水牌最长购买时长为3个月(12周)。' },
-    { id: 'q-water-020', productLine: 'watercard', knowledgeType: 'policy', difficulty: 'advanced', type: 'multi', question: '以下关于水牌跳转规则的说法，正确的有哪些？', options: ['一跳禁止唤端跳转第三方APP', 'H5页面需提前T-3日加白', '支持跳转小程序', '可以直接唤端跳转淘宝'], answer: [0, 1, 2], explanation: '水牌一跳禁唤端，H5需T-3日加白，支持小程序跳转。不允许直接唤端跳转淘宝等第三方APP。' },
-
     // --- 钻展 (q-diamond-001 ~ q-diamond-020) ---
     { id: 'q-diamond-001', productLine: 'diamond', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '钻展的售卖方式是什么？', options: ['CPC按点击计费', 'CPT按时段计费', 'CPM按千次展示计费', 'CPA按转化计费'], answer: 1, explanation: '钻展采用CPT（按时段计费）方式售卖，场站钻展还支持CPM-GT。' },
     { id: 'q-diamond-002', productLine: 'diamond', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '钻展的排他性体现在哪里？', options: ['按竞价排名', '单城单类目同时只给一家商户', '按点击付费', '按转化付费'], answer: 1, explanation: '钻展核心排他性：单城单类目同一时间只给一家商户，买了同行就抢不到。' },
@@ -1967,6 +1900,28 @@ window.DATA = {
     { id: 'q-diamond-018', productLine: 'diamond', knowledgeType: 'policy', difficulty: 'advanced', type: 'judge', question: '场站钻展不需要人群圈选即可投放。', options: ['正确', '错误'], answer: 1, explanation: '场站钻展必须圈人投放，需通过行业接口人完成人群圈选评估，人群失效则钻展不展示。' },
     { id: 'q-diamond-019', productLine: 'diamond', knowledgeType: 'operation', difficulty: 'advanced', type: 'single', question: '钻展数据在品牌广告后台可查看哪些指标？', options: ['曝光量、点击量、点击率', 'ROI、转化率、客单价', 'GMV、订单数、复购率', '粉丝数、评论数、点赞数'], answer: 0, explanation: '品牌广告后台支持查看曝光量、点击量、点击率，可下载分日报表。' },
     { id: 'q-diamond-020', productLine: 'diamond', knowledgeType: 'sales', difficulty: 'advanced', type: 'single', question: '钻展价格锚定话术中，按90天计算日均成本约多少？', options: ['11元', '22元', '33元', '55元'], answer: 2, explanation: '按3000元/90天计算，每天约33元，相当于请个兼职发传单的钱。' },
+
+    // --- 水牌 (q-water-001 ~ q-water-020) ---
+    { id: 'q-water-001', productLine: 'watercard', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '水牌产品覆盖哪三大场景？', options: ['商场、超市、会展中心', '商场、景区、机场', '超市、写字楼、社区', '商场、景区、超市'], answer: 0, explanation: '水牌覆盖商场、超市、会展中心三大线下场景。' },
+    { id: 'q-water-002', productLine: 'watercard', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '水牌在同一场景同一时间只服务一家品牌主，具有独占排他性。', options: ['正确', '错误'], answer: 0, explanation: '水牌核心优势之一是独占排他，同一场景同一时间只服务一家品牌主，竞品无法同时投放。' },
+    { id: 'q-water-003', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'beginner', type: 'single', question: '商场水牌的最短购买时长是？', options: ['1周', '1个月(4周)', '3个月', '7天'], answer: 1, explanation: '商场水牌最短1个月(4周)起售，10+点位可1周起投。' },
+    { id: 'q-water-004', productLine: 'watercard', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '商场水牌的素材尺寸要求是？', options: ['1080 x 720px', '718 x 172px', '750 x 1334px', '1920 x 1080px'], answer: 1, explanation: '商场水牌详情页banner素材尺寸为718 x 172px，文件大小不超过500KB。' },
+    { id: 'q-water-005', productLine: 'watercard', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '水牌产品可以在品广平台上自助下单和查看投放数据。', options: ['正确', '错误'], answer: 0, explanation: '水牌已升级至品广平台，客户可在品广平台自助下单、上传素材、查看投放数据。' },
+    { id: 'q-water-006', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'intermediate', type: 'multi', question: '商场水牌的客户准入条件包括哪些？', options: ['有店铺', '有活动', '有指定品牌', '有五星门店'], answer: [0, 1, 2], explanation: '商场水牌准入条件：有店铺、有活动、有指定品牌，不包含五星门店要求。' },
+    { id: 'q-water-007', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '超市水牌的售卖形式是？', options: ['仅tips页单独售卖', '仅详情页banner单独售卖', 'tips页+详情页banner组合售卖', '仅楼层导览单独售卖'], answer: 2, explanation: '超市水牌采用tips页+详情页banner组合售卖模式，不可单独购买。' },
+    { id: 'q-water-008', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '投放超市水牌的品牌需要满足什么条件？', options: ['需在超市内有商品销售', '需在超市内有实体门店', '需为超市自营品牌', '无需额外条件'], answer: 0, explanation: '品牌需在超市内有商品销售，并需提供商品销售证明。' },
+    { id: 'q-water-009', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '会展中心水牌的起投方式是？', options: ['按天起投', '按周起投(周一至周日)', '按月起投', '按展期起投'], answer: 1, explanation: '会展中心水牌按周起投，以周一至周日为一个完整投放周期。' },
+    { id: 'q-water-010', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'intermediate', type: 'judge', question: '会展中心水牌支持展前预热投放，预热期不满一周按整周计费。', options: ['正确', '错误'], answer: 0, explanation: '会展中心水牌支持展前预热投放，不满一周按整周计费。' },
+    { id: 'q-water-011', productLine: 'watercard', knowledgeType: 'policy', difficulty: 'advanced', type: 'single', question: '水牌的一跳跳转规则是？', options: ['可直接唤端跳转第三方APP', '一跳禁止唤端跳转第三方APP', '仅支持跳转微信', '无跳转限制'], answer: 1, explanation: '所有水牌产品首跳（一跳）禁止唤端跳转至第三方APP，支持跳转H5落地页或高德内小程序。' },
+    { id: 'q-water-012', productLine: 'watercard', knowledgeType: 'case', difficulty: 'advanced', type: 'single', question: '中餐水牌案例中，CTR(点击率)是多少？', options: ['0.08%', '0.14%', '0.22%', '0.38%'], answer: 1, explanation: '中餐水牌案例数据：消耗7万元，曝光量270万，CTR为0.14%。' },
+    { id: 'q-water-013', productLine: 'watercard', knowledgeType: 'case', difficulty: 'advanced', type: 'single', question: '会展中心水牌案例中，CTR和CPM分别是多少？', options: ['CTR 0.14%, CPM 116元', 'CTR 0.38%, CPM 116元', 'CTR 0.38%, CPM 80元', 'CTR 0.14%, CPM 80元'], answer: 1, explanation: '会展中心水牌案例数据：CTR为0.38%，CPM为116元。' },
+    { id: 'q-water-014', productLine: 'watercard', knowledgeType: 'policy', difficulty: 'advanced', type: 'single', question: '水牌跳转H5落地页需提前多少天提交加白申请？', options: ['T-1日', 'T-3日', 'T-5日', 'T-7日'], answer: 1, explanation: 'H5落地页需提前T-3日提交加白申请。' },
+    { id: 'q-water-015', productLine: 'watercard', knowledgeType: 'policy', difficulty: 'advanced', type: 'multi', question: '客户在同一商场的A区和B区同时投放水牌，需要如何处理？', options: ['只需提交一份素材和订单', '按区域分别提交素材和订单', '每个区域独立计费和排期', '只需一个区域的准入即可'], answer: [1, 2], explanation: '多区域商场投放时，需按区域分别提交素材和订单，每个区域独立计费和排期。' },
+    { id: 'q-water-016', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'beginner', type: 'single', question: '商场水牌10个以上点位时可以多久起投？', options: ['1天起投', '1周起投', '2周起投', '仍需1个月起投'], answer: 1, explanation: '商场水牌10+点位可1周起投，降低投放门槛。' },
+    { id: 'q-water-017', productLine: 'watercard', knowledgeType: 'product', difficulty: 'beginner', type: 'multi', question: '水牌的核心优势包括哪些？', options: ['独占排他', 'LBS精准', '门槛低', '按效果付费'], answer: [0, 1, 2], explanation: '水牌四大核心优势：独占排他、LBS精准、门槛低、支持外跳。不包括按效果付费。' },
+    { id: 'q-water-018', productLine: 'watercard', knowledgeType: 'product', difficulty: 'intermediate', type: 'judge', question: '会展中心水牌的投放主体须与展会参展主体一致。', options: ['正确', '错误'], answer: 0, explanation: '会展中心水牌遵循主体一致性原则，投放主体须与展会参展主体一致。' },
+    { id: 'q-water-019', productLine: 'watercard', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '商场水牌的最长购买时长是？', options: ['1个月', '2个月', '3个月(12周)', '6个月'], answer: 2, explanation: '商场水牌最长购买时长为3个月(12周)。' },
+    { id: 'q-water-020', productLine: 'watercard', knowledgeType: 'policy', difficulty: 'advanced', type: 'multi', question: '以下关于水牌跳转规则的说法，正确的有哪些？', options: ['一跳禁止唤端跳转第三方APP', 'H5页面需提前T-3日加白', '支持跳转小程序', '可以直接唤端跳转淘宝'], answer: [0, 1, 2], explanation: '水牌一跳禁唤端，H5需T-3日加白，支持小程序跳转。不允许直接唤端跳转淘宝等第三方APP。' },
 
     // --- 导航结束页 (q-navend-001 ~ q-navend-020) ---
     { id: 'q-navend-001', productLine: 'navend', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '导航结束页Banner的刊例CPM单价是多少？', options: ['45元', '75元', '82元', '170元'], answer: 1, explanation: '导结Banner刊例价为75元/CPM，折后参考价45元/CPM。' },
@@ -2011,33 +1966,6 @@ window.DATA = {
     { id: 'q-brandzone-018', productLine: 'brandzone', knowledgeType: 'sales', difficulty: 'advanced', type: 'single', question: '品专话术中，"相当于给品牌流量上了一把锁"主要传达的是哪个价值？', options: ['品牌形象', '品牌保护/竞品屏蔽', '直接转化', '额外点击量'], answer: 1, explanation: '品牌保护+竞品屏蔽是品专最核心的差异化价值。' },
     { id: 'q-brandzone-019', productLine: 'brandzone', knowledgeType: 'product', difficulty: 'advanced', type: 'multi', question: '品专4.0版本相比3.0的更新点包括哪些？', options: ['扩大品牌视觉区域', '新增电话icon', '新增门店召回模块', '降低价格'], answer: [0, 1, 2], explanation: '4.0扩大视觉区域、新增电话icon和门店召回模块，价格叠加1.3倍溢价（非降低）。' },
     { id: 'q-brandzone-020', productLine: 'brandzone', knowledgeType: 'product', difficulty: 'advanced', type: 'judge', question: '搜索品牌词直接点击搜索时，搜索结果列表保证只出品牌治理提交的门店。', options: ['正确', '错误'], answer: 1, explanation: '直接点击搜索时，搜索结果列表不保证只出品牌治理提交门店；只有点击搜索Sug时才仅展示品牌治理提交的门店。' },
-
-    // --- 品牌智能体 (q-agent-001 ~ q-agent-020) ---
-    { id: 'q-agent-001', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '品牌智能体1-9店的月费是？', options: ['69元/店/月', '79元/店/月', '89元/店/月', '99元/店/月'], answer: 3, explanation: '1-9店标准价为99元/店/月。' },
-    { id: 'q-agent-002', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '品牌智能体每月包含多少积分？', options: ['5000积分', '8000积分', '10000积分', '15000积分'], answer: 1, explanation: '每月固定包含8000积分。' },
-    { id: 'q-agent-003', productLine: 'ai-agent', knowledgeType: 'policy', difficulty: 'beginner', type: 'single', question: '品牌智能体签约最短时长是？', options: ['3个月', '6个月', '9个月', '12个月'], answer: 1, explanation: '购买时长可选6、9、12个月，最短6个月。' },
-    { id: 'q-agent-004', productLine: 'ai-agent', knowledgeType: 'policy', difficulty: 'beginner', type: 'single', question: '智能体解约退款的保底天数是？', options: ['5天', '7天', '10天', '15天'], answer: 2, explanation: '解约退款保底10天，10天内不退款。' },
-    { id: 'q-agent-005', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '高德月活用户数约是多少？', options: ['3.5亿', '6.8亿', '9.96亿', '12亿'], answer: 2, explanation: '高德月活用户约9.96亿。' },
-    { id: 'q-agent-006', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'beginner', type: 'single', question: '30秒开场白中，品牌智能体的比喻是？', options: ['AI服务员', 'AI管家', 'AI店长', 'AI客服'], answer: 1, explanation: '30秒开场白中品牌智能体被比喻为"AI管家"。' },
-    { id: 'q-agent-007', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '品牌智能体解决的三大痛点是：找不到客、进来了不下单、店开了不会管。', options: ['正确', '错误'], answer: 0, explanation: '品牌智能体解决三大核心痛点：找不到客、进来了不下单、店开了不会管。' },
-    { id: 'q-agent-008', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '品牌智能体每月包含100条语音播报。', options: ['正确', '错误'], answer: 0, explanation: '每月包含8000积分+100条语音播报。' },
-    { id: 'q-agent-009', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '品牌智能体300+店的月费是？', options: ['59元/店/月', '69元/店/月', '79元/店/月', '89元/店/月'], answer: 1, explanation: '300+店月费为69元/店/月，约7折。' },
-    { id: 'q-agent-010', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'beginner', type: 'single', question: '品牌智能体7分钟成交节奏中，方案讲解占多长时间？', options: ['30秒', '1分钟', '2分钟', '3分钟'], answer: 3, explanation: '7分钟成交节奏：破冰30s→挖需2min→方案3min→案例1min→促成30s。' },
-    { id: 'q-agent-011', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'intermediate', type: 'single', question: '品牌智能体的三大卖点不包括哪个？', options: ['高德9.96亿月活', 'AI获客40秒搞定', 'AI管店', '免费试用1个月'], answer: 3, explanation: '三大卖点：高德9.96亿月活、AI获客40秒搞定、AI管店。不包括免费试用。' },
-    { id: 'q-agent-012', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'intermediate', type: 'multi', question: '品牌智能体的7类甜区客户包括以下哪些？', options: ['连锁品牌(A类)', '隐藏好店(B类)', '社区快餐(C类)', '景区门店(F类)'], answer: [0, 1, 3], explanation: '7类甜区：连锁(A)、隐藏好店(B)、网红(C)、新店(D)、商场(E)、景区(F)、高客单(G)。' },
-    { id: 'q-agent-013', productLine: 'ai-agent', knowledgeType: 'policy', difficulty: 'intermediate', type: 'single', question: '智能体解约退款公式是？', options: ['总金额x(剩余天数/总天数)', '总金额-已用天数x日费', '总金额x50%', '不退款'], answer: 0, explanation: '退款金额=总金额x(剩余天数/总天数)，保底10天。' },
-    { id: 'q-agent-014', productLine: 'ai-agent', knowledgeType: 'operation', difficulty: 'intermediate', type: 'single', question: '商家配置AI智能体的操作路径是？', options: ['轩辕→内容装修→AI智能体', '高德APP→门店管理→智能体', '后台→广告管理→智能体', '轩辕→广告投放→智能体'], answer: 0, explanation: '配置路径：轩辕→内容装修→AI智能体。' },
-    { id: 'q-agent-015', productLine: 'ai-agent', knowledgeType: 'operation', difficulty: 'intermediate', type: 'multi', question: 'AI智能体可配置的内容包括哪些？', options: ['开关和名称', '形象和标语', '问答库和知识库', '语音播报'], answer: [0, 1, 2, 3], explanation: '可配置：开关、名称、形象、标语、问答库、知识库、语音播报。' },
-    { id: 'q-agent-016', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'advanced', type: 'single', question: '品牌智能体10-99店的月费是？', options: ['69元/店/月', '79元/店/月', '89元/店/月', '99元/店/月'], answer: 2, explanation: '10-99店月费为89元/店/月，约9折。' },
-    { id: 'q-agent-017', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'advanced', type: 'single', question: 'AI获客从搜索到到店最快需要多长时间？', options: ['10秒', '20秒', '40秒', '60秒'], answer: 2, explanation: 'AI获客40秒搞定，从搜索到到店最快40秒。' },
-    { id: 'q-agent-018', productLine: 'ai-agent', knowledgeType: 'policy', difficulty: 'advanced', type: 'judge', question: '品牌智能体尝鲜价活动期为6月1日至7月31日。', options: ['正确', '错误'], answer: 0, explanation: '尝鲜价活动期为6月1日至7月31日。' },
-    { id: 'q-agent-019', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'advanced', type: 'multi', question: '品牌智能体C端能力中的AI预订和AI组菜的共同特点是？', options: ['都是面向消费者的服务', '都帮助用户做决策', '都需要商户额外付费', '都是B端功能'], answer: [0, 1], explanation: 'AI预订和AI组菜都是面向消费者(C端)的服务，都帮助用户做决策。' },
-    { id: 'q-agent-020', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'advanced', type: 'single', question: '品牌智能体签约后最重要的后续动作是？', options: ['立即投放广告', '帮客户做好AI智能体配置', '等待系统自动优化', '联系客户续费'], answer: 1, explanation: '签约后一定要帮客户做好配置，配置越完善，AI智能体效果越好。' },
-    { id: 'q-agent-021', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'multi', question: '品牌智能体品专版包含以下哪些权益？', options: ['品牌智能体', 'mini品专', '图面广告', '免费品牌广告位'], answer: [0, 1, 2], explanation: '品专版包含三大权益：品牌智能体、mini品专（搜索首位品专卡片）、图面广告（POI详情页气泡入口）。' },
-    { id: 'q-agent-022', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: 'mini品专在什么条件下会展示？', options: ['用户搜索任意关键词时', '用户搜索品牌词且投放门店为搜索结果第一位时', '用户打开高德APP时', '用户导航到店时'], answer: 1, explanation: 'mini品专展示条件：用户搜索品牌词后，投放门店为搜索结果第一位且智能体在线时展示。' },
-    { id: 'q-agent-023', productLine: 'ai-agent', knowledgeType: 'policy', difficulty: 'intermediate', type: 'single', question: '品专版签约时，建议提前留出几天品专审核和上刊时间？', options: ['3天', '5天', '7天', '14天'], answer: 2, explanation: '品专版签约建议提前留出7天品专审核和上刊时间，确保智能体与品专同步上线。' },
-    { id: 'q-agent-024', productLine: 'ai-agent', knowledgeType: 'policy', difficulty: 'intermediate', type: 'judge', question: '品专版的品牌词包可以使用任意关键词，不限制必须是品牌相关词。', options: ['正确', '错误'], answer: 1, explanation: '品牌词包只能用品牌词或品牌词+产品/服务词，且须以营业执照上的品牌词为准，日PV建议≥50。' },
-    { id: 'q-agent-025', productLine: 'ai-agent', knowledgeType: 'sales', difficulty: 'advanced', type: 'single', question: '客户问"品专要额外花钱吗"，正确的回答是？', options: ['品专需要单独购买', '品专版是打包售卖的，三个权益一个价格', '品专只免费试用1个月', '品专按点击计费'], answer: 1, explanation: '品专版是打包售卖的，智能体+mini品专+图面广告三个权益一个价格，不需要单独购买品专。' }
 
   ],
 
@@ -2738,8 +2666,8 @@ window.App = {
       if (!lines[c.productLine]) lines[c.productLine] = { name: c.productLineName, courses: [] };
       lines[c.productLine].courses.push(c);
     });
-    const icons = { cpc:'📊', 'ocpc-gmv':'📈', 'ocpc-leads':'📞', dual:'🔗', allpush:'🌐', topdisplay:'🏆', watercard:'🎨', diamond:'💎', navend:'📍', brandzone:'🔍', 'ai-agent':'🧠' };
-    const colors = { cpc:'blue', 'ocpc-gmv':'indigo', 'ocpc-leads':'purple', dual:'emerald', allpush:'teal', topdisplay:'rose', watercard:'pink', diamond:'orange', navend:'cyan', brandzone:'amber', 'ai-agent':'violet' };
+    const icons = { cpc:'📊', 'ocpc-gmv':'📈', 'ocpc-leads':'📞', dual:'🔗', 'ai-agent':'🧠', topdisplay:'🏆', diamond:'💎', watercard:'🎨', navend:'📍', brandzone:'🔍' };
+    const colors = { cpc:'blue', 'ocpc-gmv':'indigo', 'ocpc-leads':'purple', dual:'emerald', 'ai-agent':'violet', topdisplay:'rose', diamond:'orange', watercard:'pink', navend:'cyan', brandzone:'amber' };
     const coursePlan = this._getCoursePlan();
 
     el.innerHTML = `<div class="animate-fade-in space-y-4">
@@ -3230,8 +3158,7 @@ window.App = {
       passScore: 80,
       totalScore: 100,
       rules: [
-        { productLines: ['cpc', 'ocpc-gmv', 'ocpc-leads', 'dual'], count: 25 },
-        { productLines: ['allpush'], count: 5 }
+        { productLines: ['cpc', 'ocpc-gmv', 'ocpc-leads', 'dual'], count: 25 }
       ]
     },
     {
@@ -3241,7 +3168,7 @@ window.App = {
       passScore: 80,
       totalScore: 100,
       rules: [
-        { productLines: ['allpush', 'ocpc-gmv', 'ocpc-leads'], count: 20 },
+        { productLines: ['ocpc-gmv', 'ocpc-leads'], count: 20 },
         { productLines: ['dual', 'cpc'], count: 10 }
       ]
     },
@@ -3273,7 +3200,7 @@ window.App = {
       passScore: 85,
       totalScore: 100,
       rules: [
-        { productLines: ['cpc', 'ocpc-gmv', 'ocpc-leads', 'dual', 'allpush'], count: 20 },
+        { productLines: ['cpc', 'ocpc-gmv', 'ocpc-leads', 'dual'], count: 20 },
         { productLines: ['topdisplay', 'watercard', 'diamond', 'navend', 'brandzone'], count: 15 },
         { productLines: ['ai-agent'], count: 15 }
       ]
@@ -3285,7 +3212,7 @@ window.App = {
       passScore: 80,
       totalScore: 100,
       rules: [
-        { productLines: ['cpc', 'ocpc-gmv', 'ocpc-leads', 'dual', 'allpush', 'topdisplay', 'watercard', 'diamond', 'navend', 'brandzone', 'ai-agent'], count: 20 }
+        { productLines: ['cpc', 'ocpc-gmv', 'ocpc-leads', 'dual', 'topdisplay', 'watercard', 'diamond', 'navend', 'brandzone', 'ai-agent'], count: 20 }
       ]
     }
   ];
