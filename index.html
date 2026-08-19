@@ -1728,6 +1728,75 @@ window.DATA = {
         { id: 'navend-02-q4', type: 'multi', question: '导结限时优惠政策的要求包括哪些？', options: ['美食行业', '五星门店', '首批20个名额', '起售门槛降至1万'], answer: [0, 1, 2], explanation: '限时优惠要求：美食行业+五星门店+首批20个名额，起售从5万降至3万（非1万）。' },
         { id: 'navend-02-q5', type: 'single', question: '导结广告上刊前，素材审核需要提前几天提交？', options: ['当天即可', '提前1-3天', '提前7天', '提前14天'], answer: 1, explanation: '素材需提前1-3天在「公域资源位物料内容安全审核」群审核。' }
       ]
+    },
+
+    // ----------------------------------------------------------
+    // 11. 品牌专区
+    // ----------------------------------------------------------
+    {
+      id: 'brandzone-01',
+      productLine: 'brandzone',
+      productLineName: '品牌专区',
+      title: '品牌专区产品介绍',
+      difficulty: 'beginner',
+      duration: 20,
+      lessons: [
+        {
+          id: 'brandzone-01-l1',
+          title: '产品概述与价值定位',
+          content: '<div class="course-content"><h3>什么是品牌专区？</h3><p>品牌专区（品牌地图）是高德搜索场景下的<strong>品牌沉浸式空间</strong>。当用户搜索品牌词时，展示的不是一个简单的地址，而是一个可看可逛、能获取品牌优惠信息及商品信息的品牌专属页面。</p><div class="key-point"><p><strong>一句话亮点：</strong>锁定品牌词流量入口，打造"搜索即服务"的闭环体验，极大缩短转化路径，将每一次品牌搜索变成即时转化！</p></div><h3>五大核心价值</h3><ul><li><strong>品牌独占：</strong>霸屏展示，品牌信息有效传达，形成强势品牌独占</li><li><strong>竞品防御：</strong>独享品牌流量，杜绝竞品拦截侵占</li><li><strong>品牌认知：</strong>搜索后霸屏展示，建立品牌第一印象，增强品牌认知度</li><li><strong>品牌好感：</strong>可配置权益发券，线上领券线下导航到店，品效合一</li><li><strong>宣传阵地：</strong>热门产品/新品服务通过banner图透出，品牌宣传第一阵地</li></ul><div class="key-point"><p><strong>有品专 vs 无品专：</strong></p><ul><li><strong>无品专：</strong>首屏无法独享品牌流量，品牌流量容易被竞品拦截</li><li><strong>有品专：</strong>品牌独占霸屏 + 竞品屏蔽 + 额外点击量</li></ul></div><h3>售卖方式</h3><ul><li><strong>计费方式：</strong>CPT（按时段计费）</li><li><strong>定价模式：</strong>一客一价（按品牌词包PV由产品侧报价）</li><li><strong>起售时长：</strong>最短1个自然月，最长1年</li><li><strong>报价有效期：</strong>自报价后3个月内有效</li></ul><p class="highlight">品专从"防守型产品"升级为"品牌搜索场景下的主动转化阵地"，是品牌营销的核心产品。</p></div>'
+        },
+        {
+          id: 'brandzone-01-l2',
+          title: '广告形态与展示逻辑',
+          content: '<div class="course-content"><h3>品专权益（打包售卖，不再单独拆卖）</h3><table><tr><th>权益</th><th>说明</th></tr><tr><td><strong>品牌Banner（3.0/4.0）</strong></td><td>品牌腰封，4.0版扩大品牌视觉区域，新增电话icon和门店召回模块。4.0在3.0基础上叠加1.3倍溢价</td></tr><tr><td><strong>搜索Sug</strong></td><td>搜索联想推荐，brandcode召回</td></tr><tr><td><strong>品牌图钉</strong></td><td>地图上品牌门店标记</td></tr><tr><td><strong>门店横条</strong></td><td>搜索具体门店时展示的横条广告</td></tr><tr><td><strong>单店扎点</strong></td><td>进入门店POI详情页时展示</td></tr></table><div class="key-point"><p><strong>4.0版本更新点：</strong></p><ul><li>品牌Banner展示样式扩大品牌视觉区域（对比3.0）</li><li>增加门店召回模块，新增电话icon，支持在品牌Banner页拨打电话</li><li>价格在3.0基础上叠加<strong>1.3倍溢价</strong></li></ul></div><h3>展示逻辑</h3><ul><li>搜索"品牌词包"时即可展示品专Banner和Sug</li><li>动态5s循环播放 / 静态图片</li><li>CTR预估：<strong>1.5%-2.5%</strong></li><li>POI列表不展示其他竞品推荐卡片，仅展示客户相关门店信息</li></ul><h3>跳转能力</h3><ul><li>唤端：一跳禁止，二跳支持（唤端支持到淘系产品）</li></ul><h3>定向能力</h3><ul><li>支持<strong>城市定向</strong></li><li>S级城市（北上广深）：溢价<strong>1.3倍</strong></li><li>A级城市（省会+重点城市）：溢价<strong>1.2倍</strong></li><li>B级城市（其他）：溢价<strong>1.1倍</strong></li><li>多城市定向时溢价系数叠加，如同时定向S和A级城市：单价=基础单价×(1+30%+20%)</li></ul><p class="highlight">品专所有权益打包售卖，不再单独拆卖。4.0版是主力推广版本。</p></div>'
+        },
+        {
+          id: 'brandzone-01-l3',
+          title: '品专追投开屏与附加能力',
+          content: '<div class="course-content"><h3>品专追投开屏</h3><p>针对搜索过"品牌词"出现了品专广告<strong>且未点击广告</strong>的用户，在<strong>3天内</strong>自动追投开屏广告。</p><div class="key-point"><p><strong>核心亮点：</strong></p><ul><li>对品牌高意向用户<strong>快速追踪二次触达</strong></li><li>锁定用户需求，加强品牌好感度</li><li>CTR显著提升——扭一扭样式CTR约<strong>6%+</strong></li></ul></div><h3>产品能力</h3><ul><li><strong>快速追踪：</strong>搜索人群天级别TA追踪，无缝衔接锁定用户需求</li><li><strong>持续追踪：</strong>联动搜索→品专→开屏，全链路多场景多重曝光</li></ul><div class="key-point"><p><strong>能帮助广告主达成：</strong></p><ul><li><strong>品牌人群保护：</strong>攻守兼备，独占本品高需人群</li><li><strong>影响用户决策：</strong>在用户意愿最强时刻多重曝光，持续影响品牌偏好度</li></ul></div><h3>品专+开屏追投定价</h3><ul><li>品专部分：一客一价</li><li>开屏部分：溢价系数固定50%，按<strong>1.5倍单价</strong>售卖</li><li>起投时长：一个月起投</li><li>报价由产品根据品专预估曝光量一并给到</li></ul><h3>品牌词规则</h3><div class="key-point"><p><strong>品牌词定义：</strong></p><ul><li>必须<strong>完整包含</strong>客户授权商标证明中的品牌名称</li><li>可以在品牌名称<strong>前后加</strong>词缀，但<strong>不能在品牌名称中间</strong>加词缀</li><li>品牌词需走搜索侧评估审核</li></ul><p>例如品牌"马兰拉面"：<strong>"北京马兰拉面"✅</strong>、"马兰牛肉面"❌、"北京马兰"❌、"牛肉拉面"❌</p></div><h3>重要通知（20260724）</h3><ul><li>搜索品牌词且<strong>点击搜索Sug</strong>：搜索结果仅展示品牌数据治理提交的门店</li><li>搜索品牌词包<strong>直接点击搜索</strong>：会出现品专广告，但搜索结果列表不保证只出品牌治理提交门店</li></ul><p class="highlight">品专追投开屏是品专的强力附加能力，CTR可达6%+，是提升转化效率的利器。</p></div>'
+        }
+      ],
+      quiz: [
+        { id: 'brandzone-01-q1', type: 'single', question: '品牌专区的计费方式是什么？', options: ['CPC按点击计费', 'CPM按千次展示计费', 'CPT按时段计费', 'CPA按转化计费'], answer: 2, explanation: '品牌专区采用CPT（按时段）计费方式。' },
+        { id: 'brandzone-01-q2', type: 'single', question: '品牌专区的最短购买时长是？', options: ['1周', '1个自然月', '3个月', '6个月'], answer: 1, explanation: '品专最短1个自然月起卖，最长可售卖1年。' },
+        { id: 'brandzone-01-q3', type: 'multi', question: '品专的核心价值包括以下哪些？', options: ['品牌独占霸屏展示', '竞品屏蔽防御', '提升品牌认知度', '增加额外点击量'], answer: [0, 1, 2, 3], explanation: '品专五大价值：品牌独占、竞品防御、品牌认知、品牌好感、额外点击量。' },
+        { id: 'brandzone-01-q4', type: 'judge', question: '品专4.0版本在3.0基础上叠加1.3倍溢价。', options: ['正确', '错误'], answer: 0, explanation: '4.0版本价格在3.0基础上叠加1.3倍溢价，同时扩大视觉区域并新增电话icon。' },
+        { id: 'brandzone-01-q5', type: 'single', question: '品专追投开屏针对的是哪类用户？', options: ['所有搜索用户', '搜索品牌词且点击了品专广告的用户', '搜索品牌词出现品专但未点击广告的用户', '到店用户'], answer: 2, explanation: '品专追投开屏针对搜索品牌词出现品专广告且未点击的用户，3天内自动追投开屏。' }
+      ]
+    },
+
+    {
+      id: 'brandzone-02',
+      productLine: 'brandzone',
+      productLineName: '品牌专区',
+      title: '品牌专区售卖指南',
+      difficulty: 'intermediate',
+      duration: 25,
+      lessons: [
+        {
+          id: 'brandzone-02-l1',
+          title: '定价与销售规则',
+          content: '<div class="course-content"><h3>定价模式：一客一价</h3><p>品专采用<strong>一客一价</strong>定价方式，每个客户根据其品牌词包的PV，由产品侧给出刊例报价。</p><div class="key-point"><p><strong>销售规则：</strong></p><ul><li>询价报价为刊例价，在此基础上<strong>最低可以打4折</strong></li><li>品专报价<strong>低于1万元</strong>的，按折后最低<strong>1万元</strong></li><li>品专追投开屏报价<strong>低于5万元</strong>的，按折后最低<strong>5万元</strong></li><li>单次下单<strong>最短3个月</strong>（注意：与起售1个自然月不同），最长1年</li><li>报价<strong>有效期3个月</strong>，超过需重新询价</li></ul></div><h3>价格举例</h3><table><tr><th>场景</th><th>说明</th></tr><tr><td>一年报价2万，买3个月</td><td>不能按5000算，合作门槛最低1万</td></tr><tr><td>报价低于1万</td><td>折后按最低1万算</td></tr><tr><td>品专+开屏追投报价低于5万</td><td>折后按最低5万算</td></tr></table><h3>城市溢价规则</h3><table><tr><th>城市级别</th><th>城市</th><th>溢价比例</th></tr><tr><td>S级-核心城市</td><td>北京、上海、广州、深圳</td><td>30%</td></tr><tr><td>A级-重点城市</td><td>杭州、南京、成都、武汉等33个省会及重点城市</td><td>20%</td></tr><tr><td>B级-其他城市</td><td>除以上外的其他城市</td><td>10%</td></tr></table><p>多城市定向时溢价系数叠加，如S+A：单价=基础单价×(1+30%+20%)=1.5倍</p><h3>客户资质要求</h3><ul><li>客户必须有<strong>品牌授权资质</strong></li><li>品牌授权商标必须有明确的<strong>品牌词</strong></li><li>查询确认：国家知识产权局商标局官网（中国商标网）</li><li>付款主体：<strong>北京高德云信科技有限公司</strong></li></ul><p class="highlight">品专最低合作门槛1万元，报价有效期3个月，最短单次下单3个月。</p></div>'
+        },
+        {
+          id: 'brandzone-02-l2',
+          title: '销售话术与方案',
+          content: '<div class="course-content"><h3>品专销售话术</h3><div class="script-box"><p><strong>价值传递——品牌保护</strong></p><p>"X老板，您现在搜您品牌名，出来的结果里可能还有竞品的推荐。品专能帮您把品牌搜索的流量独占——搜您的品牌，只看到您的门店，不会出现竞品。相当于给您的品牌流量上了一把锁。"</p></div><div class="script-box"><p><strong>价值传递——转化提升</strong></p><p>"品专不只是展示，用户搜品牌词时直接看到您的头图、优惠信息、门店位置，可以直接导航到店。从搜索到到店的路径缩短到最短，转化率比普通POI高很多。"</p></div><div class="script-box"><p><strong>异议处理——"太贵了"</strong></p><p>"品专是一客一价，根据您的品牌词搜索量来定价。而且我们最低可以打到4折。1万块起步，一个月算下来每天也就300多块，但帮您锁住了所有搜您品牌的流量，不让竞品抢走。"</p></div><div class="script-box"><p><strong>异议处理——"我已经有CPC了"</strong></p><p>"CPC是效果广告帮您拉新客，品专是品牌广告帮您守住老客户。两个配合用——CPC负责把新客引进来，品专负责让搜您品牌的人不被竞品抢走。攻守兼备。"</p></div><h3>品专五大卖点话术</h3><ul><li><strong>品牌形象：</strong>提升品牌形象，增强消费者信心</li><li><strong>品牌保护：</strong>品牌保护 + 竞品屏蔽</li><li><strong>流量独占：</strong>独享品牌流量</li><li><strong>点击率提升：</strong>样式更丰富，点击率更高（CTR 1.5%-2.5%），减少流量流失</li><li><strong>直接转化：</strong>更多营销玩法能力，直接转化到店</li></ul><h3>成功案例</h3><p>汉堡王、塔斯汀、点都德、蜜雪冰城、烤匠、胡大饭馆、季季红等品牌均已投放品专。</p><p class="highlight">品专话术核心：品牌保护+竞品屏蔽+转化提升，配合CPC形成攻守兼备组合。</p></div>'
+        },
+        {
+          id: 'brandzone-02-l3',
+          title: '签约与上刊流程',
+          content: '<div class="course-content"><h3>询价与签约流程</h3><div class="step-cards"><div class="step-card"><div class="step-num">1</div><div class="step-body"><div class="step-title">询价</div><div class="step-desc">通过品专询价SOP提交客户品牌词包，由产品侧给出刊例报价</div></div></div><div class="step-card"><div class="step-num">2</div><div class="step-body"><div class="step-title">品牌词审核</div><div class="step-desc">品牌词需完整包含授权商标名称，走搜索侧评估审核</div></div></div><div class="step-card"><div class="step-num">3</div><div class="step-body"><div class="step-title">签约</div><div class="step-desc">下单方式遵循业务规则（邮件或宜搭），合同模板通过法务系统签署</div></div></div><div class="step-card"><div class="step-num">4</div><div class="step-body"><div class="step-title">素材准备</div><div class="step-desc">按品专配置上刊SOP要求准备品牌Banner、图钉等素材</div></div></div><div class="step-card"><div class="step-num">5</div><div class="step-body"><div class="step-title">上刊配置</div><div class="step-desc">运维支持在META平台上刊，上线前确认预览效果</div></div></div><div class="step-card"><div class="step-num">6</div><div class="step-body"><div class="step-title">审核上线</div><div class="step-desc">确认预览后走审批流程，开启投放</div></div></div></div><div class="key-point"><p><strong>平台流程：</strong>询量 → 外报排期 → 客户确认排期 → 下单 → 占量 → 上刊配置 → 确认预览 → 正式投放</p></div><h3>交付数据指标</h3><ul><li><strong>核心指标：</strong>搜索"品牌词"后稳定展示曝光的能力</li><li><strong>CTR预估：</strong>1.5%-2.5%</li></ul><h3>常见问题</h3><ul><li><strong>报价有效期：</strong>自报价后3个月内有效，超期需重新询价</li><li><strong>品专最短购买：</strong>1个自然月起卖，最长1年</li><li><strong>单次下单最短：</strong>3个月</li></ul><p class="highlight">品专全流程：询价→品牌词审核→签约→素材→上刊→预览→上线，询价是第一步。</p></div>'
+        }
+      ],
+      quiz: [
+        { id: 'brandzone-02-q1', type: 'single', question: '品专刊例价基础上最低可以打几折？', options: ['5折', '4折', '3折', '2折'], answer: 1, explanation: '品专询价报价为刊例价，在此基础上最低可以打4折。' },
+        { id: 'brandzone-02-q2', type: 'single', question: '品专单次下单最短购买多长时间？', options: ['1个自然月', '3个月', '6个月', '1年'], answer: 1, explanation: '品专单次下单最短3个月（注意：起售门槛是1个自然月，但单次签约最短3个月）。' },
+        { id: 'brandzone-02-q3', type: 'single', question: 'S级城市（北上广深）的城市溢价比例是？', options: ['10%', '20%', '30%', '50%'], answer: 2, explanation: 'S级核心城市（北京、上海、广州、深圳）溢价30%。' },
+        { id: 'brandzone-02-q4', type: 'judge', question: '品专报价低于1万元时，按折后最低1万元计算。', options: ['正确', '错误'], answer: 0, explanation: '品专报价低于1万元的按折后最低1万元，品专追投开屏报价低于5万元的按折后最低5万元。' },
+        { id: 'brandzone-02-q5', type: 'multi', question: '品牌词命名规则中，以下哪些是合法的？（假设品牌为"马兰拉面"）', options: ['北京马兰拉面', '马兰牛肉面', '马兰拉面', '牛肉拉面'], answer: [0, 2], explanation: '品牌词可在品牌名称前后加词缀（如"北京马兰拉面"✅），不能在中间加（"马兰牛肉面"❌），不能去掉品牌名（"牛肉拉面"❌）。' }
+      ]
     }
 
   ],
@@ -1934,6 +2003,28 @@ window.DATA = {
     { id: 'q-navend-018', productLine: 'navend', knowledgeType: 'operation', difficulty: 'advanced', type: 'multi', question: '导结广告支持的跳转方式包括哪些？', options: ['H5落地页（域名加白）', '唤端跳转（二跳）', '微信小程序（二跳）', '一跳唤端'], answer: [0, 1, 2], explanation: '支持H5落地页、唤端二跳、微信小程序二跳。一跳唤端和一跳小程序禁止。' },
     { id: 'q-navend-019', productLine: 'navend', knowledgeType: 'sales', difficulty: 'advanced', type: 'single', question: '导结限时优惠首批限定多少个名额？', options: ['10个', '20个', '50个', '100个'], answer: 1, explanation: '首批限定20个名额，先到先得，以特批宜搭提交审批时间为准。' },
     { id: 'q-navend-020', productLine: 'navend', knowledgeType: 'operation', difficulty: 'advanced', type: 'single', question: '导结素材审核需要提前几天在审核群提交？', options: ['当天即可', '提前1-3天', '提前7天', '提前14天'], answer: 1, explanation: '素材需提前1-3天在「公域资源位物料内容安全审核」群审核。' },
+
+    // --- 品牌专区 (q-brandzone-001 ~ q-brandzone-020) ---
+    { id: 'q-brandzone-001', productLine: 'brandzone', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '品牌专区的计费方式是什么？', options: ['CPC按点击', 'CPM按千次展示', 'CPT按时段', 'CPA按转化'], answer: 2, explanation: '品牌专区采用CPT（按时段）计费方式。' },
+    { id: 'q-brandzone-002', productLine: 'brandzone', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '品牌专区的定价模式是？', options: ['统一标价', '按门店数定价', '一客一价', '按行业定价'], answer: 2, explanation: '品专采用一客一价，按品牌词包PV由产品侧给出刊例报价。' },
+    { id: 'q-brandzone-003', productLine: 'brandzone', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '品专最短购买时长是？', options: ['1周', '1个自然月', '3个月', '6个月'], answer: 1, explanation: '品专最短1个自然月起卖，最长可售卖1年。' },
+    { id: 'q-brandzone-004', productLine: 'brandzone', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '品专4.0版本在3.0基础上叠加多少倍溢价？', options: ['1.1倍', '1.2倍', '1.3倍', '1.5倍'], answer: 2, explanation: '4.0版本在3.0基础上叠加1.3倍溢价。' },
+    { id: 'q-brandzone-005', productLine: 'brandzone', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '品专所有权益打包售卖，不再单独拆卖。', options: ['正确', '错误'], answer: 0, explanation: '新品专不再拆开卖，所有权益（Banner、Sug、图钉、门店横条、单店扎点）打包一起卖。' },
+    { id: 'q-brandzone-006', productLine: 'brandzone', knowledgeType: 'product', difficulty: 'beginner', type: 'judge', question: '品专的CTR预估在1.5%-2.5%左右。', options: ['正确', '错误'], answer: 0, explanation: '品专交付指标CTR在1.5%-2.5%左右。' },
+    { id: 'q-brandzone-007', productLine: 'brandzone', knowledgeType: 'policy', difficulty: 'intermediate', type: 'single', question: '品专刊例价基础上最低可以打几折？', options: ['6折', '5折', '4折', '3折'], answer: 2, explanation: '品专询价报价为刊例价，在此基础上最低可以打4折。' },
+    { id: 'q-brandzone-008', productLine: 'brandzone', knowledgeType: 'policy', difficulty: 'intermediate', type: 'single', question: '品专最低合作门槛是多少钱？', options: ['5000元', '1万元', '3万元', '5万元'], answer: 1, explanation: '品专报价低于1万元的按折后最低1万元。' },
+    { id: 'q-brandzone-009', productLine: 'brandzone', knowledgeType: 'policy', difficulty: 'intermediate', type: 'single', question: '品专报价有效期是多久？', options: ['1个月', '3个月', '6个月', '1年'], answer: 1, explanation: '自报价后3个月内有效，超过需重新询价。' },
+    { id: 'q-brandzone-010', productLine: 'brandzone', knowledgeType: 'policy', difficulty: 'intermediate', type: 'single', question: 'S级城市（北上广深）的城市溢价比例是？', options: ['10%', '20%', '30%', '50%'], answer: 2, explanation: 'S级核心城市溢价30%。' },
+    { id: 'q-brandzone-011', productLine: 'brandzone', knowledgeType: 'product', difficulty: 'intermediate', type: 'single', question: '品专追投开屏针对的是哪类用户？', options: ['所有搜索用户', '搜索品牌词且点击品专广告的用户', '搜索品牌词出现品专但未点击的用户', '到店用户'], answer: 2, explanation: '针对搜索品牌词出现品专广告且未点击广告的用户，3天内自动追投开屏。' },
+    { id: 'q-brandzone-012', productLine: 'brandzone', knowledgeType: 'product', difficulty: 'intermediate', type: 'single', question: '品专追投开屏的扭一扭样式CTR约为多少？', options: ['1.5%', '3%', '6%+', '10%'], answer: 2, explanation: '品专追投开屏扭一扭样式CTR约6%+，显著高于品专本身的1.5%-2.5%。' },
+    { id: 'q-brandzone-013', productLine: 'brandzone', knowledgeType: 'policy', difficulty: 'intermediate', type: 'single', question: '品专追投开屏的开屏部分按几倍单价售卖？', options: ['1.2倍', '1.3倍', '1.5倍', '2倍'], answer: 2, explanation: '开屏部分溢价系数固定50%，按1.5倍单价售卖。' },
+    { id: 'q-brandzone-014', productLine: 'brandzone', knowledgeType: 'policy', difficulty: 'intermediate', type: 'judge', question: '品专单次下单最短3个月。', options: ['正确', '错误'], answer: 0, explanation: '品专单次下单最短3个月（注意与起售1个自然月不同）。' },
+    { id: 'q-brandzone-015', productLine: 'brandzone', knowledgeType: 'policy', difficulty: 'advanced', type: 'multi', question: '品牌词命名规则中，以下哪些是合法的？（假设品牌为"马兰拉面"）', options: ['北京马兰拉面', '马兰牛肉面', '马兰拉面', '牛肉拉面'], answer: [0, 2], explanation: '品牌词可在品牌名称前后加词缀，不能在中间加词缀，不能去掉品牌名。' },
+    { id: 'q-brandzone-016', productLine: 'brandzone', knowledgeType: 'policy', difficulty: 'advanced', type: 'single', question: '品专追投开屏报价低于多少时按最低门槛算？', options: ['1万', '3万', '5万', '10万'], answer: 2, explanation: '品专追投开屏报价低于5万元的按折后最低5万元。' },
+    { id: 'q-brandzone-017', productLine: 'brandzone', knowledgeType: 'sales', difficulty: 'advanced', type: 'single', question: '品专付款主体是哪家公司？', options: ['阿里巴巴集团', '高德地图有限公司', '北京高德云信科技有限公司', '高德信息技术有限公司'], answer: 2, explanation: '付款主体为北京高德云信科技有限公司。' },
+    { id: 'q-brandzone-018', productLine: 'brandzone', knowledgeType: 'sales', difficulty: 'advanced', type: 'single', question: '品专话术中，"相当于给品牌流量上了一把锁"主要传达的是哪个价值？', options: ['品牌形象', '品牌保护/竞品屏蔽', '直接转化', '额外点击量'], answer: 1, explanation: '品牌保护+竞品屏蔽是品专最核心的差异化价值。' },
+    { id: 'q-brandzone-019', productLine: 'brandzone', knowledgeType: 'product', difficulty: 'advanced', type: 'multi', question: '品专4.0版本相比3.0的更新点包括哪些？', options: ['扩大品牌视觉区域', '新增电话icon', '新增门店召回模块', '降低价格'], answer: [0, 1, 2], explanation: '4.0扩大视觉区域、新增电话icon和门店召回模块，价格叠加1.3倍溢价（非降低）。' },
+    { id: 'q-brandzone-020', productLine: 'brandzone', knowledgeType: 'product', difficulty: 'advanced', type: 'judge', question: '搜索品牌词直接点击搜索时，搜索结果列表保证只出品牌治理提交的门店。', options: ['正确', '错误'], answer: 1, explanation: '直接点击搜索时，搜索结果列表不保证只出品牌治理提交门店；只有点击搜索Sug时才仅展示品牌治理提交的门店。' },
 
     // --- 品牌智能体 (q-agent-001 ~ q-agent-020) ---
     { id: 'q-agent-001', productLine: 'ai-agent', knowledgeType: 'product', difficulty: 'beginner', type: 'single', question: '品牌智能体1-9店的月费是？', options: ['69元/店/月', '79元/店/月', '89元/店/月', '99元/店/月'], answer: 3, explanation: '1-9店标准价为99元/店/月。' },
@@ -2661,8 +2752,8 @@ window.App = {
       if (!lines[c.productLine]) lines[c.productLine] = { name: c.productLineName, courses: [] };
       lines[c.productLine].courses.push(c);
     });
-    const icons = { cpc:'📊', 'ocpc-gmv':'📈', 'ocpc-leads':'📞', dual:'🔗', allpush:'🌐', topdisplay:'🏆', watercard:'🎨', diamond:'💎', navend:'📍', 'ai-agent':'🧠' };
-    const colors = { cpc:'blue', 'ocpc-gmv':'indigo', 'ocpc-leads':'purple', dual:'emerald', allpush:'teal', topdisplay:'rose', watercard:'pink', diamond:'orange', navend:'cyan', 'ai-agent':'violet' };
+    const icons = { cpc:'📊', 'ocpc-gmv':'📈', 'ocpc-leads':'📞', dual:'🔗', allpush:'🌐', topdisplay:'🏆', watercard:'🎨', diamond:'💎', navend:'📍', brandzone:'🔍', 'ai-agent':'🧠' };
+    const colors = { cpc:'blue', 'ocpc-gmv':'indigo', 'ocpc-leads':'purple', dual:'emerald', allpush:'teal', topdisplay:'rose', watercard:'pink', diamond:'orange', navend:'cyan', brandzone:'amber', 'ai-agent':'violet' };
     const coursePlan = this._getCoursePlan();
 
     el.innerHTML = `<div class="animate-fade-in space-y-4">
@@ -3197,7 +3288,7 @@ window.App = {
       totalScore: 100,
       rules: [
         { productLines: ['cpc', 'ocpc-gmv', 'ocpc-leads', 'dual', 'allpush'], count: 20 },
-        { productLines: ['topdisplay', 'watercard', 'diamond', 'navend'], count: 15 },
+        { productLines: ['topdisplay', 'watercard', 'diamond', 'navend', 'brandzone'], count: 15 },
         { productLines: ['ai-agent'], count: 15 }
       ]
     },
@@ -3208,7 +3299,7 @@ window.App = {
       passScore: 80,
       totalScore: 100,
       rules: [
-        { productLines: ['cpc', 'ocpc-gmv', 'ocpc-leads', 'dual', 'allpush', 'topdisplay', 'watercard', 'diamond', 'navend', 'ai-agent'], count: 20 }
+        { productLines: ['cpc', 'ocpc-gmv', 'ocpc-leads', 'dual', 'allpush', 'topdisplay', 'watercard', 'diamond', 'navend', 'brandzone', 'ai-agent'], count: 20 }
       ]
     }
   ];
